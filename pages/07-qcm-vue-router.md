@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 7 : Vue Router 4 ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur Vue Router !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) `<view>`
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) `<link to="/about">`
 - D) `<vue-link to="/about">`
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) Toutes les reponses B et C
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) `navigate('/about')`
 - D) `goto('/about')`
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) Il n'y a pas de difference
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) Valider les formulaires
 - D) Optimiser les performances
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) `routes.push(child)`
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) `defer: './View.vue'`
 - D) `async: './View.vue'`
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) Toutes ces reponses marchent
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) `route.search.search`
 - D) `route.qs.search`
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 7
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **D** | Toutes ces approches fonctionnent (B recommandee) |
 | 10 | **B** | `route.query` pour les parametres URL |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

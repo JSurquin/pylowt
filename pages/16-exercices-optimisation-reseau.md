@@ -1,6 +1,4 @@
 ---
-layout: exercices
----
 
 # Exercices - Optimisation Réseau Linux (BONUS) 🎯
 

@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 4 🎯
 
 Pratiquons la Composition API et les composables !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Composable useToggle 🔄
@@ -20,8 +16,6 @@ Crée un composable `useToggle.ts` qui :
 - Accepte une valeur initiale (default: false)
 - Retourne l'état et des fonctions toggle/on/off
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 ✅
@@ -50,8 +44,6 @@ export function useToggle(initial = false) {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Utilisation ✅
 
@@ -73,8 +65,6 @@ const { value: isOpen, toggle, on, off } = useToggle()
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : Composable useDebounce ⏳
 
@@ -86,8 +76,6 @@ Crée un composable `useDebounce.ts` qui :
 - Accepte une ref et un délai (default: 300ms)
 - Retourne une valeur "debounced"
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 ✅
@@ -116,8 +104,6 @@ export function useDebounce<T>(
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Utilisation ✅
 
@@ -140,8 +126,6 @@ const debouncedQuery = useDebounce(searchQuery, 500)
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 3 : Composable useAsync 🌐
 
@@ -154,8 +138,6 @@ Crée un composable `useAsync.ts` qui :
 - Gère loading, error, data
 - Fournit une méthode execute()
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Partie 1 ✅
@@ -181,8 +163,6 @@ export function useAsync<T>(
 }
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Partie 2 ✅
@@ -213,8 +193,6 @@ export function useAsync<T>(
 }
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Utilisation ✅
@@ -247,8 +225,6 @@ execute(1)
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : Composable useWindowSize 📐
 
@@ -261,8 +237,6 @@ Crée un composable `useWindowSize.ts` qui :
 - Se met à jour au resize
 - Nettoie le listener au unmount
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 ✅
@@ -293,8 +267,6 @@ export function useWindowSize() {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Utilisation ✅
 
@@ -319,8 +291,6 @@ const isDesktop = computed(() => width.value >= 1024)
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 5 : Composable useInterval ⏰
 
@@ -333,8 +303,6 @@ Crée un composable `useInterval.ts` qui :
 - Permet de start/stop/reset
 - Nettoie automatiquement au unmount
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Partie 1 ✅
@@ -362,8 +330,6 @@ export function useInterval(
 }
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Partie 2 ✅
@@ -396,8 +362,6 @@ export function useInterval(
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 5 - Utilisation ✅
 
@@ -425,8 +389,6 @@ const { isActive, start, stop, toggle } = useInterval(
 ```
 
 ---
-layout: exercices
----
 
 # Exercice Bonus : Composable useClipboard 📋
 
@@ -439,8 +401,6 @@ Crée un composable `useClipboard.ts` qui :
 - Indique si la copie a réussi
 - Réinitialise l'état après un délai
 
----
-layout: exercices
 ---
 
 # Solution Bonus ✅
@@ -472,8 +432,6 @@ export function useClipboard(resetDelay = 2000) {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Bonus - Utilisation ✅
 
@@ -496,8 +454,6 @@ const code = 'npm install vue'
 </template>
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉

@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 6 🎯
 
 Pratiquons les formulaires et v-model !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Formulaire d'inscription 📝
@@ -21,8 +17,6 @@ Crée un composant `SignupForm.vue` avec :
 - Validation en temps réel
 - Message d'erreur si les passwords ne correspondent pas
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Script ✅
@@ -56,8 +50,6 @@ const isFormValid = computed(() =>
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Script Suite ✅
 
@@ -77,8 +69,6 @@ function handleSubmit() {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Template ✅
@@ -115,8 +105,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Style ✅
@@ -155,8 +143,6 @@ button:disabled {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : Sondage multi-choix 📊
 
@@ -170,8 +156,6 @@ Crée un composant `Survey.vue` avec :
 - Select pour le pays
 - Affichage des résultats
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Script ✅
@@ -208,8 +192,6 @@ const isComplete = computed(() =>
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Template Partie 1 ✅
 
@@ -236,8 +218,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Template Partie 2 ✅
@@ -279,8 +259,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Template Partie 3 ✅
 
@@ -301,8 +279,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 3 : Input personnalisé 🧩
 
@@ -315,8 +291,6 @@ Crée un composant `BaseInput.vue` avec :
 - Support de v-model avec defineModel
 - Affichage conditionnel de l'erreur
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Script ✅
@@ -339,8 +313,6 @@ const model = defineModel<string>()
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Template ✅
@@ -366,8 +338,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Style ✅
@@ -411,8 +381,6 @@ input.has-error {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 3 - Utilisation ✅
 
@@ -444,8 +412,6 @@ const emailError = computed(() => {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : Rating component ⭐
 
@@ -458,8 +424,6 @@ Crée un composant `RatingStars.vue` avec :
 - Support v-model pour la note (1-5)
 - Effet hover
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Script ✅
@@ -486,8 +450,6 @@ function resetHover() {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Template ✅
 
@@ -512,8 +474,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Style ✅
@@ -549,8 +509,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Utilisation ✅
 
@@ -570,8 +528,6 @@ const rating = ref(3)
 ```
 
 ---
-layout: exercices
----
 
 # Exercice Bonus : Formulaire dynamique 🔄
 
@@ -583,8 +539,6 @@ Crée un composant `DynamicForm.vue` avec :
 - Un tableau d'items avec nom et valeur
 - Boutons + et - pour ajouter/supprimer des lignes
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Script ✅
@@ -617,8 +571,6 @@ function removeItem(id: number) {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Template ✅
@@ -656,8 +608,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉

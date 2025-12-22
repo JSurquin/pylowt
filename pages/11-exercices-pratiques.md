@@ -1,5 +1,4 @@
 ---
-layout: new-section
 routeAlias: 'exercices-pratiques'
 ---
 

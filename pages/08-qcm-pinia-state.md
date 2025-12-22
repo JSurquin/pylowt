@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 8 : Pinia - State Management ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur Pinia !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) Obligation de Vue 3
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) `newStore()`
 - D) `useStore()`
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) refs, reactive, computed
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) Pour lier à un template
 - D) Pour valider les types
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) Non, on utilise setters
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) `getStore('other')`
 - D) Ce n'est pas possible
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) watch() + localStorage
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) Seulement en production
 - D) Depends de la config
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) `store.clear()`
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) Oui, mais seulement en SSR
 - D) Non, sauf dans les composables
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 8
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **B** | `store.$reset()` remet aux valeurs initiales |
 | 10 | **B** | Oui, dans router guards, utils, etc. |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

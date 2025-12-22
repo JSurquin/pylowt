@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 1 🎯
 
 Mettons en pratique ce que tu as appris sur Vue.js 3 !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Création de projet 🛠️
@@ -21,8 +17,6 @@ layout: exercices
 3. Active TypeScript, Vue Router et Pinia
 4. Lance le serveur de développement
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Partie 1 ✅
@@ -42,8 +36,6 @@ npm create vue@latest mon-premier-projet
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Partie 2 ✅
 
@@ -59,8 +51,6 @@ npm run dev
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : Exploration de la structure 📂
 
@@ -75,8 +65,6 @@ layout: exercices
    - Le fichier de configuration Vite
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 ✅
 
@@ -89,8 +77,6 @@ layout: exercices
 - 📂 `src/components/` → Composants réutilisables
 
 ---
-layout: exercices
----
 
 # Exercice 3 : Premier composant 💚
 
@@ -102,8 +88,6 @@ Crée un fichier `src/components/Welcome.vue` qui affiche :
 - Un titre de bienvenue avec ton prénom
 - Un bouton qui affiche une alerte quand on clique dessus
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Script ✅
@@ -121,8 +105,6 @@ function afficherMessage() {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 3 - Template ✅
 
@@ -138,8 +120,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Style ✅
@@ -168,8 +148,6 @@ button {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : Utiliser le composant 🔗
 
@@ -181,8 +159,6 @@ layout: exercices
 2. Importe le composant `Welcome`
 3. Utilise-le dans le template
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 ✅
@@ -200,8 +176,6 @@ import Welcome from './components/Welcome.vue'
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Explication ✅
 
@@ -209,8 +183,6 @@ Avec `<script setup>`, les composants importés sont **automatiquement disponibl
 
 Pas besoin de les déclarer dans un objet `components` comme en Options API.
 
----
-layout: exercices
 ---
 
 # Exercice 5 : Installer Vue DevTools 🔧
@@ -226,8 +198,6 @@ layout: exercices
 5. Explore l'arbre des composants
 
 ---
-layout: exercices
----
 
 # Solution Exercice 5 ✅
 
@@ -239,8 +209,6 @@ layout: exercices
 4. Recharge ta page Vue.js
 5. L'onglet "Vue" apparaît dans les DevTools
 
----
-layout: exercices
 ---
 
 # Exercice Bonus : Carte de profil 🎴
@@ -255,8 +223,6 @@ Crée un composant `ProfileCard.vue` avec :
 - Une courte bio
 - Un lien vers ton GitHub
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Script ✅
@@ -274,8 +240,6 @@ const profile = ref({
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Template ✅
@@ -297,8 +261,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Style ✅
@@ -323,8 +285,6 @@ layout: exercices
 </style>
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉

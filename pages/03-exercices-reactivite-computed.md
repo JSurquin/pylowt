@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 5 🎯
 
 Pratiquons la réactivité et les computed properties !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Compteur avancé 🔢
@@ -21,8 +17,6 @@ Crée un composant `Counter.vue` avec :
 - Une computed qui affiche si le nombre est pair ou impair
 - Une computed qui affiche le double du compteur
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Script ✅
@@ -50,8 +44,6 @@ function decrement() {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Template ✅
 
@@ -71,8 +63,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Style ✅
@@ -104,8 +94,6 @@ button {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : Panier d'achat 🛒
 
@@ -118,8 +106,6 @@ Crée un composant `ShoppingCart.vue` avec :
 - Une computed pour le nombre total d'articles
 - Une computed pour le prix total
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Script ✅
@@ -143,8 +129,6 @@ const cart = ref<Product[]>([
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Script Suite ✅
@@ -174,8 +158,6 @@ function updateQuantity(id: number, delta: number) {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Template ✅
 
@@ -203,8 +185,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Style ✅
@@ -240,8 +220,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 3 : Watch API 👀
 
@@ -254,8 +232,6 @@ Crée un composant `SearchBox.vue` avec :
 - Un watch qui simule une requête API après 500ms
 - Affichage d'un état "Recherche en cours..."
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Script ✅
@@ -276,8 +252,6 @@ const allItems = [
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Script Suite ✅
@@ -311,8 +285,6 @@ watch(searchQuery, (newValue) => {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 3 - Template ✅
 
@@ -340,8 +312,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : watchEffect 🤖
 
@@ -354,8 +324,6 @@ Crée un composant `NotePad.vue` avec :
 - Sauvegarde automatique dans localStorage
 - Récupération des notes au chargement
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Script ✅
@@ -382,8 +350,6 @@ watchEffect(() => {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Template ✅
 
@@ -409,8 +375,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Style ✅
@@ -449,8 +413,6 @@ textarea:focus {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 5 : Computed avec getter/setter ✏️
 
@@ -463,8 +425,6 @@ Crée un composant `FullNameEditor.vue` avec :
 - Un champ pour le nom complet (éditable)
 - Synchronisation bidirectionnelle
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Script ✅
@@ -489,8 +449,6 @@ const fullName = computed({
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Template ✅
@@ -522,8 +480,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Style ✅
@@ -563,8 +519,6 @@ input {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice Bonus : Minuteur ⏱️
 
@@ -577,8 +531,6 @@ Crée un composant `Timer.vue` avec :
 - Boutons Start, Pause, Reset
 - Computed pour formater le temps
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Script ✅
@@ -599,8 +551,6 @@ const formattedTime = computed(() => {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Script Suite ✅
@@ -635,8 +585,6 @@ onUnmounted(() => {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Bonus - Template ✅
 
@@ -660,8 +608,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉

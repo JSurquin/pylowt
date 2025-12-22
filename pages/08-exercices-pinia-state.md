@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 8 🎯
 
 Pratiquons Pinia !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Store Counter 🔢
@@ -21,8 +17,6 @@ Crée un store `useCounterStore` avec :
 - Getters : doubled, isPositive
 - Actions : increment, decrement, reset
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 ✅
@@ -55,8 +49,6 @@ export const useCounterStore = defineStore('counter', () => {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Utilisation ✅
 
@@ -84,8 +76,6 @@ const { increment, decrement, reset } = store
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : Store Todo 📋
 
@@ -98,8 +88,6 @@ Crée un store `useTodoStore` avec :
 - Getters : completedCount, pendingCount
 - Actions : addTodo, toggleTodo, removeTodo
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Store ✅
@@ -133,8 +121,6 @@ export const useTodoStore = defineStore('todos', () => {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Actions ✅
 
@@ -161,8 +147,6 @@ function removeTodo(id: number) {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Composant ✅
 
@@ -187,8 +171,6 @@ function handleAdd() {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Template ✅
@@ -219,8 +201,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 3 : Store User avec Auth 🔐
 
@@ -233,8 +213,6 @@ Crée un store `useUserStore` avec :
 - Getters : isLoggedIn, userName
 - Actions : login, logout
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 ✅
@@ -263,8 +241,6 @@ export const useUserStore = defineStore('user', () => {
 })
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Actions ✅
@@ -295,8 +271,6 @@ function logout() {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : Store Cart avec Products 🛒
 
@@ -308,8 +282,6 @@ Crée deux stores :
 - `useProductStore` : liste de produits
 - `useCartStore` : panier utilisant les produits
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Product Store ✅
@@ -341,8 +313,6 @@ export const useProductStore = defineStore('products', () => {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Cart Store ✅
 
@@ -371,8 +341,6 @@ export const useCartStore = defineStore('cart', () => {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Cart Getters ✅
 
@@ -393,8 +361,6 @@ const cartWithDetails = computed(() => {
 })
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Cart Actions ✅
@@ -427,8 +393,6 @@ function clearCart() {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice Bonus : Persistance 💾
 
@@ -440,8 +404,6 @@ Ajoute la persistance au store cart :
 - Sauvegarder à chaque modification
 - Restaurer au chargement
 
----
-layout: exercices
 ---
 
 # Solution Bonus ✅
@@ -468,8 +430,6 @@ export const useCartStore = defineStore('cart', () => {
 })
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉

@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 2 🎯
 
 Pratiquons les templates et directives Vue.js !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Interpolation 📝
@@ -21,8 +17,6 @@ Crée un composant `UserCard.vue` qui affiche :
 - L'âge
 - L'email en majuscules
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Script ✅
@@ -41,8 +35,6 @@ const user = ref({
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Template ✅
 
@@ -56,8 +48,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Style ✅
@@ -74,8 +64,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : v-bind dynamique 🔗
 
@@ -87,8 +75,6 @@ Crée un composant `DynamicImage.vue` avec :
 - Une image dont l'URL change avec un bouton
 - Un style dynamique (bordure colorée)
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Script ✅
@@ -113,8 +99,6 @@ function nextImage() {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Template ✅
 
@@ -133,8 +117,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Style ✅
@@ -162,8 +144,6 @@ button {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 3 : v-if/v-else 🔀
 
@@ -176,8 +156,6 @@ Crée un composant `LoginStatus.vue` qui :
 - Affiche "Veuillez vous connecter" sinon
 - Un bouton pour basculer l'état
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Script ✅
@@ -195,8 +173,6 @@ function toggleLogin() {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Template ✅
@@ -221,8 +197,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Style ✅
@@ -251,8 +225,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : v-for Liste 📋
 
@@ -265,8 +237,6 @@ Crée un composant `TodoList.vue` avec :
 - Possibilité d'ajouter une tâche
 - Possibilité de supprimer une tâche
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Script ✅
@@ -292,8 +262,6 @@ let nextId = 4
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - Script Suite ✅
 
@@ -317,8 +285,6 @@ function removeTodo(id: number) {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Template ✅
@@ -347,8 +313,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Style ✅
@@ -390,8 +354,6 @@ li {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 5 : Classes dynamiques 🎨
 
@@ -403,8 +365,6 @@ Crée un composant `ThemeSwitcher.vue` avec :
 - 3 boutons pour choisir un thème (light, dark, colorful)
 - Le conteneur change de style selon le thème
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Script ✅
@@ -423,8 +383,6 @@ function setTheme(theme: Theme) {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Template ✅
@@ -461,8 +419,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Style ✅
@@ -504,8 +460,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice Bonus : Tableau filtrable 🔍
 
@@ -518,8 +472,6 @@ Crée un composant `ProductList.vue` avec :
 - Un filtre par catégorie
 - Affichage du nombre de résultats
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Script ✅
@@ -548,8 +500,6 @@ const selectedCategory = ref('all')
 ```
 
 ---
-layout: exercices
----
 
 # Solution Bonus - Script Suite ✅
 
@@ -573,8 +523,6 @@ const filteredProducts = computed(() => {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Bonus - Template ✅
@@ -605,8 +553,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉

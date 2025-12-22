@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 2 : Templates et Directives ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur les templates et directives !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) `$src`
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) `@click`
 - D) `$click`
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) v-hide
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) Pour activer les animations
 - D) C'est optionnel
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) Desactive l'element
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) Moustaches (double accolades)
 - D) `[variable]`
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) Seulement avec v-show
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) Cache l'element
 - D) Declenche un evenement unique
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) `v-for="item, index in items"`
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) Ne fonctionne pas en production
 - D) Conflits CSS
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 2
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **B** | `(item, index)` avec parentheses |
 | 10 | **B** | Risque XSS avec du contenu utilisateur |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 6 : Formulaires et v-model ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur les formulaires !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) Envoie les donnees au serveur
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) Desactive v-model
 - D) Active le debounce
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) Limite les decimales
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) `v-model.multiple`
 - D) Ce n'est pas possible
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) `defineEmit('model')`
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) `v-models`
 - D) `v-model="[a, b]"`
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) `vModel`
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) Met en minuscules
 - D) Supprime tous les espaces
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) Yup
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) `@submit.cancel`
 - D) `@submit.noReload`
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 6
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **C** | VeeValidate la plus populaire pour Vue |
 | 10 | **B** | .prevent = event.preventDefault() |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

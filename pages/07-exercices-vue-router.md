@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 7 🎯
 
 Pratiquons Vue Router 4 !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Configuration de base 🛤️
@@ -21,8 +17,6 @@ Configure Vue Router avec 3 pages :
 - About (`/about`)
 - Contact (`/contact`)
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Router ✅
@@ -57,8 +51,6 @@ export default router
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - App.vue ✅
 
@@ -82,8 +74,6 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Style ✅
@@ -112,8 +102,6 @@ nav a.router-link-active {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : Routes dynamiques 🔀
 
@@ -126,8 +114,6 @@ Crée une route `/user/:id` qui :
 - Utilise les params comme props
 - Affiche un message différent selon l'ID
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Router ✅
@@ -142,8 +128,6 @@ layout: exercices
 }
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - UserView ✅
@@ -176,8 +160,6 @@ const user = computed(() => ({
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 3 : Navigation programmatique 🎮
 
@@ -190,8 +172,6 @@ Crée un composant qui :
 - Navigue vers `/user/:id` au clic d'un bouton
 - A un bouton "Retour"
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 ✅
@@ -225,8 +205,6 @@ function goBack() {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : Routes imbriquées 📦
 
@@ -239,8 +217,6 @@ Crée une route `/dashboard` avec :
 - `/dashboard/stats` → Statistics
 - `/dashboard/settings` → Settings
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Router ✅
@@ -269,8 +245,6 @@ layout: exercices
 }
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Layout ✅
@@ -301,8 +275,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Style ✅
@@ -346,8 +318,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 5 : Guard d'authentification 🔒
 
@@ -360,8 +330,6 @@ Crée un guard qui :
 - Redirige vers `/login` si non authentifié
 - Stocke l'URL de redirection
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Routes ✅
@@ -389,8 +357,6 @@ const routes = [
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 5 - Guard ✅
 
@@ -415,8 +381,6 @@ router.beforeEach((to) => {
 })
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - LoginView ✅
@@ -447,8 +411,6 @@ function login() {
 ```
 
 ---
-layout: exercices
----
 
 # Exercice Bonus : Transitions 🎭
 
@@ -460,8 +422,6 @@ Ajoute une transition fade entre les pages avec :
 - Animation de sortie puis entrée
 - Durée de 300ms
 
----
-layout: exercices
 ---
 
 # Solution Bonus ✅
@@ -489,8 +449,6 @@ layout: exercices
 </style>
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉

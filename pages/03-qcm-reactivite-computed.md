@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 5 : Réactivité et Computed ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur le systeme de reactivite !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) `maRef()`
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) ref() accepte tous les types, reactive() seulement les objets
 - D) Il n'y a pas de difference
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) Fonctionne dans le template
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) Il ne s'execute qu'une fois
 - D) Il retourne une valeur
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) Vue recree un proxy
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) `watch(a + b, callback)`
 - D) Utiliser deux watch separes
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) `recursive: true`
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) `unwatch()`
 - D) On ne peut pas l'arreter
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) Valider les types des refs
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) Pour des valeurs qui ne changent jamais
 - D) Pour des computed
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 5
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **B** | toRefs cree des refs depuis les props d'un reactive |
 | 10 | **B** | shallowRef pour gros objets sans reactivite profonde |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

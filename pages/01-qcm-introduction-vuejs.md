@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 1 : Introduction à Vue.js 3 ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur les fondamentaux de Vue.js !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) Brendan Eich
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) Il utilise des barres de progression
 - D) Il est réservé aux développeurs avancés
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) Gulp
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) html, css, javascript
 - D) import, export, render
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) Active le mode sombre
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) `npx vue-cli mon-projet`
 - D) `npm init vue mon-projet`
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) Le data binding
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) src/pages/
 - D) src/modules/
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) Redux DevTools
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) ~100KB
 - D) ~200KB
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 1
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **C** | Vue DevTools est indispensable |
 | 10 | **B** | ~33KB, très léger ! |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

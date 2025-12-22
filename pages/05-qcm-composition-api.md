@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 4 : Composition API ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur la Composition API !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) Elle est obligatoire en Vue 3
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) Un plugin Vue
 - D) Un mixin
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) `onMounted()`
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) `create`
 - D) `with`
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) Composables.js
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) `ref()` avec le meme nom que l'attribut `ref`
 - D) `useRef()`
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) `afterMount()`
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) Un objet avec des refs/methodes
 - D) Une string
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) Pour les tests
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) Oui, dans le meme composant
 - D) Uniquement en mode developpement
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 4
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **A** | Nettoyer pour eviter les memory leaks |
 | 10 | **B** | Oui, mixte possible dans differents composants |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

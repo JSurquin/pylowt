@@ -1,6 +1,4 @@
 ---
-layout: exercices
----
 
 # Exercices - Supervision & Analyse Système 🎯
 

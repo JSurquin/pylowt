@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM - Module 3 : Composants Vue.js ✅
 
@@ -8,8 +6,6 @@ Testons tes connaissances sur les composants !
 
 10 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 10
@@ -22,8 +18,6 @@ layout: exercices
 - D) `const props = createProps({...})`
 
 ---
-layout: exercices
----
 
 # Question 2 / 10
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) `dispatch('eventName')`
 - D) `fire('eventName')`
 
----
-layout: exercices
 ---
 
 # Question 3 / 10
@@ -48,8 +40,6 @@ layout: exercices
 - D) Definir des styles
 
 ---
-layout: exercices
----
 
 # Question 4 / 10
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) `<slot id="header" />`
 - D) `<slot:header />`
 
----
-layout: exercices
 ---
 
 # Question 5 / 10
@@ -74,8 +62,6 @@ layout: exercices
 - D) Gere les erreurs
 
 ---
-layout: exercices
----
 
 # Question 6 / 10
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) Cree des portails entre pages
 - D) Accelere le rendu
 
----
-layout: exercices
 ---
 
 # Question 7 / 10
@@ -100,8 +84,6 @@ layout: exercices
 - D) Cache les composants
 
 ---
-layout: exercices
----
 
 # Question 8 / 10
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) `...props`
 - D) `@attrs`
 
----
-layout: exercices
 ---
 
 # Question 9 / 10
@@ -126,8 +106,6 @@ layout: exercices
 - D) `this.$expose()`
 
 ---
-layout: exercices
----
 
 # Question 10 / 10
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) PascalCase (MyComponent.vue)
 - D) snake_case (my_component.vue)
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Module 3
@@ -157,8 +133,6 @@ layout: exercices
 | 9 | **B** | `defineExpose({...})` pour exposer au parent |
 | 10 | **C** | PascalCase est la convention officielle |
 
----
-layout: intro
 ---
 
 # Résultat du QCM 🏆

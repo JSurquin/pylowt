@@ -1,6 +1,4 @@
 ---
-layout: new-section
----
 
 # QCM Final - Formation Vue.js 3 ✅
 
@@ -8,8 +6,6 @@ Le grand test final ! Questions sur l'ensemble de la formation.
 
 15 questions - Note tes réponses, les corrections sont à la fin.
 
----
-layout: exercices
 ---
 
 # Question 1 / 15
@@ -22,8 +18,6 @@ layout: exercices
 - D) `const result = reactive({ computed: ... })`
 
 ---
-layout: exercices
----
 
 # Question 2 / 15
 
@@ -34,8 +28,6 @@ layout: exercices
 - C) `v-class="isActive ? 'active'"`
 - D) `:className="{ active: isActive }"`
 
----
-layout: exercices
 ---
 
 # Question 3 / 15
@@ -48,8 +40,6 @@ layout: exercices
 - D) Static File Content
 
 ---
-layout: exercices
----
 
 # Question 4 / 15
 
@@ -60,8 +50,6 @@ layout: exercices
 - C) Les deux A et B fonctionnent
 - D) On ne peut pas observer les props
 
----
-layout: exercices
 ---
 
 # Question 5 / 15
@@ -74,8 +62,6 @@ layout: exercices
 - D) Mettre en pause les watchers
 
 ---
-layout: exercices
----
 
 # Question 6 / 15
 
@@ -86,8 +72,6 @@ layout: exercices
 - C) `defineEmits({ event: String })`
 - D) `const emits: EmitType`
 
----
-layout: exercices
 ---
 
 # Question 7 / 15
@@ -100,8 +84,6 @@ layout: exercices
 - D) Heroku
 
 ---
-layout: exercices
----
 
 # Question 8 / 15
 
@@ -112,8 +94,6 @@ layout: exercices
 - C) Les deux sont possibles
 - D) On ne peut pas tester avec Vitest
 
----
-layout: exercices
 ---
 
 # Question 9 / 15
@@ -126,8 +106,6 @@ layout: exercices
 - D) Toutes ces reponses
 
 ---
-layout: exercices
----
 
 # Question 10 / 15
 
@@ -138,8 +116,6 @@ layout: exercices
 - C) `router.middleware(handler)`
 - D) `app.use(navigation, middleware)`
 
----
-layout: exercices
 ---
 
 # Question 11 / 15
@@ -152,8 +128,6 @@ layout: exercices
 - D) Increment un compteur
 
 ---
-layout: exercices
----
 
 # Question 12 / 15
 
@@ -164,8 +138,6 @@ layout: exercices
 - C) Layer-based (components, views, stores)
 - D) B ou C selon preference
 
----
-layout: exercices
 ---
 
 # Question 13 / 15
@@ -178,8 +150,6 @@ layout: exercices
 - D) Pas de convention
 
 ---
-layout: exercices
----
 
 # Question 14 / 15
 
@@ -191,8 +161,6 @@ layout: exercices
 - D) `React.memo` (ca n'existe pas en Vue)
 
 ---
-layout: exercices
----
 
 # Question 15 / 15
 
@@ -203,8 +171,6 @@ layout: exercices
 - C) tsconfig.json
 - D) vue.config.js
 
----
-layout: exercices
 ---
 
 # 📝 Corrections - QCM Final
@@ -227,8 +193,6 @@ layout: exercices
 | 14 | **B** | v-memo + dependances (Vue 3.2+) |
 | 15 | **B** | unplugin-auto-import dans vite.config |
 
----
-layout: intro
 ---
 
 # 🎉 Bravo ! Formation Terminée 🎉

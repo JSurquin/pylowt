@@ -1,13 +1,9 @@
 ---
-layout: new-section
----
 
 # Exercices Pratiques - Module 3 🎯
 
 Pratiquons la création de composants !
 
----
-layout: exercices
 ---
 
 # Exercice 1 : Composant Button 🔘
@@ -21,8 +17,6 @@ Crée un composant `BaseButton.vue` avec :
 - Un slot pour le contenu
 - Émission d'un événement click
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Script ✅
@@ -54,8 +48,6 @@ function handleClick(event: MouseEvent) {
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Template ✅
 
@@ -71,8 +63,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 1 - Style Partie 1 ✅
@@ -110,8 +100,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 1 - Style Partie 2 ✅
 
@@ -142,8 +130,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 2 : Composant Card avec slots 🃏
 
@@ -156,8 +142,6 @@ Crée un composant `BaseCard.vue` avec :
 - Un slot par défaut pour le contenu
 - Un slot "footer" optionnel
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Template ✅
@@ -180,8 +164,6 @@ layout: exercices
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 2 - Style ✅
@@ -214,8 +196,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 2 - Utilisation ✅
 
@@ -236,8 +216,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 3 : Liste avec scoped slots 📋
 
@@ -249,8 +227,6 @@ Crée un composant `ItemList.vue` avec :
 - Une prop `items` (tableau)
 - Un scoped slot pour personnaliser l'affichage de chaque item
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Script ✅
@@ -268,8 +244,6 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 3 - Template ✅
@@ -298,8 +272,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 3 - Utilisation ✅
 
@@ -318,8 +290,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 4 : Provide/Inject Theme 🎨
 
@@ -331,8 +301,6 @@ Crée :
 - Un composant `ThemeProvider.vue` qui fournit le thème
 - Un composant `ThemedBox.vue` qui consomme le thème
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - ThemeProvider ✅
@@ -364,8 +332,6 @@ provide('toggleTheme', toggleTheme)
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 4 - ThemedBox ✅
 
@@ -388,8 +354,6 @@ const toggleTheme = inject<() => void>('toggleTheme')
 </template>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 4 - Styles ✅
@@ -415,8 +379,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Exercice 5 : Modal avec Teleport 🎭
 
@@ -429,8 +391,6 @@ Crée un composant `Modal.vue` avec :
 - Teleport vers `body`
 - Fermeture au clic sur l'overlay
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Script ✅
@@ -456,8 +416,6 @@ function handleOverlayClick(event: MouseEvent) {
 </script>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Template ✅
@@ -494,8 +452,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 5 - Style Partie 1 ✅
 
@@ -525,8 +481,6 @@ layout: exercices
 </style>
 ```
 
----
-layout: exercices
 ---
 
 # Solution Exercice 5 - Style Partie 2 ✅
@@ -572,8 +526,6 @@ layout: exercices
 ```
 
 ---
-layout: exercices
----
 
 # Solution Exercice 5 - Utilisation ✅
 
@@ -602,8 +554,6 @@ const showModal = ref(false)
 </template>
 ```
 
----
-layout: intro
 ---
 
 # Bravo ! 🎉
