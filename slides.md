@@ -4,7 +4,7 @@ colorSchema: "auto"
 layout: intro
 highlighter: shiki
 # https://sli.dev/custom/highlighters.html
-title: Formation Unix/Linux - Initiation 2025
+title: Formation Vue.js 3 - Initiation 2025
 # download: true
 #transition: slide-left
 # remoteAssets: false
@@ -14,7 +14,7 @@ title: Formation Unix/Linux - Initiation 2025
 #   timeout: 300000000
 #   pdfOptions:
 #     format: A4
-download: "https://unix.andromed.fr/slides.pdf"
+download: "https://vuejs.andromed.fr/slides.pdf"
 themeConfig:
   logoHeader: "/avatar.png"
   eventLogo: "https://img2.storyblok.com/352x414/f/84560/2388x414/23d8eb4b8d/vue-amsterdam-with-name.png"
@@ -23,9 +23,9 @@ themeConfig:
   #- "@slidev/addon-sharp-long-code"
 ---
 
-# Unix/Linux - Initiation 2025
+# Vue.js 3 - Formation Complète 2025
 
-🐧 Une formation présentée par Ascent et Andromed.
+💚 Une formation présentée par Ascent et Andromed.
 
 <div class="pt-12">
   <span @click="next" class="px-2 p-3 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 neon-border">
@@ -53,13 +53,13 @@ Fondateur <a  href="https://www.andromed.fr/"><logos-storyblok-icon  mr-1/>Andro
 
 ---
 layout: text-image
-media: 'https://i.pinimg.com/originals/f5/5e/80/f55e8059ea945abfd6804b887dd4a0af.gif'
-caption: 'UNIX/LINUX 2025'
+media: 'https://vuejs.org/images/logo.png'
+caption: 'Vue.js 3 - 2025'
 ---
 
-# DISCLAIMER 🐧
+# DISCLAIMER 💚
 
-### Dans cette formation nous allons voir les concepts fondamentaux d'Unix/Linux en 2025.
+### Dans cette formation nous allons voir Vue.js 3 en profondeur, la dernière version du framework progressif JavaScript.
 
 ---
 layout: two-cols
@@ -68,30 +68,25 @@ routeAlias: 'sommaire'
 
 <a name="sommaire" id="sommaire"></a>
 
-# SOMMAIRE UNIX/LINUX - INITIATION 📜
+# SOMMAIRE VUE.JS 3 - FORMATION 📜
 
 <br>
 
 <div class="flex flex-col gap-2">
-<Link to="introduction-unix-linux">🧱 1. Introduction et historique Unix/Linux</Link>
-<Link to="commandes-basiques">🔧 2. Commandes de base essentielles</Link>
-<Link to="paquets-maintenance">📦 3. Gestion des paquets et maintenance</Link>
-<Link to="gestion-systeme-utilisateurs">👥 4. Gestion des utilisateurs et permissions</Link>
-<Link to="stockage-systeme-fichiers">💾 5. Stockage et système de fichiers</Link>
+<Link to="introduction-vuejs">💚 1. Introduction à Vue.js 3</Link>
+<Link to="templates-directives">📝 2. Templates et Directives</Link>
+<Link to="composants-vuejs">🧩 3. Composants Vue.js</Link>
+<Link to="composition-api">🎯 4. Composition API</Link>
+<Link to="reactivite-computed">⚡ 5. Réactivité et Computed</Link>
 </div>
 
 ::right::
 
 <div class="flex flex-col gap-2">
-<Link to="processus-services">⚙️ 6. Gestion des processus et services</Link>
-<Link to="reseau">📡 7. Configuration réseau</Link>
-<Link to="automatisation-scripts">🤖 8. Automatisation et scripts</Link>
-<Link to="securite-systeme">🔐 9. Sécurité système</Link>
-<Link to="services-serveurs">☁️ 10. Services serveurs</Link>
-<Link to="supervision-analyse">📊 11. Supervision & Analyse Système</Link>
-<Link to="supervision-avancee">🚨 12. Supervision Avancée (Zabbix)</Link>
-<Link to="optimisation-performances">⚡ 13. Optimisation & Performances (BONUS)</Link>
-<Link to="optimisation-reseau-linux">🌐 14. Optimisation Réseau Linux (BONUS)</Link>
+<Link to="formulaires-vmodel">📋 6. Formulaires et v-model</Link>
+<Link to="vue-router">🛤️ 7. Vue Router 4</Link>
+<Link to="pinia-state">🍍 8. Pinia - State Management</Link>
+<Link to="projet-final">🚀 9. Projet Final et Bonnes Pratiques</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
 </div>
 
@@ -102,25 +97,26 @@ routeAlias: 'sommaire'
 
 ---
 layout: two-cols
-routeAlias: 'programme-initiation'
+routeAlias: 'programme-jour1'
 ---
 
-### PROGRAMME INITIATION UNIX/LINUX 📅
+### JOUR 1 - LES FONDAMENTAUX 📅
 
 <small>
 
-**Module 1 - Introduction**
-- Historique Unix, GNU/Linux
-- Philosophie Unix
-- Architecture système
-- Noyau, shell
+**Module 1 - Introduction à Vue.js 3**
+- Qu'est-ce que Vue.js ?
+- Pourquoi choisir Vue.js ?
+- Installation et configuration
+- Premier projet avec Vite
+- Structure d'un projet Vue
 
-**Module 2 - Commandes de base** 🆕
-- Navigation (cd, ls, pwd)
-- Manipulation fichiers (cp, mv, rm)
-- Recherche (find, grep)
-- Visualisation (cat, less, head, tail)
-- Redirections et pipes
+**Module 2 - Templates et Directives**
+- Syntaxe des templates
+- Interpolation (Mustache)
+- v-bind, v-on, v-if, v-else
+- v-for et les listes
+- v-show vs v-if
 
 </small>
 
@@ -128,44 +124,37 @@ routeAlias: 'programme-initiation'
 
 <small>
 
-**Module 3 - Paquets et maintenance**
-- apt/dnf : installation
-- Mise à jour système
-- Gestion dépendances
-
-**Module 4 - Utilisateurs et permissions**
-- Comptes et groupes
-- Permissions (chmod, chown)
-- sudo et sudoers
-- Quotas disque
-
-**Module 5 - Stockage**
-- Disques et partitions
-- Montage (mount, fstab)
-- Liens symboliques
-- ACL
+**Module 3 - Composants Vue.js**
+- Création de composants
+- Props et validation
+- Événements personnalisés (emit)
+- Slots et slots nommés
+- Provide / Inject
 
 </small>
 
 ---
 layout: two-cols
+routeAlias: 'programme-jour2'
 ---
 
-### PROGRAMME INITIATION UNIX/LINUX 📅
+### JOUR 2 - COMPOSITION ET RÉACTIVITÉ 📅
 
 <small>
 
-**Module 6 - Processus et services**
-- PID, signaux
-- nice, kill
-- systemd
-- journalctl
+**Module 4 - Composition API**
+- setup() et script setup
+- Composables personnalisés
+- Lifecycle hooks
+- Template refs
+- Différences avec Options API
 
-**Module 7 - Réseau**
-- Configuration IP
-- SSH sécurisé
-- Pare-feu (ufw)
-- Diagnostic (ping, traceroute)
+**Module 5 - Réactivité et Computed**
+- Système de réactivité Vue 3
+- ref() et reactive()
+- Computed properties
+- Watchers (watch, watchEffect)
+- Réactivité en profondeur
 
 </small>
 
@@ -173,44 +162,37 @@ layout: two-cols
 
 <small>
 
-**Module 8 - Automatisation**
-- Scripts Bash
-- Cron et at
-- Logs système
-
-**Module 9 - Sécurité**
-- Durcissement SSH
-- fail2ban
-- Audit (auditd)
-- Chiffrement (LUKS)
-
-**Module 10 - Services serveurs**
-- Nginx
-- MySQL
-- SSL/TLS
-- Monitoring
+**Module 6 - Formulaires et v-model**
+- v-model en profondeur
+- Modificateurs (.lazy, .number, .trim)
+- Inputs, selects, checkboxes
+- Validation de formulaires
+- v-model sur composants
 
 </small>
 
 ---
 layout: two-cols
+routeAlias: 'programme-jour3'
 ---
 
-### PROGRAMME INITIATION UNIX/LINUX 📅
+### JOUR 3 - ÉCOSYSTÈME ET PROJET 📅
 
 <small>
 
-**Module 11 - Supervision & Analyse**
-- Monitoring (top, htop, iotop)
-- Analyse des logs
-- Métriques système
-- Tableaux de bord
+**Module 7 - Vue Router 4**
+- Installation et configuration
+- Routes dynamiques
+- Navigation programmatique
+- Guards et middleware
+- Lazy loading des routes
 
-**Module 12 - Supervision Avancée**
-- Zabbix serveur et agent
-- Alertes et notifications
-- Templates personnalisés
-- Dashboard avancés
+**Module 8 - Pinia - State Management**
+- Pourquoi Pinia ?
+- Stores et state
+- Getters et actions
+- Composition API avec Pinia
+- DevTools Vue
 
 </small>
 
@@ -218,17 +200,12 @@ layout: two-cols
 
 <small>
 
-**Module 13 - Optimisation (BONUS)** ⚡
-- Tuning kernel (sysctl)
-- Optimisation mémoire
-- Optimisation serveurs
-- Performance des services
-
-**Module 14 - Optimisation Réseau (BONUS)** 🌐
-- Pile TCP/IP et sysctl
-- Carte réseau (NIC)
-- Files d'attente & bufferbloat
-- Pare-feu & conteneurs
+**Module 9 - Projet Final**
+- Architecture d'un projet Vue
+- Bonnes pratiques 2025
+- Tests avec Vitest
+- Déploiement (Vercel, Netlify)
+- Optimisation et performances
 
 **QCM Final** ✅
 - Validation des connaissances
@@ -238,169 +215,105 @@ layout: two-cols
 </small>
 
 ---
-src: './pages/01-introduction-unix-linux.md'
+src: './pages/01-introduction-vuejs.md'
 ---
 
 ---
-src: './pages/01-qcm-introduction.md'
+src: './pages/01-qcm-introduction-vuejs.md'
 ---
 
 ---
-src: './pages/05-commandes-basiques.md'
+src: './pages/01-exercices-introduction-vuejs.md'
 ---
 
 ---
-src: './pages/05-qcm-commandes.md'
+src: './pages/02-templates-directives.md'
 ---
 
 ---
-src: './pages/05-exercices-commandes.md'
+src: './pages/02-qcm-templates-directives.md'
 ---
 
 ---
-src: './pages/06-paquets-maintenance.md'
+src: './pages/02-exercices-templates-directives.md'
 ---
 
 ---
-src: './pages/06-qcm-paquets.md'
+src: './pages/04-composants-vuejs.md'
 ---
 
 ---
-src: './pages/06-exercices-paquets.md'
+src: './pages/04-qcm-composants-vuejs.md'
 ---
 
 ---
-src: './pages/02-gestion-systeme-utilisateurs.md'
+src: './pages/04-exercices-composants-vuejs.md'
 ---
 
 ---
-src: './pages/02-qcm-utilisateurs.md'
+src: './pages/05-composition-api.md'
 ---
 
 ---
-src: './pages/02-exercices-utilisateurs.md'
+src: './pages/05-qcm-composition-api.md'
 ---
 
 ---
-src: './pages/04-stockage-systeme-fichiers.md'
+src: './pages/05-exercices-composition-api.md'
 ---
 
 ---
-src: './pages/04-qcm-stockage.md'
+src: './pages/03-reactivite-computed.md'
 ---
 
 ---
-src: './pages/04-exercices-stockage.md'
+src: './pages/03-qcm-reactivite-computed.md'
 ---
 
 ---
-src: './pages/03-processus-services.md'
+src: './pages/03-exercices-reactivite-computed.md'
 ---
 
 ---
-src: './pages/03-qcm-processus.md'
+src: './pages/06-formulaires-vmodel.md'
 ---
 
 ---
-src: './pages/03-exercices-processus.md'
+src: './pages/06-qcm-formulaires-vmodel.md'
 ---
 
 ---
-src: './pages/05-reseau.md'
+src: './pages/06-exercices-formulaires-vmodel.md'
 ---
 
 ---
-src: './pages/05-qcm-reseau.md'
+src: './pages/07-vue-router.md'
 ---
 
 ---
-src: './pages/05-exercices-reseau.md'
+src: './pages/07-qcm-vue-router.md'
 ---
 
 ---
-src: './pages/07-automatisation-scripts.md'
+src: './pages/07-exercices-vue-router.md'
 ---
 
 ---
-src: './pages/07-qcm-automatisation.md'
+src: './pages/08-pinia-state.md'
 ---
 
 ---
-src: './pages/07-exercices-automatisation.md'
+src: './pages/08-qcm-pinia-state.md'
 ---
 
 ---
-src: './pages/08-securite-systeme.md'
+src: './pages/08-exercices-pinia-state.md'
 ---
 
 ---
-src: './pages/08-qcm-securite.md'
+src: './pages/09-projet-final.md'
 ---
 
 ---
-src: './pages/08-exercices-securite.md'
----
-
----
-src: './pages/09-services-serveurs.md'
----
-
----
-src: './pages/09-qcm-serveurs.md'
----
-
----
-src: './pages/09-exercices-serveurs.md'
----
-
----
-src: './pages/13-supervision-analyse-systeme.md'
----
-
----
-src: './pages/13-qcm-supervision.md'
----
-
----
-src: './pages/13-exercices-supervision.md'
----
-
----
-src: './pages/14-supervision-avancee-alertes.md'
----
-
----
-src: './pages/14-qcm-supervision-avancee.md'
----
-
----
-src: './pages/14-exercices-supervision-avancee.md'
----
-
----
-src: './pages/15-optimisation-performances.md'
----
-
----
-src: './pages/15-qcm-optimisation.md'
----
-
----
-src: './pages/15-exercices-optimisation.md'
----
-
----
-src: './pages/16-optimisation-reseau-linux.md'
----
-
----
-src: './pages/16-qcm-optimisation-reseau.md'
----
-
----
-src: './pages/16-exercices-optimisation-reseau.md'
----
-
----
-src: './pages/10-qcm-final.md'
+src: './pages/09-qcm-final.md'
 ---
