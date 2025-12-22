@@ -27,7 +27,7 @@ layout: exercices
 
 # Solution Exercice 1 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 interface Props {
   variant?: 'primary' | 'secondary' | 'danger'
@@ -59,7 +59,7 @@ layout: exercices
 
 # Solution Exercice 1 - Template ✅
 
-```vue
+```js
 <template>
   <button
     :class="['btn', `btn--${variant}`, `btn--${size}`]"
@@ -77,7 +77,7 @@ layout: exercices
 
 # Solution Exercice 1 - Style Partie 1 ✅
 
-```vue
+```js
 <style scoped>
 .btn {
   border: none;
@@ -115,7 +115,7 @@ layout: exercices
 
 # Solution Exercice 1 - Style Partie 2 ✅
 
-```vue
+```js
 <style scoped>
 /* ... suite des styles */
 
@@ -162,7 +162,7 @@ layout: exercices
 
 # Solution Exercice 2 - Template ✅
 
-```vue
+```js
 <template>
   <div class="card">
     <header v-if="$slots.header" class="card-header">
@@ -186,7 +186,7 @@ layout: exercices
 
 # Solution Exercice 2 - Style ✅
 
-```vue
+```js
 <style scoped>
 .card {
   background: white;
@@ -219,7 +219,7 @@ layout: exercices
 
 # Solution Exercice 2 - Utilisation ✅
 
-```vue
+```js
 <template>
   <BaseCard>
     <template #header>
@@ -255,7 +255,7 @@ layout: exercices
 
 # Solution Exercice 3 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 interface Props {
   items: unknown[]
@@ -274,7 +274,7 @@ layout: exercices
 
 # Solution Exercice 3 - Template ✅
 
-```vue
+```js
 <template>
   <ul v-if="items.length" class="item-list">
     <li 
@@ -303,7 +303,7 @@ layout: exercices
 
 # Solution Exercice 3 - Utilisation ✅
 
-```vue
+```js
 <template>
   <ItemList :items="users">
     <template #default="{ item, index, isFirst }">
@@ -337,7 +337,7 @@ layout: exercices
 
 # Solution Exercice 4 - ThemeProvider ✅
 
-```vue
+```js
 <!-- ThemeProvider.vue -->
 <script setup lang="ts">
 import { provide, ref } from 'vue'
@@ -369,7 +369,7 @@ layout: exercices
 
 # Solution Exercice 4 - ThemedBox ✅
 
-```vue
+```js
 <!-- ThemedBox.vue -->
 <script setup lang="ts">
 import { inject, Ref } from 'vue'
@@ -394,7 +394,7 @@ layout: exercices
 
 # Solution Exercice 4 - Styles ✅
 
-```vue
+```js
 <style scoped>
 .themed-box {
   padding: 2rem;
@@ -435,7 +435,7 @@ layout: exercices
 
 # Solution Exercice 5 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 interface Props {
   isOpen: boolean
@@ -462,7 +462,7 @@ layout: exercices
 
 # Solution Exercice 5 - Template ✅
 
-```vue
+```js
 <template>
   <Teleport to="body">
     <Transition name="modal">
@@ -499,7 +499,7 @@ layout: exercices
 
 # Solution Exercice 5 - Style Partie 1 ✅
 
-```vue
+```js
 <style scoped>
 .modal-overlay {
   position: fixed;
@@ -531,7 +531,7 @@ layout: exercices
 
 # Solution Exercice 5 - Style Partie 2 ✅
 
-```vue
+```js
 <style scoped>
 .modal-header {
   display: flex;
@@ -577,7 +577,7 @@ layout: exercices
 
 # Solution Exercice 5 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 import Modal from './Modal.vue'

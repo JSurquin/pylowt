@@ -13,7 +13,6 @@ Découvrons ensemble le framework progressif qui a conquis le monde du développ
 
 **Vue.js** est un **framework JavaScript progressif** créé par **Evan You** en 2014.
 
-<v-clicks>
 
 - 🎯 **Progressif** : Tu peux l'adopter petit à petit, pas besoin de tout réécrire !
 - 🧩 **Basé sur les composants** : Comme des LEGO, tu construis ton UI pièce par pièce
@@ -21,7 +20,6 @@ Découvrons ensemble le framework progressif qui a conquis le monde du développ
 - 📦 **Léger** : ~33KB gzippé pour le runtime
 - 🛠️ **Outillage moderne** : Vite, Vue DevTools, TypeScript natif
 
-</v-clicks>
 
 ---
 
@@ -29,27 +27,23 @@ Découvrons ensemble le framework progressif qui a conquis le monde du développ
 
 Imagine que tu construis une maison en LEGO :
 
-<v-clicks>
 
 - **Les briques** = Les composants Vue
 - **Le plan de construction** = Le template HTML
 - **Les instructions** = La logique JavaScript
 - **Les couleurs** = Le style CSS
 
-</v-clicks>
 
 ---
 
 # L'analogie du LEGO - Suite 🧱
 
-<v-clicks>
 
 Chaque brique (composant) est :
 - **Réutilisable** : Tu peux utiliser la même fenêtre partout
 - **Indépendante** : Une brique cassée n'affecte pas les autres
 - **Combinable** : Assemble-les pour créer quelque chose de plus grand
 
-</v-clicks>
 
 ---
 layout: two-cols
@@ -59,7 +53,6 @@ layout: two-cols
 
 ### Nouveautés majeures de Vue 3 :
 
-<v-clicks>
 
 - 🚀 **Composition API** : Nouvelle façon d'organiser le code
 - ⚡ **Performance** : 2x plus rapide, bundle 50% plus petit
@@ -67,15 +60,13 @@ layout: two-cols
 - 🎯 **Teleport** : Rendre du contenu ailleurs dans le DOM
 - 🔀 **Fragments** : Plusieurs éléments racines autorisés
 
-</v-clicks>
 
 ::right::
 
-<v-clicks>
 
 ### Ce qui change concrètement :
 
-```vue
+```js
 <!-- Vue 2 - Options API -->
 <script>
 export default {
@@ -91,13 +82,12 @@ export default {
 </script>
 ```
 
-</v-clicks>
 
 ---
 
 # Vue 3 - Composition API 🎯
 
-```vue
+```js
 <!-- Vue 3 - Composition API -->
 <script setup>
 import { ref } from 'vue'
@@ -114,7 +104,6 @@ function increment() {
 
 # Pourquoi choisir Vue.js ? 🏆
 
-<v-clicks>
 
 - 📚 **Courbe d'apprentissage douce** : Plus facile que React ou Angular
 - 📖 **Documentation exceptionnelle** : La meilleure du marché !
@@ -122,7 +111,6 @@ function increment() {
 - 🏢 **Adopté par les géants** : Alibaba, Nintendo, GitLab, Apple...
 - 🔧 **Flexibilité** : Options API OU Composition API, c'est toi qui choisis
 
-</v-clicks>
 
 ---
 
@@ -215,7 +203,7 @@ mon-projet/
 
 Un composant Vue est un fichier `.vue` qui contient 3 sections :
 
-```vue
+```js
 <script setup lang="ts">
 // 🧠 La logique JavaScript/TypeScript
 import { ref } from 'vue'
@@ -227,7 +215,7 @@ const message = ref('Bonjour Vue.js 3 !')
 
 # Anatomie d'un composant Vue - Template 🔬
 
-```vue
+```js
 <template>
   <!-- 📝 Le template HTML -->
   <div class="container">
@@ -240,7 +228,7 @@ const message = ref('Bonjour Vue.js 3 !')
 
 # Anatomie d'un composant Vue - Style 🔬
 
-```vue
+```js
 <style scoped>
 /* 🎨 Les styles CSS (scoped = isolés) */
 .container {
@@ -254,7 +242,7 @@ const message = ref('Bonjour Vue.js 3 !')
 
 # L'attribut `scoped` 🎯
 
-```vue
+```js
 <style scoped>
 /* Ces styles ne s'appliquent QU'à ce composant */
 .button {
@@ -267,13 +255,11 @@ const message = ref('Bonjour Vue.js 3 !')
 
 # Pourquoi `scoped` est génial ? 🎯
 
-<v-clicks>
 
 - 🔒 **Isolation** : Pas de conflits CSS entre composants
 - 🧹 **Maintenance** : Supprimer un composant = supprimer ses styles
 - 🎨 **Liberté** : Utilise les mêmes noms de classes partout
 
-</v-clicks>
 
 ---
 
@@ -281,7 +267,7 @@ const message = ref('Bonjour Vue.js 3 !')
 
 Créons notre premier composant dans `src/components/HelloWorld.vue` :
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -299,7 +285,7 @@ function sayHello() {
 
 # Hello World - Template 👋
 
-```vue
+```js
 <template>
   <div class="hello">
     <h1>Bienvenue sur {{ name }} ! 💚</h1>
@@ -314,7 +300,7 @@ function sayHello() {
 
 # Hello World - Style 👋
 
-```vue
+```js
 <style scoped>
 .hello {
   text-align: center;
@@ -343,7 +329,6 @@ button:hover {
 
 **Vue DevTools** est une extension navigateur indispensable !
 
-<v-clicks>
 
 - 🔍 **Inspecter** les composants et leur état
 - ⏱️ **Timeline** des événements
@@ -351,7 +336,6 @@ button:hover {
 - 🛤️ **Router** : Visualiser les routes
 - ⚡ **Performance** : Analyser les re-renders
 
-</v-clicks>
 
 ---
 
@@ -373,7 +357,6 @@ vue-devtools
 
 # Résumé du Module 1 📝
 
-<v-clicks>
 
 - ✅ Vue.js 3 est un framework **progressif** et **réactif**
 - ✅ La **Composition API** est la nouvelle façon d'écrire du code
@@ -381,7 +364,6 @@ vue-devtools
 - ✅ Un composant = `<script>` + `<template>` + `<style>`
 - ✅ **Vue DevTools** est ton meilleur ami pour débugger
 
-</v-clicks>
 
 ---
 layout: intro

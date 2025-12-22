@@ -2,312 +2,160 @@
 layout: new-section
 ---
 
-# QCM - Module 8 : Pinia ✅
+# QCM - Module 8 : Pinia - State Management ✅
 
-Testons tes connaissances sur le state management !
+Testons tes connaissances sur Pinia !
 
----
-layout: exercices
----
-
-# Question 1 🤔
-
-### Qu'est-ce que Pinia ?
-
-<v-clicks>
-
-- A) Un framework CSS
-- B) Le state manager officiel de Vue 3 ✅
-- C) Un bundler
-- D) Un test runner
-
-</v-clicks>
+10 questions - Note tes réponses, les corrections sont à la fin.
 
 ---
 layout: exercices
 ---
 
-# Réponse 1 💡
+# Question 1 / 10
 
-**B) Le state manager officiel de Vue 3**
+### Pourquoi Pinia a-t-il remplace Vuex ?
 
-Pinia est le successeur de Vuex et le gestionnaire d'état recommandé pour les applications Vue 3.
+- A) Plus rapide
+- B) Plus simple, meilleur TypeScript
+- C) Plus de fonctionnalites
+- D) Obligation de Vue 3
 
 ---
 layout: exercices
 ---
 
-# Question 2 🤔
+# Question 2 / 10
 
-### Comment créer un store Pinia ?
+### Comment creer un store avec Pinia ?
 
-<v-clicks>
-
-- A) `new Store()`
-- B) `createStore()`
-- C) `defineStore()` ✅
+- A) `createStore()`
+- B) `defineStore()`
+- C) `newStore()`
 - D) `useStore()`
 
-</v-clicks>
+---
+layout: exercices
+---
+
+# Question 3 / 10
+
+### Quels sont les 3 concepts d'un store Pinia ?
+
+- A) data, methods, computed
+- B) state, getters, actions
+- C) props, emits, slots
+- D) refs, reactive, computed
 
 ---
 layout: exercices
 ---
 
-# Réponse 2 💡
+# Question 4 / 10
 
-**C) `defineStore()`**
+### Pourquoi utiliser storeToRefs() ?
 
-```ts
-export const useCounterStore = defineStore('counter', () => {
-  // ...
-})
-```
-
----
-layout: exercices
----
-
-# Question 3 🤔
-
-### Quelle fonction utiliser pour garder la réactivité lors de la destructuration ?
-
-<v-clicks>
-
-- A) `toRefs()`
-- B) `storeToRefs()` ✅
-- C) `reactive()`
-- D) `keepReactive()`
-
-</v-clicks>
+- A) Pour creer un store
+- B) Pour garder la reactivite lors de la destructuration
+- C) Pour lier à un template
+- D) Pour valider les types
 
 ---
 layout: exercices
 ---
 
-# Réponse 3 💡
+# Question 5 / 10
 
-**B) `storeToRefs()`**
+### Les mutations existent-elles dans Pinia ?
 
-```js
-const { count, doubled } = storeToRefs(store)
-```
-
-Les actions n'en ont pas besoin, seulement le state et getters.
-
----
-layout: exercices
----
-
-# Question 4 🤔
-
-### Dans Pinia, les mutations sont-elles obligatoires comme dans Vuex ?
-
-<v-clicks>
-
-- A) Oui, toujours
-- B) Non, on peut modifier le state directement ✅
-- C) Seulement en production
-- D) Seulement avec TypeScript
-
-</v-clicks>
+- A) Oui, obligatoires
+- B) Oui, mais optionnelles
+- C) Non, on modifie directement le state
+- D) Non, on utilise setters
 
 ---
 layout: exercices
 ---
 
-# Réponse 4 💡
+# Question 6 / 10
 
-**B) Non, on peut modifier le state directement**
+### Comment acceder au state d'un autre store dans une action ?
 
-```ts
-store.count++  // ✅ Valide dans Pinia !
-```
-
-Pinia simplifie Vuex en supprimant l'obligation des mutations.
-
----
-layout: exercices
----
-
-# Question 5 🤔
-
-### Comment appeler un store depuis un autre store ?
-
-<v-clicks>
-
-- A) `this.$store`
-- B) Utiliser le composable du store directement ✅
-- C) `getStore()`
+- A) `this.otherStore.state`
+- B) Importer et utiliser le store directement
+- C) `getStore('other')`
 - D) Ce n'est pas possible
 
-</v-clicks>
+---
+layout: exercices
+---
+
+# Question 7 / 10
+
+### Comment persister un store dans le localStorage ?
+
+- A) Pinia le fait automatiquement
+- B) Plugin pinia-plugin-persistedstate
+- C) `persist: true` dans le store
+- D) watch() + localStorage
 
 ---
 layout: exercices
 ---
 
-# Réponse 5 💡
+# Question 8 / 10
 
-**B) Utiliser le composable du store directement**
+### Les getters sont-ils mis en cache ?
 
-```ts
-export const useCartStore = defineStore('cart', () => {
-  const userStore = useUserStore()
-  // Utiliser userStore...
-})
-```
+- A) Non, recalcules à chaque acces
+- B) Oui, comme les computed
+- C) Seulement en production
+- D) Depends de la config
 
 ---
 layout: exercices
 ---
 
-# Question 6 🤔
+# Question 9 / 10
 
-### Que fait `$patch` ?
+### Comment resettre un store à son etat initial ?
 
-<v-clicks>
-
-- A) Met à jour le serveur
-- B) Applique plusieurs modifications au state en une fois ✅
-- C) Annule la dernière modification
-- D) Clone le store
-
-</v-clicks>
+- A) `store.reset()`
+- B) `store.$reset()`
+- C) `resetStore(store)`
+- D) `store.clear()`
 
 ---
 layout: exercices
 ---
 
-# Réponse 6 💡
+# Question 10 / 10
 
-**B) Applique plusieurs modifications au state en une fois**
+### Peut-on utiliser Pinia en dehors de composants Vue ?
 
-```ts
-store.$patch({
-  count: 10,
-  user: { name: 'John' }
-})
-```
+- A) Non, impossible
+- B) Oui, avec useStore() après createPinia()
+- C) Oui, mais seulement en SSR
+- D) Non, sauf dans les composables
 
 ---
 layout: exercices
 ---
 
-# Question 7 🤔
+# 📝 Corrections - QCM Module 8
 
-### Quel outil permet de débugger Pinia ?
-
-<v-clicks>
-
-- A) React DevTools
-- B) Vue DevTools ✅
-- C) Redux DevTools
-- D) Pinia Inspector
-
-</v-clicks>
-
----
-layout: exercices
----
-
-# Réponse 7 💡
-
-**B) Vue DevTools**
-
-Vue DevTools a un onglet Pinia intégré pour voir l'état, la timeline des actions, et même modifier le state en temps réel.
-
----
-layout: exercices
----
-
-# Question 8 🤔
-
-### Quelle est la syntaxe recommandée pour définir un store ?
-
-<v-clicks>
-
-- A) Options (comme Vuex)
-- B) Setup (comme Composition API) ✅
-- C) Class-based
-- D) Aucune préférence
-
-</v-clicks>
-
----
-layout: exercices
----
-
-# Réponse 8 💡
-
-**B) Setup (comme Composition API)**
-
-La syntaxe Setup offre plus de flexibilité, un meilleur support TypeScript, et s'aligne avec les composables Vue.
-
----
-layout: exercices
----
-
-# Question 9 🤔
-
-### Comment persister un store dans localStorage ?
-
-<v-clicks>
-
-- A) `persist: true` dans le store
-- B) Utiliser `$subscribe` ou un plugin ✅
-- C) `localStorage.store()`
-- D) C'est automatique
-
-</v-clicks>
-
----
-layout: exercices
----
-
-# Réponse 9 💡
-
-**B) Utiliser `$subscribe` ou un plugin**
-
-```ts
-store.$subscribe((mutation, state) => {
-  localStorage.setItem('store', JSON.stringify(state))
-})
-```
-
-Ou utiliser `pinia-plugin-persistedstate`.
-
----
-layout: exercices
----
-
-# Question 10 🤔
-
-### Quel est le premier argument de `defineStore` ?
-
-<v-clicks>
-
-- A) Le state initial
-- B) L'identifiant unique du store ✅
-- C) Les options
-- D) Le type TypeScript
-
-</v-clicks>
-
----
-layout: exercices
----
-
-# Réponse 10 💡
-
-**B) L'identifiant unique du store**
-
-```ts
-defineStore('counter', () => { ... })
-//          ^^^^^^^^^ ID unique
-```
-
-Cet ID est utilisé par DevTools et pour la persistance.
+| Q | Réponse | Explication |
+|---|---------|-------------|
+| 1 | **B** | API plus simple, TypeScript natif, pas de mutations |
+| 2 | **B** | `defineStore('name', {...})` |
+| 3 | **B** | state (donnees), getters (computed), actions (methodes) |
+| 4 | **B** | Preserve la reactivite lors du destructuring |
+| 5 | **C** | Pas de mutations, modification directe OK |
+| 6 | **B** | Import direct: `const other = useOtherStore()` |
+| 7 | **B** | pinia-plugin-persistedstate ou custom |
+| 8 | **B** | Getters = computed, donc mis en cache |
+| 9 | **B** | `store.$reset()` remet aux valeurs initiales |
+| 10 | **B** | Oui, dans router guards, utils, etc. |
 
 ---
 layout: intro
@@ -318,4 +166,3 @@ layout: intro
 Tu as terminé le QCM du Module 8 !
 
 Passons aux exercices pratiques ! 🚀
-

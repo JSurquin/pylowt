@@ -60,7 +60,7 @@ layout: exercices
 
 # Solution Exercice 1 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { storeToRefs } from 'pinia'
 import { useCounterStore } from '@/stores/counter'
@@ -166,7 +166,7 @@ layout: exercices
 
 # Solution Exercice 2 - Composant ✅
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
@@ -193,7 +193,7 @@ layout: exercices
 
 # Solution Exercice 2 - Template ✅
 
-```vue
+```js
 <template>
   <div class="todo-app">
     <div class="add-todo">

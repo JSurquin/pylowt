@@ -6,285 +6,156 @@ layout: new-section
 
 Testons tes connaissances sur les composants !
 
+10 questions - Note tes réponses, les corrections sont à la fin.
+
 ---
 layout: exercices
 ---
 
-# Question 1 🤔
+# Question 1 / 10
 
-### Comment définir des props avec TypeScript dans `<script setup>` ?
-
-<v-clicks>
+### Comment definir des props avec TypeScript dans `<script setup>` ?
 
 - A) `const props = defineProps([...])`
-- B) `const props = defineProps<{...}>()` ✅
+- B) `const props = defineProps<{...}>()`
 - C) `const props = new Props({...})`
 - D) `const props = createProps({...})`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 1 💡
+# Question 2 / 10
 
-**B) `const props = defineProps<{...}>()`**
-
-La syntaxe TypeScript utilise les generics pour définir les types des props de manière type-safe.
-
----
-layout: exercices
----
-
-# Question 2 🤔
-
-### Comment émettre un événement vers le parent ?
-
-<v-clicks>
+### Comment emettre un evenement vers le parent ?
 
 - A) `this.$emit('eventName')`
-- B) `emit('eventName')` après `defineEmits` ✅
+- B) `emit('eventName')` apres `defineEmits`
 - C) `dispatch('eventName')`
 - D) `fire('eventName')`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 2 💡
-
-**B) `emit('eventName')` après `defineEmits`**
-
-```js
-const emit = defineEmits(['eventName'])
-emit('eventName', data)
-```
-
----
-layout: exercices
----
-
-# Question 3 🤔
+# Question 3 / 10
 
 ### Quel est le but des slots ?
 
-<v-clicks>
-
-- A) Stocker des données
-- B) Injecter du contenu personnalisé dans un composant ✅
-- C) Gérer les événements
-- D) Définir des styles
-
-</v-clicks>
+- A) Stocker des donnees
+- B) Injecter du contenu personnalise dans un composant
+- C) Gerer les evenements
+- D) Definir des styles
 
 ---
 layout: exercices
 ---
 
-# Réponse 3 💡
+# Question 4 / 10
 
-**B) Injecter du contenu personnalisé dans un composant**
-
-Les slots permettent au parent de passer du contenu HTML/composants à l'intérieur d'un composant enfant.
-
----
-layout: exercices
----
-
-# Question 4 🤔
-
-### Comment créer un slot nommé "header" ?
-
-<v-clicks>
+### Comment creer un slot nomme "header" ?
 
 - A) `<slot header />`
-- B) `<slot name="header"></slot>` ✅
+- B) `<slot name="header"></slot>`
 - C) `<slot id="header" />`
 - D) `<slot:header />`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 4 💡
-
-**B) `<slot name="header"></slot>`**
-
-Et pour l'utiliser : `<template #header>...</template>`
-
----
-layout: exercices
----
-
-# Question 5 🤔
+# Question 5 / 10
 
 ### Que fait `provide` / `inject` ?
 
-<v-clicks>
-
 - A) Injecte du CSS
-- B) Passe des données à travers plusieurs niveaux de composants ✅
-- C) Crée des animations
-- D) Gère les erreurs
-
-</v-clicks>
+- B) Passe des donnees à travers plusieurs niveaux de composants
+- C) Cree des animations
+- D) Gere les erreurs
 
 ---
 layout: exercices
 ---
 
-# Réponse 5 💡
-
-**B) Passe des données à travers plusieurs niveaux de composants**
-
-Provide/Inject évite le "prop drilling" en permettant à un ancêtre de fournir des données accessibles par tous ses descendants.
-
----
-layout: exercices
----
-
-# Question 6 🤔
+# Question 6 / 10
 
 ### Que fait le composant `<Teleport>` ?
 
-<v-clicks>
-
-- A) Télécharge des fichiers
-- B) Rend le contenu dans une autre partie du DOM ✅
-- C) Crée des portails entre pages
-- D) Accélère le rendu
-
-</v-clicks>
+- A) Telecharge des fichiers
+- B) Rend le contenu dans une autre partie du DOM
+- C) Cree des portails entre pages
+- D) Accelere le rendu
 
 ---
 layout: exercices
 ---
 
-# Réponse 6 💡
-
-**B) Rend le contenu dans une autre partie du DOM**
-
-`<Teleport to="body">` rend le contenu dans `<body>` même si le composant est imbriqué ailleurs.
-
----
-layout: exercices
----
-
-# Question 7 🤔
+# Question 7 / 10
 
 ### Que fait `<KeepAlive>` ?
 
-<v-clicks>
-
-- A) Maintient la connexion réseau
-- B) Préserve l'état des composants dynamiques ✅
-- C) Empêche le composant de se mettre à jour
+- A) Maintient la connexion reseau
+- B) Preserve l'etat des composants dynamiques
+- C) Empeche le composant de se mettre à jour
 - D) Cache les composants
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 7 💡
+# Question 8 / 10
 
-**B) Préserve l'état des composants dynamiques**
-
-Avec `<KeepAlive>`, quand tu changes de composant avec `<component :is>`, l'état du composant précédent est conservé.
-
----
-layout: exercices
----
-
-# Question 8 🤔
-
-### Comment passer des attributs non-props à un élément spécifique ?
-
-<v-clicks>
+### Comment passer des attributs non-props à un element specifique ?
 
 - A) `v-attrs`
-- B) `v-bind="$attrs"` ✅
+- B) `v-bind="$attrs"`
 - C) `...props`
 - D) `@attrs`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 8 💡
+# Question 9 / 10
 
-**B) `v-bind="$attrs"`**
-
-Avec `inheritAttrs: false`, tu peux contrôler où appliquer les attributs passés au composant.
-
----
-layout: exercices
----
-
-# Question 9 🤔
-
-### Comment exposer des méthodes au parent via ref ?
-
-<v-clicks>
+### Comment exposer des methodes au parent via ref ?
 
 - A) `exportMethod()`
-- B) `defineExpose({...})` ✅
+- B) `defineExpose({...})`
 - C) `exposeRef()`
 - D) `this.$expose()`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 9 💡
+# Question 10 / 10
 
-**B) `defineExpose({...})`**
-
-```js
-defineExpose({
-  maMethode,
-  maValeur
-})
-```
-
-Permet au parent d'accéder via une template ref.
-
----
-layout: exercices
----
-
-# Question 10 🤔
-
-### Quelle est la convention de nommage recommandée pour les fichiers de composants ?
-
-<v-clicks>
+### Quelle est la convention de nommage recommandee pour les fichiers de composants ?
 
 - A) kebab-case (my-component.vue)
 - B) camelCase (myComponent.vue)
-- C) PascalCase (MyComponent.vue) ✅
+- C) PascalCase (MyComponent.vue)
 - D) snake_case (my_component.vue)
-
-</v-clicks>
 
 ---
 layout: exercices
 ---
 
-# Réponse 10 💡
+# 📝 Corrections - QCM Module 3
 
-**C) PascalCase (MyComponent.vue)**
-
-C'est la convention officielle Vue.js. Dans le template, tu peux utiliser `<MyComponent />` ou `<my-component />`.
+| Q | Réponse | Explication |
+|---|---------|-------------|
+| 1 | **B** | `defineProps<{...}>()` avec generics TypeScript |
+| 2 | **B** | `emit()` apres `defineEmits` |
+| 3 | **B** | Les slots injectent du contenu personnalise |
+| 4 | **B** | `<slot name="header">` et `<template #header>` |
+| 5 | **B** | Provide/Inject evite le prop drilling |
+| 6 | **B** | Teleport rend ailleurs dans le DOM (ex: body) |
+| 7 | **B** | KeepAlive preserve l'etat des composants dynamiques |
+| 8 | **B** | `v-bind="$attrs"` avec `inheritAttrs: false` |
+| 9 | **B** | `defineExpose({...})` pour exposer au parent |
+| 10 | **C** | PascalCase est la convention officielle |
 
 ---
 layout: intro
@@ -292,7 +163,6 @@ layout: intro
 
 # Résultat du QCM 🏆
 
-Tu as terminé le QCM du Module 4 !
+Tu as terminé le QCM du Module 3 !
 
 Passons aux exercices pratiques ! 🚀
-

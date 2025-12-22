@@ -13,14 +13,12 @@ Le gestionnaire d'état officiel de Vue.js !
 
 Quand ton application grandit, tu rencontres des problèmes :
 
-<v-clicks>
 
 - 📦 Données partagées entre composants éloignés
 - 🔄 Prop drilling (passer des props niveau par niveau)
 - 🐛 Difficile de suivre qui modifie quoi
 - 🧪 Compliqué à tester
 
-</v-clicks>
 
 ---
 
@@ -28,14 +26,12 @@ Quand ton application grandit, tu rencontres des problèmes :
 
 Imagine une banque :
 
-<v-clicks>
 
 - **Le store** = Le coffre-fort central
 - **Le state** = L'argent dans le coffre
 - **Les getters** = Les relevés de compte
 - **Les actions** = Les transactions (dépôt, retrait)
 
-</v-clicks>
 
 ---
 
@@ -155,7 +151,7 @@ export const useCounterStore = defineStore('counter', () => {
 
 # Utiliser un store 📖
 
-```vue
+```js
 <script setup>
 import { useCounterStore } from '@/stores/counter'
 
@@ -357,7 +353,7 @@ export const useProductStore = defineStore('products', () => {
 
 # Destructuration avec storeToRefs 🔗
 
-```vue
+```js
 <script setup>
 import { storeToRefs } from 'pinia'
 import { useCounterStore } from '@/stores/counter'
@@ -379,14 +375,12 @@ const { increment, decrement } = counterStore
 
 # storeToRefs - Pourquoi ? 🔗
 
-<v-clicks>
 
 - Le state et les getters sont réactifs via Proxy
 - La destructuration "casse" le proxy
 - `storeToRefs` convertit en refs individuelles
 - Les actions sont des fonctions normales, pas besoin
 
-</v-clicks>
 
 ---
 
@@ -451,7 +445,7 @@ export const useCounterStore = defineStore('counter', () => {
 
 # Souscrire aux changements 👂
 
-```vue
+```js
 <script setup>
 import { useCounterStore } from '@/stores/counter'
 
@@ -575,20 +569,17 @@ export const useUserStore = defineStore('user', () => {
 
 Pinia s'intègre parfaitement avec Vue DevTools :
 
-<v-clicks>
 
 - 📊 Voir l'état de tous les stores
 - ⏱️ Timeline des actions
 - ✏️ Modifier le state en temps réel
 - 📸 Snapshots et time-travel
 
-</v-clicks>
 
 ---
 
 # Bonnes pratiques 📚
 
-<v-clicks>
 
 - 🎯 Un store par domaine (user, products, cart)
 - 📁 Organiser dans `/stores/`
@@ -596,7 +587,6 @@ Pinia s'intègre parfaitement avec Vue DevTools :
 - 🧪 Tester les stores indépendamment
 - 🔒 Valider les actions côté serveur
 
-</v-clicks>
 
 ---
 
@@ -615,7 +605,6 @@ src/stores/
 
 # Résumé du Module 8 📝
 
-<v-clicks>
 
 - ✅ **Pinia** est le state manager officiel de Vue 3
 - ✅ **State** = données centralisées
@@ -624,7 +613,6 @@ src/stores/
 - ✅ **storeToRefs** pour destructurer le state
 - ✅ **Plugins** pour étendre (persistance, etc.)
 
-</v-clicks>
 
 ---
 layout: intro

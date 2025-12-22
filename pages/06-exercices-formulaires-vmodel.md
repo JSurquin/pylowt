@@ -27,7 +27,7 @@ layout: exercices
 
 # Solution Exercice 1 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -61,7 +61,7 @@ layout: exercices
 
 # Solution Exercice 1 - Script Suite ✅
 
-```vue
+```js
 <script setup lang="ts">
 // ... suite du script
 
@@ -83,7 +83,7 @@ layout: exercices
 
 # Solution Exercice 1 - Template ✅
 
-```vue
+```js
 <template>
   <form @submit.prevent="handleSubmit" class="form">
     <div class="field">
@@ -121,7 +121,7 @@ layout: exercices
 
 # Solution Exercice 1 - Style ✅
 
-```vue
+```js
 <style scoped>
 .form {
   max-width: 400px;
@@ -176,7 +176,7 @@ layout: exercices
 
 # Solution Exercice 2 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -213,7 +213,7 @@ layout: exercices
 
 # Solution Exercice 2 - Template Partie 1 ✅
 
-```vue
+```js
 <template>
   <div class="survey">
     <h2>Sondage</h2>
@@ -242,7 +242,7 @@ layout: exercices
 
 # Solution Exercice 2 - Template Partie 2 ✅
 
-```vue
+```js
 <template>
   <div class="survey">
     <!-- ... genre ... -->
@@ -284,7 +284,7 @@ layout: exercices
 
 # Solution Exercice 2 - Template Partie 3 ✅
 
-```vue
+```js
 <template>
   <div class="survey">
     <!-- ... formulaire ... -->
@@ -321,7 +321,7 @@ layout: exercices
 
 # Solution Exercice 3 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 interface Props {
   label?: string
@@ -345,7 +345,7 @@ layout: exercices
 
 # Solution Exercice 3 - Template ✅
 
-```vue
+```js
 <template>
   <div class="base-input">
     <label v-if="label" class="label">
@@ -372,7 +372,7 @@ layout: exercices
 
 # Solution Exercice 3 - Style ✅
 
-```vue
+```js
 <style scoped>
 .base-input {
   margin-bottom: 1rem;
@@ -416,7 +416,7 @@ layout: exercices
 
 # Solution Exercice 3 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { ref, computed } from 'vue'
 import BaseInput from './BaseInput.vue'
@@ -464,7 +464,7 @@ layout: exercices
 
 # Solution Exercice 4 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -491,7 +491,7 @@ layout: exercices
 
 # Solution Exercice 4 - Template ✅
 
-```vue
+```js
 <template>
   <div class="rating" @mouseleave="resetHover">
     <span 
@@ -518,7 +518,7 @@ layout: exercices
 
 # Solution Exercice 4 - Style ✅
 
-```vue
+```js
 <style scoped>
 .rating {
   display: flex;
@@ -554,7 +554,7 @@ layout: exercices
 
 # Solution Exercice 4 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 import RatingStars from './RatingStars.vue'
@@ -589,7 +589,7 @@ layout: exercices
 
 # Solution Bonus - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -623,7 +623,7 @@ layout: exercices
 
 # Solution Bonus - Template ✅
 
-```vue
+```js
 <template>
   <div class="dynamic-form">
     <div 

@@ -108,7 +108,7 @@ layout: exercices
 
 # Solution Exercice 3 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -126,7 +126,7 @@ layout: exercices
 
 # Solution Exercice 3 - Template ✅
 
-```vue
+```js
 <template>
   <div class="welcome">
     <h1>Bienvenue {{ prenom }} ! 👋</h1>
@@ -144,7 +144,7 @@ layout: exercices
 
 # Solution Exercice 3 - Style ✅
 
-```vue
+```js
 <style scoped>
 .welcome {
   text-align: center;
@@ -187,7 +187,7 @@ layout: exercices
 
 # Solution Exercice 4 ✅
 
-```vue
+```js
 <script setup lang="ts">
 import Welcome from './components/Welcome.vue'
 </script>
@@ -261,7 +261,7 @@ layout: exercices
 
 # Solution Bonus - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -280,7 +280,7 @@ layout: exercices
 
 # Solution Bonus - Template ✅
 
-```vue
+```js
 <template>
   <div class="profile-card">
     <img 
@@ -303,7 +303,7 @@ layout: exercices
 
 # Solution Bonus - Style ✅
 
-```vue
+```js
 <style scoped>
 .profile-card {
   max-width: 300px;

@@ -13,14 +13,12 @@ Navigation et routage pour tes applications Vue.js !
 
 **Vue Router** est le routeur officiel de Vue.js.
 
-<v-clicks>
 
 - 🛤️ Associe des URLs à des composants
 - 📱 Crée des SPAs (Single Page Applications)
 - 🔗 Navigation sans rechargement de page
 - 📊 Gère l'historique du navigateur
 
-</v-clicks>
 
 ---
 
@@ -28,14 +26,12 @@ Navigation et routage pour tes applications Vue.js !
 
 Imagine Vue Router comme un GPS :
 
-<v-clicks>
 
 - **Les routes** = Les adresses possibles
 - **Les composants** = Les destinations
 - **La navigation** = Le voyage d'un point A à B
 - **Les params** = Les détails de l'adresse (numéro, étage)
 
-</v-clicks>
 
 ---
 
@@ -122,7 +118,7 @@ createApp(App)
 
 # RouterView et RouterLink 🔗
 
-```vue
+```js
 <!-- App.vue -->
 <template>
   <nav>
@@ -139,7 +135,7 @@ createApp(App)
 
 # RouterLink : Navigation déclarative 🔗
 
-```vue
+```js
 <template>
   <!-- String path -->
   <RouterLink to="/about">About</RouterLink>
@@ -165,7 +161,7 @@ createApp(App)
 
 RouterLink ajoute automatiquement des classes :
 
-```vue
+```js
 <template>
   <!-- Ajoute .router-link-active quand actif -->
   <RouterLink to="/about">About</RouterLink>
@@ -222,7 +218,7 @@ const routes = [
 
 # Accéder aux paramètres 📍
 
-```vue
+```js
 <!-- UserView.vue -->
 <script setup>
 import { useRoute } from 'vue-router'
@@ -258,7 +254,7 @@ const routes = [
 
 # Paramètres en props - Composant ✨
 
-```vue
+```js
 <!-- UserView.vue -->
 <script setup>
 const props = defineProps<{
@@ -275,19 +271,17 @@ const props = defineProps<{
 
 # Paramètres en props - Avantages ✨
 
-<v-clicks>
 
 - ✅ Composant découplé du router
 - ✅ Plus facile à tester
 - ✅ Réutilisable sans router
 
-</v-clicks>
 
 ---
 
 # Navigation programmatique 🎮
 
-```vue
+```js
 <script setup>
 import { useRouter } from 'vue-router'
 
@@ -348,7 +342,7 @@ const routes = [
 
 # Routes imbriquées - Layout 📦
 
-```vue
+```js
 <!-- UserLayout.vue -->
 <template>
   <div class="user-layout">
@@ -387,7 +381,7 @@ const routes = [
 
 # Route 404 - Composant 🚫
 
-```vue
+```js
 <!-- NotFound.vue -->
 <template>
   <div class="not-found">
@@ -433,14 +427,12 @@ const routes = [
 
 Protéger les routes avec des "gardiens" :
 
-<v-clicks>
 
 - **beforeEach** - Avant chaque navigation
 - **beforeResolve** - Après les guards des composants
 - **afterEach** - Après la navigation
 - **beforeEnter** - Sur une route spécifique
 
-</v-clicks>
 
 ---
 
@@ -545,7 +537,7 @@ const routes = [
 
 # Guard dans un composant 📦
 
-```vue
+```js
 <script setup>
 import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 
@@ -598,7 +590,7 @@ const router = createRouter({
 
 # useRoute vs useRouter 🤔
 
-```vue
+```js
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
 
@@ -623,7 +615,7 @@ router.push('/about')
 
 # RouterView avec transitions 🎭
 
-```vue
+```js
 <template>
   <RouterView v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
@@ -649,7 +641,6 @@ router.push('/about')
 
 # Résumé du Module 7 📝
 
-<v-clicks>
 
 - ✅ **Vue Router 4** gère la navigation SPA
 - ✅ **RouterLink** et **RouterView** pour l'affichage
@@ -658,7 +649,6 @@ router.push('/about')
 - ✅ **Guards** pour protéger les routes
 - ✅ **Lazy loading** pour optimiser les performances
 
-</v-clicks>
 
 ---
 layout: intro

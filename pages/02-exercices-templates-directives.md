@@ -27,7 +27,7 @@ layout: exercices
 
 # Solution Exercice 1 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -46,7 +46,7 @@ layout: exercices
 
 # Solution Exercice 1 - Template ✅
 
-```vue
+```js
 <template>
   <div class="user-card">
     <h2>{{ user.firstName }} {{ user.lastName }}</h2>
@@ -62,7 +62,7 @@ layout: exercices
 
 # Solution Exercice 1 - Style ✅
 
-```vue
+```js
 <style scoped>
 .user-card {
   padding: 1.5rem;
@@ -93,7 +93,7 @@ layout: exercices
 
 # Solution Exercice 2 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -118,7 +118,7 @@ layout: exercices
 
 # Solution Exercice 2 - Template ✅
 
-```vue
+```js
 <template>
   <div class="image-container">
     <img 
@@ -139,7 +139,7 @@ layout: exercices
 
 # Solution Exercice 2 - Style ✅
 
-```vue
+```js
 <style scoped>
 .image-container {
   text-align: center;
@@ -182,7 +182,7 @@ layout: exercices
 
 # Solution Exercice 3 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -201,7 +201,7 @@ layout: exercices
 
 # Solution Exercice 3 - Template ✅
 
-```vue
+```js
 <template>
   <div class="login-status">
     <div v-if="isLoggedIn" class="welcome">
@@ -227,7 +227,7 @@ layout: exercices
 
 # Solution Exercice 3 - Style ✅
 
-```vue
+```js
 <style scoped>
 .login-status {
   padding: 2rem;
@@ -271,7 +271,7 @@ layout: exercices
 
 # Solution Exercice 4 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -297,7 +297,7 @@ layout: exercices
 
 # Solution Exercice 4 - Script Suite ✅
 
-```vue
+```js
 <script setup lang="ts">
 // ... suite du script
 
@@ -323,7 +323,7 @@ layout: exercices
 
 # Solution Exercice 4 - Template ✅
 
-```vue
+```js
 <template>
   <div class="todo-list">
     <h2>📋 Ma Todo List</h2>
@@ -353,7 +353,7 @@ layout: exercices
 
 # Solution Exercice 4 - Style ✅
 
-```vue
+```js
 <style scoped>
 .todo-list {
   max-width: 400px;
@@ -409,7 +409,7 @@ layout: exercices
 
 # Solution Exercice 5 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -429,7 +429,7 @@ layout: exercices
 
 # Solution Exercice 5 - Template ✅
 
-```vue
+```js
 <template>
   <div 
     class="container" 
@@ -467,7 +467,7 @@ layout: exercices
 
 # Solution Exercice 5 - Style ✅
 
-```vue
+```js
 <style scoped>
 .container {
   padding: 2rem;
@@ -524,7 +524,7 @@ layout: exercices
 
 # Solution Bonus - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -553,7 +553,7 @@ layout: exercices
 
 # Solution Bonus - Script Suite ✅
 
-```vue
+```js
 <script setup lang="ts">
 // ... suite du script
 
@@ -579,7 +579,7 @@ layout: exercices
 
 # Solution Bonus - Template ✅
 
-```vue
+```js
 <template>
   <div class="product-list">
     <h2>🛍️ Nos Produits</h2>

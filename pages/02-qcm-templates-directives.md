@@ -4,277 +4,158 @@ layout: new-section
 
 # QCM - Module 2 : Templates et Directives ✅
 
-Testons tes connaissances sur les templates et directives Vue.js !
+Testons tes connaissances sur les templates et directives !
+
+10 questions - Note tes réponses, les corrections sont à la fin.
 
 ---
 layout: exercices
 ---
 
-# Question 1 🤔
+# Question 1 / 10
 
 ### Quel est le raccourci pour `v-bind:src` ?
 
-<v-clicks>
-
 - A) `@src`
-- B) `:src` ✅
+- B) `:src`
 - C) `#src`
 - D) `$src`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 1 💡
-
-**B) `:src`**
-
-Le raccourci pour `v-bind` est les deux-points `:`. Donc `v-bind:src="url"` devient `:src="url"`.
-
----
-layout: exercices
----
-
-# Question 2 🤔
+# Question 2 / 10
 
 ### Quel est le raccourci pour `v-on:click` ?
 
-<v-clicks>
-
 - A) `:click`
 - B) `#click`
-- C) `@click` ✅
+- C) `@click`
 - D) `$click`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 2 💡
-
-**C) `@click`**
-
-Le raccourci pour `v-on` est l'arobase `@`. Donc `v-on:click="handler"` devient `@click="handler"`.
-
----
-layout: exercices
----
-
-# Question 3 🤔
+# Question 3 / 10
 
 ### Quelle directive utilise CSS `display: none` ?
 
-<v-clicks>
-
 - A) v-if
 - B) v-else
-- C) v-show ✅
+- C) v-show
 - D) v-hide
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 3 💡
-
-**C) v-show**
-
-`v-show` bascule la propriété CSS `display`, tandis que `v-if` ajoute/retire réellement l'élément du DOM.
-
----
-layout: exercices
----
-
-# Question 4 🤔
+# Question 4 / 10
 
 ### Pourquoi `:key` est-il important dans `v-for` ?
 
-<v-clicks>
-
 - A) Pour le style CSS
-- B) Pour que Vue identifie chaque élément ✅
+- B) Pour que Vue identifie chaque element
 - C) Pour activer les animations
 - D) C'est optionnel
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 4 💡
-
-**B) Pour que Vue identifie chaque élément**
-
-`:key` permet à Vue de suivre l'identité de chaque élément lors des mises à jour, évitant des bugs de rendu et optimisant les performances.
-
----
-layout: exercices
----
-
-# Question 5 🤔
+# Question 5 / 10
 
 ### Que fait le modificateur `.prevent` ?
 
-<v-clicks>
-
-- A) Empêche le clic
-- B) Appelle `event.preventDefault()` ✅
+- A) Empeche le clic
+- B) Appelle `event.preventDefault()`
 - C) Stoppe la propagation
-- D) Désactive l'élément
-
-</v-clicks>
+- D) Desactive l'element
 
 ---
 layout: exercices
 ---
 
-# Réponse 5 💡
-
-**B) Appelle `event.preventDefault()`**
-
-`.prevent` est un raccourci pour `event.preventDefault()`, souvent utilisé sur les formulaires pour empêcher le rechargement de la page.
-
----
-layout: exercices
----
-
-# Question 6 🤔
+# Question 6 / 10
 
 ### Quelle syntaxe permet d'afficher une variable ?
 
-<v-clicks>
-
 - A) `{variable}`
 - B) `${variable}`
-- C) `{{ variable }}` ✅
+- C) Moustaches (double accolades)
 - D) `[variable]`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 6 💡
+# Question 7 / 10
 
-**C) `{{ variable }}`**
+### Peut-on utiliser `v-if` et `v-for` sur le meme element ?
 
-C'est la syntaxe "moustache" (double accolades) propre à Vue.js pour l'interpolation de texte.
-
----
-layout: exercices
----
-
-# Question 7 🤔
-
-### Peut-on utiliser `v-if` et `v-for` sur le même élément ?
-
-<v-clicks>
-
-- A) Oui, sans problème
+- A) Oui, sans probleme
 - B) Non, c'est interdit
-- C) Non, il faut utiliser `<template>` ✅
+- C) Non, il faut utiliser `<template>`
 - D) Seulement avec v-show
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 7 💡
-
-**C) Non, il faut utiliser `<template>`**
-
-Utiliser `v-if` et `v-for` sur le même élément cause des problèmes de priorité. La solution est d'utiliser un `<template>` wrapper ou une computed property.
-
----
-layout: exercices
----
-
-# Question 8 🤔
+# Question 8 / 10
 
 ### Que fait `v-once` ?
 
-<v-clicks>
-
-- A) Exécute une fois par seconde
-- B) Rend le contenu une seule fois ✅
-- C) Cache l'élément
-- D) Déclenche un événement unique
-
-</v-clicks>
+- A) Execute une fois par seconde
+- B) Rend le contenu une seule fois
+- C) Cache l'element
+- D) Declenche un evenement unique
 
 ---
 layout: exercices
 ---
 
-# Réponse 8 💡
+# Question 9 / 10
 
-**B) Rend le contenu une seule fois**
-
-`v-once` optimise le rendu en ne mettant jamais à jour le contenu, même si les données changent. Utile pour du contenu statique.
-
----
-layout: exercices
----
-
-# Question 9 🤔
-
-### Comment accéder à l'index dans un `v-for` ?
-
-<v-clicks>
+### Comment acceder à l'index dans un `v-for` ?
 
 - A) `v-for="item of items :index"`
-- B) `v-for="(item, index) in items"` ✅
+- B) `v-for="(item, index) in items"`
 - C) `v-for="item in items" :index="i"`
 - D) `v-for="item, index in items"`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 9 💡
-
-**B) `v-for="(item, index) in items"`**
-
-La syntaxe avec parenthèses permet d'accéder à l'index : `(item, index)` où `item` est la valeur et `index` sa position.
-
----
-layout: exercices
----
-
-# Question 10 🤔
+# Question 10 / 10
 
 ### Quel est le danger de `v-html` ?
 
-<v-clicks>
-
 - A) Performance lente
-- B) Faille XSS ✅
+- B) Faille XSS
 - C) Ne fonctionne pas en production
 - D) Conflits CSS
-
-</v-clicks>
 
 ---
 layout: exercices
 ---
 
-# Réponse 10 💡
+# 📝 Corrections - QCM Module 2
 
-**B) Faille XSS**
-
-`v-html` injecte du HTML brut. Si le contenu provient d'un utilisateur, il peut contenir du code malveillant (scripts). Ne l'utilise qu'avec du contenu de confiance !
+| Q | Réponse | Explication |
+|---|---------|-------------|
+| 1 | **B** | `:src` est le raccourci pour `v-bind:src` |
+| 2 | **C** | `@click` est le raccourci pour `v-on:click` |
+| 3 | **C** | `v-show` bascule `display: none`, `v-if` ajoute/retire du DOM |
+| 4 | **B** | `:key` permet à Vue d'identifier chaque element |
+| 5 | **B** | `.prevent` = `event.preventDefault()` |
+| 6 | **C** | Les moustaches (double accolades) pour l'interpolation |
+| 7 | **C** | Il faut utiliser `<template>` ou une computed |
+| 8 | **B** | `v-once` rend une seule fois, pas de mise à jour |
+| 9 | **B** | `(item, index)` avec parentheses |
+| 10 | **B** | Risque XSS avec du contenu utilisateur |
 
 ---
 layout: intro
@@ -285,4 +166,3 @@ layout: intro
 Tu as terminé le QCM du Module 2 !
 
 Passons aux exercices pratiques ! 🚀
-

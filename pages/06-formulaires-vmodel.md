@@ -13,13 +13,11 @@ Maîtrise la liaison bidirectionnelle et les formulaires !
 
 `v-model` crée une **liaison bidirectionnelle** entre un input et une donnée :
 
-<v-clicks>
 
 - 📥 La donnée → l'input (affichage)
 - 📤 L'input → la donnée (modification)
 - ⚡ Tout ça automatiquement !
 
-</v-clicks>
 
 ---
 
@@ -27,19 +25,17 @@ Maîtrise la liaison bidirectionnelle et les formulaires !
 
 Imagine un miroir magique :
 
-<v-clicks>
 
 - Quand TU bouges, le reflet bouge
 - Quand le REFLET bouge, toi aussi tu bouges !
 - C'est la synchronisation bidirectionnelle
 
-</v-clicks>
 
 ---
 
 # v-model en action 📝
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -66,7 +62,7 @@ C'est comme si `v-model` était un raccourci magique.
 
 `v-model` est un raccourci pour :
 
-```vue
+```js
 <!-- Ceci... -->
 <input v-model="message" />
 
@@ -83,19 +79,17 @@ C'est comme si `v-model` était un raccourci magique.
 
 Vue propose des modificateurs pratiques :
 
-<v-clicks>
 
 - `.lazy` - Synchronise sur `change` au lieu de `input`
 - `.number` - Convertit automatiquement en nombre
 - `.trim` - Supprime les espaces au début/fin
 
-</v-clicks>
 
 ---
 
 # Modificateur .lazy ⏸️
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -112,7 +106,7 @@ const message = ref('')
 
 # Modificateur .number 🔢
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -130,7 +124,7 @@ const age = ref(18)
 
 # Modificateur .trim ✂️
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -147,7 +141,7 @@ const username = ref('')
 
 # Combiner les modificateurs 🔗
 
-```vue
+```js
 <template>
   <!-- Plusieurs modificateurs ensemble -->
   <input v-model.lazy.trim="username" />
@@ -159,7 +153,7 @@ const username = ref('')
 
 # Textarea 📄
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -176,7 +170,7 @@ const bio = ref('')
 
 # Checkbox unique ☑️
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -196,7 +190,7 @@ const accepted = ref(false)
 
 # Checkbox multiples 🗂️
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -224,7 +218,7 @@ const selectedFruits = ref<string[]>([])
 
 # Radio buttons 🔘
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -252,7 +246,7 @@ const gender = ref('')
 
 # Select simple 📋
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -270,7 +264,7 @@ const countries = [
 
 # Select simple - Template 📋
 
-```vue
+```js
 <template>
   <select v-model="country">
     <option value="" disabled>Choisissez un pays</option>
@@ -290,7 +284,7 @@ const countries = [
 
 # Select multiple 📋
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -315,7 +309,7 @@ const skills = ['Vue.js', 'React', 'Angular', 'Svelte', 'TypeScript']
 
 Exemple simple de validation :
 
-```vue
+```js
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -340,7 +334,7 @@ const isFormValid = computed(() =>
 
 # Validation de formulaire - Template 🛡️
 
-```vue
+```js
 <template>
   <form @submit.prevent="handleSubmit">
     <div>
@@ -376,7 +370,7 @@ const isFormValid = computed(() =>
 
 Tu peux utiliser `v-model` sur tes propres composants !
 
-```vue
+```js
 <!-- Parent -->
 <script setup>
 import { ref } from 'vue'
@@ -396,7 +390,7 @@ const username = ref('')
 
 La nouvelle syntaxe avec `defineModel` :
 
-```vue
+```js
 <!-- CustomInput.vue -->
 <script setup>
 const model = defineModel<string>()
@@ -422,7 +416,7 @@ Plus besoin de props + emit manuels !
 
 # Ancienne méthode (avant 3.4) 📜
 
-```vue
+```js
 <!-- CustomInput.vue -->
 <script setup>
 const props = defineProps<{
@@ -448,7 +442,7 @@ const emit = defineEmits<{
 
 Un composant peut avoir plusieurs v-model :
 
-```vue
+```js
 <!-- Parent -->
 <template>
   <UserForm 
@@ -462,7 +456,7 @@ Un composant peut avoir plusieurs v-model :
 
 # Plusieurs v-model - Enfant 🔢
 
-```vue
+```js
 <!-- UserForm.vue -->
 <script setup>
 const firstName = defineModel<string>('firstName')
@@ -481,7 +475,7 @@ const lastName = defineModel<string>('lastName')
 
 Crée tes propres modificateurs :
 
-```vue
+```js
 <!-- Parent -->
 <template>
   <CustomInput v-model.capitalize="text" />
@@ -492,7 +486,7 @@ Crée tes propres modificateurs :
 
 # Modificateurs personnalisés - Enfant 🎨
 
-```vue
+```js
 <!-- CustomInput.vue -->
 <script setup>
 const [model, modifiers] = defineModel<string, { capitalize: boolean }>()
@@ -519,19 +513,17 @@ function handleInput(e: Event) {
 
 Pour des formulaires complexes, utilise une bibliothèque :
 
-<v-clicks>
 
 - **VeeValidate** - Validation déclarative populaire
 - **Vuelidate** - Validation basée sur les composables
 - **FormKit** - Framework complet de formulaires
 
-</v-clicks>
 
 ---
 
 # Exemple VeeValidate 🛡️
 
-```vue
+```js
 <script setup>
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
@@ -556,7 +548,7 @@ const onSubmit = handleSubmit((values) => {
 
 # Exemple VeeValidate - Template 🛡️
 
-```vue
+```js
 <template>
   <form @submit="onSubmit">
     <div>
@@ -578,7 +570,6 @@ const onSubmit = handleSubmit((values) => {
 
 # Bonnes pratiques formulaires ✅
 
-<v-clicks>
 
 - 🏷️ Utilise des `<label>` pour l'accessibilité
 - ✅ Valide côté client ET côté serveur
@@ -586,13 +577,11 @@ const onSubmit = handleSubmit((values) => {
 - 🔢 Utilise `.number` pour les champs numériques
 - 🧩 Crée des composants d'input réutilisables
 
-</v-clicks>
 
 ---
 
 # Résumé du Module 6 📝
 
-<v-clicks>
 
 - ✅ `v-model` crée une **liaison bidirectionnelle**
 - ✅ Modificateurs : `.lazy`, `.number`, `.trim`
@@ -600,7 +589,6 @@ const onSubmit = handleSubmit((values) => {
 - ✅ `defineModel` simplifie les composants personnalisés
 - ✅ Valide avec computed ou des bibliothèques
 
-</v-clicks>
 
 ---
 layout: intro

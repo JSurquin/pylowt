@@ -27,7 +27,7 @@ layout: exercices
 
 # Solution Exercice 1 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -55,7 +55,7 @@ layout: exercices
 
 # Solution Exercice 1 - Template ✅
 
-```vue
+```js
 <template>
   <div class="counter">
     <h2>Compteur : {{ count }}</h2>
@@ -77,7 +77,7 @@ layout: exercices
 
 # Solution Exercice 1 - Style ✅
 
-```vue
+```js
 <style scoped>
 .counter {
   text-align: center;
@@ -124,7 +124,7 @@ layout: exercices
 
 # Solution Exercice 2 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -149,7 +149,7 @@ layout: exercices
 
 # Solution Exercice 2 - Script Suite ✅
 
-```vue
+```js
 <script setup lang="ts">
 // ... suite du script
 
@@ -179,7 +179,7 @@ layout: exercices
 
 # Solution Exercice 2 - Template ✅
 
-```vue
+```js
 <template>
   <div class="cart">
     <h2>🛒 Mon Panier</h2>
@@ -209,7 +209,7 @@ layout: exercices
 
 # Solution Exercice 2 - Style ✅
 
-```vue
+```js
 <style scoped>
 .cart {
   max-width: 500px;
@@ -260,7 +260,7 @@ layout: exercices
 
 # Solution Exercice 3 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
@@ -282,7 +282,7 @@ layout: exercices
 
 # Solution Exercice 3 - Script Suite ✅
 
-```vue
+```js
 <script setup lang="ts">
 // ... suite du script
 
@@ -316,7 +316,7 @@ layout: exercices
 
 # Solution Exercice 3 - Template ✅
 
-```vue
+```js
 <template>
   <div class="search-box">
     <input 
@@ -360,7 +360,7 @@ layout: exercices
 
 # Solution Exercice 4 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 
@@ -387,7 +387,7 @@ layout: exercices
 
 # Solution Exercice 4 - Template ✅
 
-```vue
+```js
 <template>
   <div class="notepad">
     <h2>📝 Bloc-notes</h2>
@@ -415,7 +415,7 @@ layout: exercices
 
 # Solution Exercice 4 - Style ✅
 
-```vue
+```js
 <style scoped>
 .notepad {
   max-width: 600px;
@@ -469,7 +469,7 @@ layout: exercices
 
 # Solution Exercice 5 - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -495,7 +495,7 @@ layout: exercices
 
 # Solution Exercice 5 - Template ✅
 
-```vue
+```js
 <template>
   <div class="name-editor">
     <h2>Éditeur de nom</h2>
@@ -528,7 +528,7 @@ layout: exercices
 
 # Solution Exercice 5 - Style ✅
 
-```vue
+```js
 <style scoped>
 .name-editor {
   max-width: 400px;
@@ -583,7 +583,7 @@ layout: exercices
 
 # Solution Bonus - Script ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref, computed, onUnmounted } from 'vue'
 
@@ -605,7 +605,7 @@ layout: exercices
 
 # Solution Bonus - Script Suite ✅
 
-```vue
+```js
 <script setup lang="ts">
 // ... suite du script
 
@@ -640,7 +640,7 @@ layout: exercices
 
 # Solution Bonus - Template ✅
 
-```vue
+```js
 <template>
   <div class="timer">
     <div class="display">{{ formattedTime }}</div>

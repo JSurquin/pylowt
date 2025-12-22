@@ -6,288 +6,156 @@ layout: new-section
 
 Testons tes connaissances sur les formulaires !
 
+10 questions - Note tes réponses, les corrections sont à la fin.
+
 ---
 layout: exercices
 ---
 
-# Question 1 🤔
+# Question 1 / 10
 
 ### Que fait v-model ?
 
-<v-clicks>
-
 - A) Lie une classe CSS
-- B) Crée une liaison bidirectionnelle ✅
+- B) Cree une liaison bidirectionnelle
 - C) Valide les formulaires
-- D) Envoie les données au serveur
-
-</v-clicks>
+- D) Envoie les donnees au serveur
 
 ---
 layout: exercices
 ---
 
-# Réponse 1 💡
-
-**B) Crée une liaison bidirectionnelle**
-
-`v-model` synchronise automatiquement une donnée avec un input : modifier l'un modifie l'autre.
-
----
-layout: exercices
----
-
-# Question 2 🤔
+# Question 2 / 10
 
 ### Que fait le modificateur `.lazy` ?
 
-<v-clicks>
-
 - A) Ralentit la mise à jour
-- B) Synchronise sur `change` au lieu de `input` ✅
-- C) Désactive v-model
+- B) Synchronise sur `change` au lieu de `input`
+- C) Desactive v-model
 - D) Active le debounce
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 2 💡
-
-**B) Synchronise sur `change` au lieu de `input`**
-
-Avec `.lazy`, la mise à jour se fait quand l'utilisateur quitte le champ, pas à chaque frappe.
-
----
-layout: exercices
----
-
-# Question 3 🤔
+# Question 3 / 10
 
 ### Que fait le modificateur `.number` ?
 
-<v-clicks>
-
 - A) Formate le nombre
-- B) Convertit la valeur en nombre ✅
+- B) Convertit la valeur en nombre
 - C) Valide que c'est un nombre
-- D) Limite les décimales
-
-</v-clicks>
+- D) Limite les decimales
 
 ---
 layout: exercices
 ---
 
-# Réponse 3 💡
-
-**B) Convertit la valeur en nombre**
-
-Sans `.number`, même un `<input type="number">` retourne une string. `.number` parse automatiquement en Number.
-
----
-layout: exercices
----
-
-# Question 4 🤔
+# Question 4 / 10
 
 ### Comment lier plusieurs checkboxes à un tableau ?
 
-<v-clicks>
-
 - A) `v-model:array`
-- B) `v-model` avec une ref tableau ✅
+- B) `v-model` avec une ref tableau
 - C) `v-model.multiple`
 - D) Ce n'est pas possible
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 4 💡
+# Question 5 / 10
 
-**B) `v-model` avec une ref tableau**
-
-```js
-const selected = ref([])
-```
-Les valeurs cochées s'ajoutent automatiquement au tableau.
-
----
-layout: exercices
----
-
-# Question 5 🤔
-
-### Comment créer v-model sur un composant personnalisé en Vue 3.4+ ?
-
-<v-clicks>
+### Comment creer v-model sur un composant personnalise en Vue 3.4+ ?
 
 - A) `defineProps({ value })`
-- B) `defineModel()` ✅
+- B) `defineModel()`
 - C) `useVModel()`
 - D) `defineEmit('model')`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 5 💡
-
-**B) `defineModel()`**
-
-```vue
-<script setup>
-const model = defineModel<string>()
-</script>
-```
-C'est la nouvelle syntaxe simplifiée de Vue 3.4.
-
----
-layout: exercices
----
-
-# Question 6 🤔
+# Question 6 / 10
 
 ### Comment avoir plusieurs v-model sur un composant ?
 
-<v-clicks>
-
 - A) Ce n'est pas possible
-- B) `v-model:propName` ✅
+- B) `v-model:propName`
 - C) `v-models`
 - D) `v-model="[a, b]"`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 6 💡
-
-**B) `v-model:propName`**
-
-```vue
-<UserForm 
-  v-model:firstName="first"
-  v-model:lastName="last"
-/>
-```
-
----
-layout: exercices
----
-
-# Question 7 🤔
+# Question 7 / 10
 
 ### Avant Vue 3.4, quelle prop recevait la valeur de v-model ?
 
-<v-clicks>
-
 - A) `value`
 - B) `model`
-- C) `modelValue` ✅
+- C) `modelValue`
 - D) `vModel`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 7 💡
-
-**C) `modelValue`**
-
-Et l'événement correspondant était `update:modelValue`. C'est toujours le cas en interne.
-
----
-layout: exercices
----
-
-# Question 8 🤔
+# Question 8 / 10
 
 ### Que fait le modificateur `.trim` ?
 
-<v-clicks>
-
-- A) Limite le nombre de caractères
-- B) Supprime les espaces au début et à la fin ✅
+- A) Limite le nombre de caracteres
+- B) Supprime les espaces au debut et à la fin
 - C) Met en minuscules
 - D) Supprime tous les espaces
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 8 💡
+# Question 9 / 10
 
-**B) Supprime les espaces au début et à la fin**
-
-Pratique pour les champs comme username ou email où les espaces sont indésirables.
-
----
-layout: exercices
----
-
-# Question 9 🤔
-
-### Quelle bibliothèque est populaire pour la validation de formulaires Vue ?
-
-<v-clicks>
+### Quelle bibliotheque est populaire pour la validation de formulaires Vue ?
 
 - A) Formik
 - B) React Hook Form
-- C) VeeValidate ✅
+- C) VeeValidate
 - D) Yup
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 9 💡
+# Question 10 / 10
 
-**C) VeeValidate**
-
-VeeValidate est la bibliothèque de validation la plus populaire pour Vue.js. Yup est souvent utilisé avec, mais c'est un schéma de validation, pas une lib Vue.
-
----
-layout: exercices
----
-
-# Question 10 🤔
-
-### Comment empêcher le rechargement de page à la soumission d'un formulaire ?
-
-<v-clicks>
+### Comment empecher le rechargement de page à la soumission d'un formulaire ?
 
 - A) `@submit.stop`
-- B) `@submit.prevent` ✅
+- B) `@submit.prevent`
 - C) `@submit.cancel`
 - D) `@submit.noReload`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 10 💡
+# 📝 Corrections - QCM Module 6
 
-**B) `@submit.prevent`**
-
-C'est un raccourci pour `event.preventDefault()`, qui empêche le comportement par défaut du formulaire.
+| Q | Réponse | Explication |
+|---|---------|-------------|
+| 1 | **B** | v-model = liaison bidirectionnelle (two-way binding) |
+| 2 | **B** | .lazy synchronise sur change (quand on quitte le champ) |
+| 3 | **B** | .number parse automatiquement en Number |
+| 4 | **B** | Une ref tableau, les valeurs cochees s'ajoutent |
+| 5 | **B** | defineModel() nouvelle syntaxe Vue 3.4+ |
+| 6 | **B** | `v-model:firstName` `v-model:lastName` |
+| 7 | **C** | modelValue + emit('update:modelValue') |
+| 8 | **B** | .trim supprime espaces debut/fin |
+| 9 | **C** | VeeValidate la plus populaire pour Vue |
+| 10 | **B** | .prevent = event.preventDefault() |
 
 ---
 layout: intro
@@ -298,4 +166,3 @@ layout: intro
 Tu as terminé le QCM du Module 6 !
 
 Passons aux exercices pratiques ! 🚀
-

@@ -62,7 +62,7 @@ layout: exercices
 
 # Solution Exercice 1 - App.vue ✅
 
-```vue
+```js
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 </script>
@@ -88,7 +88,7 @@ layout: exercices
 
 # Solution Exercice 1 - Style ✅
 
-```vue
+```js
 <style scoped>
 nav {
   display: flex;
@@ -148,7 +148,7 @@ layout: exercices
 
 # Solution Exercice 2 - UserView ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -196,7 +196,7 @@ layout: exercices
 
 # Solution Exercice 3 ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -275,7 +275,7 @@ layout: exercices
 
 # Solution Exercice 4 - Layout ✅
 
-```vue
+```js
 <!-- DashboardLayout.vue -->
 <template>
   <div class="dashboard">
@@ -307,7 +307,7 @@ layout: exercices
 
 # Solution Exercice 4 - Style ✅
 
-```vue
+```js
 <style scoped>
 .dashboard {
   display: flex;
@@ -421,7 +421,7 @@ layout: exercices
 
 # Solution Exercice 5 - LoginView ✅
 
-```vue
+```js
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
 
@@ -466,7 +466,7 @@ layout: exercices
 
 # Solution Bonus ✅
 
-```vue
+```js
 <!-- App.vue -->
 <template>
   <RouterView v-slot="{ Component, route }">

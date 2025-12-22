@@ -6,286 +6,156 @@ layout: new-section
 
 Testons tes connaissances sur les fondamentaux de Vue.js !
 
+10 questions - Note tes réponses, les corrections sont à la fin.
+
 ---
 layout: exercices
 ---
 
-# Question 1 🤔
+# Question 1 / 10
 
 ### Qui est le créateur de Vue.js ?
 
-<v-clicks>
-
 - A) Dan Abramov
-- B) Evan You ✅
+- B) Evan You
 - C) Ryan Dahl
 - D) Brendan Eich
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 1 💡
-
-**B) Evan You** est le créateur de Vue.js.
-
-Il a créé Vue.js en 2014 après avoir travaillé chez Google sur AngularJS. Il voulait extraire les parties qu'il aimait d'Angular pour créer quelque chose de plus léger et accessible.
-
----
-layout: exercices
----
-
-# Question 2 🤔
+# Question 2 / 10
 
 ### Que signifie "progressif" dans "framework progressif" ?
 
-<v-clicks>
-
 - A) Le framework est en version bêta
-- B) On peut l'adopter petit à petit, sans tout réécrire ✅
+- B) On peut l'adopter petit à petit, sans tout réécrire
 - C) Il utilise des barres de progression
 - D) Il est réservé aux développeurs avancés
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 2 💡
-
-**B) On peut l'adopter petit à petit, sans tout réécrire**
-
-Vue.js peut être utilisé pour une petite fonctionnalité sur une page existante, ou pour construire une application complète. Tu choisis ton niveau d'adoption !
-
----
-layout: exercices
----
-
-# Question 3 🤔
+# Question 3 / 10
 
 ### Quel outil de build est recommandé pour Vue.js 3 en 2025 ?
 
-<v-clicks>
-
 - A) Webpack
 - B) Parcel
-- C) Vite ✅
+- C) Vite
 - D) Gulp
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 3 💡
-
-**C) Vite** est l'outil de build officiel recommandé.
-
-Vite (créé aussi par Evan You !) offre un démarrage instantané et un HMR ultra-rapide grâce à l'utilisation des ES modules natifs.
-
----
-layout: exercices
----
-
-# Question 4 🤔
+# Question 4 / 10
 
 ### Quelles sont les 3 sections principales d'un composant Vue ?
 
-<v-clicks>
-
 - A) head, body, footer
-- B) script, template, style ✅
+- B) script, template, style
 - C) html, css, javascript
 - D) import, export, render
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 4 💡
-
-**B) script, template, style**
-
-```vue
-<script setup>  // Logique
-</script>
-
-<template>      // HTML
-</template>
-
-<style scoped>  // CSS
-</style>
-```
-
----
-layout: exercices
----
-
-# Question 5 🤔
+# Question 5 / 10
 
 ### Que fait l'attribut `scoped` dans `<style scoped>` ?
 
-<v-clicks>
-
 - A) Rend les styles globaux
-- B) Isole les styles au composant actuel ✅
+- B) Isole les styles au composant actuel
 - C) Désactive les styles
 - D) Active le mode sombre
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 5 💡
-
-**B) Isole les styles au composant actuel**
-
-Avec `scoped`, les styles ne s'appliquent qu'au composant où ils sont définis. Fini les conflits CSS entre composants !
-
----
-layout: exercices
----
-
-# Question 6 🤔
+# Question 6 / 10
 
 ### Quelle commande crée un nouveau projet Vue.js 3 ?
 
-<v-clicks>
-
 - A) `vue create mon-projet`
-- B) `npm create vue@latest mon-projet` ✅
+- B) `npm create vue@latest mon-projet`
 - C) `npx vue-cli mon-projet`
 - D) `npm init vue mon-projet`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 6 💡
-
-**B) `npm create vue@latest mon-projet`**
-
-C'est la commande officielle qui utilise `create-vue`, l'outil de scaffolding recommandé pour Vue.js 3.
-
----
-layout: exercices
----
-
-# Question 7 🤔
+# Question 7 / 10
 
 ### Quelle nouveauté majeure a été introduite dans Vue.js 3 ?
 
-<v-clicks>
-
 - A) Les directives
 - B) Les templates
-- C) La Composition API ✅
+- C) La Composition API
 - D) Le data binding
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 7 💡
-
-**C) La Composition API**
-
-La Composition API permet une meilleure organisation du code, une réutilisation facilitée via les composables, et un support TypeScript natif.
-
----
-layout: exercices
----
-
-# Question 8 🤔
+# Question 8 / 10
 
 ### Dans quel dossier place-t-on généralement les composants réutilisables ?
 
-<v-clicks>
-
 - A) src/views/
-- B) src/components/ ✅
+- B) src/components/
 - C) src/pages/
 - D) src/modules/
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 8 💡
-
-**B) src/components/**
-
-- `components/` → Composants réutilisables
-- `views/` → Pages/écrans de l'application
-- C'est une convention, pas une obligation !
-
----
-layout: exercices
----
-
-# Question 9 🤔
+# Question 9 / 10
 
 ### Quelle extension navigateur est indispensable pour développer avec Vue.js ?
 
-<v-clicks>
-
 - A) React DevTools
 - B) Angular DevTools
-- C) Vue DevTools ✅
+- C) Vue DevTools
 - D) Redux DevTools
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 9 💡
-
-**C) Vue DevTools**
-
-Vue DevTools permet d'inspecter les composants, voir l'état réactif, debugger Pinia et le Router, et analyser les performances.
-
----
-layout: exercices
----
-
-# Question 10 🤔
+# Question 10 / 10
 
 ### Quelle est la taille approximative de Vue.js 3 (runtime gzippé) ?
 
-<v-clicks>
-
 - A) ~10KB
-- B) ~33KB ✅
+- B) ~33KB
 - C) ~100KB
 - D) ~200KB
-
-</v-clicks>
 
 ---
 layout: exercices
 ---
 
-# Réponse 10 💡
+# 📝 Corrections - QCM Module 1
 
-**B) ~33KB**
-
-Vue.js 3 est très léger comparé à d'autres frameworks, ce qui contribue à de meilleures performances de chargement.
+| Q | Réponse | Explication |
+|---|---------|-------------|
+| 1 | **B** | Evan You a créé Vue.js en 2014 après avoir travaillé chez Google |
+| 2 | **B** | Progressif = tu peux l'adopter petit à petit |
+| 3 | **C** | Vite est l'outil officiel recommandé (créé par Evan You) |
+| 4 | **B** | script, template, style sont les 3 sections |
+| 5 | **B** | scoped isole les styles au composant |
+| 6 | **B** | `npm create vue@latest` est la commande officielle |
+| 7 | **C** | La Composition API est la nouveauté majeure de Vue 3 |
+| 8 | **B** | src/components/ pour les composants réutilisables |
+| 9 | **C** | Vue DevTools est indispensable |
+| 10 | **B** | ~33KB, très léger ! |
 
 ---
 layout: intro
@@ -296,4 +166,3 @@ layout: intro
 Tu as terminé le QCM du Module 1 !
 
 Passons maintenant aux exercices pratiques ! 🚀
-

@@ -55,7 +55,7 @@ layout: exercices
 
 # Solution Exercice 1 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { useToggle } from '@/composables/useToggle'
 
@@ -121,7 +121,7 @@ layout: exercices
 
 # Solution Exercice 2 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 import { useDebounce } from '@/composables/useDebounce'
@@ -219,7 +219,7 @@ layout: exercices
 
 # Solution Exercice 3 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { useAsync } from '@/composables/useAsync'
 
@@ -298,7 +298,7 @@ layout: exercices
 
 # Solution Exercice 4 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { computed } from 'vue'
 import { useWindowSize } from '@/composables/useWindowSize'
@@ -401,7 +401,7 @@ layout: exercices
 
 # Solution Exercice 5 - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 import { useInterval } from '@/composables/useInterval'
@@ -477,7 +477,7 @@ layout: exercices
 
 # Solution Bonus - Utilisation ✅
 
-```vue
+```js
 <script setup>
 import { useClipboard } from '@/composables/useClipboard'
 

@@ -6,295 +6,156 @@ layout: new-section
 
 Testons tes connaissances sur la Composition API !
 
+10 questions - Note tes réponses, les corrections sont à la fin.
+
 ---
 layout: exercices
 ---
 
-# Question 1 🤔
+# Question 1 / 10
 
 ### Quel est l'avantage principal de la Composition API sur l'Options API ?
 
-<v-clicks>
-
 - A) Elle est plus rapide
-- B) Elle organise le code par fonctionnalité ✅
-- C) Elle utilise moins de mémoire
+- B) Elle organise le code par fonctionnalite
+- C) Elle utilise moins de memoire
 - D) Elle est obligatoire en Vue 3
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 1 💡
-
-**B) Elle organise le code par fonctionnalité**
-
-Avec la Composition API, tout le code lié à une même fonctionnalité est regroupé, contrairement à l'Options API où il est dispersé entre data, methods, computed, etc.
-
----
-layout: exercices
----
-
-# Question 2 🤔
+# Question 2 / 10
 
 ### Qu'est-ce qu'un composable en Vue.js ?
 
-<v-clicks>
-
 - A) Un type de composant
-- B) Une fonction réutilisable utilisant la Composition API ✅
+- B) Une fonction reutilisable utilisant la Composition API
 - C) Un plugin Vue
 - D) Un mixin
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 2 💡
-
-**B) Une fonction réutilisable utilisant la Composition API**
-
-Un composable (préfixé par `use`) encapsule de la logique réactive réutilisable et retourne de l'état et/ou des méthodes.
-
----
-layout: exercices
----
-
-# Question 3 🤔
+# Question 3 / 10
 
 ### Quel hook remplace `created` en Composition API ?
 
-<v-clicks>
-
 - A) `onCreated()`
 - B) `useCreated()`
-- C) Aucun, le code dans `<script setup>` s'exécute au même moment ✅
+- C) Aucun, le code dans `<script setup>` s'execute au meme moment
 - D) `onMounted()`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 3 💡
+# Question 4 / 10
 
-**C) Aucun, le code dans `<script setup>` s'exécute au même moment**
-
-Le code au niveau supérieur de `<script setup>` s'exécute lors de la création du composant, rendant `beforeCreate` et `created` inutiles.
-
----
-layout: exercices
----
-
-# Question 4 🤔
-
-### Quel est le préfixe conventionnel pour les composables ?
-
-<v-clicks>
+### Quel est le prefixe conventionnel pour les composables ?
 
 - A) `get`
-- B) `use` ✅
+- B) `use`
 - C) `create`
 - D) `with`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 4 💡
+# Question 5 / 10
 
-**B) `use`**
-
-Par convention (inspirée de React hooks), les composables sont préfixés par `use` : `useCounter`, `useFetch`, `useLocalStorage`, etc.
-
----
-layout: exercices
----
-
-# Question 5 🤔
-
-### Quelle bibliothèque offre +200 composables prêts à l'emploi ?
-
-<v-clicks>
+### Quelle bibliotheque offre +200 composables prets à l'emploi ?
 
 - A) Vue Composition Utils
-- B) VueUse ✅
+- B) VueUse
 - C) Vue Helpers
 - D) Composables.js
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 5 💡
+# Question 6 / 10
 
-**B) VueUse**
-
-VueUse (vueuse.org) est la bibliothèque de référence pour les composables Vue.js, avec des utilitaires pour le DOM, les sensors, le state, etc.
-
----
-layout: exercices
----
-
-# Question 6 🤔
-
-### Comment accéder à un élément DOM en Composition API ?
-
-<v-clicks>
+### Comment acceder à un element DOM en Composition API ?
 
 - A) `this.$refs.element`
 - B) `document.querySelector()`
-- C) `ref()` avec le même nom que l'attribut `ref` ✅
+- C) `ref()` avec le meme nom que l'attribut `ref`
 - D) `useRef()`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 6 💡
+# Question 7 / 10
 
-**C) `ref()` avec le même nom que l'attribut `ref`**
-
-```vue
-<script setup>
-const inputRef = ref(null)
-</script>
-<template>
-  <input ref="inputRef" />
-</template>
-```
-
----
-layout: exercices
----
-
-# Question 7 🤔
-
-### Quel est l'équivalent de `mounted` en Composition API ?
-
-<v-clicks>
+### Quel est l'equivalent de `mounted` en Composition API ?
 
 - A) `useMounted()`
-- B) `onMounted()` ✅
+- B) `onMounted()`
 - C) `whenMounted()`
 - D) `afterMount()`
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 7 💡
-
-**B) `onMounted()`**
-
-```js
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  console.log('Composant monté !')
-})
-```
-
----
-layout: exercices
----
-
-# Question 8 🤔
+# Question 8 / 10
 
 ### Que doit retourner un composable ?
 
-<v-clicks>
-
 - A) Un tableau
 - B) Une Promise
-- C) Un objet avec des refs/méthodes ✅
+- C) Un objet avec des refs/methodes
 - D) Une string
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 8 💡
-
-**C) Un objet avec des refs/méthodes**
-
-```js
-export function useCounter() {
-  const count = ref(0)
-  const increment = () => count.value++
-  
-  return { count, increment } // Objet !
-}
-```
-
----
-layout: exercices
----
-
-# Question 9 🤔
+# Question 9 / 10
 
 ### Pourquoi nettoyer les effets dans `onUnmounted` ?
 
-<v-clicks>
-
-- A) Pour libérer la mémoire et éviter les fuites ✅
-- B) Pour accélérer le rendu
+- A) Pour liberer la memoire et eviter les fuites
+- B) Pour accelerer le rendu
 - C) C'est obligatoire en Vue 3
 - D) Pour les tests
 
-</v-clicks>
-
 ---
 layout: exercices
 ---
 
-# Réponse 9 💡
+# Question 10 / 10
 
-**A) Pour libérer la mémoire et éviter les fuites**
-
-Les event listeners, intervals, ou souscriptions doivent être nettoyés quand le composant est détruit pour éviter les memory leaks.
-
----
-layout: exercices
----
-
-# Question 10 🤔
-
-### Peut-on utiliser Options API et Composition API dans le même projet ?
-
-<v-clicks>
+### Peut-on utiliser Options API et Composition API dans le meme projet ?
 
 - A) Non, il faut choisir
-- B) Oui, dans des composants séparés ✅
-- C) Oui, dans le même composant
-- D) Uniquement en mode développement
-
-</v-clicks>
+- B) Oui, dans des composants separes
+- C) Oui, dans le meme composant
+- D) Uniquement en mode developpement
 
 ---
 layout: exercices
 ---
 
-# Réponse 10 💡
+# 📝 Corrections - QCM Module 4
 
-**B) Oui, dans des composants séparés**
-
-Vue 3 supporte les deux API. Tu peux avoir des composants en Options API et d'autres en Composition API dans le même projet.
+| Q | Réponse | Explication |
+|---|---------|-------------|
+| 1 | **B** | Organisation par fonctionnalite vs par type |
+| 2 | **B** | Fonction reutilisable avec Composition API |
+| 3 | **C** | Le code setup() s'execute au moment de created |
+| 4 | **B** | Convention: prefixe `use` (useCounter, useFetch) |
+| 5 | **B** | VueUse (vueuse.org) +200 composables |
+| 6 | **C** | `ref()` avec nom identique à l'attribut ref |
+| 7 | **B** | `onMounted()` depuis vue |
+| 8 | **C** | Retourne un objet (pas un tableau) |
+| 9 | **A** | Nettoyer pour eviter les memory leaks |
+| 10 | **B** | Oui, mixte possible dans differents composants |
 
 ---
 layout: intro
@@ -302,7 +163,6 @@ layout: intro
 
 # Résultat du QCM 🏆
 
-Tu as terminé le QCM du Module 5 !
+Tu as terminé le QCM du Module 4 !
 
 Passons aux exercices pratiques ! 🚀
-

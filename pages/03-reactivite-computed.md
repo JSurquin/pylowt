@@ -13,14 +13,12 @@ Le cœur battant de Vue.js - la magie qui fait tout fonctionner !
 
 La **réactivité** est le mécanisme qui permet à Vue.js de détecter les changements de données et de mettre à jour automatiquement l'interface.
 
-<v-clicks>
 
 - 🎯 Tu modifies une donnée
 - ⚡ Vue détecte le changement
 - 🖥️ L'interface se met à jour toute seule
 - 🧘 Tu n'as rien à faire !
 
-</v-clicks>
 
 ---
 
@@ -28,13 +26,11 @@ La **réactivité** est le mécanisme qui permet à Vue.js de détecter les chan
 
 Imagine le tableau de bord de ta voiture :
 
-<v-clicks>
 
 - **Les capteurs** = Le système de réactivité Vue
 - **L'aiguille de vitesse** = L'interface (template)
 - **La vitesse réelle** = Les données (state)
 
-</v-clicks>
 
 ---
 
@@ -81,7 +77,7 @@ flowchart LR
 
 `ref()` crée une valeur réactive :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -98,7 +94,7 @@ count.value++            // Maintenant 1
 
 # ref() dans le template 📦
 
-```vue
+```js
 <template>
   <!-- Dans le template, pas besoin de .value ! -->
   <p>Compteur : {{ count }}</p>
@@ -112,13 +108,11 @@ count.value++            // Maintenant 1
 
 **Pourquoi `.value` en JavaScript mais pas dans le template ?**
 
-<v-clicks>
 
 - En JS, `ref()` retourne un objet avec une propriété `value`
 - Vue "déballe" automatiquement les refs dans le template
 - C'est une convention Vue.js pour la réactivité
 
-</v-clicks>
 
 ---
 
@@ -126,7 +120,7 @@ count.value++            // Maintenant 1
 
 `ref()` accepte tous les types de valeurs :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -147,7 +141,7 @@ const items = ref(['a', 'b', 'c'])
 
 `reactive()` rend un objet entier réactif :
 
-```vue
+```js
 <script setup>
 import { reactive } from 'vue'
 
@@ -189,7 +183,7 @@ Utilise `ref()` par défaut, c'est plus flexible et prévisible !
 
 # Le piège de reactive() ⚠️
 
-```vue
+```js
 <script setup>
 import { reactive } from 'vue'
 
@@ -207,7 +201,7 @@ state.count = 1
 
 # Destructuration avec reactive() ⚠️
 
-```vue
+```js
 <script setup>
 import { reactive } from 'vue'
 
@@ -228,7 +222,7 @@ const { x, y } = toRefs(state)
 
 Les **computed** sont des valeurs dérivées qui se recalculent automatiquement :
 
-```vue
+```js
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -246,7 +240,7 @@ const fullName = computed(() => {
 
 # Computed Properties - Template 🧮
 
-```vue
+```js
 <template>
   <p>Prénom : {{ firstName }}</p>
   <p>Nom : {{ lastName }}</p>
@@ -260,13 +254,11 @@ const fullName = computed(() => {
 
 Imagine une cellule Excel avec une formule :
 
-<v-clicks>
 
 - **Cellule A1** = Prénom (Jean)
 - **Cellule A2** = Nom (Dupont)
 - **Cellule A3** = `=A1 & " " & A2` (computed)
 
-</v-clicks>
 
 ---
 
@@ -282,7 +274,7 @@ C'est exactement ce que font les computed properties.
 
 **Pourquoi pas une simple fonction ?**
 
-```vue
+```js
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -302,19 +294,17 @@ const doubledComputed = computed(() => count.value * 2)
 
 # Computed : Le cache magique ✨
 
-<v-clicks>
 
 - 🚀 **Performance** : Résultat mis en cache
 - 🔄 **Intelligent** : Recalcul uniquement si les dépendances changent
 - 📊 **Optimal** : Parfait pour les calculs coûteux
 
-</v-clicks>
 
 ---
 
 # Exemple pratique : Filtrage 🔍
 
-```vue
+```js
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -338,7 +328,7 @@ const filteredUsers = computed(() => {
 
 # Exemple pratique : Filtrage - Template 🔍
 
-```vue
+```js
 <template>
   <input v-model="searchQuery" placeholder="Rechercher...">
   
@@ -358,7 +348,7 @@ const filteredUsers = computed(() => {
 
 Par défaut, computed est en lecture seule. Mais tu peux le rendre modifiable :
 
-```vue
+```js
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -382,7 +372,7 @@ const fullName = computed({
 
 # Computed avec Getter et Setter - Usage ✏️
 
-```vue
+```js
 <template>
   <!-- Modifiable ! -->
   <input v-model="fullName" />
@@ -395,7 +385,7 @@ const fullName = computed({
 
 `watch` observe une valeur et exécute du code quand elle change :
 
-```vue
+```js
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -417,20 +407,18 @@ watch(question, (newValue, oldValue) => {
 
 Quand utiliser `watch` ?
 
-<v-clicks>
 
 - 🌐 Appeler une API quand une valeur change
 - 💾 Sauvegarder dans localStorage
 - 📊 Logger des analytics
 - 🔄 Synchroniser avec un service externe
 
-</v-clicks>
 
 ---
 
 # Watch avec options 🔧
 
-```vue
+```js
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -453,7 +441,7 @@ watch(
 
 # Watch multiple sources 📡
 
-```vue
+```js
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -477,7 +465,7 @@ watch(
 
 `watchEffect` détecte automatiquement ses dépendances :
 
-```vue
+```js
 <script setup>
 import { ref, watchEffect } from 'vue'
 
@@ -507,7 +495,7 @@ watchEffect(() => {
 
 # Exemple : Sauvegarde automatique 💾
 
-```vue
+```js
 <script setup>
 import { ref, watchEffect } from 'vue'
 
@@ -526,7 +514,7 @@ watchEffect(() => {
 
 # Exemple : Sauvegarde automatique - Template 💾
 
-```vue
+```js
 <template>
   <textarea 
     v-model="notes" 
@@ -540,7 +528,7 @@ watchEffect(() => {
 
 # Arrêter un watcher 🛑
 
-```vue
+```js
 <script setup>
 import { ref, watchEffect } from 'vue'
 
@@ -564,7 +552,7 @@ function stopWatching() {
 
 Pour les gros objets où tu ne veux pas de réactivité profonde :
 
-```vue
+```js
 <script setup>
 import { shallowRef, shallowReactive } from 'vue'
 
@@ -582,7 +570,7 @@ bigData.value = { ...bigData.value }
 
 # triggerRef : Forcer une mise à jour 🔫
 
-```vue
+```js
 <script setup>
 import { shallowRef, triggerRef } from 'vue'
 
@@ -604,7 +592,7 @@ function increment() {
 
 Créer des refs à partir de propriétés d'un objet réactif :
 
-```vue
+```js
 <script setup>
 import { reactive, toRef, toRefs } from 'vue'
 
@@ -627,20 +615,17 @@ const { foo, bar } = toRefs(state)
 
 Vue DevTools montre :
 
-<v-clicks>
 
 - 📊 L'état de toutes les refs et reactive
 - 🔄 Les dépendances des computed
 - 👀 Les watchers actifs
 - ⏱️ Timeline des changements
 
-</v-clicks>
 
 ---
 
 # Bonnes pratiques réactivité ✅
 
-<v-clicks>
 
 - 🎯 Préfère `ref()` pour la plupart des cas
 - 🧮 Utilise `computed` plutôt que des méthodes pour les valeurs dérivées
@@ -648,13 +633,11 @@ Vue DevTools montre :
 - 🤖 `watchEffect` pour les cas simples
 - ⚠️ Évite de réassigner des objets `reactive`
 
-</v-clicks>
 
 ---
 
 # Résumé du Module 3 📝
 
-<v-clicks>
 
 - ✅ `ref()` pour créer des valeurs réactives (utilise `.value` en JS)
 - ✅ `reactive()` pour des objets réactifs (pas de `.value`)
@@ -662,7 +645,6 @@ Vue DevTools montre :
 - ✅ `watch` pour réagir aux changements avec contrôle précis
 - ✅ `watchEffect` pour des effets automatiques
 
-</v-clicks>
 
 ---
 layout: intro

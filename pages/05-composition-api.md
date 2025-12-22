@@ -13,12 +13,10 @@ La nouvelle façon d'organiser ton code Vue.js !
 
 Deux façons d'écrire des composants Vue :
 
-<v-clicks>
 
 - **Options API** : L'approche classique (Vue 2)
 - **Composition API** : La nouvelle approche (Vue 3)
 
-</v-clicks>
 
 ---
 
@@ -50,7 +48,7 @@ Mais la Composition API offre plus de flexibilité.
 
 # Options API : Rappel 📋
 
-```vue
+```js
 <script>
 export default {
   data() {
@@ -82,14 +80,12 @@ export default {
 
 Quand le composant grandit, le code lié à une même fonctionnalité est éparpillé :
 
-<v-clicks>
 
 - Les données dans `data`
 - Les calculs dans `computed`
 - Les actions dans `methods`
 - Les effets dans `mounted`, `watch`...
 
-</v-clicks>
 
 ---
 
@@ -103,7 +99,7 @@ C'est comme chercher les ingrédients d'une recette dans toute la cuisine.
 
 # Composition API : La solution 🎯
 
-```vue
+```js
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
@@ -129,20 +125,18 @@ onMounted(() => {
 
 `<script setup>` est une "compilation sugar" qui simplifie la Composition API :
 
-<v-clicks>
 
 - ✅ Pas besoin de `return` - tout est exposé au template
 - ✅ Imports de composants auto-disponibles
 - ✅ Props et emits avec `defineProps` et `defineEmits`
 - ✅ Moins de boilerplate
 
-</v-clicks>
 
 ---
 
 # Sans `<script setup>` (verbose) 📜
 
-```vue
+```js
 <script>
 import { ref, computed } from 'vue'
 import MyComponent from './MyComponent.vue'
@@ -168,7 +162,7 @@ export default {
 
 # Avec `<script setup>` (concis) ✨
 
-```vue
+```js
 <script setup>
 import { ref, computed } from 'vue'
 import MyComponent from './MyComponent.vue'
@@ -189,7 +183,7 @@ function increment() {
 
 Les hooks du cycle de vie en Composition API :
 
-```vue
+```js
 <script setup>
 import { 
   onMounted, 
@@ -255,7 +249,7 @@ flowchart TD
 
 Le code dans `<script setup>` s'exécute déjà au même moment que `created` !
 
-```vue
+```js
 <script setup>
 // Ce code s'exécute au moment de la création
 console.log('Équivalent à created !')
@@ -305,7 +299,7 @@ export function useCounter(initial = 0) {
 
 # Les Composables : Utilisation 🧩
 
-```vue
+```js
 <script setup>
 import { useCounter } from '@/composables/useCounter'
 
@@ -348,7 +342,7 @@ export function useLocalStorage<T>(key: string, defaultValue: T) {
 
 # Composable : useLocalStorage - Utilisation 💾
 
-```vue
+```js
 <script setup>
 import { useLocalStorage } from '@/composables/useLocalStorage'
 
@@ -399,7 +393,7 @@ export function useFetch<T>(url: string) {
 
 # Composable : useFetch - Utilisation 🌐
 
-```vue
+```js
 <script setup>
 import { useFetch } from '@/composables/useFetch'
 
@@ -452,7 +446,7 @@ export function useMouse() {
 
 # Composable : useMouse - Utilisation 🖱️
 
-```vue
+```js
 <script setup>
 import { useMouse } from '@/composables/useMouse'
 
@@ -470,7 +464,7 @@ const { x, y } = useMouse()
 
 Accéder aux éléments DOM :
 
-```vue
+```js
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -493,7 +487,7 @@ onMounted(() => {
 
 Accéder aux composants enfants :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 import ChildComponent from './ChildComponent.vue'
@@ -515,7 +509,6 @@ function callChildMethod() {
 
 # Bonnes pratiques Composables ✅
 
-<v-clicks>
 
 - 📁 Placer dans `/composables/` avec préfixe `use`
 - 🎯 Une responsabilité par composable
@@ -523,7 +516,6 @@ function callChildMethod() {
 - 🧹 Nettoyer les effets dans `onUnmounted`
 - 📝 Typer avec TypeScript
 
-</v-clicks>
 
 ---
 
@@ -559,7 +551,7 @@ export * from './useDebounce'
 
 # Export centralisé - Utilisation 📤
 
-```vue
+```js
 <script setup>
 // Import propre depuis un seul endroit
 import { useAuth, useFetch } from '@/composables'
@@ -580,7 +572,7 @@ npm install @vueuse/core
 
 # VueUse : Exemples 📚
 
-```vue
+```js
 <script setup>
 import { 
   useMouse, 
@@ -601,7 +593,6 @@ const isOnline = useOnline()
 
 # Résumé du Module 5 📝
 
-<v-clicks>
 
 - ✅ `<script setup>` simplifie la Composition API
 - ✅ Le code est organisé par **fonctionnalité**, pas par type
@@ -609,7 +600,6 @@ const isOnline = useOnline()
 - ✅ Les **lifecycle hooks** deviennent des fonctions (`onMounted`, etc.)
 - ✅ **VueUse** offre des centaines de composables prêts à l'emploi
 
-</v-clicks>
 
 ---
 layout: intro

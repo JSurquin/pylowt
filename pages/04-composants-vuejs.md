@@ -13,14 +13,12 @@ Les briques de construction de ton application !
 
 Un **composant** est une unité réutilisable d'interface utilisateur.
 
-<v-clicks>
 
 - 📦 **Encapsulé** : Template + Logique + Style
 - 🔄 **Réutilisable** : Utilise-le autant de fois que tu veux
 - 🧩 **Composable** : Imbrique des composants dans d'autres
 - 🔧 **Maintenable** : Modifie un endroit, impact partout
 
-</v-clicks>
 
 ---
 
@@ -28,14 +26,12 @@ Un **composant** est une unité réutilisable d'interface utilisateur.
 
 Pense à une pizza comme une application :
 
-<v-clicks>
 
 - **La pâte** = Le composant App (la base)
 - **La sauce** = Les composants layout
 - **Le fromage** = Les composants UI globaux
 - **Les toppings** = Les composants spécifiques
 
-</v-clicks>
 
 ---
 
@@ -64,7 +60,7 @@ src/
 
 # Structure d'un composant 📄
 
-```vue
+```js
 <script setup lang="ts">
 // Logique du composant
 </script>
@@ -82,7 +78,7 @@ src/
 
 # Importer et utiliser un composant 📥
 
-```vue
+```js
 <script setup lang="ts">
 // Import du composant
 import MyButton from './components/MyButton.vue'
@@ -110,7 +106,7 @@ Pas besoin de les déclarer dans une option `components` !
 
 Les **props** permettent de passer des données du parent à l'enfant.
 
-```vue
+```js
 <!-- Parent.vue -->
 <script setup>
 import UserCard from './UserCard.vue'
@@ -129,7 +125,7 @@ import UserCard from './UserCard.vue'
 
 # Définir les props 📨
 
-```vue
+```js
 <!-- UserCard.vue -->
 <script setup lang="ts">
 // Définition des props avec defineProps
@@ -153,7 +149,7 @@ const props = defineProps<{
 
 # Props avec valeurs par défaut 🎯
 
-```vue
+```js
 <script setup lang="ts">
 interface Props {
   name: string
@@ -172,7 +168,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 # Validation des props ✅
 
-```vue
+```js
 <script setup lang="ts">
 // Avec runtime validation
 const props = defineProps({
@@ -198,7 +194,7 @@ const props = defineProps({
 
 # Props : Convention de nommage 📝
 
-```vue
+```js
 <!-- Dans le template parent : kebab-case -->
 <UserCard 
   first-name="Jean"
@@ -210,7 +206,7 @@ const props = defineProps({
 
 # Props : Convention de nommage - Enfant 📝
 
-```vue
+```js
 <!-- Dans le script enfant : camelCase -->
 <script setup>
 const props = defineProps<{
@@ -232,7 +228,7 @@ Vue convertit automatiquement `kebab-case` en `camelCase` !
 
 Les **emits** permettent à l'enfant de communiquer avec le parent.
 
-```vue
+```js
 <!-- Enfant : CounterButton.vue -->
 <script setup lang="ts">
 const emit = defineEmits<{
@@ -254,7 +250,7 @@ function handleClick() {
 
 # Écouter les émissions 📣
 
-```vue
+```js
 <!-- Parent -->
 <script setup>
 import CounterButton from './CounterButton.vue'
@@ -302,7 +298,7 @@ flowchart TB
 
 Les **slots** permettent d'injecter du contenu dans un composant.
 
-```vue
+```js
 <!-- Card.vue -->
 <template>
   <div class="card">
@@ -315,7 +311,7 @@ Les **slots** permettent d'injecter du contenu dans un composant.
 
 # Slots : Utilisation 📦
 
-```vue
+```js
 <!-- Parent -->
 <template>
   <Card>
@@ -329,7 +325,7 @@ Les **slots** permettent d'injecter du contenu dans un composant.
 
 # Slots : Contenu par défaut 📦
 
-```vue
+```js
 <!-- Card.vue -->
 <template>
   <div class="card">
@@ -347,7 +343,7 @@ Les **slots** permettent d'injecter du contenu dans un composant.
 
 Plusieurs slots dans un même composant :
 
-```vue
+```js
 <!-- Layout.vue -->
 <template>
   <div class="layout">
@@ -370,7 +366,7 @@ Plusieurs slots dans un même composant :
 
 # Slots nommés : Utilisation 🏷️
 
-```vue
+```js
 <!-- Parent -->
 <template>
   <Layout>
@@ -399,7 +395,7 @@ Plusieurs slots dans un même composant :
 
 Le slot peut exposer des données au parent :
 
-```vue
+```js
 <!-- TodoList.vue -->
 <template>
   <ul>
@@ -416,7 +412,7 @@ Le slot peut exposer des données au parent :
 
 # Scoped Slots : Utilisation 🔗
 
-```vue
+```js
 <!-- Parent -->
 <template>
   <TodoList :items="todos">
@@ -435,7 +431,7 @@ Le slot peut exposer des données au parent :
 
 Passer des données à travers plusieurs niveaux de composants :
 
-```vue
+```js
 <!-- GrandParent.vue -->
 <script setup>
 import { provide, ref } from 'vue'
@@ -449,7 +445,7 @@ provide('theme', theme)
 
 # Provide / Inject : Inject 💉
 
-```vue
+```js
 <!-- DeepChild.vue (n'importe où dans l'arbre) -->
 <script setup>
 import { inject } from 'vue'
@@ -468,19 +464,17 @@ const theme = inject('theme')
 
 # Provide / Inject : Avantages 💉
 
-<v-clicks>
 
 - ✅ Évite le "prop drilling" (passer des props niveau par niveau)
 - ✅ Parfait pour les thèmes, l'internationalisation
 - ✅ Les valeurs peuvent être réactives !
 
-</v-clicks>
 
 ---
 
 # Provide avec valeur par défaut 💉
 
-```vue
+```js
 <script setup>
 import { inject } from 'vue'
 
@@ -495,7 +489,7 @@ const theme = inject('theme', 'light')
 
 Changer de composant à la volée :
 
-```vue
+```js
 <script setup>
 import { ref, shallowRef } from 'vue'
 import TabHome from './TabHome.vue'
@@ -511,7 +505,7 @@ const currentTab = shallowRef(TabHome)
 
 # Composants dynamiques : Template 🔄
 
-```vue
+```js
 <template>
   <div class="tabs">
     <button @click="currentTab = tabs.TabHome">Home</button>
@@ -529,7 +523,7 @@ const currentTab = shallowRef(TabHome)
 
 Préserver l'état des composants dynamiques :
 
-```vue
+```js
 <template>
   <KeepAlive>
     <component :is="currentTab" />
@@ -551,7 +545,7 @@ Avec `KeepAlive`, l'état (formulaires, scroll...) est préservé !
 
 Rendre un composant dans une autre partie du DOM :
 
-```vue
+```js
 <template>
   <button @click="showModal = true">Ouvrir</button>
   
@@ -568,14 +562,12 @@ Rendre un composant dans une autre partie du DOM :
 
 # Teleport : Cas d'usage 🚀
 
-<v-clicks>
 
 - 🎭 Modales (évite les problèmes de z-index)
 - 📋 Tooltips et dropdowns
 - 🔔 Notifications
 - 🖼️ Overlays plein écran
 
-</v-clicks>
 
 ---
 
@@ -583,7 +575,7 @@ Rendre un composant dans une autre partie du DOM :
 
 Vue 3 permet plusieurs éléments racines :
 
-```vue
+```js
 <!-- ✅ Valide en Vue 3 -->
 <template>
   <header>...</header>
@@ -606,7 +598,7 @@ Vue 3 gère automatiquement les fragments !
 
 Les attributs non-props sont passés à l'élément racine :
 
-```vue
+```js
 <!-- Parent -->
 <MyButton class="big" id="main-btn" />
 ```
@@ -615,7 +607,7 @@ Les attributs non-props sont passés à l'élément racine :
 
 # Attributs passés automatiquement - Enfant 📎
 
-```vue
+```js
 <!-- MyButton.vue -->
 <template>
   <!-- Reçoit automatiquement class="big" id="main-btn" -->
@@ -627,7 +619,7 @@ Les attributs non-props sont passés à l'élément racine :
 
 # Désactiver l'héritage d'attributs 📎
 
-```vue
+```js
 <script setup>
 defineOptions({
   inheritAttrs: false
@@ -648,7 +640,7 @@ defineOptions({
 
 Rendre des méthodes accessibles au parent via ref :
 
-```vue
+```js
 <!-- Child.vue -->
 <script setup>
 import { ref } from 'vue'
@@ -671,7 +663,7 @@ defineExpose({
 
 # Exposer des méthodes - Parent 🔓
 
-```vue
+```js
 <!-- Parent.vue -->
 <script setup>
 import { ref } from 'vue'
@@ -714,20 +706,17 @@ src/components/
 
 # Conventions de nommage 📝
 
-<v-clicks>
 
 - 📁 **Fichiers** : PascalCase (`UserCard.vue`)
 - 🏷️ **Usage template** : PascalCase (`<UserCard />`) ou kebab-case (`<user-card />`)
 - 📦 **Composants de base** : Préfixe (`BaseButton`, `AppHeader`)
 - 🔧 **Composants single-instance** : Préfixe `The` (`TheHeader`, `TheSidebar`)
 
-</v-clicks>
 
 ---
 
 # Résumé du Module 4 📝
 
-<v-clicks>
 
 - ✅ Les **composants** sont des unités réutilisables
 - ✅ Les **props** passent des données parent → enfant
@@ -736,7 +725,6 @@ src/components/
 - ✅ **Provide/Inject** évite le prop drilling
 - ✅ **Teleport** rend ailleurs dans le DOM
 
-</v-clicks>
 
 ---
 layout: intro

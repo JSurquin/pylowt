@@ -13,14 +13,12 @@ Maîtrise la syntaxe qui fait la magie de Vue.js !
 
 Le **template** est la partie visuelle de ton composant Vue.
 
-<v-clicks>
 
 - 📝 Du HTML enrichi avec la syntaxe Vue
 - 🔗 Connecté automatiquement à tes données
 - ⚡ Se met à jour quand les données changent
 - 🎯 Compile en JavaScript optimisé
 
-</v-clicks>
 
 ---
 
@@ -28,14 +26,12 @@ Le **template** est la partie visuelle de ton composant Vue.
 
 Imagine un menu de restaurant :
 
-<v-clicks>
 
 - **Le template** = Le menu imprimé
 - **Les données** = Les plats disponibles aujourd'hui
 - **Les directives** = Les instructions spéciales (végétarien, épicé...)
 - **L'interpolation** = Les prix qui changent selon le marché
 
-</v-clicks>
 
 ---
 
@@ -49,7 +45,7 @@ Le menu (template) reste le même, mais les informations (données) peuvent chan
 
 La syntaxe **moustache** permet d'afficher des données :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -62,7 +58,7 @@ const nombre = ref(42)
 
 # Interpolation - Template 🥸
 
-```vue
+```js
 <template>
   <p>{{ message }}</p>
   <p>Le nombre est : {{ nombre }}</p>
@@ -87,7 +83,7 @@ const nombre = ref(42)
 
 Tu peux utiliser des expressions JavaScript dans les moustaches :
 
-```vue
+```js
 <template>
   <!-- ✅ Expressions valides -->
   <p>{{ ok ? 'Oui' : 'Non' }}</p>
@@ -100,7 +96,7 @@ Tu peux utiliser des expressions JavaScript dans les moustaches :
 
 # Expressions JavaScript - Limites 📐
 
-```vue
+```js
 <template>
   <!-- ❌ Ce qui ne marche PAS -->
   <!-- Les déclarations -->
@@ -117,7 +113,6 @@ Tu peux utiliser des expressions JavaScript dans les moustaches :
 
 Les **directives** sont des attributs spéciaux préfixés par `v-`.
 
-<v-clicks>
 
 - `v-bind` → Lier des attributs
 - `v-on` → Écouter des événements
@@ -126,7 +121,6 @@ Les **directives** sont des attributs spéciaux préfixés par `v-`.
 - `v-model` → Two-way binding
 - `v-show` → Afficher/cacher
 
-</v-clicks>
 
 ---
 
@@ -134,7 +128,7 @@ Les **directives** sont des attributs spéciaux préfixés par `v-`.
 
 `v-bind` lie une valeur JavaScript à un attribut HTML :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -147,7 +141,7 @@ const isDisabled = ref(true)
 
 # v-bind - Template 🔗
 
-```vue
+```js
 <template>
   <!-- Syntaxe complète -->
   <img v-bind:src="imageUrl" />
@@ -166,7 +160,7 @@ const isDisabled = ref(true)
 
 # v-bind avec des classes dynamiques 🎨
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -179,7 +173,7 @@ const hasError = ref(false)
 
 # v-bind classes - Template 🎨
 
-```vue
+```js
 <template>
   <!-- Objet de classes -->
   <div :class="{ active: isActive, error: hasError }">
@@ -197,7 +191,7 @@ const hasError = ref(false)
 
 # v-bind avec des styles dynamiques 💅
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -218,7 +212,7 @@ const taille = ref(20)
 
 `v-on` permet d'écouter les événements DOM :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -234,7 +228,7 @@ function incrementer() {
 
 # v-on - Template 👂
 
-```vue
+```js
 <template>
   <!-- Syntaxe complète -->
   <button v-on:click="incrementer">+1</button>
@@ -253,7 +247,7 @@ function incrementer() {
 
 # Événements courants 📋
 
-```vue
+```js
 <template>
   <!-- Click -->
   <button @click="handleClick">Cliquer</button>
@@ -276,7 +270,7 @@ function incrementer() {
 
 Vue propose des modificateurs pratiques :
 
-```vue
+```js
 <template>
   <!-- .prevent = event.preventDefault() -->
   <form @submit.prevent="onSubmit">...</form>
@@ -293,7 +287,7 @@ Vue propose des modificateurs pratiques :
 
 # Modificateurs de touches ⌨️
 
-```vue
+```js
 <template>
   <!-- Touche Entrée -->
   <input @keyup.enter="submit" />
@@ -316,7 +310,7 @@ Vue propose des modificateurs pratiques :
 
 `v-if` ajoute ou retire un élément du DOM :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -329,7 +323,7 @@ const type = ref('admin')
 
 # v-if - Template 🔀
 
-```vue
+```js
 <template>
   <button @click="isVisible = !isVisible">
     Toggle
@@ -348,7 +342,7 @@ const type = ref('admin')
 
 # v-else-if : Conditions multiples 🔀
 
-```vue
+```js
 <template>
   <div v-if="type === 'admin'">
     👑 Bienvenue Admin !
@@ -368,7 +362,7 @@ const type = ref('admin')
 
 `v-show` utilise CSS `display: none` :
 
-```vue
+```js
 <template>
   <p v-show="isVisible">
     Je suis togglé avec display: none
@@ -405,7 +399,7 @@ const type = ref('admin')
 
 `v-for` permet d'itérer sur des tableaux :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -417,7 +411,7 @@ const fruits = ref(['🍎 Pomme', '🍊 Orange', '🍋 Citron'])
 
 # v-for - Template 🔄
 
-```vue
+```js
 <template>
   <ul>
     <li v-for="fruit in fruits" :key="fruit">
@@ -431,7 +425,7 @@ const fruits = ref(['🍎 Pomme', '🍊 Orange', '🍋 Citron'])
 
 # v-for avec index 📊
 
-```vue
+```js
 <template>
   <ul>
     <li v-for="(fruit, index) in fruits" :key="index">
@@ -456,20 +450,18 @@ const fruits = ref(['🍎 Pomme', '🍊 Orange', '🍋 Citron'])
 
 **Pourquoi `:key` est obligatoire ?**
 
-<v-clicks>
 
 - 🎯 Vue utilise `:key` pour identifier chaque élément
 - ⚡ Permet des mises à jour optimisées
 - 🐛 Évite des bugs de rendu bizarres
 - ✅ Utilise un ID unique quand possible
 
-</v-clicks>
 
 ---
 
 # v-for sur des objets 📦
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -485,7 +477,7 @@ const user = ref({
 
 # v-for sur des objets - Template 📦
 
-```vue
+```js
 <template>
   <ul>
     <li v-for="(value, key) in user" :key="key">
@@ -508,7 +500,7 @@ const user = ref({
 
 # v-for avec une range 🔢
 
-```vue
+```js
 <template>
   <!-- Génère les nombres de 1 à 5 -->
   <span v-for="n in 5" :key="n">
@@ -529,7 +521,7 @@ const user = ref({
 
 **ATTENTION** : Ne mets jamais `v-if` et `v-for` sur le même élément !
 
-```vue
+```js
 <!-- ❌ MAUVAIS -->
 <li v-for="user in users" v-if="user.active" :key="user.id">
   {{ user.name }}
@@ -540,7 +532,7 @@ const user = ref({
 
 # Combiner v-for et v-if - Solution ⚠️
 
-```vue
+```js
 <!-- ✅ SOLUTION : Utiliser template -->
 <template v-for="user in users" :key="user.id">
   <li v-if="user.active">
@@ -553,7 +545,7 @@ const user = ref({
 
 # Combiner v-for et v-if - Alternative ⚠️
 
-```vue
+```js
 <!-- ✅ MIEUX : Computed property -->
 <script setup>
 import { ref, computed } from 'vue'
@@ -578,7 +570,7 @@ const activeUsers = computed(() =>
 
 Accéder directement à un élément DOM :
 
-```vue
+```js
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -594,7 +586,7 @@ onMounted(() => {
 
 # Template refs - Template 🎯
 
-```vue
+```js
 <template>
   <input ref="inputRef" type="text" />
 </template>
@@ -606,7 +598,7 @@ onMounted(() => {
 
 Injecter du HTML (à utiliser avec précaution) :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -634,7 +626,7 @@ Utilise-le uniquement pour du contenu que tu contrôles.
 
 Alternative aux moustaches :
 
-```vue
+```js
 <script setup>
 import { ref } from 'vue'
 
@@ -654,7 +646,7 @@ const message = ref('Bonjour !')
 
 Affiche les moustaches telles quelles :
 
-```vue
+```js
 <template>
   <p v-pre>{{ ceci ne sera pas compilé }}</p>
 </template>
@@ -674,7 +666,7 @@ Utile pour la documentation !
 
 Optimisation : rend une seule fois :
 
-```vue
+```js
 <template>
   <p v-once>
     Créé le : {{ new Date().toLocaleString() }}
@@ -696,7 +688,7 @@ Utile pour du contenu statique dans une app dynamique.
 
 Évite le "flash" des moustaches au chargement :
 
-```vue
+```js
 <template>
   <div v-cloak>
     {{ message }}
@@ -739,7 +731,6 @@ Evite que l'utilisateur voie les moustaches pendant le chargement.
 
 # Résumé du Module 2 📝
 
-<v-clicks>
 
 - ✅ L'**interpolation** (moustaches) affiche des donnees
 - ✅ **v-bind** (`:`) lie des attributs dynamiquement
@@ -748,7 +739,6 @@ Evite que l'utilisateur voie les moustaches pendant le chargement.
 - ✅ **v-for** pour les boucles (n'oublie pas `:key` !)
 - ✅ **v-show** pour les toggles fréquents
 
-</v-clicks>
 
 ---
 layout: intro

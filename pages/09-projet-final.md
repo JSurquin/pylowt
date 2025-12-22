@@ -11,7 +11,6 @@ Consolidons tout ce que tu as appris !
 
 # Récapitulatif des 3 jours 📚
 
-<v-clicks>
 
 **Jour 1 - Fondamentaux**
 - Introduction à Vue.js 3
@@ -28,7 +27,6 @@ Consolidons tout ce que tu as appris !
 - Pinia State Management
 - Projet Final
 
-</v-clicks>
 
 ---
 
@@ -87,7 +85,6 @@ src/
 
 # Conventions de nommage 📝
 
-<v-clicks>
 
 - **Composants** : PascalCase (`UserCard.vue`)
 - **Composables** : camelCase avec préfixe `use` (`useAuth.ts`)
@@ -95,7 +92,6 @@ src/
 - **Fichiers utils** : camelCase (`formatDate.ts`)
 - **Types** : PascalCase (`User.ts`)
 
-</v-clicks>
 
 ---
 
@@ -159,7 +155,7 @@ export interface AuthResponse {
 
 # TypeScript : Props typées 📝
 
-```vue
+```js
 <script setup lang="ts">
 import type { User } from '@/types/user'
 
@@ -299,7 +295,7 @@ const routes = [
 
 # Optimisation : Composants async 🚀
 
-```vue
+```js
 <script setup>
 import { defineAsyncComponent } from 'vue'
 
@@ -391,7 +387,6 @@ vercel
 
 # Checklist avant production ✅
 
-<v-clicks>
 
 - 🔐 Variables d'environnement configurées
 - 🧪 Tests passent
@@ -401,13 +396,11 @@ vercel
 - 🔍 SEO (meta tags, sitemap)
 - 📊 Analytics configurés
 
-</v-clicks>
 
 ---
 
 # Ressources pour aller plus loin 📚
 
-<v-clicks>
 
 - 📖 [vuejs.org](https://vuejs.org) - Documentation officielle
 - 🍍 [pinia.vuejs.org](https://pinia.vuejs.org) - Pinia docs
@@ -416,7 +409,6 @@ vercel
 - 💚 [Vue Mastery](https://www.vuemastery.com) - Cours vidéo
 - 🎨 [VueUse](https://vueuse.org) - +200 composables
 
-</v-clicks>
 
 ---
 
@@ -456,7 +448,6 @@ src/
 
 # Ce que tu as appris 🎓
 
-<v-clicks>
 
 - ✅ Créer des applications Vue.js 3 modernes
 - ✅ Utiliser la Composition API et les composables
@@ -465,7 +456,6 @@ src/
 - ✅ Structurer un projet professionnel
 - ✅ Appliquer les bonnes pratiques
 
-</v-clicks>
 
 ---
 layout: intro

@@ -1,426 +1,240 @@
 ---
 layout: new-section
-routeAlias: 'qcm-final'
 ---
 
-# QCM Final : Validation des Acquis 🏆
+# QCM Final - Formation Vue.js 3 ✅
 
-20 questions pour valider ta maîtrise de Vue.js 3 !
+Le grand test final ! Questions sur l'ensemble de la formation.
 
----
-layout: exercices
----
-
-# Question 1 / 20 🎯
-
-### Qui a créé Vue.js ?
-
-<v-clicks>
-
-- A) Mark Zuckerberg
-- B) Evan You ✅
-- C) Dan Abramov
-- D) Ryan Dahl
-
-</v-clicks>
+15 questions - Note tes réponses, les corrections sont à la fin.
 
 ---
 layout: exercices
 ---
 
-# Question 2 / 20 🎯
+# Question 1 / 15
 
-### Quelle syntaxe est recommandée pour les composants Vue 3 ?
+### Quelle syntaxe permet de creer un computed property en Composition API ?
 
-<v-clicks>
-
-- A) Options API
-- B) Class Components
-- C) `<script setup>` avec Composition API ✅
-- D) Mixins
-
-</v-clicks>
+- A) `const result = computed(() => ...)`
+- B) `const result = ref().computed(() => ...)`
+- C) `const result = useComputed(() => ...)`
+- D) `const result = reactive({ computed: ... })`
 
 ---
 layout: exercices
 ---
 
-# Question 3 / 20 🎯
+# Question 2 / 15
 
-### Comment créer une valeur réactive pour une primitive ?
+### Comment appliquer conditionnellement des classes CSS ?
 
-<v-clicks>
-
-- A) `reactive(0)`
-- B) `ref(0)` ✅
-- C) `computed(0)`
-- D) `useState(0)`
-
-</v-clicks>
+- A) `:class="{ active: isActive }"`
+- B) `class="{{ isActive ? 'active' : '' }}"`
+- C) `v-class="isActive ? 'active'"`
+- D) `:className="{ active: isActive }"`
 
 ---
 layout: exercices
 ---
 
-# Question 4 / 20 🎯
+# Question 3 / 15
 
-### Quel est le raccourci pour `v-bind:src` ?
+### Que signifie SFC (Single File Component) ?
 
-<v-clicks>
-
-- A) `@src`
-- B) `#src`
-- C) `:src` ✅
-- D) `$src`
-
-</v-clicks>
+- A) Super Fast Component
+- B) Composant dans un seul fichier .vue
+- C) Simple Functional Component
+- D) Static File Content
 
 ---
 layout: exercices
 ---
 
-# Question 5 / 20 🎯
+# Question 4 / 15
 
-### Quel est le raccourci pour `v-on:click` ?
+### Comment observer une prop dans un composant ?
 
-<v-clicks>
-
-- A) `:click`
-- B) `@click` ✅
-- C) `#click`
-- D) `$click`
-
-</v-clicks>
+- A) `watch(() => props.value, callback)`
+- B) `watchEffect(() => props.value)`
+- C) Les deux A et B fonctionnent
+- D) On ne peut pas observer les props
 
 ---
 layout: exercices
 ---
 
-# Question 6 / 20 🎯
+# Question 5 / 15
 
-### Quelle directive permet d'itérer sur un tableau ?
+### Quel est le role de `<Suspense>` ?
 
-<v-clicks>
-
-- A) `v-each`
-- B) `v-loop`
-- C) `v-for` ✅
-- D) `v-repeat`
-
-</v-clicks>
+- A) Arreter le rendu
+- B) Gerer les composants asynchrones avec fallback
+- C) Suspendre les animations
+- D) Mettre en pause les watchers
 
 ---
 layout: exercices
 ---
 
-# Question 7 / 20 🎯
+# Question 6 / 15
 
-### Pourquoi utilise-t-on `:key` dans `v-for` ?
+### Comment definir des types TypeScript pour les emits ?
 
-<v-clicks>
-
-- A) Pour le style
-- B) Pour que Vue identifie chaque élément ✅
-- C) Pour les animations
-- D) C'est optionnel
-
-</v-clicks>
+- A) `defineEmits(['event'])`
+- B) `defineEmits<{ (e: 'event'): void }>()`
+- C) `defineEmits({ event: String })`
+- D) `const emits: EmitType`
 
 ---
 layout: exercices
 ---
 
-# Question 8 / 20 🎯
+# Question 7 / 15
 
-### Comment définir des props avec TypeScript ?
+### Quelle plateforme est recommandee pour deployer une app Vue.js gratuitement ?
 
-<v-clicks>
-
-- A) `const props = new Props<{}>()`
-- B) `const props = defineProps<{}>()` ✅
-- C) `const props = useProps<{}>()`
-- D) `const props: Props = {}`
-
-</v-clicks>
+- A) AWS EC2
+- B) Vercel ou Netlify
+- C) DigitalOcean
+- D) Heroku
 
 ---
 layout: exercices
 ---
 
-# Question 9 / 20 🎯
+# Question 8 / 15
 
-### Comment émettre un événement vers le parent ?
+### Comment tester un composant Vue avec Vitest ?
 
-<v-clicks>
-
-- A) `this.$emit()`
-- B) `emit()` après `defineEmits` ✅
-- C) `dispatch()`
-- D) `send()`
-
-</v-clicks>
+- A) `mount(Component)` de @vue/test-utils
+- B) `render(Component)` de @testing-library/vue
+- C) Les deux sont possibles
+- D) On ne peut pas tester avec Vitest
 
 ---
 layout: exercices
 ---
 
-# Question 10 / 20 🎯
+# Question 9 / 15
 
-### Qu'est-ce qu'un composable ?
+### Quel est l'avantage de `shallowMount` vs `mount` ?
 
-<v-clicks>
-
-- A) Un type de composant
-- B) Une fonction réutilisable avec la Composition API ✅
-- C) Un plugin Vue
-- D) Un mixin moderne
-
-</v-clicks>
+- A) Plus rapide
+- B) Ne monte pas les composants enfants
+- C) Tests plus isoles
+- D) Toutes ces reponses
 
 ---
 layout: exercices
 ---
 
-# Question 11 / 20 🎯
+# Question 10 / 15
 
-### Quel hook remplace `mounted` en Composition API ?
+### Comment creer un middleware de navigation dans Vue Router ?
 
-<v-clicks>
-
-- A) `useMounted()`
-- B) `onMounted()` ✅
-- C) `whenMounted()`
-- D) `afterMount()`
-
-</v-clicks>
+- A) `router.use(middleware)`
+- B) `router.beforeEach((to, from, next) => ...)`
+- C) `router.middleware(handler)`
+- D) `app.use(navigation, middleware)`
 
 ---
 layout: exercices
 ---
 
-# Question 12 / 20 🎯
+# Question 11 / 15
 
-### Comment créer v-model sur un composant en Vue 3.4+ ?
+### Que fait `nextTick()` ?
 
-<v-clicks>
-
-- A) `defineProps({ modelValue })`
-- B) `defineModel()` ✅
-- C) `useVModel()`
-- D) `createModel()`
-
-</v-clicks>
+- A) Passe à la route suivante
+- B) Attend la prochaine mise à jour du DOM
+- C) Execute dans 1 seconde
+- D) Increment un compteur
 
 ---
 layout: exercices
 ---
 
-# Question 13 / 20 🎯
+# Question 12 / 15
 
-### Que fait le modificateur `.lazy` sur v-model ?
+### Comment structurer un gros projet Vue.js ?
 
-<v-clicks>
-
-- A) Ralentit la saisie
-- B) Synchronise sur `change` au lieu de `input` ✅
-- C) Désactive la validation
-- D) Active le debounce
-
-</v-clicks>
+- A) Tout dans src/
+- B) Feature-based (par fonctionnalite)
+- C) Layer-based (components, views, stores)
+- D) B ou C selon preference
 
 ---
 layout: exercices
 ---
 
-# Question 14 / 20 🎯
+# Question 13 / 15
 
-### Quel composant affiche la route active dans Vue Router ?
+### Quelle est la convention pour nommer un composable ?
 
-<v-clicks>
-
-- A) `<Router />`
-- B) `<Route />`
-- C) `<RouterView />` ✅
-- D) `<ViewRouter />`
-
-</v-clicks>
+- A) PascalCase (UseCounter)
+- B) camelCase avec prefixe use (useCounter)
+- C) kebab-case (use-counter)
+- D) Pas de convention
 
 ---
 layout: exercices
 ---
 
-# Question 15 / 20 🎯
+# Question 14 / 15
 
-### Comment définir un paramètre dynamique dans une route ?
+### Comment prevenir le re-render inutile d'un composant enfant ?
 
-<v-clicks>
-
-- A) `/user/{id}`
-- B) `/user/:id` ✅
-- C) `/user/$id`
-- D) `/user/[id]`
-
-</v-clicks>
+- A) `v-once`
+- B) `v-memo`
+- C) `shouldUpdate`
+- D) `React.memo` (ca n'existe pas en Vue)
 
 ---
 layout: exercices
 ---
 
-# Question 16 / 20 🎯
+# Question 15 / 15
 
-### Quel est le gestionnaire d'état officiel de Vue 3 ?
+### Quel fichier configure les imports auto en Vue 3 avec Vite ?
 
-<v-clicks>
-
-- A) Vuex
-- B) Redux
-- C) Pinia ✅
-- D) MobX
-
-</v-clicks>
+- A) auto-imports.d.ts
+- B) vite.config.ts avec unplugin-auto-import
+- C) tsconfig.json
+- D) vue.config.js
 
 ---
 layout: exercices
 ---
 
-# Question 17 / 20 🎯
+# 📝 Corrections - QCM Final
 
-### Comment créer un store Pinia ?
-
-<v-clicks>
-
-- A) `new Store()`
-- B) `createStore()`
-- C) `defineStore()` ✅
-- D) `useStore()`
-
-</v-clicks>
-
----
-layout: exercices
----
-
-# Question 18 / 20 🎯
-
-### Quelle fonction préserve la réactivité lors de la destructuration d'un store ?
-
-<v-clicks>
-
-- A) `toRefs()`
-- B) `storeToRefs()` ✅
-- C) `reactive()`
-- D) `keepRefs()`
-
-</v-clicks>
-
----
-layout: exercices
----
-
-# Question 19 / 20 🎯
-
-### Quel outil de build est recommandé pour Vue 3 ?
-
-<v-clicks>
-
-- A) Webpack
-- B) Parcel
-- C) Vite ✅
-- D) Rollup
-
-</v-clicks>
-
----
-layout: exercices
----
-
-# Question 20 / 20 🎯
-
-### Quelle bibliothèque offre +200 composables prêts à l'emploi ?
-
-<v-clicks>
-
-- A) Vue Helpers
-- B) Composables.js
-- C) VueUse ✅
-- D) Vue Utils
-
-</v-clicks>
+| Q | Réponse | Explication |
+|---|---------|-------------|
+| 1 | **A** | `computed(() => ...)` depuis vue |
+| 2 | **A** | `:class="{ className: condition }"` |
+| 3 | **B** | Single File Component = .vue avec script/template/style |
+| 4 | **C** | Les deux syntaxes fonctionnent |
+| 5 | **B** | Suspense gere les composants async (loading states) |
+| 6 | **B** | Generics TypeScript pour types stricts |
+| 7 | **B** | Vercel/Netlify offre deploiement gratuit + CI/CD |
+| 8 | **C** | @vue/test-utils ou @testing-library/vue |
+| 9 | **D** | Plus rapide, isole, n'affecte pas enfants |
+| 10 | **B** | beforeEach est le guard global principal |
+| 11 | **B** | Attend la prochaine mise à jour du DOM |
+| 12 | **D** | Feature-based ou Layer-based selon projet |
+| 13 | **B** | camelCase + prefixe use (convention) |
+| 14 | **B** | v-memo + dependances (Vue 3.2+) |
+| 15 | **B** | unplugin-auto-import dans vite.config |
 
 ---
 layout: intro
 ---
 
-# Résultats du QCM Final 🏆
+# 🎉 Bravo ! Formation Terminée 🎉
 
-Bravo ! Tu as terminé le QCM de validation !
+Tu as complete la formation Vue.js 3 !
 
----
+Tu as maintenant toutes les cles pour creer des applications Vue modernes et performantes.
 
-# Récapitulatif de la formation 📚
-
-**Ce que tu maîtrises maintenant :**
-
-<v-clicks>
-
-- ✅ Vue.js 3 et la Composition API
-- ✅ Templates, directives et réactivité
-- ✅ Composants, props, events et slots
-- ✅ Composables et logique réutilisable
-- ✅ Formulaires et v-model
-- ✅ Vue Router 4 pour la navigation
-- ✅ Pinia pour la gestion d'état
-- ✅ Bonnes pratiques et architecture
-
-</v-clicks>
-
----
-layout: intro
----
-
-# Félicitations ! 🎉
-
-## Tu as réussi la formation Vue.js 3 !
-
-Tu es maintenant un développeur Vue.js opérationnel.
-
-Continue à pratiquer et à explorer l'écosystème Vue !
-
----
-
-# Prochaines étapes 🚀
-
-<v-clicks>
-
-- 📖 Approfondir Nuxt.js (meta-framework Vue)
-- 🧪 Maîtriser les tests avec Vitest
-- 📱 Explorer Capacitor/Ionic pour le mobile
-- 🎨 Découvrir TailwindCSS avec Vue
-- ☁️ Apprendre le déploiement cloud
-- 🔒 Sécurité et authentification avancée
-
-</v-clicks>
-
----
-layout: intro
----
-
-# Merci ! 💚
-
-## Formation Vue.js 3 - 2025
-
-Présentée par **Ascent** et **Andromed**
-
----
-layout: text-image
-media: 'https://vuejs.org/images/logo.png'
----
-
-# À bientôt !
-
-N'hésite pas à poser des questions et à continuer à apprendre.
-
-La communauté Vue.js est là pour t'aider ! 💚
-
-**#VueJS #Composition API #Pinia #VueRouter**
-
+**Continue à pratiquer et bon code ! 💚**
