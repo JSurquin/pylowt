@@ -1,0 +1,134 @@
+================================================================================
+QCM MODULE 8 : PINIA - STATE MANAGEMENT
+================================================================================
+10 questions théoriques sur Pinia
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Pourquoi Pinia a-t-il remplace Vuex ?
+
+A) Plus rapide
+B) Plus simple, meilleur TypeScript
+C) Plus de fonctionnalites
+D) Obligation de Vue 3
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Comment creer un store avec Pinia ?
+
+A) createStore()
+B) defineStore()
+C) newStore()
+D) useStore()
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Quels sont les 3 concepts d'un store Pinia ?
+
+A) data, methods, computed
+B) state, getters, actions
+C) props, emits, slots
+D) refs, reactive, computed
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Pourquoi utiliser storeToRefs() ?
+
+A) Pour creer un store
+B) Pour garder la reactivite lors de la destructuration
+C) Pour lier à un template
+D) Pour valider les types
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Les mutations existent-elles dans Pinia ?
+
+A) Oui, obligatoires
+B) Oui, mais optionnelles
+C) Non, on modifie directement le state
+D) Non, on utilise setters
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Comment acceder au state d'un autre store dans une action ?
+
+A) this.otherStore.state
+B) Importer et utiliser le store directement
+C) getStore('other')
+D) Ce n'est pas possible
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Comment persister un store dans le localStorage ?
+
+A) Pinia le fait automatiquement
+B) Plugin pinia-plugin-persistedstate
+C) persist: true dans le store
+D) watch() + localStorage
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Les getters sont-ils mis en cache ?
+
+A) Non, recalcules à chaque acces
+B) Oui, comme les computed
+C) Seulement en production
+D) Depends de la config
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Comment resettre un store à son etat initial ?
+
+A) store.reset()
+B) store.$reset()
+C) resetStore(store)
+D) store.clear()
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Peut-on utiliser Pinia en dehors de composants Vue ?
+
+A) Non, impossible
+B) Oui, avec useStore() après createPinia()
+C) Oui, mais seulement en SSR
+D) Non, sauf dans les composables
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 8
+================================================================================
+
+CORRECTION :
+
+1. B - API plus simple, TypeScript natif, pas de mutations
+2. B - defineStore('name', {...})
+3. B - state (donnees), getters (computed), actions (methodes)
+4. B - Preserve la reactivite lors du destructuring
+5. C - Pas de mutations, modification directe OK
+6. B - Import direct: const other = useOtherStore()
+7. B - pinia-plugin-persistedstate ou custom
+8. B - Getters = computed, donc mis en cache
+9. B - store.$reset() remet aux valeurs initiales
+10. B - Oui, dans router guards, utils, etc.
+

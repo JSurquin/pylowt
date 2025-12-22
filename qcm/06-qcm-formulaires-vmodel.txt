@@ -1,0 +1,134 @@
+================================================================================
+QCM MODULE 6 : FORMULAIRES ET V-MODEL
+================================================================================
+10 questions théoriques sur les formulaires
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Que fait v-model ?
+
+A) Lie une classe CSS
+B) Cree une liaison bidirectionnelle
+C) Valide les formulaires
+D) Envoie les donnees au serveur
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Que fait le modificateur .lazy ?
+
+A) Ralentit la mise à jour
+B) Synchronise sur change au lieu de input
+C) Desactive v-model
+D) Active le debounce
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Que fait le modificateur .number ?
+
+A) Formate le nombre
+B) Convertit la valeur en nombre
+C) Valide que c'est un nombre
+D) Limite les decimales
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Comment lier plusieurs checkboxes à un tableau ?
+
+A) v-model:array
+B) v-model avec une ref tableau
+C) v-model.multiple
+D) Ce n'est pas possible
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Comment creer v-model sur un composant personnalise en Vue 3.4+ ?
+
+A) defineProps({ value })
+B) defineModel()
+C) useVModel()
+D) defineEmit('model')
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Comment avoir plusieurs v-model sur un composant ?
+
+A) Ce n'est pas possible
+B) v-model:propName
+C) v-models
+D) v-model="[a, b]"
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Avant Vue 3.4, quelle prop recevait la valeur de v-model ?
+
+A) value
+B) model
+C) modelValue
+D) vModel
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Que fait le modificateur .trim ?
+
+A) Limite le nombre de caracteres
+B) Supprime les espaces au debut et à la fin
+C) Met en minuscules
+D) Supprime tous les espaces
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Quelle bibliotheque est populaire pour la validation de formulaires Vue ?
+
+A) Formik
+B) React Hook Form
+C) VeeValidate
+D) Yup
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Comment empecher le rechargement de page à la soumission d'un formulaire ?
+
+A) @submit.stop
+B) @submit.prevent
+C) @submit.cancel
+D) @submit.noReload
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 6
+================================================================================
+
+CORRECTION :
+
+1. B - v-model = liaison bidirectionnelle (two-way binding)
+2. B - .lazy synchronise sur change (quand on quitte le champ)
+3. B - .number parse automatiquement en Number
+4. B - Une ref tableau, les valeurs cochees s'ajoutent
+5. B - defineModel() nouvelle syntaxe Vue 3.4+
+6. B - v-model:firstName v-model:lastName
+7. C - modelValue + emit('update:modelValue')
+8. B - .trim supprime espaces debut/fin
+9. C - VeeValidate la plus populaire pour Vue
+10. B - .prevent = event.preventDefault()
+

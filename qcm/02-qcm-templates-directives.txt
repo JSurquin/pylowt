@@ -1,0 +1,134 @@
+================================================================================
+QCM MODULE 2 : TEMPLATES ET DIRECTIVES
+================================================================================
+10 questions théoriques sur les templates et directives Vue.js
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quel est le raccourci pour v-bind:src ?
+
+A) @src
+B) :src
+C) #src
+D) $src
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Quel est le raccourci pour v-on:click ?
+
+A) :click
+B) #click
+C) @click
+D) $click
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Quelle directive utilise CSS display: none ?
+
+A) v-if
+B) v-else
+C) v-show
+D) v-hide
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Pourquoi :key est-il important dans v-for ?
+
+A) Pour le style CSS
+B) Pour que Vue identifie chaque element
+C) Pour activer les animations
+D) C'est optionnel
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Que fait le modificateur .prevent ?
+
+A) Empeche le clic
+B) Appelle event.preventDefault()
+C) Stoppe la propagation
+D) Desactive l'element
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Quelle syntaxe permet d'afficher une variable ?
+
+A) {variable}
+B) ${variable}
+C) Moustaches (double accolades)
+D) [variable]
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Peut-on utiliser v-if et v-for sur le meme element ?
+
+A) Oui, sans probleme
+B) Non, c'est interdit
+C) Non, il faut utiliser <template>
+D) Seulement avec v-show
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Que fait v-once ?
+
+A) Execute une fois par seconde
+B) Rend le contenu une seule fois
+C) Cache l'element
+D) Declenche un evenement unique
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Comment acceder à l'index dans un v-for ?
+
+A) v-for="item of items :index"
+B) v-for="(item, index) in items"
+C) v-for="item in items" :index="i"
+D) v-for="item, index in items"
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Quel est le danger de v-html ?
+
+A) Performance lente
+B) Faille XSS
+C) Ne fonctionne pas en production
+D) Conflits CSS
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 2
+================================================================================
+
+CORRECTION :
+
+1. B - :src est le raccourci pour v-bind:src
+2. C - @click est le raccourci pour v-on:click
+3. C - v-show bascule display: none, v-if ajoute/retire du DOM
+4. B - :key permet à Vue d'identifier chaque element
+5. B - .prevent = event.preventDefault()
+6. C - Les moustaches (double accolades) pour l'interpolation
+7. C - Il faut utiliser <template> ou une computed
+8. B - v-once rend une seule fois, pas de mise à jour
+9. B - (item, index) avec parentheses
+10. B - Risque XSS avec du contenu utilisateur
+
