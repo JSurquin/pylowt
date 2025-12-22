@@ -227,6 +227,30 @@ onUnmounted(() => {
 
 ---
 
+# Cycle de vie - Diagramme 🔄
+
+```mermaid {theme: 'base', themeVariables: {primaryColor: '#42b883', primaryTextColor: '#fff', lineColor: '#35495e'}}
+flowchart TD
+    A["🚀 Creation"] --> B["setup / script setup"]
+    B --> C["onBeforeMount"]
+    C --> D["🎨 Render"]
+    D --> E["onMounted"]
+    E --> F{"Donnees changent?"}
+    F -->|"Oui"| G["onBeforeUpdate"]
+    G --> H["🔄 Re-render"]
+    H --> I["onUpdated"]
+    I --> F
+    F -->|"Destruction"| J["onBeforeUnmount"]
+    J --> K["onUnmounted"]
+    K --> L["💀 Detruit"]
+    
+    style A fill:#42b883,stroke:#35495e
+    style L fill:#e74c3c,stroke:#35495e
+    style E fill:#3498db,stroke:#35495e
+```
+
+---
+
 # Pourquoi pas beforeCreate/created ? 🤔
 
 Le code dans `<script setup>` s'exécute déjà au même moment que `created` !

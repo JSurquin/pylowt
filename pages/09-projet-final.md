@@ -32,6 +32,38 @@ Consolidons tout ce que tu as appris !
 
 ---
 
+# Architecture Vue.js 3 Complete 🏗️
+
+```mermaid {theme: 'base', themeVariables: {primaryColor: '#42b883', primaryTextColor: '#fff', lineColor: '#35495e'}}
+flowchart TB
+    subgraph App["🖥️ Application Vue.js"]
+        subgraph UI["Interface"]
+            V["Views/Pages"]
+            C["Components"]
+        end
+        
+        subgraph Logic["Logique"]
+            CO["Composables"]
+            S["Stores Pinia"]
+        end
+        
+        R["Router"]
+    end
+    
+    U["👤 User"] --> R
+    R --> V
+    V --> C
+    C <--> CO
+    C <--> S
+    S <--> API["🌐 API Backend"]
+    
+    style App fill:#35495e,stroke:#42b883,stroke-width:3px
+    style UI fill:#42b883,stroke:#35495e
+    style Logic fill:#3498db,stroke:#35495e
+```
+
+---
+
 # Architecture recommandée 📁
 
 ```

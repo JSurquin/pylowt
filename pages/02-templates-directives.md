@@ -45,7 +45,7 @@ Le menu (template) reste le même, mais les informations (données) peuvent chan
 
 ---
 
-# Interpolation : Les Moustaches {{ }} 🥸
+# Interpolation : Les Moustaches 🥸
 
 La syntaxe **moustache** permet d'afficher des données :
 
@@ -664,7 +664,7 @@ Affiche les moustaches telles quelles :
 
 # v-pre - Résultat 🚫
 
-**Résultat affiché :** {{ ceci ne sera pas compilé }}
+**Résultat affiché :** `{{ ceci ne sera pas compile }}`
 
 Utile pour la documentation !
 
@@ -720,7 +720,7 @@ Utile pour du contenu statique dans une app dynamique.
 
 L'attribut `v-cloak` est automatiquement retiré une fois Vue compilé.
 
-Évite que l'utilisateur voie `{{ message }}` pendant le chargement.
+Evite que l'utilisateur voie les moustaches pendant le chargement.
 
 ---
 
@@ -741,7 +741,7 @@ L'attribut `v-cloak` est automatiquement retiré une fois Vue compilé.
 
 <v-clicks>
 
-- ✅ L'**interpolation** `{{ }}` affiche des données
+- ✅ L'**interpolation** (moustaches) affiche des donnees
 - ✅ **v-bind** (`:`) lie des attributs dynamiquement
 - ✅ **v-on** (`@`) écoute les événements
 - ✅ **v-if/v-else** pour le rendu conditionnel

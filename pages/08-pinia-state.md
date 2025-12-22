@@ -45,6 +45,35 @@ Tout le monde peut consulter son solde (getters), mais les modifications passent
 
 ---
 
+# Architecture Pinia 🍍
+
+```mermaid {theme: 'base', themeVariables: {primaryColor: '#42b883', primaryTextColor: '#fff', lineColor: '#35495e'}}
+flowchart TB
+    subgraph Store["🍍 Pinia Store"]
+        S["State"]
+        G["Getters"]
+        A["Actions"]
+    end
+    
+    subgraph Components["🧩 Composants Vue"]
+        C1["ComponentA"]
+        C2["ComponentB"]
+        C3["ComponentC"]
+    end
+    
+    S --> G
+    A --> S
+    
+    C1 <-->|"read state"| S
+    C2 <-->|"use getters"| G
+    C3 -->|"call actions"| A
+    
+    style Store fill:#42b883,stroke:#35495e,stroke-width:2px
+    style Components fill:#35495e,stroke:#42b883,stroke-width:2px
+```
+
+---
+
 # Pinia vs Vuex 🥊
 
 Pinia est le successeur de Vuex, plus simple et moderne :

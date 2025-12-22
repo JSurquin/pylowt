@@ -46,6 +46,37 @@ Tu ne tournes pas l'aiguille à la main ! 🙌
 
 ---
 
+# Systeme de reactivite Vue 3 ⚡
+
+```mermaid {theme: 'base', themeVariables: {primaryColor: '#42b883', primaryTextColor: '#fff', lineColor: '#35495e'}}
+flowchart LR
+    subgraph State["📦 State Reactif"]
+        R["ref() / reactive()"]
+    end
+    
+    subgraph Track["🔍 Tracking"]
+        T["Vue detecte les acces"]
+    end
+    
+    subgraph Trigger["🎯 Trigger"]
+        TR["Vue detecte les modifs"]
+    end
+    
+    subgraph Update["🖥️ UI Update"]
+        U["Re-render automatique"]
+    end
+    
+    R --> T
+    T --> TR
+    TR --> U
+    U -.->|"Cycle"| R
+    
+    style State fill:#42b883,stroke:#35495e,stroke-width:2px
+    style Update fill:#3498db,stroke:#35495e,stroke-width:2px
+```
+
+---
+
 # ref() : La base de la réactivité 📦
 
 `ref()` crée une valeur réactive :

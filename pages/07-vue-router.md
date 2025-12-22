@@ -45,6 +45,25 @@ Tu peux aller n'importe où sans redemander la carte complète (pas de rechargem
 
 ---
 
+# Flow de navigation 🔄
+
+```mermaid {theme: 'base', themeVariables: {primaryColor: '#42b883', primaryTextColor: '#fff', lineColor: '#35495e'}}
+flowchart LR
+    A["🔗 URL Change"] --> B["beforeEach Guard"]
+    B --> C{"Auth OK?"}
+    C -->|"Oui"| D["beforeEnter"]
+    C -->|"Non"| E["Redirect /login"]
+    D --> F["🎯 Load Component"]
+    F --> G["afterEach"]
+    G --> H["🖥️ Render View"]
+    
+    style A fill:#3498db,stroke:#35495e
+    style H fill:#42b883,stroke:#35495e
+    style E fill:#e74c3c,stroke:#35495e
+```
+
+---
+
 # Installation 📦
 
 ```bash

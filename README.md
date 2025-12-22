@@ -1,146 +1,240 @@
-# Formation Unix
+# Formation Vue.js 3 - 2025 💚
 
-![Unix Logo](https://venam.net/blog/assets/tux.png)
+![Vue.js Logo](https://vuejs.org/images/logo.png)
 
 ## À propos de cette formation
 
-Cette formation complète sur Unix utilise [Slidev](https://github.com/slidevjs/slidev) pour offrir une expérience d'apprentissage interactive et moderne.
+Cette formation complète sur **Vue.js 3** utilise [Slidev](https://github.com/slidevjs/slidev) pour offrir une expérience d'apprentissage interactive et moderne.
 
-Formation UNIX/Linux - Initiation 2025 🐧
+**Formation Vue.js 3 - Initiation 2025** 💚
 
-Une formation pratique, complète et progressive pour découvrir et maîtriser les bases d’Unix/Linux.
+Une formation pratique, complète et progressive pour découvrir et maîtriser Vue.js 3, le framework JavaScript progressif.
 
-## 📚 Table des matières
+## 🎯 Objectifs de la formation
 
-1.  🧱 Introduction et rappels Unix/Linux
-2.  ⚙️ Gestion du système et des utilisateurs
-3.  💾 Gestion des processus et des services
-4.  🧮 Gestion du stockage et du système de fichiers
-5.  📡 Réseau
-6.  🧰 Gestion des paquets et maintenance
-7.  📅 Automatisation, scripts et tâches planifiées
-8.  🔐 Sécurité système
-9.  ☁️ Services serveurs
-10. ✅ QCM de validation finale
-11. 🎯 Exercices pratiques
+À la fin de cette formation de **3 jours**, vous serez capable de :
+
+- ✅ Créer des applications Vue.js 3 modernes
+- ✅ Maîtriser la Composition API et les composables
+- ✅ Gérer l'état avec Pinia
+- ✅ Implémenter la navigation avec Vue Router 4
+- ✅ Appliquer les bonnes pratiques professionnelles
+- ✅ Déployer votre application en production
+
+## 📚 Programme de la formation
+
+### Jour 1 - Les Fondamentaux
+
+| Module | Contenu |
+|--------|---------|
+| 💚 **Module 1** | Introduction à Vue.js 3 |
+| 📝 **Module 2** | Templates et Directives |
+| 🧩 **Module 3** | Composants Vue.js |
+
+### Jour 2 - Composition et Réactivité
+
+| Module | Contenu |
+|--------|---------|
+| 🎯 **Module 4** | Composition API |
+| ⚡ **Module 5** | Réactivité et Computed |
+| 📋 **Module 6** | Formulaires et v-model |
+
+### Jour 3 - Écosystème et Projet
+
+| Module | Contenu |
+|--------|---------|
+| 🛤️ **Module 7** | Vue Router 4 |
+| 🍍 **Module 8** | Pinia - State Management |
+| 🚀 **Module 9** | Projet Final et Bonnes Pratiques |
+| ✅ **QCM Final** | Validation des acquis |
 
 ---
 
-### Module 1 - Introduction et rappels
--   Historique Unix, GNU/Linux, distributions
--   Philosophie Unix (“tout est fichier”, etc.)
--   Architecture d’un système Linux
--   Noyau, shell, système de fichiers
--   Commandes essentielles de base
+## 📖 Détail des modules
 
-### Module 2 - Gestion système et utilisateurs
--   Comptes utilisateurs et groupes
--   Permissions, droits, umask, sudoers
--   Gestion des quotas
--   Structure du système de fichiers
+### Module 1 - Introduction à Vue.js 3
+- Qu'est-ce que Vue.js ? Pourquoi Vue.js ?
+- Comparaison avec React et Angular
+- Installation avec Vite
+- Structure d'un projet Vue.js 3
+- Vue DevTools
 
-### Module 3 - Processus et services
--   PID, états des processus
--   Démarrage et arrêt du système
--   systemd et gestion des services
+### Module 2 - Templates et Directives
+- Syntaxe des templates et interpolation
+- `v-bind` (`:`) et `v-on` (`@`)
+- `v-if`, `v-else`, `v-show`
+- `v-for` et l'importance de `:key`
+- Modificateurs d'événements
 
-### Module 4 - Stockage et système de fichiers
--   Disques, partitions, montage
--   Systèmes de fichiers (ext4, xfs, NFS)
--   Permissions étendues (ACL)
--   Gestion de l’espace disque
+### Module 3 - Composants Vue.js
+- Création et import de composants
+- Props et validation
+- Événements personnalisés (emit)
+- Slots (default, nommés, scoped)
+- Provide / Inject
+- Teleport et Fragments
 
-### Module 5 - Réseau
--   Configuration réseau
--   Diagnostic réseau
--   Gestion du pare-feu
--   SSH et transfert de fichiers
+### Module 4 - Composition API
+- `<script setup>` vs Options API
+- Lifecycle hooks (`onMounted`, `onUnmounted`...)
+- Composables personnalisés (`use*`)
+- Template refs
+- VueUse : bibliothèque de composables
 
-### Module 6 - Paquets et maintenance
--   Systèmes de paquets (apt, dnf)
--   Installation, mise à jour
--   Gestion des dépendances
+### Module 5 - Réactivité et Computed
+- `ref()` et `reactive()`
+- Computed properties avec cache
+- `watch` et `watchEffect`
+- `toRefs` et `storeToRefs`
+- Réactivité profonde
 
-### Module 7 - Automatisation et scripts
--   Scripts Bash de base
--   Tâches planifiées (cron, at)
--   Supervision et logs
+### Module 6 - Formulaires et v-model
+- v-model en profondeur
+- Modificateurs (`.lazy`, `.number`, `.trim`)
+- Tous types d'inputs
+- `defineModel()` (Vue 3.4+)
+- Validation de formulaires
 
-### Module 8 - Sécurité système
--   Sécurité des comptes
--   SELinux/AppArmor
--   Durcissement système
--   Audit et logs de sécurité
+### Module 7 - Vue Router 4
+- Configuration et routes
+- Routes dynamiques (`:id`)
+- Navigation programmatique
+- Routes imbriquées
+- Guards (beforeEach, beforeEnter)
+- Lazy loading
 
-### Module 9 - Services serveurs
--   Services de base (Nginx, Apache)
--   Configuration réseau avancée
--   Monitoring basique
+### Module 8 - Pinia - State Management
+- Pourquoi un state manager ?
+- Création de stores
+- State, Getters, Actions
+- `storeToRefs()`
+- Stores composés
+- Persistance
 
-## Projet pratique 💻
+### Module 9 - Projet Final
+- Architecture recommandée
+- Conventions de nommage
+- TypeScript avec Vue.js
+- Tests avec Vitest
+- Déploiement (Vercel, Netlify)
+- Bonnes pratiques 2025
 
-Un mini-projet sera développé étape par étape tout au long de la formation, permettant de mettre en pratique chaque concept appris.
+---
 
-## Prérequis techniques
+## 🛠️ Prérequis techniques
 
-- Unix ou Linux
-- Un éditeur de code (VS Code recommandé)
-- Connaissances de base en terminal
+- **Node.js** 18+ (LTS recommandé)
+- **npm**, **pnpm** ou **yarn**
+- Un éditeur de code (**VS Code** recommandé avec l'extension Volar)
+- Connaissances de base en **HTML**, **CSS** et **JavaScript**
 
-## Installation
+## 📦 Installation
 
-1. Clonez ce dépôt
+### 1. Clonez ce dépôt
 
 ```bash
 git clone [url-du-repo]
+cd vue
 ```
 
-2. Installez les dépendances (avec frozen lockfile recommandé car Slidev évolue rapidement)
+### 2. Installez les dépendances
 
 ```bash
+# Avec pnpm (recommandé)
+pnpm install
+
 # Avec npm
-npm ci  # Équivalent à npm install avec frozen lockfile
+npm install
 
 # Avec yarn
-yarn install --frozen-lockfile
+yarn install
+```
 
+### 3. Lancez les slides
+
+```bash
 # Avec pnpm
-pnpm install --frozen-lockfile
-```
-
-3. Lancez les slides
-
-```bash
-npm run dev
-```
-
-ou pnpm :
-
-```bash
 pnpm run dev
+
+# Avec npm
+npm run dev
+
+# Avec yarn
+yarn dev
 ```
 
-ou yarn :
+### 4. Ouvrez votre navigateur
+
+Les slides sont accessibles sur `http://localhost:3030`
+
+## 📤 Export PDF
 
 ```bash
-yarn run dev
+# Export en PDF
+pnpm run export
+
+# Export avec fond sombre
+pnpm run export --dark
 ```
-## Caractéristiques des slides
+
+## ✨ Caractéristiques des slides
 
 - 🎨 Design moderne et responsive
 - 🌙 Mode sombre/clair automatique
-- 📝 Support du Markdown
-- 🎨 Mise en évidence de la syntaxe
-- 📊 Diagrammes et schémas
+- 📝 Support complet du Markdown
+- 🎨 Coloration syntaxique du code
+- 📊 Diagrammes MermaidJS interactifs
 - 🖼️ Support des images et GIFs
-- 🎥 Enregistrement en PDF disponible
+- 🎥 Export PDF disponible
+- ⌨️ Navigation au clavier
+- 📱 Compatible mobile
 
-## Ressources supplémentaires
+## 🧰 Stack technique utilisée
 
-- [Documentation officielle de Unix](https://www.gnu.org/software/libc/manual/)
-- [Documentation Slidev](https://sli.dev/)
-- [Guide TypeScript](https://www.typescriptlang.org/docs/)
+| Outil | Version | Usage |
+|-------|---------|-------|
+| Vue.js | 3.4+ | Framework principal |
+| Vite | 5+ | Build tool |
+| TypeScript | 5+ | Typage statique |
+| Pinia | 2+ | State management |
+| Vue Router | 4+ | Routing |
+| VueUse | Latest | Composables utilitaires |
+| Vitest | Latest | Tests unitaires |
 
-## Licence
+## 📚 Ressources complémentaires
 
-MIT
+### Documentation officielle
+- [Vue.js 3 Documentation](https://vuejs.org/)
+- [Vue Router 4](https://router.vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/)
+- [VueUse](https://vueuse.org/)
+
+### Outils
+- [Vite](https://vitejs.dev/)
+- [Vue DevTools](https://devtools.vuejs.org/)
+- [Slidev](https://sli.dev/)
+
+### Communauté
+- [Vue.js Discord](https://discord.com/invite/vue)
+- [Vue.js Forum](https://forum.vuejs.org/)
+- [Vue Amsterdam](https://vuejs.amsterdam/)
+
+## 👨‍🏫 Formateur
+
+**Jimmylan Surquin**
+- 🌐 [jimmylan.fr](https://jimmylan.fr)
+- 🏢 [Andromed](https://www.andromed.fr/)
+- 🐦 [@jimmylansrq](https://twitter.com/jimmylansrq)
+- 📺 [YouTube](https://www.youtube.com/channel/jimmylansrq)
+
+## 📄 Licence
+
+MIT - Formation présentée par **Ascent** et **Andromed**
+
+---
+
+<div align="center">
+
+💚 **Bonne formation Vue.js 3 !** 💚
+
+</div>

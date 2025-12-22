@@ -275,6 +275,29 @@ function onIncrement(value: number) {
 
 ---
 
+# Flux de donnees Parent/Enfant 🔄
+
+```mermaid {theme: 'base', themeVariables: {primaryColor: '#42b883', primaryTextColor: '#fff', primaryBorderColor: '#35495e', lineColor: '#35495e', secondaryColor: '#35495e'}}
+flowchart TB
+    subgraph Parent["🏠 Composant Parent"]
+        P1["state: count = 0"]
+        P2["@increment handler"]
+    end
+    
+    subgraph Enfant["👶 Composant Enfant"]
+        E1[":count prop"]
+        E2["emit increment"]
+    end
+    
+    P1 -->|"⬇️ Props"| E1
+    E2 -->|"⬆️ Events"| P2
+    
+    style Parent fill:#35495e,stroke:#42b883,stroke-width:2px
+    style Enfant fill:#42b883,stroke:#35495e,stroke-width:2px
+```
+
+---
+
 # Slots : Contenu flexible 📦
 
 Les **slots** permettent d'injecter du contenu dans un composant.
