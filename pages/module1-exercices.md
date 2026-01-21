@@ -57,18 +57,30 @@ Créer un composant compteur avec les fonctionnalités de base
 # Exercice 2 - Solution de base
 
 ```vue
-<script setup>
-import { ref, computed } from 'vue';
-
-const compteur = ref(0);
-
-const increment = () => compteur.value++;
-const decrement = () => compteur.value--;
-const reset = () => compteur.value = 0;
-
-const estPair = computed(() => {
-  return compteur.value % 2 === 0;
-});
+<script>
+export default {
+  data() {
+    return {
+      compteur: 0
+    }
+  },
+  computed: {
+    estPair() {
+      return this.compteur % 2 === 0;
+    }
+  },
+  methods: {
+    increment() {
+      this.compteur++;
+    },
+    decrement() {
+      this.compteur--;
+    },
+    reset() {
+      this.compteur = 0;
+    }
+  }
+}
 </script>
 
 <template>
@@ -109,29 +121,33 @@ Créer une application de gestion de tâches
 # Exercice 3 - Structure de données
 
 ```vue
-<script setup>
-import { ref, computed } from 'vue';
-
-const nouveauTodo = ref('');
-const todos = ref([
-  { id: 1, text: 'Apprendre Vue.js', done: false },
-  { id: 2, text: 'Créer un projet', done: false }
-]);
-
-const ajouterTodo = () => {
-  if (nouveauTodo.value.trim()) {
-    todos.value.push({
-      id: Date.now(),
-      text: nouveauTodo.value,
-      done: false
-    });
-    nouveauTodo.value = '';
+<script>
+export default {
+  data() {
+    return {
+      nouveauTodo: '',
+      todos: [
+        { id: 1, text: 'Apprendre Vue.js', done: false },
+        { id: 2, text: 'Créer un projet', done: false }
+      ]
+    }
+  },
+  methods: {
+    ajouterTodo() {
+      if (this.nouveauTodo.trim()) {
+        this.todos.push({
+          id: Date.now(),
+          text: this.nouveauTodo,
+          done: false
+        });
+        this.nouveauTodo = '';
+      }
+    },
+    supprimerTodo(id) {
+      this.todos = this.todos.filter(t => t.id !== id);
+    }
   }
-};
-
-const supprimerTodo = (id) => {
-  todos.value = todos.value.filter(t => t.id !== id);
-};
+}
 </script>
 ```
 
@@ -194,25 +210,26 @@ Créer un composant réutilisable de carte utilisateur
 # Exercice 4 - Composant UserCard.vue
 
 ```vue
-<script setup>
-const props = defineProps({
-  nom: {
-    type: String,
-    required: true
+<script>
+export default {
+  props: {
+    nom: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    age: Number,
+    avatar: String,
+    role: {
+      type: String,
+      default: 'user'
+    }
   },
-  email: {
-    type: String,
-    required: true
-  },
-  age: Number,
-  avatar: String,
-  role: {
-    type: String,
-    default: 'user'
-  }
-});
-
-const emit = defineEmits(['click', 'edit', 'delete']);
+  emits: ['click', 'edit', 'delete']
+}
 </script>
 ```
 
@@ -267,34 +284,42 @@ Utiliser le composant UserCard pour afficher une liste
 # Exercice 5 - Utilisation du composant
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import UserCard from './components/UserCard.vue';
 
-const users = ref([
-  { 
-    id: 1, 
-    nom: 'Alice Martin', 
-    email: 'alice@example.com',
-    age: 28,
-    role: 'admin'
+export default {
+  components: {
+    UserCard
   },
-  { 
-    id: 2, 
-    nom: 'Bob Dupont', 
-    email: 'bob@example.com',
-    age: 35,
-    role: 'user'
+  data() {
+    return {
+      users: [
+        { 
+          id: 1, 
+          nom: 'Alice Martin', 
+          email: 'alice@example.com',
+          age: 28,
+          role: 'admin'
+        },
+        { 
+          id: 2, 
+          nom: 'Bob Dupont', 
+          email: 'bob@example.com',
+          age: 35,
+          role: 'user'
+        }
+      ]
+    }
+  },
+  methods: {
+    handleEdit(user) {
+      console.log('Edit:', user);
+    },
+    handleDelete(userId) {
+      this.users = this.users.filter(u => u.id !== userId);
+    }
   }
-]);
-
-const handleEdit = (user) => {
-  console.log('Edit:', user);
-};
-
-const handleDelete = (userId) => {
-  users.value = users.value.filter(u => u.id !== userId);
-};
+}
 </script>
 ```
 
@@ -346,35 +371,41 @@ const API_URL = 'https://jsonplaceholder.typicode.com/users';
 # Exercice 6 - Solution fetch
 
 ```vue
-<script setup>
-import { ref, onMounted } from 'vue';
-
-const users = ref([]);
-const loading = ref(true);
-const error = ref(null);
-
-const fetchUsers = async () => {
-  loading.value = true;
-  error.value = null;
-  
-  try {
-    const response = await fetch(
-      'https://jsonplaceholder.typicode.com/users'
-    );
-    
-    if (!response.ok) {
-      throw new Error('Erreur réseau');
+<script>
+export default {
+  data() {
+    return {
+      users: [],
+      loading: true,
+      error: null
     }
-    
-    users.value = await response.json();
-  } catch (e) {
-    error.value = e.message;
-  } finally {
-    loading.value = false;
+  },
+  methods: {
+    async fetchUsers() {
+      this.loading = true;
+      this.error = null;
+      
+      try {
+        const response = await fetch(
+          'https://jsonplaceholder.typicode.com/users'
+        );
+        
+        if (!response.ok) {
+          throw new Error('Erreur réseau');
+        }
+        
+        this.users = await response.json();
+      } catch (e) {
+        this.error = e.message;
+      } finally {
+        this.loading = false;
+      }
+    }
+  },
+  mounted() {
+    this.fetchUsers();
   }
-};
-
-onMounted(() => fetchUsers());
+}
 </script>
 ```
 
@@ -462,19 +493,40 @@ export function useCompteur(initialValue = 0, options = {}) {
 
 ---
 
-# Exercice 7 - Utilisation du composable
+# Exercice 7 - Utilisation avec mixin
 
 ```vue
-<script setup>
-import { useCompteur } from './composables/useCompteur';
+<script>
+// Avec Options API, on utilise les mixins plutôt que les composables
+const compteurMixin = {
+  data() {
+    return {
+      count: 0,
+      min: 0,
+      max: 100
+    }
+  },
+  computed: {
+    estPair() {
+      return this.count % 2 === 0;
+    }
+  },
+  methods: {
+    increment(step = 1) {
+      this.count = Math.min(this.count + step, this.max);
+    },
+    decrement(step = 1) {
+      this.count = Math.max(this.count - step, this.min);
+    },
+    reset() {
+      this.count = 0;
+    }
+  }
+};
 
-const { 
-  count, 
-  increment, 
-  decrement, 
-  reset,
-  estPair 
-} = useCompteur(0, { min: 0, max: 100 });
+export default {
+  mixins: [compteurMixin]
+}
 </script>
 
 <template>

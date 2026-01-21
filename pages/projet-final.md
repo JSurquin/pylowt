@@ -444,19 +444,35 @@ router.beforeEach(async (to, from, next) => {
 ### ProductCard
 
 ```vue
-<script setup>
-const props = defineProps({
-  product: Object
-});
+<script>
+import { useCartStore } from '@/stores/cart';
+import Card from '@/components/Card.vue';
+import Button from '@/components/Button.vue';
 
-const emit = defineEmits(['add-to-cart']);
-
-const cartStore = useCartStore();
-
-const addToCart = () => {
-  cartStore.addToCart(props.product);
-  emit('add-to-cart', props.product);
-};
+export default {
+  components: {
+    Card,
+    Button
+  },
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  },
+  emits: ['add-to-cart'],
+  computed: {
+    cartStore() {
+      return useCartStore();
+    }
+  },
+  methods: {
+    addToCart() {
+      this.cartStore.addToCart(this.product);
+      this.$emit('add-to-cart', this.product);
+    }
+  }
+}
 </script>
 
 <template>

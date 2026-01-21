@@ -293,8 +293,14 @@ export const vPermission = {
 # Exercice 6 - Utilisation
 
 ```vue
-<script setup>
+<script>
 import { vPermission } from './directives/permission';
+
+export default {
+  directives: {
+    permission: vPermission
+  }
+}
 </script>
 
 <template>

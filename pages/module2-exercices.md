@@ -26,16 +26,18 @@ Créer un composant Card générique avec header, body et footer
 # Exercice 1 - Solution Card.vue (1/2)
 
 ```vue
-<script setup>
-const props = defineProps({
-  variant: {
-    type: String,
-    default: 'default',
-    validator: (value) => {
-      return ['default', 'primary', 'danger'].includes(value);
+<script>
+export default {
+  props: {
+    variant: {
+      type: String,
+      default: 'default',
+      validator: (value) => {
+        return ['default', 'primary', 'danger'].includes(value);
+      }
     }
   }
-});
+}
 </script>
 ```
 
@@ -150,30 +152,30 @@ Créer un composant Modal avec props et slots
 # Exercice 2 - Solution Modal.vue (1/3)
 
 ```vue
-<script setup>
-import { onMounted, onUnmounted, watch } from 'vue';
-
-const props = defineProps({
-  show: Boolean,
-  title: String,
-  size: {
-    type: String,
-    default: 'medium',
-    validator: (v) => ['small', 'medium', 'large'].includes(v)
+<script>
+export default {
+  props: {
+    show: Boolean,
+    title: String,
+    size: {
+      type: String,
+      default: 'medium',
+      validator: (v) => ['small', 'medium', 'large'].includes(v)
+    },
+    closeOnClickOutside: {
+      type: Boolean,
+      default: true
+    }
   },
-  closeOnClickOutside: {
-    type: Boolean,
-    default: true
+  emits: ['close'],
+  methods: {
+    handleEscape(e) {
+      if (e.key === 'Escape' && this.show) {
+        this.$emit('close');
+      }
+    }
   }
-});
-
-const emit = defineEmits(['close']);
-
-const handleEscape = (e) => {
-  if (e.key === 'Escape' && props.show) {
-    emit('close');
-  }
-};
+}
 ```
 
 ---
@@ -181,27 +183,36 @@ const handleEscape = (e) => {
 # Exercice 2 - Solution Modal.vue (2/3)
 
 ```vue
-onMounted(() => {
-  document.addEventListener('keydown', handleEscape);
-});
-
-onUnmounted(() => {
-  document.removeEventListener('keydown', handleEscape);
-});
-
-watch(() => props.show, (newVal) => {
-  if (newVal) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
+export default {
+  // ... props et emits précédents
+  methods: {
+    handleEscape(e) {
+      if (e.key === 'Escape' && this.show) {
+        this.$emit('close');
+      }
+    },
+    handleOverlayClick() {
+      if (this.closeOnClickOutside) {
+        this.$emit('close');
+      }
+    }
+  },
+  watch: {
+    show(newVal) {
+      if (newVal) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+  },
+  mounted() {
+    document.addEventListener('keydown', this.handleEscape);
+  },
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.handleEscape);
   }
-});
-
-const handleOverlayClick = () => {
-  if (props.closeOnClickOutside) {
-    emit('close');
-  }
-};
+}
 </script>
 ```
 
@@ -316,17 +327,26 @@ const handleOverlayClick = () => {
 # Exercice 2 - Utilisation du Modal
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import Modal from './components/Modal.vue';
 
-const showModal = ref(false);
-const showConfirm = ref(false);
-
-const handleConfirm = () => {
-  console.log('Confirmé!');
-  showConfirm.value = false;
-};
+export default {
+  components: {
+    Modal
+  },
+  data() {
+    return {
+      showModal: false,
+      showConfirm: false
+    }
+  },
+  methods: {
+    handleConfirm() {
+      console.log('Confirmé!');
+      this.showConfirm = false;
+    }
+  }
+}
 </script>
 
 <template>
@@ -371,36 +391,40 @@ Créer un tableau générique avec colonnes personnalisables
 # Exercice 3 - Solution DataTable.vue (1/2)
 
 ```vue
-<script setup>
-import { ref, computed } from 'vue';
-
-const props = defineProps({
-  items: {
-    type: Array,
-    required: true
+<script>
+export default {
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+    columns: {
+      type: Array,
+      required: true
+    }
   },
-  columns: {
-    type: Array,
-    required: true
+  data() {
+    return {
+      sortKey: '',
+      sortOrder: 'asc'
+    }
+  },
+  computed: {
+    sortedItems() {
+      if (!this.sortKey) return this.items;
+      
+      return [...this.items].sort((a, b) => {
+        const aVal = a[this.sortKey];
+        const bVal = b[this.sortKey];
+        const order = this.sortOrder === 'asc' ? 1 : -1;
+        
+        if (aVal < bVal) return -1 * order;
+        if (aVal > bVal) return 1 * order;
+        return 0;
+      });
+    }
   }
-});
-
-const sortKey = ref('');
-const sortOrder = ref('asc');
-
-const sortedItems = computed(() => {
-  if (!sortKey.value) return props.items;
-  
-  return [...props.items].sort((a, b) => {
-    const aVal = a[sortKey.value];
-    const bVal = b[sortKey.value];
-    const order = sortOrder.value === 'asc' ? 1 : -1;
-    
-    if (aVal < bVal) return -1 * order;
-    if (aVal > bVal) return 1 * order;
-    return 0;
-  });
-});
+}
 ```
 
 ---
@@ -408,14 +432,19 @@ const sortedItems = computed(() => {
 # Exercice 3 - Solution DataTable.vue (2/2)
 
 ```vue
-const handleSort = (key) => {
-  if (sortKey.value === key) {
-    sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
-  } else {
-    sortKey.value = key;
-    sortOrder.value = 'asc';
+export default {
+  // ... props, data, computed précédents
+  methods: {
+    handleSort(key) {
+      if (this.sortKey === key) {
+        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sortKey = key;
+        this.sortOrder = 'asc';
+      }
+    }
   }
-};
+}
 </script>
 
 <template>
@@ -519,26 +548,34 @@ tr:hover {
 # Exercice 3 - Utilisation DataTable
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import DataTable from './components/DataTable.vue';
 
-const users = ref([
-  { id: 1, nom: 'Alice', email: 'alice@ex.com', role: 'admin' },
-  { id: 2, nom: 'Bob', email: 'bob@ex.com', role: 'user' },
-  { id: 3, nom: 'Charlie', email: 'charlie@ex.com', role: 'user' }
-]);
-
-const columns = [
-  { key: 'nom', label: 'Nom', sortable: true },
-  { key: 'email', label: 'Email', sortable: true },
-  { key: 'role', label: 'Rôle', sortable: false },
-  { key: 'actions', label: 'Actions', sortable: false }
-];
-
-const deleteUser = (id) => {
-  users.value = users.value.filter(u => u.id !== id);
-};
+export default {
+  components: {
+    DataTable
+  },
+  data() {
+    return {
+      users: [
+        { id: 1, nom: 'Alice', email: 'alice@ex.com', role: 'admin' },
+        { id: 2, nom: 'Bob', email: 'bob@ex.com', role: 'user' },
+        { id: 3, nom: 'Charlie', email: 'charlie@ex.com', role: 'user' }
+      ],
+      columns: [
+        { key: 'nom', label: 'Nom', sortable: true },
+        { key: 'email', label: 'Email', sortable: true },
+        { key: 'role', label: 'Rôle', sortable: false },
+        { key: 'actions', label: 'Actions', sortable: false }
+      ]
+    }
+  },
+  methods: {
+    deleteUser(id) {
+      this.users = this.users.filter(u => u.id !== id);
+    }
+  }
+}
 </script>
 ```
 
@@ -595,33 +632,37 @@ Créer un layout de page complet
 # Exercice 4 - Solution AppLayout.vue (1/2)
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const props = defineProps({
-  sidebarWidth: {
-    type: String,
-    default: '250px'
+<script>
+export default {
+  props: {
+    sidebarWidth: {
+      type: String,
+      default: '250px'
+    },
+    showSidebar: {
+      type: Boolean,
+      default: true
+    },
+    showHeader: {
+      type: Boolean,
+      default: true
+    },
+    showFooter: {
+      type: Boolean,
+      default: true
+    }
   },
-  showSidebar: {
-    type: Boolean,
-    default: true
+  data() {
+    return {
+      isSidebarOpen: true
+    }
   },
-  showHeader: {
-    type: Boolean,
-    default: true
-  },
-  showFooter: {
-    type: Boolean,
-    default: true
+  methods: {
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    }
   }
-});
-
-const isSidebarOpen = ref(true);
-
-const toggleSidebar = () => {
-  isSidebarOpen.value = !isSidebarOpen.value;
-};
+}
 </script>
 ```
 
@@ -752,29 +793,33 @@ Créer un système d'onglets réutilisable
 # Exercice 5 - Solution Tabs.vue
 
 ```vue
-<script setup>
-import { ref, provide } from 'vue';
-
-const props = defineProps({
-  defaultTab: {
-    type: Number,
-    default: 0
+<script>
+export default {
+  props: {
+    defaultTab: {
+      type: Number,
+      default: 0
+    }
+  },
+  emits: ['change'],
+  data() {
+    return {
+      activeTab: this.defaultTab
+    }
+  },
+  provide() {
+    return {
+      activeTab: this.activeTab,
+      setActiveTab: this.setActiveTab
+    }
+  },
+  methods: {
+    setActiveTab(index) {
+      this.activeTab = index;
+      this.$emit('change', index);
+    }
   }
-});
-
-const emit = defineEmits(['change']);
-
-const activeTab = ref(props.defaultTab);
-
-const setActiveTab = (index) => {
-  activeTab.value = index;
-  emit('change', index);
-};
-
-provide('tabsState', {
-  activeTab,
-  setActiveTab
-});
+}
 </script>
 
 <template>
@@ -813,28 +858,29 @@ provide('tabsState', {
 # Exercice 5 - Solution Tab.vue
 
 ```vue
-<script setup>
-import { inject, computed } from 'vue';
-
-const props = defineProps({
-  index: {
-    type: Number,
-    required: true
+<script>
+export default {
+  props: {
+    index: {
+      type: Number,
+      required: true
+    },
+    disabled: Boolean
   },
-  disabled: Boolean
-});
-
-const tabsState = inject('tabsState');
-
-const isActive = computed(() => {
-  return tabsState.activeTab.value === props.index;
-});
-
-const handleClick = () => {
-  if (!props.disabled) {
-    tabsState.setActiveTab(props.index);
+  inject: ['activeTab', 'setActiveTab'],
+  computed: {
+    isActive() {
+      return this.activeTab === this.index;
+    }
+  },
+  methods: {
+    handleClick() {
+      if (!this.disabled) {
+        this.setActiveTab(this.index);
+      }
+    }
   }
-};
+}
 </script>
 
 <template>
@@ -881,21 +927,21 @@ const handleClick = () => {
 # Exercice 5 - Solution TabPanel.vue
 
 ```vue
-<script setup>
-import { inject, computed } from 'vue';
-
-const props = defineProps({
-  index: {
-    type: Number,
-    required: true
+<script>
+export default {
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  inject: ['activeTab'],
+  computed: {
+    isActive() {
+      return this.activeTab === this.index;
+    }
   }
-});
-
-const tabsState = inject('tabsState');
-
-const isActive = computed(() => {
-  return tabsState.activeTab.value === props.index;
-});
+}
 </script>
 
 <template>
@@ -944,14 +990,23 @@ const isActive = computed(() => {
 # Exercice 5 - Utilisation Tabs
 
 ```vue
-<script setup>
+<script>
 import Tabs from './components/Tabs.vue';
 import Tab from './components/Tab.vue';
 import TabPanel from './components/TabPanel.vue';
 
-const handleTabChange = (index) => {
-  console.log('Onglet actif:', index);
-};
+export default {
+  components: {
+    Tabs,
+    Tab,
+    TabPanel
+  },
+  methods: {
+    handleTabChange(index) {
+      console.log('Onglet actif:', index);
+    }
+  }
+}
 </script>
 
 <template>
@@ -1003,33 +1058,39 @@ Créer un menu déroulant réutilisable
 # Exercice 6 - Solution Dropdown.vue (1/2)
 
 ```vue
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-
-const props = defineProps({
-  position: {
-    type: String,
-    default: 'bottom',
-    validator: (v) => ['top', 'bottom', 'left', 'right'].includes(v)
+<script>
+export default {
+  props: {
+    position: {
+      type: String,
+      default: 'bottom',
+      validator: (v) => ['top', 'bottom', 'left', 'right'].includes(v)
+    }
+  },
+  data() {
+    return {
+      isOpen: false
+    }
+  },
+  methods: {
+    toggle() {
+      this.isOpen = !this.isOpen;
+    },
+    close() {
+      this.isOpen = false;
+    },
+    handleClickOutside(e) {
+      if (this.$refs.dropdown && !this.$refs.dropdown.contains(e.target)) {
+        this.close();
+      }
+    },
+    handleEscape(e) {
+      if (e.key === 'Escape') {
+        this.close();
+      }
+    }
   }
-});
-
-const isOpen = ref(false);
-const dropdownRef = ref(null);
-
-const toggle = () => {
-  isOpen.value = !isOpen.value;
-};
-
-const close = () => {
-  isOpen.value = false;
-};
-
-const handleClickOutside = (e) => {
-  if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
-    close();
-  }
-};
+}
 ```
 
 ---
