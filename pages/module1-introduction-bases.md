@@ -22,6 +22,10 @@ Que vous veniez de :
 
 En 3 jours, vous serez capable de créer des **applications web modernes et performantes** !
 
+---
+
+# Ce qui vous attend 🎯
+
 ### 🎯 Notre promesse
 
 À la fin de cette formation :
@@ -62,7 +66,9 @@ const calculer = (a, b) => {
 
 ---
 
-# Arrow Functions - Cas d'usage
+# Arrow Functions - Cas d'usage (1/2)
+
+Méthodes de tableaux avec arrow functions
 
 ```javascript
 // Dans les méthodes de tableaux
@@ -76,7 +82,15 @@ const pairs = nombres.filter(n => n % 2 === 0);
 
 const somme = nombres.reduce((acc, n) => acc + n, 0);
 // 15
+```
 
+---
+
+# Arrow Functions - Cas d'usage (2/2)
+
+Binding lexical de `this`
+
+```javascript
 // Binding lexical de 'this'
 class Composant {
   constructor() {
@@ -357,7 +371,9 @@ Vue.js suit le pattern MVVM (Model-View-ViewModel)
 
 ---
 
-# MVVM dans Vue.js - Exemple
+# MVVM dans Vue.js - Exemple (1/2)
+
+**MODEL + VIEWMODEL (Script)**
 
 ```vue
 <script>
@@ -380,7 +396,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# MVVM dans Vue.js - Exemple (2/2)
+
+**VIEW (Template)**
+
+```vue
 <template>
   <!-- VIEW - Interface -->
   <div>
@@ -559,9 +583,9 @@ app.mount('#app');
 
 ---
 
-# Le fichier App.vue
+# Le fichier App.vue (1/2)
 
-Composant racine de l'application
+Composant racine de l'application - **Script et Template**
 
 ```vue
 <script>
@@ -587,7 +611,15 @@ export default {
     </button>
   </div>
 </template>
+```
 
+---
+
+# Le fichier App.vue (2/2)
+
+**Style du composant**
+
+```vue
 <style scoped>
 button {
   padding: 10px 20px;
@@ -670,9 +702,11 @@ C'est ça la **réactivité** : Vue observe vos données et met à jour le DOM a
 
 ---
 
-# Interpolation (Mustache)
+# Interpolation (Mustache) - 1/2
 
 Affichage de données dans le template avec `{{ }}` - **Options API**
+
+**Les données :**
 
 ```vue
 <script>
@@ -689,7 +723,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Interpolation (Mustache) - 2/2
+
+**Utilisation dans le template :**
+
+```vue
 <template>
   <div>
     <h1>{{ message }}</h1>
@@ -703,9 +745,11 @@ export default {
 
 ---
 
-# Directive v-bind
+# Directive v-bind (1/2)
 
 Lie un attribut HTML à une expression JavaScript - **Options API**
+
+**Les données :**
 
 ```vue
 <script>
@@ -723,7 +767,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Directive v-bind (2/2)
+
+**Utilisation dans le template :**
+
+```vue
 <template>
   <img v-bind:src="imageUrl" v-bind:alt="altText" />
   <!-- Syntaxe courte -->
@@ -736,9 +788,11 @@ export default {
 
 ---
 
-# Directive v-on (événements)
+# Directive v-on (événements) - 1/2
 
 Écoute les événements DOM - **Options API**
+
+**Logique :**
 
 ```vue
 <script>
@@ -760,7 +814,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Directive v-on (événements) - 2/2
+
+**Template :**
+
+```vue
 <template>
   <button v-on:click="incrementer">+1</button>
   <!-- Syntaxe courte -->
@@ -799,9 +861,11 @@ Vue.js propose des modificateurs pour faciliter la gestion des événements
 
 ---
 
-# Directive v-if / v-else
+# Directive v-if / v-else (1/2)
 
 Affichage conditionnel (ajout/suppression du DOM) - **Options API**
+
+**Données :**
 
 ```vue
 <script>
@@ -815,7 +879,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Directive v-if / v-else (2/2)
+
+**Template avec conditions :**
+
+```vue
 <template>
   <div v-if="isLoggedIn">
     <h1>Bienvenue!</h1>
@@ -883,9 +955,11 @@ export default {
 
 ---
 
-# Directive v-for
+# Directive v-for (1/2)
 
 Rendu de listes - **Options API**
+
+**Données :**
 
 ```vue
 <script>
@@ -902,7 +976,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Directive v-for (2/2)
+
+**Utilisation :**
+
+```vue
 <template>
   <!-- Tableau simple -->
   <ul>
@@ -945,9 +1027,11 @@ Le `:key` aide Vue à identifier chaque élément de façon unique et optimiser 
 
 ---
 
-# v-model - Liaison bidirectionnelle
+# v-model - Liaison bidirectionnelle (1/2)
 
 Synchronise automatiquement les données avec les inputs - **Options API**
+
+**Données :**
 
 ```vue
 <script>
@@ -962,7 +1046,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# v-model - Liaison bidirectionnelle (2/2)
+
+**Template :**
+
+```vue
 <template>
   <input v-model="texte" type="text" />
   <p>Texte: {{ texte }}</p>
@@ -1036,6 +1128,10 @@ App
 └── Footer
 ```
 
+---
+
+# Avantages des composants
+
 ### 🎯 Avantages concrets
 
 - **Réutilisabilité** : créez une fois, utilisez partout
@@ -1045,9 +1141,11 @@ App
 
 ---
 
-# Création d'un composant
+# Création d'un composant (1/2)
 
 Fichier `MonBouton.vue` - **Options API**
+
+**Script et Template :**
 
 ```vue
 <script>
@@ -1070,7 +1168,15 @@ export default {
     Cliqué {{ compteur }} fois
   </button>
 </template>
+```
 
+---
+
+# Création d'un composant (2/2)
+
+**Style scopé :**
+
+```vue
 <style scoped>
 button {
   padding: 10px 20px;
@@ -1394,7 +1500,9 @@ export default {
 
 ---
 
-# Gestion de listes de composants
+# Gestion de listes de composants (1/2)
+
+**Logique du composant :**
 
 ```vue
 <script>
@@ -1427,7 +1535,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Gestion de listes de composants (2/2)
+
+**Template avec v-for :**
+
+```vue
 <template>
   <TodoItem 
     v-for="todo in todos"
@@ -1718,12 +1834,13 @@ C'est comme avoir une boîte à outils réutilisable : une fois créée, disponi
 
 ---
 
-# Réutiliser la logique (Mixins)
+# Réutiliser la logique (Mixins) - 1/2
 
 Avec l'Options API, on utilise les **mixins** pour réutiliser de la logique
 
-```vue
-<script>
+**Définition du mixin :**
+
+```javascript
 // Fichier mixins/counterMixin.js
 export const counterMixin = {
   data() {
@@ -1743,7 +1860,16 @@ export const counterMixin = {
     }
   }
 };
+```
 
+---
+
+# Réutiliser la logique (Mixins) - 2/2
+
+**Utilisation dans un composant :**
+
+```vue
+<script>
 // Utilisation dans un composant
 import { counterMixin } from './mixins/counterMixin';
 
@@ -1801,7 +1927,9 @@ export const fetchMixin = {
 
 ---
 
-# Utilisation du Mixin fetch
+# Utilisation du Mixin fetch (1/2)
+
+**Script - Logique du composant :**
 
 ```vue
 <script>
@@ -1830,7 +1958,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Utilisation du Mixin fetch (2/2)
+
+**Template - Affichage :**
+
+```vue
 <template>
   <div>
     <div v-if="loading">Chargement...</div>
