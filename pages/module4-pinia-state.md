@@ -8,20 +8,86 @@ routeAlias: 'module4-pinia'
 
 ---
 
+# 🎊 Bienvenue au Jour 2 !
+
+### 📊 Votre progression
+
+```
+    ╔════════════════════════╗
+    ║ ████████████████░░░░░░ ║  65% complété
+    ╚════════════════════════╝
+```
+
+### 🏆 Récap Jour 1 : Vous êtes des warriors !
+
+Hier vous avez appris :
+✅ Les bases de Vue.js et la réactivité
+✅ Les composants et leur communication
+✅ Les slots et composants génériques
+✅ Les techniques avancées (directives, SFC...)
+
+**C'est ÉNORME** ! Donnez-vous une tape dans le dos ! 👏
+
+### 🎯 Jour 2 : On passe à la vitesse supérieure
+
+Aujourd'hui on attaque les **outils professionnels** :
+- **Pinia** : pour gérer l'état de votre app
+- **Vue Router** : pour naviguer entre les pages
+
+### 💡 Pourquoi c'est important ?
+
+**Sans Pinia** : votre code va devenir un spaghetti 🍝
+**Avec Pinia** : tout est organisé, propre, maintenable ✨
+
+### 🚀 Let's go !
+
+"La simplicité est la sophistication suprême" - Leonardo da Vinci
+
+---
+
 # Qu'est-ce que le State Management ?
 
 Le **State Management** est la gestion centralisée de l'état de l'application
 
-### Problème sans State Management
+### 🏦 Analogie : C'est comme une banque centrale
 
-- Données dupliquées entre composants
-- Props drilling (passage de props sur plusieurs niveaux)
-- Difficile de synchroniser l'état
-- Code difficile à maintenir
+Sans State Management, c'est comme si **chaque personne gardait son argent chez soi** :
+- Difficile de savoir qui a combien 💰
+- Impossible de faire des transferts facilement
+- Chaos total si quelqu'un veut vérifier le total !
 
-### Solution : Store centralisé
+Avec State Management, **une banque centrale** :
+- Tout l'argent au même endroit 🏦
+- Transactions faciles et traçables
+- Vue d'ensemble claire
 
-Un seul endroit pour stocker et gérer l'état global
+### 😱 Le cauchemar du Props Drilling
+
+```
+App (user)
+  └── Header (user) ← Passe user
+       └── Nav (user) ← Passe user
+            └── UserMenu (user) ← Utilise ENFIN user !
+```
+
+**3 composants intermédiaires** qui ne font que passer la donnée ! C'est lourd...
+
+### ✨ Solution avec Pinia
+
+```
+App → utilise useUserStore()
+Header → n'a pas besoin de user
+Nav → n'a pas besoin de user
+UserMenu → utilise useUserStore() ← Accès direct !
+```
+
+**Chaque composant prend ce dont il a besoin, directement à la source !**
+
+### 🆚 Comparaison
+
+- **Redux (React)** : Beaucoup de boilerplate, complexe
+- **Context API (React)** : Simple mais performances limitées
+- **Pinia (Vue)** : Simple ET performant ! Le meilleur des deux mondes 🎉
 
 ---
 
@@ -205,6 +271,32 @@ export const useProductStore = defineStore('products', () => {
 # Getters - Propriétés calculées
 
 Les getters sont des propriétés calculées basées sur le state
+
+### 🧮 Analogie : Les getters sont comme une calculatrice
+
+Imaginez une boutique :
+- **State** : `products` (liste brute des produits)
+- **Getter** : `totalPrice` (calcule automatiquement le total)
+
+Vous ne stockez PAS le total, vous le **calculez à la demande** !
+
+### 💡 Pourquoi des getters ?
+
+**Sans getter** : vous devez calculer partout
+```javascript
+// Dans ComponentA
+const total = products.reduce((sum, p) => sum + p.prix, 0);
+
+// Dans ComponentB
+const total = products.reduce((sum, p) => sum + p.prix, 0); // Duplication !
+```
+
+**Avec getter** : calculé une fois, utilisé partout
+```javascript
+const total = store.totalPrice; // Simple et réutilisable !
+```
+
+### 🆚 En Redux : ce sont les selectors (mais plus verbeux)
 
 ```javascript
 export const useProductStore = defineStore('products', () => {

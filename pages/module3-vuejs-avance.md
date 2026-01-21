@@ -7,6 +7,42 @@ routeAlias: 'module3-avance'
 ## Vue.js - Fonctionnement avancé
 
 ---
+
+# 🔥 Vous êtes prêts pour le niveau supérieur !
+
+### 📊 Votre progression
+
+```
+    ╔════════════════════════╗
+    ║ ████████████░░░░░░░░░░ ║  50% complété
+    ╚════════════════════════╝
+```
+
+### 🎯 Checkpoint : Où en êtes-vous ?
+
+Si vous êtes arrivés jusqu'ici, **bravo** ! 🎉
+
+Vous maîtrisez maintenant :
+✅ Les fondamentaux de Vue.js
+✅ Les composants et leur communication
+✅ Les slots pour des composants flexibles
+
+### 🚀 Module 3 : Les techniques de ninja
+
+Aujourd'hui on va voir les **fonctionnalités avancées** :
+- Directives personnalisées (créez vos propres v-xyz)
+- SFC avancés (Single File Components)
+- CSS dynamique et scoped
+
+### 💪 C'est là que vous devenez un vrai développeur Vue.js !
+
+**Promis** : ça peut sembler intimidant, mais vous POUVEZ le faire !
+
+### 🎓 Conseil de coach
+
+> "La maîtrise vient de la répétition. Vous ne comprendrez peut-être pas tout du premier coup, et c'est NORMAL ! Pratiquez, et ça viendra naturellement."
+
+---
 layout: new-section
 ---
 

@@ -8,18 +8,86 @@ routeAlias: 'module5-router'
 
 ---
 
+# 🎉 Déjà le Module 5 !
+
+### 📊 Votre progression
+
+```
+    ╔════════════════════════╗
+    ║ ████████████████████░░ ║  80% complété
+    ╚════════════════════════╝
+```
+
+### 🌟 Vous êtes presque au sommet !
+
+À ce stade, vous savez :
+✅ Créer des composants Vue.js réactifs
+✅ Les rendre réutilisables avec les slots
+✅ Maîtriser les techniques avancées
+✅ Gérer l'état global avec Pinia
+
+**Vous êtes déjà meilleurs que 70% des développeurs frontend !** 💪
+
+### 🗺️ Module 5 : On crée une vraie application
+
+Jusqu'ici, on a travaillé sur **une seule page**.
+Maintenant, on va créer une **vraie application multi-pages** avec Vue Router !
+
+### 🎯 Ce que vous allez construire
+
+Une application avec :
+- Page d'accueil
+- Liste de produits
+- Détail produit (route dynamique !)
+- Page admin (protégée par authentification)
+- Page 404
+
+**En gros : une vraie app professionnelle !** 🚀
+
+### 💡 Fun fact
+
+Les applications modernes sont appelées **SPA** (Single Page Application), mais elles donnent l'illusion d'avoir plusieurs pages !
+
+---
+
 # Qu'est-ce que Vue Router ?
 
 **Vue Router** est le routeur officiel pour les applications Vue.js
 
+### 🗺️ Analogie : Vue Router est comme un GPS
+
+Imaginez votre application comme une ville :
+- **Les routes** = les rues de la ville 🏘️
+- **Le Router** = votre GPS 📱
+- **Les composants** = les destinations (maison, bureau, magasin...)
+
+Quand vous tapez une adresse (URL), le GPS (Router) vous emmène à la bonne destination (composant) !
+
+### 🆚 Sans Router : SPA = Single Page (vraiment UNE page)
+
+**Application traditionnelle multi-pages** :
+```
+/index.html      ← Page 1 (rechargement complet ⏳)
+/about.html      ← Page 2 (rechargement complet ⏳)
+/contact.html    ← Page 3 (rechargement complet ⏳)
+```
+
+**SPA avec Router** :
+```
+/                ← Home Component (instantané ⚡)
+/about           ← About Component (instantané ⚡)
+/contact         ← Contact Component (instantané ⚡)
+```
+Une seule page HTML, mais l'illusion de plusieurs pages !
+
 ### Fonctionnalités
 
-- 🛤️ Navigation entre pages
-- 📍 Gestion de l'URL
-- 🔙 Historique de navigation
-- 🔐 Guards de navigation
-- ⚡ Lazy loading des composants
-- 🎯 Routes dynamiques et imbriquées
+- 🛤️ **Navigation entre "pages"** : sans rechargement complet !
+- 📍 **Gestion de l'URL** : /products/123 au lieu de ?page=products&id=123
+- 🔙 **Historique** : boutons retour/avant fonctionnent
+- 🔐 **Guards** : "Tu ne passeras pas !" sans authentification
+- ⚡ **Lazy loading** : charger les pages à la demande
+- 🎯 **Routes dynamiques** : /user/:id pour tous les utilisateurs
 
 ---
 
@@ -285,17 +353,40 @@ const routes = [
 
 # Guards de navigation - beforeEach
 
+### 🚦 Les Guards sont comme des feux de circulation
+
+Imaginez un **videur de boîte de nuit** :
+- Il vérifie votre carte d'identité 🪪
+- Si vous avez l'âge requis → **next()** (vous entrez ✅)
+- Sinon → **next('/home')** (vous dégagez ❌)
+
+### 🛡️ Types de guards
+
+**beforeEach** : Garde global (vérifie TOUT le monde)
+**beforeEnter** : Garde spécifique (juste pour une route)
+**beforeRouteEnter** : Garde dans le composant
+
+### 💡 Cas d'usage typiques
+
+- 🔐 **Authentification** : "Es-tu connecté ?"
+- 👮 **Autorisation** : "As-tu le droit d'être admin ?"
+- 💾 **Sauvegarde** : "As-tu sauvegardé tes modifications ?"
+- 📊 **Analytics** : Tracker les visites de pages
+
 ```javascript
 router.beforeEach((to, from, next) => {
   const isAuthenticated = checkAuth();
   
+  // Si la route nécessite l'auth ET que l'user n'est pas connecté
   if (to.meta.requiresAuth && !isAuthenticated) {
-    next('/login');
+    next('/login'); // ❌ Redirection vers login
   } else {
-    next();
+    next(); // ✅ Passe ton chemin, tu es bon !
   }
 });
 ```
+
+### 🆚 En React Router v6 : loaders et actions (concept similaire)
 
 ---
 

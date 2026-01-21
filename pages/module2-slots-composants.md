@@ -7,6 +7,37 @@ routeAlias: 'module2-slots'
 ## Slots et composants génériques
 
 ---
+
+# 🎓 Félicitations pour le Module 1 !
+
+Vous venez de maîtriser les **fondamentaux** de Vue.js ! 👏
+
+### 📊 Votre progression
+
+```
+    ╔════════════════════════╗
+    ║ ████████░░░░░░░░░░░░░░ ║  30% complété
+    ╚════════════════════════╝
+```
+
+### 🧠 Ce que vous savez maintenant
+
+✅ Créer des composants réactifs
+✅ Gérer l'état local
+✅ Communiquer entre composants (props/emit)
+✅ Faire des appels API
+
+### 🚀 Module 2 : On monte en niveau !
+
+Aujourd'hui on va apprendre à créer des **composants ultra-réutilisables** avec les slots.
+
+**Objectif** : Un seul composant Modal pour TOUTE l'application !
+
+### 💡 Astuce du jour
+
+> "Un bon développeur est un développeur **fainéant** : il écrit du code réutilisable pour ne pas se répéter !"
+
+---
 layout: new-section
 ---
 
@@ -18,15 +49,36 @@ layout: new-section
 
 Les **slots** permettent de passer du contenu HTML (ou des composants) à un composant enfant
 
-### Analogie
-Pensez aux slots comme des "emplacements" ou "trous" dans un composant que le parent peut remplir
+### 🎰 Analogie : Les slots sont comme une machine à sous
+
+Imaginez un **cadre photo** :
+- Le cadre est votre composant (toujours le même design)
+- Le **slot** est l'emplacement vide au centre
+- Vous pouvez y mettre **n'importe quelle photo** !
+
+```
+┌─────────────────────┐
+│  ╔═══════════════╗  │  ← Le cadre (composant)
+│  ║               ║  │
+│  ║   [SLOT]      ║  │  ← L'emplacement (slot)
+│  ║   Mettez ce   ║  │
+│  ║   que vous    ║  │
+│  ║   voulez ici! ║  │
+│  ╚═══════════════╝  │
+└─────────────────────┘
+```
+
+### 🆚 En React : ce sont les `children` !
+
+**Vue** : `<slot></slot>`
+**React** : `{children}` ou props personnalisées
 
 ### Pourquoi utiliser des slots ?
 
-- 🎯 Créer des composants flexibles et réutilisables
-- 🧩 Composer des interfaces complexes
-- 🎨 Personnaliser le contenu sans modifier le composant
-- ♻️ Éviter la duplication de code
+- 🎯 **Composants flexibles** : un composant Card pour 1000 usages différents
+- 🧩 **Composer des interfaces** : assembler des briques comme des Lego
+- 🎨 **Personnaliser sans casser** : chaque utilisation est unique
+- ♻️ **DRY** : un seul composant Modal, 50 contenus différents
 
 ---
 
@@ -268,21 +320,44 @@ Syntaxes disponibles pour les slots
 
 Les **scoped slots** permettent au composant enfant de passer des données au parent
 
-### Cas d'usage
-Le composant enfant a des données que le parent doit utiliser pour le rendu
+### 🎁 Analogie : C'est comme une boîte cadeau avec mode d'emploi
+
+Le composant enfant dit au parent :
+> "Tiens, voici les données (le cadeau 🎁), maintenant fais-en ce que tu veux !"
+
+### 🤔 Problème à résoudre
+
+**Sans scoped slots** : 
+- L'enfant décide TOUT (comment afficher)
+- Pas flexible
+
+**Avec scoped slots** : 
+- L'enfant donne les données
+- Le parent décide comment les afficher
+- **Super flexible** ! 🎨
+
+### Cas d'usage typique
+
+Le composant enfant fait le **travail de récupération/logique** (ex: boucle, tri)
+Le parent décide du **rendu visuel** (ex: carte, tableau, liste...)
 
 ```vue
-<!-- TodoList.vue -->
+<!-- TodoList.vue - L'enfant donne les données -->
 <template>
   <ul>
-    <li v-for="todo in todos" :key="todo.id">
+    <li v-for="(todo, index) in todos" :key="todo.id">
       <slot :todo="todo" :index="index">
+        <!-- Contenu par défaut si pas de slot fourni -->
         {{ todo.text }}
       </slot>
     </li>
   </ul>
 </template>
 ```
+
+### 💡 En React : render props ou children function
+
+Vue rend ça plus simple et plus lisible !
 
 ---
 

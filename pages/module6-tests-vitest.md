@@ -8,16 +8,77 @@ routeAlias: 'module6-tests'
 
 ---
 
+# 🎊 DERNIER MODULE ! Vous êtes des champions ! 🏆
+
+### 📊 Votre progression
+
+```
+    ╔════════════════════════╗
+    ║ ████████████████████████ ║  95% complété
+    ╚════════════════════════╝
+```
+
+### 🌟 Regardez le chemin parcouru !
+
+**Jour 1** : Vous découvriez Vue.js
+**Jour 2** : Vous maîtrisiez Pinia et le routing
+**Jour 3** : **Vous êtes des développeurs Vue.js confirmés !**
+
+### 🎯 Module 6 : La cerise sur le gâteau 🍒
+
+Les tests, c'est ce qui différencie :
+- Un **développeur junior** : "Ça marche sur ma machine !"
+- Un **développeur senior** : "J'ai 95% de coverage, déployons sereinement"
+
+### 💼 Dans le monde professionnel
+
+**Sans tests** : Vous ne serez jamais embauché dans une bonne entreprise
+**Avec tests** : Vous êtes un développeur **recherché** et **bien payé** 💰
+
+### 🚀 Dernier effort !
+
+> "Les tests sont l'assurance vie de votre code. Ça peut sembler ennuyeux maintenant, mais vous nous remercierez plus tard !"
+
+---
+
 # Pourquoi tester son code ?
+
+### 🤔 "Les tests c'est pour les faibles !"
+
+**FAUX !** Les tests sont pour les **pros** qui veulent dormir tranquilles la nuit ! 😴
+
+### 🏥 Analogie : Les tests sont comme des examens médicaux
+
+Vous faites des analyses de sang **AVANT** d'être malade, pas après !
+
+**Sans tests** :
+```
+Vous codez → Déployez → 💥 Bug en production → 😱 Panique
+```
+
+**Avec tests** :
+```
+Vous codez → Tests échouent → Vous corrigez → Tests passent ✅ → 😎 Déploiement serein
+```
+
+### 💰 Le coût d'un bug
+
+- **Développement** : 1€ (facile à corriger)
+- **En production** : 100€ (clients mécontents, rollback urgent...)
+- **Bug critique en prod** : 10 000€ (perte de clients, réputation...)
 
 ### Avantages des tests
 
-- ✅ Détection précoce des bugs
-- 🔒 Confiance lors des refactorings
-- 📝 Documentation vivante du code
-- 🚀 Facilite la maintenance
-- 👥 Meilleure collaboration en équipe
-- ⚡ Développement plus rapide à long terme
+- ✅ **Détection précoce des bugs** : trouvez-les AVANT vos utilisateurs
+- 🔒 **Confiance lors des refactorings** : changez du code sans peur
+- 📝 **Documentation vivante** : les tests montrent comment utiliser votre code
+- 🚀 **Maintenance facile** : comprenez le code 6 mois après
+- 👥 **Collaboration** : vos collègues vous remercieront
+- ⚡ **Plus rapide au final** : moins de temps en debug
+
+### 🎯 La règle d'or
+
+"Le code non testé est un code cassé par défaut" - Quelqu'un de sage, probablement
 
 ---
 
