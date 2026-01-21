@@ -422,7 +422,9 @@ export default {
 
 ---
 
-# Scoped Slots - Cas avancé
+# Scoped Slots - Cas avancé (1/2)
+
+**Script du composant DataTable :**
 
 ```vue
 <!-- DataTable.vue -->
@@ -440,7 +442,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Scoped Slots - Cas avancé (2/2)
+
+**Template avec scoped slots :**
+
+```vue
 <template>
   <table>
     <thead>
@@ -733,7 +743,9 @@ export default {
 
 ---
 
-# Tab et TabPanel
+# Tab et TabPanel (1/2)
+
+**Composant Tab.vue :**
 
 ```vue
 <!-- Tab.vue -->
@@ -762,7 +774,15 @@ export default {
     <slot></slot>
   </button>
 </template>
+```
 
+---
+
+# Tab et TabPanel (2/2)
+
+**Composant TabPanel.vue :**
+
+```vue
 <!-- TabPanel.vue -->
 <script>
 export default {

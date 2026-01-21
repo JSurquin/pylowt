@@ -1252,7 +1252,9 @@ export default {
 
 ---
 
-# Utilisation des props
+# Utilisation des props (1/2)
+
+**Script avec les données :**
 
 ```vue
 <script>
@@ -1273,7 +1275,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Utilisation des props (2/2)
+
+**Template - passage des props :**
+
+```vue
 <template>
   <UserCard 
     :nom="utilisateur.nom"
@@ -1288,7 +1298,9 @@ export default {
 
 ---
 
-# Validation des props
+# Validation des props (1/2)
+
+**Types et validation de base :**
 
 ```vue
 <script>
@@ -1304,8 +1316,22 @@ export default {
     nom: {
       type: String,
       required: true
-    },
-    
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Validation des props (2/2)
+
+**Valeurs par défaut :**
+
+```vue
+<script>
+export default {
+  props: {
     // Valeur par défaut
     age: {
       type: Number,
@@ -1324,7 +1350,9 @@ export default {
 
 ---
 
-# Validation avancée des props
+# Validation avancée des props (1/2)
+
+**Validation personnalisée et enum :**
 
 ```vue
 <script>
@@ -1344,8 +1372,22 @@ export default {
       validator: (value) => {
         return ['actif', 'inactif', 'attente'].includes(value);
       }
-    },
-    
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Validation avancée des props (2/2)
+
+**Type personnalisé complexe :**
+
+```vue
+<script>
+export default {
+  props: {
     // Type personnalisé
     utilisateur: {
       type: Object,
@@ -1361,9 +1403,11 @@ export default {
 
 ---
 
-# Événements personnalisés (emit)
+# Événements personnalisés (emit) - 1/2
 
 Les enfants peuvent communiquer avec les parents via des événements - **Options API**
+
+**Script du composant enfant :**
 
 ```vue
 <!-- CompteurEnfant.vue -->
@@ -1380,7 +1424,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Événements personnalisés (emit) - 2/2
+
+**Template :**
+
+```vue
 <template>
   <div>
     <button @click="handleIncrement">+</button>
@@ -1391,7 +1443,9 @@ export default {
 
 ---
 
-# Écouter les événements personnalisés
+# Écouter les événements personnalisés (1/2)
+
+**Script du composant parent :**
 
 ```vue
 <script>
@@ -1416,7 +1470,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Écouter les événements personnalisés (2/2)
+
+**Template :**
+
+```vue
 <template>
   <div>
     <p>Compteur: {{ compteur }}</p>
@@ -1430,7 +1492,9 @@ export default {
 
 ---
 
-# Validation des événements
+# Validation des événements (1/2)
+
+**Validation des types d'événements :**
 
 ```vue
 <script>
@@ -1442,7 +1506,22 @@ export default {
     },
     decrementer: (value) => {
       return typeof value === 'number' && value > 0;
-    },
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Validation des événements (2/2)
+
+**Validation multi-paramètres :**
+
+```vue
+<script>
+export default {
+  emits: {
     change: (id, value) => {
       return typeof id === 'string' && id.length > 0;
     }
@@ -1458,9 +1537,11 @@ export default {
 
 ---
 
-# Composants dynamiques
+# Composants dynamiques (1/2)
 
 Changer de composant dynamiquement avec `<component>`
+
+**Script :**
 
 ```vue
 <script>
@@ -1486,7 +1567,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Composants dynamiques (2/2)
+
+**Template :**
+
+```vue
 <template>
   <div>
     <button @click="currentComponent = 'Accueil'">Accueil</button>
@@ -1500,9 +1589,9 @@ export default {
 
 ---
 
-# Gestion de listes de composants (1/2)
+# Gestion de listes de composants (1/3)
 
-**Logique du composant :**
+**Import et données :**
 
 ```vue
 <script>
@@ -1520,7 +1609,20 @@ export default {
         { id: 3, text: 'Déployer', done: false }
       ]
     }
-  },
+  }
+}
+</script>
+```
+
+---
+
+# Gestion de listes de composants (2/3)
+
+**Méthodes :**
+
+```vue
+<script>
+export default {
   methods: {
     ajouterTodo(text) {
       this.todos.push({
@@ -1539,7 +1641,7 @@ export default {
 
 ---
 
-# Gestion de listes de composants (2/2)
+# Gestion de listes de composants (3/3)
 
 **Template avec v-for :**
 
@@ -1556,7 +1658,9 @@ export default {
 
 ---
 
-# Affichage conditionnel de composants
+# Affichage conditionnel de composants (1/2)
+
+**Script :**
 
 ```vue
 <script>
@@ -1585,7 +1689,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Affichage conditionnel de composants (2/2)
+
+**Template :**
+
+```vue
 <template>
   <div>
     <LoginForm v-if="!isLoggedIn" @login="handleLogin" />
@@ -1606,9 +1718,11 @@ layout: new-section
 
 ---
 
-# Propriétés calculées (computed)
+# Propriétés calculées (computed) - 1/2
 
 Les propriétés calculées sont des valeurs dérivées qui se mettent à jour automatiquement - **Options API**
+
+**Script :**
 
 ```vue
 <script>
@@ -1631,7 +1745,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Propriétés calculées (computed) - 2/2
+
+**Template :**
+
+```vue
 <template>
   <p>{{ nomComplet }}</p>
   <p>Total: {{ total }}€</p>
@@ -1640,7 +1762,7 @@ export default {
 
 ---
 
-# Computed vs Methods : Le match ! 🥊
+# Computed vs Methods : Le match ! 🥊 (1/2)
 
 ### 💾 Computed : Le malin qui mémorise
 
@@ -1668,7 +1790,15 @@ const sommeMethod = () => {
   return nombres.value.reduce((a, b) => a + b, 0);
 };
 </script>
+```
 
+---
+
+# Computed vs Methods : Le match ! 🥊 (2/2)
+
+**Template :**
+
+```vue
 <template>
   <p>{{ sommeComputed }}</p> <!-- Calculé 1 fois ✨ -->
   <p>{{ sommeComputed }}</p> <!-- Cache utilisé ♻️ -->
@@ -1714,7 +1844,9 @@ export default {
 
 ---
 
-# Hooks du cycle de vie (suite)
+# Hooks du cycle de vie (suite) - 1/2
+
+**Hooks de mise à jour :**
 
 ```vue
 <script>
@@ -1727,7 +1859,20 @@ export default {
   updated() {
     console.log('Composant mis à jour');
     console.log('Nouvelle valeur:', this.compteur);
-  },
+  }
+}
+</script>
+```
+
+---
+
+# Hooks du cycle de vie (suite) - 2/2
+
+**Hooks de démontage :**
+
+```vue
+<script>
+export default {
   beforeUnmount() {
     console.log('Avant destruction');
   },
@@ -1741,7 +1886,9 @@ export default {
 
 ---
 
-# Exemple pratique avec lifecycle
+# Exemple pratique avec lifecycle (1/2)
+
+**Données et mounted :**
 
 ```vue
 <script>
@@ -1766,7 +1913,20 @@ export default {
     this.interval = setInterval(() => {
       console.log('Tick');
     }, 1000);
-  },
+  }
+}
+</script>
+```
+
+---
+
+# Exemple pratique avec lifecycle (2/2)
+
+**Nettoyage au démontage :**
+
+```vue
+<script>
+export default {
   beforeUnmount() {
     // Nettoyer l'interval
     if (this.interval) {
@@ -1779,7 +1939,7 @@ export default {
 
 ---
 
-# Composables - Logique réutilisable
+# Composables - Logique réutilisable (1/2)
 
 Les composables permettent d'extraire et de réutiliser de la logique
 
@@ -1791,6 +1951,10 @@ Au lieu de refaire le même tournevis dans chaque pièce, vous avez **UNE boîte
 
 **Vue** : `useCompteur()` 
 **React** : `useCounter()` (même concept, syntaxe similaire !)
+
+---
+
+# Composables - Logique réutilisable (2/2)
 
 Fichier `useCompteur.js`
 
@@ -1983,7 +2147,9 @@ export default {
 
 ---
 
-# Requêtes HTTP avec fetch
+# Requêtes HTTP avec fetch (1/2)
+
+**Données :**
 
 ```vue
 <script>
@@ -1994,7 +2160,20 @@ export default {
       loading: true,
       error: null
     }
-  },
+  }
+}
+</script>
+```
+
+---
+
+# Requêtes HTTP avec fetch (2/2)
+
+**Méthode et lifecycle :**
+
+```vue
+<script>
+export default {
   methods: {
     async fetchUsers() {
       try {
@@ -2022,7 +2201,9 @@ export default {
 
 ---
 
-# Requêtes POST avec fetch
+# Requêtes POST avec fetch (1/2)
+
+**Données du formulaire :**
 
 ```vue
 <script>
@@ -2032,7 +2213,20 @@ export default {
       nom: '',
       email: ''
     }
-  },
+  }
+}
+</script>
+```
+
+---
+
+# Requêtes POST avec fetch (2/2)
+
+**Méthode POST :**
+
+```vue
+<script>
+export default {
   methods: {
     async creerUtilisateur() {
       try {
@@ -2060,13 +2254,15 @@ export default {
 
 ---
 
-# Gestion des données avec axios
+# Gestion des données avec axios (1/2)
 
 Alternative à fetch (plus de fonctionnalités)
 
 ```bash
 npm install axios
 ```
+
+**Import et données :**
 
 ```vue
 <script>
@@ -2077,7 +2273,20 @@ export default {
     return {
       users: []
     }
-  },
+  }
+}
+</script>
+```
+
+---
+
+# Gestion des données avec axios (2/2)
+
+**Méthodes GET et POST :**
+
+```vue
+<script>
+export default {
   async mounted() {
     try {
       const { data } = await axios.get('/api/users');

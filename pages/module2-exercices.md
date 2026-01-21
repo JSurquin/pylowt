@@ -253,7 +253,9 @@ export default {
 
 ---
 
-# Exercice 2 - Styles Modal
+# Exercice 2 - Styles Modal (1/3)
+
+**Styles overlay et content :**
 
 ```vue
 <style scoped>
@@ -281,7 +283,17 @@ export default {
 .modal-small { width: 400px; }
 .modal-medium { width: 600px; }
 .modal-large { width: 800px; }
+</style>
+```
 
+---
+
+# Exercice 2 - Styles Modal (2/3)
+
+**Styles header, body, footer :**
+
+```vue
+<style scoped>
 .modal-header {
   padding: 1.5rem;
   border-bottom: 1px solid #e5e7eb;
@@ -309,7 +321,17 @@ export default {
   gap: 0.5rem;
   justify-content: flex-end;
 }
+</style>
+```
 
+---
+
+# Exercice 2 - Styles Modal (3/3)
+
+**Animations :**
+
+```vue
+<style scoped>
 .modal-enter-active,
 .modal-leave-active {
   transition: opacity 0.3s ease;
@@ -429,7 +451,9 @@ export default {
 
 ---
 
-# Exercice 3 - Solution DataTable.vue (2/2)
+# Exercice 3 - Solution DataTable.vue (2/3)
+
+**Méthodes :**
 
 ```vue
 export default {
@@ -446,7 +470,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Exercice 3 - Solution DataTable.vue (3/3)
+
+**Template :**
+
+```vue
 <template>
   <div class="data-table">
     <div v-if="items.length === 0" class="empty">
@@ -706,7 +738,9 @@ export default {
 
 ---
 
-# Exercice 4 - Styles Layout
+# Exercice 4 - Styles Layout (1/2)
+
+**Styles principaux :**
 
 ```vue
 <style scoped>
@@ -758,7 +792,17 @@ export default {
   border-top: 1px solid #e5e7eb;
   text-align: center;
 }
+</style>
+```
 
+---
+
+# Exercice 4 - Styles Layout (2/2)
+
+**Styles responsive :**
+
+```vue
+<style scoped>
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
@@ -790,7 +834,9 @@ Créer un système d'onglets réutilisable
 
 ---
 
-# Exercice 5 - Solution Tabs.vue
+# Exercice 5 - Solution Tabs.vue (1/3)
+
+**Script :**
 
 ```vue
 <script>
@@ -821,7 +867,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Exercice 5 - Solution Tabs.vue (2/3)
+
+**Template :**
+
+```vue
 <template>
   <div class="tabs">
     <div class="tabs-header">
@@ -833,7 +887,15 @@ export default {
     </div>
   </div>
 </template>
+```
 
+---
+
+# Exercice 5 - Solution Tabs.vue (3/3)
+
+**Styles :**
+
+```vue
 <style scoped>
 .tabs {
   border: 1px solid #e5e7eb;
@@ -855,7 +917,9 @@ export default {
 
 ---
 
-# Exercice 5 - Solution Tab.vue
+# Exercice 5 - Solution Tab.vue (1/3)
+
+**Script :**
 
 ```vue
 <script>
@@ -882,7 +946,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Exercice 5 - Solution Tab.vue (2/3)
+
+**Template :**
+
+```vue
 <template>
   <button
     class="tab"
@@ -893,7 +965,15 @@ export default {
     <slot></slot>
   </button>
 </template>
+```
 
+---
+
+# Exercice 5 - Solution Tab.vue (3/3)
+
+**Styles :**
+
+```vue
 <style scoped>
 .tab {
   padding: 1rem 1.5rem;
@@ -924,7 +1004,9 @@ export default {
 
 ---
 
-# Exercice 5 - Solution TabPanel.vue
+# Exercice 5 - Solution TabPanel.vue (1/2)
+
+**Script et Template :**
 
 ```vue
 <script>
@@ -951,7 +1033,15 @@ export default {
     </div>
   </Transition>
 </template>
+```
 
+---
+
+# Exercice 5 - Solution TabPanel.vue (2/2)
+
+**Styles et animations :**
+
+```vue
 <style scoped>
 .tab-panel {
   animation: fadeIn 0.3s;

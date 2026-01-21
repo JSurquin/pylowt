@@ -54,7 +54,9 @@ Créer un composant compteur avec les fonctionnalités de base
 
 ---
 
-# Exercice 2 - Solution de base
+# Exercice 2 - Solution de base (1/2)
+
+**Script :**
 
 ```vue
 <script>
@@ -82,7 +84,15 @@ export default {
   }
 }
 </script>
+```
 
+---
+
+# Exercice 2 - Solution de base (2/2)
+
+**Template :**
+
+```vue
 <template>
   <div>
     <h1>Compteur: {{ compteur }}</h1>
@@ -493,10 +503,11 @@ export function useCompteur(initialValue = 0, options = {}) {
 
 ---
 
-# Exercice 7 - Utilisation avec mixin
+# Exercice 7 - Utilisation avec mixin (1/2)
 
-```vue
-<script>
+**Définition du mixin :**
+
+```javascript
 // Avec Options API, on utilise les mixins plutôt que les composables
 const compteurMixin = {
   data() {
@@ -523,7 +534,16 @@ const compteurMixin = {
     }
   }
 };
+```
 
+---
+
+# Exercice 7 - Utilisation avec mixin (2/2)
+
+**Utilisation dans le composant :**
+
+```vue
+<script>
 export default {
   mixins: [compteurMixin]
 }
