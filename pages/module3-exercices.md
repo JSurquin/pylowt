@@ -51,6 +51,10 @@ Implémenter une directive qui détecte les clics extérieurs
 </div>
 ```
 
+---
+
+# Exercice 2 - Bonus
+
 ### Bonus
 
 - Support des modificateurs (capture, once)

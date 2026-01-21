@@ -56,12 +56,20 @@ Vous faites des analyses de sang **AVANT** d'être malade, pas après !
 Vous codez → Déployez → 💥 Bug en production → 😱 Panique
 ```
 
+---
+
+# Avec tests, tout change !
+
 **Avec tests** :
 ```
 Vous codez → Tests échouent → Vous corrigez → Tests passent ✅ → 😎 Déploiement serein
 ```
 
-### 💰 Le coût d'un bug
+---
+
+# Le coût d'un bug
+
+### 💰 Le coût réel d'un bug
 
 - **Développement** : 1€ (facile à corriger)
 - **En production** : 100€ (clients mécontents, rollback urgent...)

@@ -289,13 +289,15 @@ export const useProductsStore = defineStore('products', () => {
 
 ---
 
-# Store Cart
+# Store Cart - State & Getters
 
 ```javascript
 // stores/cart.js
 export const useCartStore = defineStore('cart', () => {
+  // State
   const items = ref([]);
   
+  // Getters
   const totalItems = computed(() => {
     return items.value.reduce((sum, item) => sum + item.quantity, 0);
   });
@@ -305,7 +307,14 @@ export const useCartStore = defineStore('cart', () => {
       return sum + (item.prix * item.quantity);
     }, 0);
   });
-  
+```
+
+---
+
+# Store Cart - Actions
+
+```javascript
+  // Actions
   const addToCart = (product, quantity = 1) => {
     const existing = items.value.find(i => i.id === product.id);
     if (existing) {
@@ -342,16 +351,26 @@ export const useCartStore = defineStore('cart', () => {
 
 ---
 
-# Store Auth
+# Store Auth - State & Getters
 
 ```javascript
 // stores/auth.js
 export const useAuthStore = defineStore('auth', () => {
+  // State
   const user = ref(null);
   const token = ref(localStorage.getItem('token') || '');
+  
+  // Getters
   const isLoggedIn = computed(() => !!token.value);
   const isAdmin = computed(() => user.value?.role === 'admin');
-  
+```
+
+---
+
+# Store Auth - Actions
+
+```javascript
+  // Actions
   const login = async (email, password) => {
     try {
       // Simuler appel API
@@ -562,11 +581,19 @@ npm install -g vercel
 vercel
 ```
 
+---
+
+# Déploiement - Netlify
+
 **Netlify**
 ```bash
 npm run build
 # Déployer le dossier dist/
 ```
+
+---
+
+# Déploiement - GitHub Pages
 
 **GitHub Pages**
 ```javascript

@@ -293,7 +293,15 @@ Difficulté
     └────────────────────────────> Temps
 ```
 
+---
+
+# La courbe d'apprentissage expliquée
+
 **Vue.js c'est comme apprendre le vélo avec des petites roues** : vous avancez vite au début, puis vous les enlevez quand vous êtes prêt !
+
+---
+
+# Avantages de Vue.js
 
 ### 💪 Avantages concrets
 
@@ -339,7 +347,12 @@ Vue.js suit le pattern MVVM (Model-View-ViewModel)
 └──────────────┘
 ```
 
+---
+
+# MVVM : Vue vs JavaScript pur
+
 **En JS pur** : vous devez tout câbler à la main (querySelector, addEventListener...)
+
 **Avec Vue** : le data binding fait le travail automatiquement ! 🎉
 
 ---
@@ -347,20 +360,25 @@ Vue.js suit le pattern MVVM (Model-View-ViewModel)
 # MVVM dans Vue.js - Exemple
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-// MODEL - Données
-const compteur = ref(0);
-const utilisateur = ref({
-  nom: 'Jean',
-  email: 'jean@example.com'
-});
-
-// VIEWMODEL - Logique
-const incrementer = () => {
-  compteur.value++;
-};
+<script>
+export default {
+  // MODEL - Données
+  data() {
+    return {
+      compteur: 0,
+      utilisateur: {
+        nom: 'Jean',
+        email: 'jean@example.com'
+      }
+    }
+  },
+  // VIEWMODEL - Logique
+  methods: {
+    incrementer() {
+      this.compteur++;
+    }
+  }
+}
 </script>
 
 <template>
@@ -418,7 +436,9 @@ npm install -g pnpm
 pnpm --version
 ```
 
-### Package managers en 2025
+---
+
+# Package managers en 2025
 
 - **npm** : package manager par défaut
 - **pnpm** : plus rapide, économise de l'espace
@@ -474,7 +494,9 @@ vue create mon-projet
 vue ui
 ```
 
-### Quand utiliser Vue CLI ?
+---
+
+# Quand utiliser Vue CLI ?
 
 - Projets legacy existants
 - Besoins spécifiques de configuration webpack
@@ -542,11 +564,19 @@ app.mount('#app');
 Composant racine de l'application
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import HelloWorld from './components/HelloWorld.vue';
 
-const count = ref(0);
+export default {
+  components: {
+    HelloWorld
+  },
+  data() {
+    return {
+      count: 0
+    }
+  }
+}
 </script>
 
 <template>
@@ -601,7 +631,7 @@ layout: new-section
 
 # Liaison de données (Data Binding)
 
-Vue.js permet de lier les données du composant au template
+Vue.js permet de lier les données du composant au template avec l'**Options API**
 
 ### 🔌 C'est comme brancher une multiprise électrique
 
@@ -615,6 +645,10 @@ Imaginez que vos données sont l'électricité, et votre template est l'ampoule.
 - **Événements** : `v-on:event="handler"` ou `@event="handler"` → Écouter les actions utilisateur 👂
 - **Bidirectionnelle** : `v-model="variable"` → Synchronisation automatique ↔️
 
+---
+
+# Data Binding : Vue vs JavaScript pur
+
 ### 🆚 En JavaScript pur, vous devriez faire :
 
 ```javascript
@@ -626,24 +660,34 @@ variable = newValue;
 element.textContent = variable; // Il faut le refaire manuellement !
 ```
 
+---
+
+# La magie de Vue !
+
 **Avec Vue** : changez la variable, l'affichage se met à jour automatiquement ! ✨
+
+C'est ça la **réactivité** : Vue observe vos données et met à jour le DOM automatiquement !
 
 ---
 
 # Interpolation (Mustache)
 
-Affichage de données dans le template avec `{{ }}`
+Affichage de données dans le template avec `{{ }}` - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const message = ref('Bonjour Vue.js!');
-const nombre = ref(42);
-const utilisateur = ref({
-  nom: 'Dupont',
-  prenom: 'Jean'
-});
+<script>
+export default {
+  data() {
+    return {
+      message: 'Bonjour Vue.js!',
+      nombre: 42,
+      utilisateur: {
+        nom: 'Dupont',
+        prenom: 'Jean'
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -661,19 +705,23 @@ const utilisateur = ref({
 
 # Directive v-bind
 
-Lie un attribut HTML à une expression JavaScript
+Lie un attribut HTML à une expression JavaScript - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const imageUrl = ref('/logo.png');
-const altText = ref('Logo Vue.js');
-const isDisabled = ref(false);
-const styles = ref({
-  color: 'blue',
-  fontSize: '20px'
-});
+<script>
+export default {
+  data() {
+    return {
+      imageUrl: '/logo.png',
+      altText: 'Logo Vue.js',
+      isDisabled: false,
+      styles: {
+        color: 'blue',
+        fontSize: '20px'
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -690,23 +738,27 @@ const styles = ref({
 
 # Directive v-on (événements)
 
-Écoute les événements DOM
+Écoute les événements DOM - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const compteur = ref(0);
-const message = ref('');
-
-const incrementer = () => {
-  compteur.value++;
-};
-
-const afficherMessage = (event) => {
-  console.log('Événement:', event);
-  message.value = 'Bouton cliqué!';
-};
+<script>
+export default {
+  data() {
+    return {
+      compteur: 0,
+      message: ''
+    }
+  },
+  methods: {
+    incrementer() {
+      this.compteur++;
+    },
+    afficherMessage(event) {
+      console.log('Événement:', event);
+      this.message = 'Bouton cliqué!';
+    }
+  }
+}
 </script>
 
 <template>
@@ -749,15 +801,19 @@ Vue.js propose des modificateurs pour faciliter la gestion des événements
 
 # Directive v-if / v-else
 
-Affichage conditionnel (ajout/suppression du DOM)
+Affichage conditionnel (ajout/suppression du DOM) - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const isLoggedIn = ref(false);
-const userRole = ref('admin');
-const score = ref(75);
+<script>
+export default {
+  data() {
+    return {
+      isLoggedIn: false,
+      userRole: 'admin',
+      score: 75
+    }
+  }
+}
 </script>
 
 <template>
@@ -778,13 +834,17 @@ const score = ref(75);
 
 # Directive v-show
 
-Alternative à `v-if` qui utilise CSS (display: none)
+Alternative à `v-if` qui utilise CSS (display: none) - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const isVisible = ref(true);
+<script>
+export default {
+  data() {
+    return {
+      isVisible: true
+    }
+  }
+}
 </script>
 
 <template>
@@ -825,18 +885,22 @@ const isVisible = ref(true);
 
 # Directive v-for
 
-Rendu de listes
+Rendu de listes - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const fruits = ref(['Pomme', 'Banane', 'Orange']);
-const utilisateurs = ref([
-  { id: 1, nom: 'Alice', age: 25 },
-  { id: 2, nom: 'Bob', age: 30 },
-  { id: 3, nom: 'Charlie', age: 35 }
-]);
+<script>
+export default {
+  data() {
+    return {
+      fruits: ['Pomme', 'Banane', 'Orange'],
+      utilisateurs: [
+        { id: 1, nom: 'Alice', age: 25 },
+        { id: 2, nom: 'Bob', age: 30 },
+        { id: 3, nom: 'Charlie', age: 35 }
+      ]
+    }
+  }
+}
 </script>
 
 <template>
@@ -871,22 +935,32 @@ const utilisateurs = ref([
 </template>
 ```
 
+---
+
+# v-for : Point important
+
 ⚠️ **Important** : toujours utiliser `:key` avec une valeur unique pour les performances
+
+Le `:key` aide Vue à identifier chaque élément de façon unique et optimiser le rendu.
 
 ---
 
 # v-model - Liaison bidirectionnelle
 
-Synchronise automatiquement les données avec les inputs
+Synchronise automatiquement les données avec les inputs - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const texte = ref('');
-const isChecked = ref(false);
-const selected = ref('');
-const message = ref('');
+<script>
+export default {
+  data() {
+    return {
+      texte: '',
+      isChecked: false,
+      selected: '',
+      message: ''
+    }
+  }
+}
 </script>
 
 <template>
@@ -944,6 +1018,10 @@ Imaginez que vous construisez une maison en Lego :
 - Chaque brique a sa **responsabilité** (mur, porte, fenêtre...)
 - Vous pouvez **assembler** ces briques de différentes façons
 
+---
+
+# Structure d'une application en composants
+
 ### 💡 Dans une application web :
 
 ```
@@ -969,17 +1047,22 @@ App
 
 # Création d'un composant
 
-Fichier `MonBouton.vue`
+Fichier `MonBouton.vue` - **Options API**
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const compteur = ref(0);
-
-const incrementer = () => {
-  compteur.value++;
-};
+<script>
+export default {
+  data() {
+    return {
+      compteur: 0
+    }
+  },
+  methods: {
+    incrementer() {
+      this.compteur++;
+    }
+  }
+}
 </script>
 
 <template>
@@ -1005,8 +1088,14 @@ button {
 # Utilisation d'un composant
 
 ```vue
-<script setup>
+<script>
 import MonBouton from './components/MonBouton.vue';
+
+export default {
+  components: {
+    MonBouton
+  }
+}
 </script>
 
 <template>
@@ -1019,25 +1108,31 @@ import MonBouton from './components/MonBouton.vue';
 </template>
 ```
 
+---
+
+# Composants indépendants
+
 Chaque instance du composant a son propre état indépendant
 
 ---
 
 # Props - Passer des données aux enfants
 
-Les props permettent de passer des données du parent à l'enfant
+Les props permettent de passer des données du parent à l'enfant - **Options API**
 
 ```vue
 <!-- UserCard.vue -->
-<script setup>
-const props = defineProps({
-  nom: String,
-  age: Number,
-  email: {
-    type: String,
-    required: true
+<script>
+export default {
+  props: {
+    nom: String,
+    age: Number,
+    email: {
+      type: String,
+      required: true
+    }
   }
-});
+}
 </script>
 
 <template>
@@ -1054,15 +1149,23 @@ const props = defineProps({
 # Utilisation des props
 
 ```vue
-<script setup>
+<script>
 import UserCard from './components/UserCard.vue';
-import { ref } from 'vue';
 
-const utilisateur = ref({
-  nom: 'Alice',
-  age: 28,
-  email: 'alice@example.com'
-});
+export default {
+  components: {
+    UserCard
+  },
+  data() {
+    return {
+      utilisateur: {
+        nom: 'Alice',
+        age: 28,
+        email: 'alice@example.com'
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -1082,32 +1185,34 @@ const utilisateur = ref({
 # Validation des props
 
 ```vue
-<script setup>
-const props = defineProps({
-  // Type simple
-  titre: String,
-  
-  // Type multiple
-  id: [String, Number],
-  
-  // Obligatoire
-  nom: {
-    type: String,
-    required: true
-  },
-  
-  // Valeur par défaut
-  age: {
-    type: Number,
-    default: 18
-  },
-  
-  // Objet/Tableau par défaut (fonction)
-  options: {
-    type: Object,
-    default: () => ({})
+<script>
+export default {
+  props: {
+    // Type simple
+    titre: String,
+    
+    // Type multiple
+    id: [String, Number],
+    
+    // Obligatoire
+    nom: {
+      type: String,
+      required: true
+    },
+    
+    // Valeur par défaut
+    age: {
+      type: Number,
+      default: 18
+    },
+    
+    // Objet/Tableau par défaut (fonction)
+    options: {
+      type: Object,
+      default: () => ({})
+    }
   }
-});
+}
 </script>
 ```
 
@@ -1116,33 +1221,35 @@ const props = defineProps({
 # Validation avancée des props
 
 ```vue
-<script setup>
-const props = defineProps({
-  // Validation personnalisée
-  email: {
-    type: String,
-    validator: (value) => {
-      return value.includes('@');
-    }
-  },
-  
-  // Enum
-  statut: {
-    type: String,
-    validator: (value) => {
-      return ['actif', 'inactif', 'attente'].includes(value);
-    }
-  },
-  
-  // Type personnalisé
-  utilisateur: {
-    type: Object,
-    validator: (value) => {
-      return value.hasOwnProperty('nom') && 
-             value.hasOwnProperty('email');
+<script>
+export default {
+  props: {
+    // Validation personnalisée
+    email: {
+      type: String,
+      validator: (value) => {
+        return value.includes('@');
+      }
+    },
+    
+    // Enum
+    statut: {
+      type: String,
+      validator: (value) => {
+        return ['actif', 'inactif', 'attente'].includes(value);
+      }
+    },
+    
+    // Type personnalisé
+    utilisateur: {
+      type: Object,
+      validator: (value) => {
+        return value.hasOwnProperty('nom') && 
+               value.hasOwnProperty('email');
+      }
     }
   }
-});
+}
 </script>
 ```
 
@@ -1150,20 +1257,22 @@ const props = defineProps({
 
 # Événements personnalisés (emit)
 
-Les enfants peuvent communiquer avec les parents via des événements
+Les enfants peuvent communiquer avec les parents via des événements - **Options API**
 
 ```vue
 <!-- CompteurEnfant.vue -->
-<script setup>
-const emit = defineEmits(['incrementer', 'decrementer']);
-
-const handleIncrement = () => {
-  emit('incrementer', 1);
-};
-
-const handleDecrement = () => {
-  emit('decrementer', 1);
-};
+<script>
+export default {
+  emits: ['incrementer', 'decrementer'],
+  methods: {
+    handleIncrement() {
+      this.$emit('incrementer', 1);
+    },
+    handleDecrement() {
+      this.$emit('decrementer', 1);
+    }
+  }
+}
 </script>
 
 <template>
@@ -1179,19 +1288,27 @@ const handleDecrement = () => {
 # Écouter les événements personnalisés
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import CompteurEnfant from './components/CompteurEnfant.vue';
 
-const compteur = ref(0);
-
-const onIncrementer = (valeur) => {
-  compteur.value += valeur;
-};
-
-const onDecrementer = (valeur) => {
-  compteur.value -= valeur;
-};
+export default {
+  components: {
+    CompteurEnfant
+  },
+  data() {
+    return {
+      compteur: 0
+    }
+  },
+  methods: {
+    onIncrementer(valeur) {
+      this.compteur += valeur;
+    },
+    onDecrementer(valeur) {
+      this.compteur -= valeur;
+    }
+  }
+}
 </script>
 
 <template>
@@ -1207,25 +1324,29 @@ const onDecrementer = (valeur) => {
 
 ---
 
-# Validation des événements (TypeScript)
+# Validation des événements
 
 ```vue
-<script setup lang="ts">
-const emit = defineEmits<{
-  incrementer: [value: number];
-  decrementer: [value: number];
-  change: [id: string, value: string];
-}>();
-
-// Ou avec validation
-const emit = defineEmits({
-  incrementer: (value: number) => {
-    return value > 0;
+<script>
+export default {
+  emits: {
+    // Validation simple
+    incrementer: (value) => {
+      return typeof value === 'number' && value > 0;
+    },
+    decrementer: (value) => {
+      return typeof value === 'number' && value > 0;
+    },
+    change: (id, value) => {
+      return typeof id === 'string' && id.length > 0;
+    }
   },
-  change: (id: string, value: string) => {
-    return id.length > 0;
+  methods: {
+    handleIncrement() {
+      this.$emit('incrementer', 1);
+    }
   }
-});
+}
 </script>
 ```
 
@@ -1236,14 +1357,28 @@ const emit = defineEmits({
 Changer de composant dynamiquement avec `<component>`
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import Accueil from './components/Accueil.vue';
 import Profil from './components/Profil.vue';
 import Parametres from './components/Parametres.vue';
 
-const currentComponent = ref('Accueil');
-const components = { Accueil, Profil, Parametres };
+export default {
+  components: {
+    Accueil,
+    Profil,
+    Parametres
+  },
+  data() {
+    return {
+      currentComponent: 'Accueil'
+    }
+  },
+  computed: {
+    components() {
+      return { Accueil, Profil, Parametres };
+    }
+  }
+}
 </script>
 
 <template>
@@ -1262,23 +1397,35 @@ const components = { Accueil, Profil, Parametres };
 # Gestion de listes de composants
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import TodoItem from './components/TodoItem.vue';
 
-const todos = ref([
-  { id: 1, text: 'Apprendre Vue.js', done: false },
-  { id: 2, text: 'Créer un projet', done: false },
-  { id: 3, text: 'Déployer', done: false }
-]);
-
-const ajouterTodo = (text) => {
-  todos.value.push({
-    id: Date.now(),
-    text,
-    done: false
-  });
-};
+export default {
+  components: {
+    TodoItem
+  },
+  data() {
+    return {
+      todos: [
+        { id: 1, text: 'Apprendre Vue.js', done: false },
+        { id: 2, text: 'Créer un projet', done: false },
+        { id: 3, text: 'Déployer', done: false }
+      ]
+    }
+  },
+  methods: {
+    ajouterTodo(text) {
+      this.todos.push({
+        id: Date.now(),
+        text,
+        done: false
+      });
+    },
+    toggleTodo(todo) {
+      todo.done = !todo.done;
+    }
+  }
+}
 </script>
 
 <template>
@@ -1286,7 +1433,7 @@ const ajouterTodo = (text) => {
     v-for="todo in todos"
     :key="todo.id"
     :todo="todo"
-    @toggle="todo.done = !todo.done"
+    @toggle="toggleTodo(todo)"
   />
 </template>
 ```
@@ -1296,18 +1443,36 @@ const ajouterTodo = (text) => {
 # Affichage conditionnel de composants
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import LoginForm from './components/LoginForm.vue';
 import Dashboard from './components/Dashboard.vue';
+import AdminPanel from './components/AdminPanel.vue';
+import UserPanel from './components/UserPanel.vue';
 
-const isLoggedIn = ref(false);
-const userRole = ref('user');
+export default {
+  components: {
+    LoginForm,
+    Dashboard,
+    AdminPanel,
+    UserPanel
+  },
+  data() {
+    return {
+      isLoggedIn: false,
+      userRole: 'user'
+    }
+  },
+  methods: {
+    handleLogin() {
+      this.isLoggedIn = true;
+    }
+  }
+}
 </script>
 
 <template>
   <div>
-    <LoginForm v-if="!isLoggedIn" @login="isLoggedIn = true" />
+    <LoginForm v-if="!isLoggedIn" @login="handleLogin" />
     
     <Dashboard v-else>
       <AdminPanel v-if="userRole === 'admin'" />
@@ -1327,26 +1492,28 @@ layout: new-section
 
 # Propriétés calculées (computed)
 
-Les propriétés calculées sont des valeurs dérivées qui se mettent à jour automatiquement
+Les propriétés calculées sont des valeurs dérivées qui se mettent à jour automatiquement - **Options API**
 
 ```vue
-<script setup>
-import { ref, computed } from 'vue';
-
-const prenom = ref('Jean');
-const nom = ref('Dupont');
-
-// Propriété calculée
-const nomComplet = computed(() => {
-  return `${prenom.value} ${nom.value}`;
-});
-
-const prix = ref(100);
-const quantite = ref(3);
-
-const total = computed(() => {
-  return prix.value * quantite.value;
-});
+<script>
+export default {
+  data() {
+    return {
+      prenom: 'Jean',
+      nom: 'Dupont',
+      prix: 100,
+      quantite: 3
+    }
+  },
+  computed: {
+    nomComplet() {
+      return `${this.prenom} ${this.nom}`;
+    },
+    total() {
+      return this.prix * this.quantite;
+    }
+  }
+}
 </script>
 
 <template>
@@ -1364,18 +1531,22 @@ const total = computed(() => {
 Comme un étudiant qui note sa réponse et ne recalcule que si la question change !
 
 ```vue
-<script setup>
-import { ref, computed } from 'vue';
-
-const nombres = ref([1, 2, 3, 4, 5]);
-
-// Computed - mise en cache
-const sommeComputed = computed(() => {
-  console.log('Calcul computed'); // Affiché 1 seule fois !
-  return nombres.value.reduce((a, b) => a + b, 0);
-});
-
-// Method - recalculé à chaque fois
+<script>
+export default {
+  data() {
+    return {
+      nombres: [1, 2, 3, 4, 5]
+    }
+  },
+  computed: {
+    // Computed - mise en cache
+    sommeComputed() {
+      console.log('Calcul computed'); // Affiché 1 seule fois !
+      return this.nombres.reduce((a, b) => a + b, 0);
+    }
+  },
+  methods: {
+    // Method - recalculé à chaque fois
 const sommeMethod = () => {
   console.log('Calcul method'); // Affiché 2 fois !
   return nombres.value.reduce((a, b) => a + b, 0);
@@ -1403,27 +1574,25 @@ React recalcule tout à chaque render (sauf si vous utilisez `useMemo`)
 
 # Hooks du cycle de vie
 
-Les hooks permettent d'exécuter du code à des moments précis
+Les hooks permettent d'exécuter du code à des moments précis - **Options API**
 
 ```vue
-<script setup>
-import { 
-  onMounted, 
-  onUpdated, 
-  onUnmounted,
-  onBeforeMount,
-  onBeforeUpdate,
-  onBeforeUnmount
-} from 'vue';
-
-onBeforeMount(() => {
-  console.log('Avant le montage');
-});
-
-onMounted(() => {
-  console.log('Composant monté');
-  // Appels API, initialisation
-});
+<script>
+export default {
+  beforeCreate() {
+    console.log('Avant la création');
+  },
+  created() {
+    console.log('Composant créé');
+  },
+  beforeMount() {
+    console.log('Avant le montage');
+  },
+  mounted() {
+    console.log('Composant monté');
+    // Appels API, initialisation
+  }
+}
 </script>
 ```
 
@@ -1432,20 +1601,25 @@ onMounted(() => {
 # Hooks du cycle de vie (suite)
 
 ```vue
-<script setup>
-import { ref, onUpdated, onUnmounted } from 'vue';
-
-const compteur = ref(0);
-
-onUpdated(() => {
-  console.log('Composant mis à jour');
-  console.log('Nouvelle valeur:', compteur.value);
-});
-
-onUnmounted(() => {
-  console.log('Composant démonté');
-  // Nettoyage: timers, subscriptions, listeners
-});
+<script>
+export default {
+  data() {
+    return {
+      compteur: 0
+    }
+  },
+  updated() {
+    console.log('Composant mis à jour');
+    console.log('Nouvelle valeur:', this.compteur);
+  },
+  beforeUnmount() {
+    console.log('Avant destruction');
+  },
+  unmounted() {
+    console.log('Composant démonté');
+    // Nettoyage: timers, subscriptions, listeners
+  }
+}
 </script>
 ```
 
@@ -1454,34 +1628,36 @@ onUnmounted(() => {
 # Exemple pratique avec lifecycle
 
 ```vue
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-
-const data = ref(null);
-const loading = ref(true);
-const interval = ref(null);
-
-onMounted(async () => {
-  // Charger des données
-  try {
-    const response = await fetch('/api/data');
-    data.value = await response.json();
-  } finally {
-    loading.value = false;
+<script>
+export default {
+  data() {
+    return {
+      data: null,
+      loading: true,
+      interval: null
+    }
+  },
+  async mounted() {
+    // Charger des données
+    try {
+      const response = await fetch('/api/data');
+      this.data = await response.json();
+    } finally {
+      this.loading = false;
+    }
+    
+    // Démarrer un interval
+    this.interval = setInterval(() => {
+      console.log('Tick');
+    }, 1000);
+  },
+  beforeUnmount() {
+    // Nettoyer l'interval
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
-  
-  // Démarrer un interval
-  interval.value = setInterval(() => {
-    console.log('Tick');
-  }, 1000);
-});
-
-onUnmounted(() => {
-  // Nettoyer l'interval
-  if (interval.value) {
-    clearInterval(interval.value);
-  }
-});
+}
 </script>
 ```
 
@@ -1530,19 +1706,53 @@ export function useCompteur(initialValue = 0) {
 }
 ```
 
+---
+
+# Avantages des Composables
+
 ### 💡 Avantage : DRY (Don't Repeat Yourself)
 
 Au lieu de copier-coller la logique de compteur dans 10 composants, **créez un composable** !
 
+C'est comme avoir une boîte à outils réutilisable : une fois créée, disponible partout !
+
 ---
 
-# Utilisation d'un composable
+# Réutiliser la logique (Mixins)
+
+Avec l'Options API, on utilise les **mixins** pour réutiliser de la logique
 
 ```vue
-<script setup>
-import { useCompteur } from './composables/useCompteur';
+<script>
+// Fichier mixins/counterMixin.js
+export const counterMixin = {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  methods: {
+    increment() {
+      this.count++;
+    },
+    decrement() {
+      this.count--;
+    },
+    reset() {
+      this.count = 0;
+    }
+  }
+};
 
-const { count, increment, decrement, reset } = useCompteur(10);
+// Utilisation dans un composant
+import { counterMixin } from './mixins/counterMixin';
+
+export default {
+  mixins: [counterMixin],
+  mounted() {
+    console.log('Compteur initial:', this.count);
+  }
+}
 </script>
 
 <template>
@@ -1557,50 +1767,68 @@ const { count, increment, decrement, reset } = useCompteur(10);
 
 ---
 
-# Composable pour fetch
+# Mixin pour fetch
 
-Fichier `useFetch.js`
+Fichier `mixins/fetchMixin.js`
 
 ```javascript
-import { ref, watchEffect, toValue } from 'vue';
-
-export function useFetch(url) {
-  const data = ref(null);
-  const error = ref(null);
-  const loading = ref(true);
-
-  watchEffect(async () => {
-    loading.value = true;
-    data.value = null;
-    error.value = null;
-    
-    try {
-      const urlValue = toValue(url);
-      const res = await fetch(urlValue);
-      data.value = await res.json();
-    } catch (e) {
-      error.value = e;
-    } finally {
-      loading.value = false;
+export const fetchMixin = {
+  data() {
+    return {
+      data: null,
+      error: null,
+      loading: false
     }
-  });
-
-  return { data, error, loading };
-}
+  },
+  methods: {
+    async fetchData(url) {
+      this.loading = true;
+      this.data = null;
+      this.error = null;
+      
+      try {
+        const res = await fetch(url);
+        this.data = await res.json();
+      } catch (e) {
+        this.error = e;
+      } finally {
+        this.loading = false;
+      }
+    }
+  }
+};
 ```
 
 ---
 
-# Utilisation de useFetch
+# Utilisation du Mixin fetch
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-import { useFetch } from './composables/useFetch';
+<script>
+import { fetchMixin } from './mixins/fetchMixin';
 
-const userId = ref(1);
-const url = computed(() => `/api/users/${userId.value}`);
-const { data, error, loading } = useFetch(url);
+export default {
+  mixins: [fetchMixin],
+  data() {
+    return {
+      userId: 1
+    }
+  },
+  computed: {
+    userUrl() {
+      return `/api/users/${this.userId}`;
+    }
+  },
+  methods: {
+    nextUser() {
+      this.userId++;
+      this.fetchData(this.userUrl);
+    }
+  },
+  mounted() {
+    this.fetchData(this.userUrl);
+  }
+}
 </script>
 
 <template>
@@ -1612,7 +1840,7 @@ const { data, error, loading } = useFetch(url);
       <p>{{ data.email }}</p>
     </div>
     
-    <button @click="userId++">Utilisateur suivant</button>
+    <button @click="nextUser">Utilisateur suivant</button>
   </div>
 </template>
 ```
@@ -1622,33 +1850,37 @@ const { data, error, loading } = useFetch(url);
 # Requêtes HTTP avec fetch
 
 ```vue
-<script setup>
-import { ref, onMounted } from 'vue';
-
-const users = ref([]);
-const loading = ref(true);
-const error = ref(null);
-
-const fetchUsers = async () => {
-  try {
-    loading.value = true;
-    const response = await fetch('https://api.example.com/users');
-    
-    if (!response.ok) {
-      throw new Error('Erreur réseau');
+<script>
+export default {
+  data() {
+    return {
+      users: [],
+      loading: true,
+      error: null
     }
-    
-    users.value = await response.json();
-  } catch (e) {
-    error.value = e.message;
-  } finally {
-    loading.value = false;
+  },
+  methods: {
+    async fetchUsers() {
+      try {
+        this.loading = true;
+        const response = await fetch('https://api.example.com/users');
+        
+        if (!response.ok) {
+          throw new Error('Erreur réseau');
+        }
+        
+        this.users = await response.json();
+      } catch (e) {
+        this.error = e.message;
+      } finally {
+        this.loading = false;
+      }
+    }
+  },
+  mounted() {
+    this.fetchUsers();
   }
-};
-
-onMounted(() => {
-  fetchUsers();
-});
+}
 </script>
 ```
 
@@ -1657,31 +1889,36 @@ onMounted(() => {
 # Requêtes POST avec fetch
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const nom = ref('');
-const email = ref('');
-
-const creerUtilisateur = async () => {
-  try {
-    const response = await fetch('https://api.example.com/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        nom: nom.value,
-        email: email.value
-      })
-    });
-    
-    const data = await response.json();
-    console.log('Utilisateur créé:', data);
-  } catch (error) {
-    console.error('Erreur:', error);
+<script>
+export default {
+  data() {
+    return {
+      nom: '',
+      email: ''
+    }
+  },
+  methods: {
+    async creerUtilisateur() {
+      try {
+        const response = await fetch('https://api.example.com/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            nom: this.nom,
+            email: this.email
+          })
+        });
+        
+        const data = await response.json();
+        console.log('Utilisateur créé:', data);
+      } catch (error) {
+        console.error('Erreur:', error);
+      }
+    }
   }
-};
+}
 </script>
 ```
 
@@ -1696,24 +1933,29 @@ npm install axios
 ```
 
 ```vue
-<script setup>
-import { ref, onMounted } from 'vue';
+<script>
 import axios from 'axios';
 
-const users = ref([]);
-
-onMounted(async () => {
-  try {
-    const { data } = await axios.get('/api/users');
-    users.value = data;
-  } catch (error) {
-    console.error(error);
+export default {
+  data() {
+    return {
+      users: []
+    }
+  },
+  async mounted() {
+    try {
+      const { data } = await axios.get('/api/users');
+      this.users = data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  methods: {
+    async createUser(userData) {
+      await axios.post('/api/users', userData);
+    }
   }
-});
-
-const createUser = async (userData) => {
-  await axios.post('/api/users', userData);
-};
+}
 </script>
 ```
 
@@ -1737,6 +1979,10 @@ Niveau de maîtrise
   0%└────────────────────────────────────────────→
      Début                                    Fin
 ```
+
+---
+
+# Bilan de compétences
 
 ### 🎯 Ce que vous savez maintenant
 

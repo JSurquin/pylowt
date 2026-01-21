@@ -115,6 +115,10 @@ Gérer les routes inexistantes
 /404 - Page not found
 ```
 
+---
+
+# Exercice 3 - Checklist
+
 **Checklist** :
 - ✅ Configuration Vue Router
 - ✅ Routes dynamiques

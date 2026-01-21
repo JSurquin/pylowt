@@ -86,6 +86,10 @@ routeAlias: 'sommaire'
 <Link to="module6-tests">🧪 6. Tests sous Vue.js avec Vitest</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
 <Link to="projet-final">🎓 Projet Final</Link>
+<br/>
+<strong style="color: #42b883;">🎁 MODULES BONUS</strong>
+<Link to="bonus-composition-api">✨ Composition API</Link>
+<Link to="bonus-typescript">📘 TypeScript avec Vue.js</Link>
 </div>
 
 **Note :** Chaque module contient :
@@ -277,4 +281,12 @@ src: './pages/qcm-final.md'
 
 ---
 src: './pages/projet-final.md'
+---
+
+---
+src: './pages/bonus-composition-api.md'
+---
+
+---
+src: './pages/bonus-typescript.md'
 ---

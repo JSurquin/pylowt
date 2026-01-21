@@ -67,12 +67,13 @@ Les composants fonctionnels sont des composants **sans état** optimisés pour l
 # Composant fonctionnel - Syntaxe
 
 ```vue
-<script setup>
-// Composant fonctionnel avec script setup
-const props = defineProps({
-  nom: String,
-  email: String
-});
+<script>
+export default {
+  props: {
+    nom: String,
+    email: String
+  }
+}
 </script>
 
 <template>
@@ -140,11 +141,14 @@ Les **SFC** sont des fichiers `.vue` contenant template, script et style
 # Structure d'un SFC
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-// Logique du composant
-const count = ref(0);
+<script>
+export default {
+  data() {
+    return {
+      count: 0
+    }
+  }
+}
 </script>
 
 <template>
@@ -176,8 +180,11 @@ L'ordre recommandé (mais flexible) :
 
 ```vue
 <!-- 1. Script -->
-<script setup>
-// Imports, composables, logique
+<script>
+// Imports, logique, configuration
+export default {
+  // Configuration du composant
+}
 </script>
 
 <!-- 2. Template -->
@@ -193,24 +200,9 @@ L'ordre recommandé (mais flexible) :
 
 ---
 
-# Script setup vs Options API
+# Options API - Structure classique
 
-### Script setup (recommandé en 2025)
-
-```vue
-<script setup>
-import { ref, computed } from 'vue';
-
-const count = ref(0);
-const double = computed(() => count.value * 2);
-
-const increment = () => count.value++;
-</script>
-```
-
----
-
-# Options API (legacy)
+L'Options API offre une structure claire et intuitive
 
 ```vue
 <script>
@@ -233,6 +225,8 @@ export default {
 };
 </script>
 ```
+
+**💡 Note :** Pour des cas d'usage avancés, Vue 3 propose aussi la Composition API (voir module bonus)
 
 ---
 
@@ -329,11 +323,15 @@ Alternative au scoped CSS
 Lier des variables JavaScript aux variables CSS
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const color = ref('#42b883');
-const size = ref(20);
+<script>
+export default {
+  data() {
+    return {
+      color: '#42b883',
+      size: 20
+    }
+  }
+}
 </script>
 
 <template>
@@ -383,56 +381,65 @@ $primary-color: #42b883;
 
 # TypeScript dans les SFC
 
+**💡 Note :** Vue 3 supporte TypeScript de manière native. Voir module bonus pour plus de détails.
+
 ```vue
-<script setup lang="ts">
-import { ref, computed } from 'vue';
-
-interface User {
-  id: number;
-  nom: string;
-  email: string;
+<script>
+// Exemple équivalent en JavaScript
+export default {
+  data() {
+    return {
+      user: {
+        id: 1,
+        nom: 'Alice',
+        email: 'alice@example.com'
+      }
+    }
+  },
+  computed: {
+    displayName() {
+      return this.user.nom.toUpperCase();
+    }
+  },
+  methods: {
+    updateUser(newUser) {
+      this.user = newUser;
+    }
+  }
 }
-
-const user = ref<User>({
-  id: 1,
-  nom: 'Alice',
-  email: 'alice@example.com'
-});
-
-const displayName = computed((): string => {
-  return user.value.nom.toUpperCase();
-});
-
-const updateUser = (newUser: User): void => {
-  user.value = newUser;
-};
 </script>
 ```
 
 ---
 
-# Props avec TypeScript
+# Props validés avec JavaScript
 
 ```vue
-<script setup lang="ts">
-interface Props {
-  nom: string;
-  age?: number;
-  isActive: boolean;
-  tags?: string[];
+<script>
+export default {
+  props: {
+    nom: {
+      type: String,
+      required: true
+    },
+    age: {
+      type: Number,
+      default: 18
+    },
+    isActive: {
+      type: Boolean,
+      required: true
+    },
+    tags: {
+      type: Array,
+      default: () => []
+    }
+  },
+  emits: {
+    update: (value) => typeof value === 'string',
+    delete: (id) => typeof id === 'number'
+  }
 }
-
-const props = withDefaults(defineProps<Props>(), {
-  age: 18,
-  tags: () => []
-});
-
-interface Emits {
-  (e: 'update', value: string): void;
-  (e: 'delete', id: number): void;
-}
-
-const emit = defineEmits<Emits>();
 </script>
 ```
 
@@ -466,10 +473,14 @@ Les directives sont des attributs spéciaux qui modifient le comportement des é
 Rend du HTML brut (⚠️ attention XSS)
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const htmlContent = ref('<strong>Texte en gras</strong>');
+<script>
+export default {
+  data() {
+    return {
+      htmlContent: '<strong>Texte en gras</strong>'
+    }
+  }
+}
 </script>
 
 <template>
@@ -484,10 +495,14 @@ const htmlContent = ref('<strong>Texte en gras</strong>');
 Rend l'élément une seule fois (pas de réactivité)
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const message = ref('Initial');
+<script>
+export default {
+  data() {
+    return {
+      message: 'Initial'
+    }
+  }
+}
 </script>
 
 <template>
@@ -536,7 +551,13 @@ Cache l'élément jusqu'à ce que Vue soit prêt
 </style>
 ```
 
-Utile pour éviter le flash de contenu non compilé
+---
+
+# v-cloak : À quoi ça sert ?
+
+Utile pour éviter le flash de contenu non compilé (FOUC - Flash Of Uncompiled Content)
+
+Quand Vue n'est pas encore chargé, l'utilisateur pourrait voir `{{ message }}` avant que Vue ne le compile.
 
 ---
 
@@ -545,11 +566,15 @@ Utile pour éviter le flash de contenu non compilé
 Mémorise un sous-arbre du template (Vue 3.2+)
 
 ```vue
-<script setup>
-import { ref } from 'vue';
-
-const count = ref(0);
-const text = ref('Hello');
+<script>
+export default {
+  data() {
+    return {
+      count: 0,
+      text: 'Hello'
+    }
+  }
+}
 </script>
 
 <template>
@@ -581,8 +606,14 @@ export const vFocus = {
 # Utilisation d'une directive personnalisée
 
 ```vue
-<script setup>
+<script>
 import { vFocus } from './directives/focus';
+
+export default {
+  directives: {
+    focus: vFocus
+  }
+}
 </script>
 
 <template>
@@ -674,15 +705,24 @@ export const vClickOutside = {
 # Utilisation de v-click-outside
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import { vClickOutside } from './directives/clickOutside';
 
-const isOpen = ref(false);
-
-const closeDropdown = () => {
-  isOpen.value = false;
-};
+export default {
+  directives: {
+    clickOutside: vClickOutside
+  },
+  data() {
+    return {
+      isOpen: false
+    }
+  },
+  methods: {
+    closeDropdown() {
+      this.isOpen = false;
+    }
+  }
+}
 </script>
 
 <template>
@@ -737,8 +777,14 @@ export const vTooltip = {
 # Utilisation de v-tooltip
 
 ```vue
-<script setup>
+<script>
 import { vTooltip } from './directives/tooltip';
+
+export default {
+  directives: {
+    tooltip: vTooltip
+  }
+}
 </script>
 
 <template>
@@ -794,12 +840,20 @@ export const vColor = {
 # Utilisation avec arguments
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import { vColor } from './directives/color';
 
-const color = ref('#42b883');
-const bgColor = ref('#f0f0f0');
+export default {
+  directives: {
+    color: vColor
+  },
+  data() {
+    return {
+      color: '#42b883',
+      bgColor: '#f0f0f0'
+    }
+  }
+}
 </script>
 
 <template>
@@ -852,12 +906,19 @@ export const vScroll = {
 # Utilisation avec modificateurs
 
 ```vue
-<script setup>
+<script>
 import { vScroll } from './directives/scroll';
 
-const handleScroll = () => {
-  console.log('Scroll event');
-};
+export default {
+  directives: {
+    scroll: vScroll
+  },
+  methods: {
+    handleScroll() {
+      console.log('Scroll event');
+    }
+  }
+}
 </script>
 
 <template>
@@ -909,14 +970,23 @@ export const vLazyLoad = {
 # Utilisation de v-lazy-load
 
 ```vue
-<script setup>
+<script>
 import { vLazyLoad } from './directives/lazyLoad';
 
-const images = [
-  'https://example.com/image1.jpg',
-  'https://example.com/image2.jpg',
-  'https://example.com/image3.jpg'
-];
+export default {
+  directives: {
+    lazyLoad: vLazyLoad
+  },
+  data() {
+    return {
+      images: [
+        'https://example.com/image1.jpg',
+        'https://example.com/image2.jpg',
+        'https://example.com/image3.jpg'
+      ]
+    }
+  }
+}
 </script>
 
 <template>
@@ -1025,8 +1095,14 @@ export const vPermission = {
 # Utilisation de v-permission
 
 ```vue
-<script setup>
+<script>
 import { vPermission } from './directives/permission';
+
+export default {
+  directives: {
+    permission: vPermission
+  }
+}
 </script>
 
 <template>

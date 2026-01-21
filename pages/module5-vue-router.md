@@ -72,12 +72,21 @@ Quand vous tapez une adresse (URL), le GPS (Router) vous emmène à la bonne des
 /contact.html    ← Page 3 (rechargement complet ⏳)
 ```
 
+---
+
+# SPA avec Vue Router
+
 **SPA avec Router** :
 ```
 /                ← Home Component (instantané ⚡)
 /about           ← About Component (instantané ⚡)
 /contact         ← Contact Component (instantané ⚡)
 ```
+
+---
+
+# La magie du SPA
+
 Une seule page HTML, mais l'illusion de plusieurs pages !
 
 ### Fonctionnalités
@@ -189,22 +198,23 @@ const routes = [
 # Accéder aux paramètres de route
 
 ```vue
-<script setup>
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-
-// Accéder aux paramètres
-const userId = route.params.id;
-
-// Accéder aux query params
-const tab = route.query.tab;
+<script>
+export default {
+  computed: {
+    userId() {
+      return this.$route.params.id;
+    },
+    tab() {
+      return this.$route.query.tab;
+    }
+  }
+}
 </script>
 
 <template>
   <div>
-    <h1>User ID: {{ route.params.id }}</h1>
-    <p>Tab: {{ route.query.tab }}</p>
+    <h1>User ID: {{ $route.params.id }}</h1>
+    <p>Tab: {{ $route.query.tab }}</p>
   </div>
 </template>
 ```
@@ -214,30 +224,27 @@ const tab = route.query.tab;
 # Navigation programmatique
 
 ```vue
-<script setup>
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-
-const goToUser = (id) => {
-  router.push(`/user/${id}`);
-};
-
-const goBack = () => {
-  router.back();
-};
-
-const goToAbout = () => {
-  router.push({ name: 'about' });
-};
-
-const goToProduct = () => {
-  router.push({
-    name: 'product',
-    params: { slug: 'laptop' },
-    query: { color: 'black' }
-  });
-};
+<script>
+export default {
+  methods: {
+    goToUser(id) {
+      this.$router.push(`/user/${id}`);
+    },
+    goBack() {
+      this.$router.back();
+    },
+    goToAbout() {
+      this.$router.push({ name: 'about' });
+    },
+    goToProduct() {
+      this.$router.push({
+        name: 'product',
+        params: { slug: 'laptop' },
+        query: { color: 'black' }
+      });
+    }
+  }
+}
 </script>
 ```
 
@@ -386,7 +393,13 @@ router.beforeEach((to, from, next) => {
 });
 ```
 
+---
+
+# Navigation Guards vs React Router
+
 ### 🆚 En React Router v6 : loaders et actions (concept similaire)
+
+Vue Router offre plus de flexibilité avec plusieurs types de guards (global, par route, dans le composant).
 
 ---
 
@@ -411,22 +424,26 @@ const routes = [
 # Guards dans le composant
 
 ```vue
-<script setup>
-import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router';
-
-onBeforeRouteLeave((to, from) => {
-  const answer = window.confirm(
-    'Voulez-vous vraiment quitter ? Les modifications non sauvegardées seront perdues.'
-  );
-  
-  if (!answer) return false;
-});
-
-onBeforeRouteUpdate(async (to, from) => {
-  if (to.params.id !== from.params.id) {
-    await fetchUser(to.params.id);
+<script>
+export default {
+  methods: {
+    async fetchUser(id) {
+      // Logique de récupération utilisateur
+    }
+  },
+  beforeRouteLeave(to, from) {
+    const answer = window.confirm(
+      'Voulez-vous vraiment quitter ? Les modifications non sauvegardées seront perdues.'
+    );
+    
+    if (!answer) return false;
+  },
+  async beforeRouteUpdate(to, from) {
+    if (to.params.id !== from.params.id) {
+      await this.fetchUser(to.params.id);
+    }
   }
-});
+}
 </script>
 ```
 

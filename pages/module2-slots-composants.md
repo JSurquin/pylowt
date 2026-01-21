@@ -68,6 +68,10 @@ Imaginez un **cadre photo** :
 └─────────────────────┘
 ```
 
+---
+
+# Slots : Vue vs React
+
 ### 🆚 En React : ce sont les `children` !
 
 **Vue** : `<slot></slot>`
@@ -101,6 +105,10 @@ Imaginez un **cadre photo** :
   </div>
 </template>
 ```
+
+---
+
+# Pourquoi c'est problématique ?
 
 ❌ Duplication de code
 ❌ Un composant par type de message
@@ -146,6 +154,10 @@ Imaginez un **cadre photo** :
   </Alert>
 </template>
 ```
+
+---
+
+# Avantages des slots
 
 ✅ Un seul composant
 ✅ Contenu flexible
@@ -268,8 +280,14 @@ Quand on a besoin de plusieurs emplacements distincts
 # Utilisation des slots nommés
 
 ```vue
-<script setup>
+<script>
 import Card from './components/Card.vue';
+
+export default {
+  components: {
+    Card
+  }
+}
 </script>
 
 <template>
@@ -336,6 +354,10 @@ Le composant enfant dit au parent :
 - Le parent décide comment les afficher
 - **Super flexible** ! 🎨
 
+---
+
+# Scoped Slots - Exemple concret
+
 ### Cas d'usage typique
 
 Le composant enfant fait le **travail de récupération/logique** (ex: boucle, tri)
@@ -355,6 +377,10 @@ Le parent décide du **rendu visuel** (ex: carte, tableau, liste...)
 </template>
 ```
 
+---
+
+# Scoped Slots vs React
+
 ### 💡 En React : render props ou children function
 
 Vue rend ça plus simple et plus lisible !
@@ -364,13 +390,22 @@ Vue rend ça plus simple et plus lisible !
 # Scoped Slots - Utilisation
 
 ```vue
-<script setup>
+<script>
 import TodoList from './components/TodoList.vue';
 
-const todos = [
-  { id: 1, text: 'Apprendre Vue', done: true },
-  { id: 2, text: 'Créer un projet', done: false }
-];
+export default {
+  components: {
+    TodoList
+  },
+  data() {
+    return {
+      todos: [
+        { id: 1, text: 'Apprendre Vue', done: true },
+        { id: 2, text: 'Créer un projet', done: false }
+      ]
+    }
+  }
+}
 </script>
 
 <template>
@@ -391,11 +426,19 @@ const todos = [
 
 ```vue
 <!-- DataTable.vue -->
-<script setup>
-const props = defineProps({
-  items: Array,
-  columns: Array
-});
+<script>
+export default {
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+    columns: {
+      type: Array,
+      required: true
+    }
+  }
+}
 </script>
 
 <template>
@@ -454,10 +497,19 @@ const props = defineProps({
 Les slots peuvent être déterminés dynamiquement
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
+import Card from './components/Card.vue';
 
-const slotActif = ref('header');
+export default {
+  components: {
+    Card
+  },
+  data() {
+    return {
+      slotActif: 'header'
+    }
+  }
+}
 </script>
 
 <template>
@@ -480,17 +532,23 @@ Les slots et props travaillent ensemble pour créer des composants puissants
 
 ```vue
 <!-- Modal.vue -->
-<script setup>
-const props = defineProps({
-  show: Boolean,
-  title: String,
-  size: {
-    type: String,
-    default: 'medium'
+<script>
+export default {
+  props: {
+    show: Boolean,
+    title: String,
+    size: {
+      type: String,
+      default: 'medium'
+    }
+  },
+  emits: ['close'],
+  methods: {
+    handleClose() {
+      this.$emit('close');
+    }
   }
-});
-
-const emit = defineEmits(['close']);
+}
 </script>
 ```
 
@@ -501,7 +559,7 @@ const emit = defineEmits(['close']);
 ```vue
 <template>
   <Teleport to="body">
-    <div v-if="show" class="modal-overlay" @click="emit('close')">
+    <div v-if="show" class="modal-overlay" @click="handleClose">
       <div 
         class="modal-content" 
         :class="`modal-${size}`"
@@ -511,7 +569,7 @@ const emit = defineEmits(['close']);
           <slot name="header">
             <h2>{{ title }}</h2>
           </slot>
-          <button @click="emit('close')">×</button>
+          <button @click="handleClose">×</button>
         </header>
         
         <div class="modal-body">
@@ -520,7 +578,7 @@ const emit = defineEmits(['close']);
         
         <footer class="modal-footer">
           <slot name="footer">
-            <button @click="emit('close')">Fermer</button>
+            <button @click="handleClose">Fermer</button>
           </slot>
         </footer>
       </div>
@@ -534,11 +592,25 @@ const emit = defineEmits(['close']);
 # Utilisation du Modal
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
 import Modal from './components/Modal.vue';
 
-const showModal = ref(false);
+export default {
+  components: {
+    Modal
+  },
+  data() {
+    return {
+      showModal: false
+    }
+  },
+  methods: {
+    confirmer() {
+      // Logique de confirmation
+      this.showModal = false;
+    }
+  }
+}
 </script>
 
 <template>
@@ -628,11 +700,22 @@ const showModal = ref(false);
 
 ```vue
 <!-- Tabs.vue -->
-<script setup>
-import { ref, provide } from 'vue';
-
-const activeTab = ref(0);
-provide('activeTab', activeTab);
+<script>
+export default {
+  data() {
+    return {
+      activeTab: 0
+    }
+  },
+  provide() {
+    return {
+      activeTab: this.activeTab,
+      setActiveTab: (index) => {
+        this.activeTab = index;
+      }
+    }
+  }
+}
 </script>
 
 <template>
@@ -654,28 +737,43 @@ provide('activeTab', activeTab);
 
 ```vue
 <!-- Tab.vue -->
-<script setup>
-import { inject } from 'vue';
-
-const props = defineProps({ index: Number });
-const activeTab = inject('activeTab');
+<script>
+export default {
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  inject: ['activeTab', 'setActiveTab'],
+  computed: {
+    isActive() {
+      return this.activeTab === this.index;
+    }
+  }
+}
 </script>
 
 <template>
   <button 
-    @click="activeTab = index"
-    :class="{ active: activeTab === index }"
+    @click="setActiveTab(index)"
+    :class="{ active: isActive }"
   >
     <slot></slot>
   </button>
 </template>
 
 <!-- TabPanel.vue -->
-<script setup>
-import { inject } from 'vue';
-
-const props = defineProps({ index: Number });
-const activeTab = inject('activeTab');
+<script>
+export default {
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  inject: ['activeTab']
+}
 </script>
 
 <template>
@@ -722,18 +820,22 @@ const activeTab = inject('activeTab');
 
 ```vue
 <!-- Dropdown.vue -->
-<script setup>
-import { ref } from 'vue';
-
-const isOpen = ref(false);
-
-const toggle = () => {
-  isOpen.value = !isOpen.value;
-};
-
-const close = () => {
-  isOpen.value = false;
-};
+<script>
+export default {
+  data() {
+    return {
+      isOpen: false
+    }
+  },
+  methods: {
+    toggle() {
+      this.isOpen = !this.isOpen;
+    },
+    close() {
+      this.isOpen = false;
+    }
+  }
+}
 </script>
 ```
 
@@ -800,14 +902,19 @@ const close = () => {
 
 ```vue
 <!-- List.vue -->
-<script setup>
-const props = defineProps({
-  items: Array,
-  emptyText: {
-    type: String,
-    default: 'Aucun élément'
+<script>
+export default {
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+    emptyText: {
+      type: String,
+      default: 'Aucun élément'
+    }
   }
-});
+}
 </script>
 
 <template>
@@ -838,13 +945,22 @@ const props = defineProps({
 # Utilisation de la List
 
 ```vue
-<script setup>
-import { ref } from 'vue';
+<script>
+import List from './components/List.vue';
 
-const produits = ref([
-  { id: 1, nom: 'Laptop', prix: 899 },
-  { id: 2, nom: 'Souris', prix: 49 }
-]);
+export default {
+  components: {
+    List
+  },
+  data() {
+    return {
+      produits: [
+        { id: 1, nom: 'Laptop', prix: 899 },
+        { id: 2, nom: 'Souris', prix: 49 }
+      ]
+    }
+  }
+}
 </script>
 
 <template>
@@ -880,24 +996,27 @@ Composants qui fournissent de la logique sans UI
 
 ```vue
 <!-- MouseTracker.vue -->
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-
-const x = ref(0);
-const y = ref(0);
-
-const update = (event) => {
-  x.value = event.clientX;
-  y.value = event.clientY;
-};
-
-onMounted(() => {
-  window.addEventListener('mousemove', update);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('mousemove', update);
-});
+<script>
+export default {
+  data() {
+    return {
+      x: 0,
+      y: 0
+    }
+  },
+  methods: {
+    update(event) {
+      this.x = event.clientX;
+      this.y = event.clientY;
+    }
+  },
+  mounted() {
+    window.addEventListener('mousemove', this.update);
+  },
+  beforeUnmount() {
+    window.removeEventListener('mousemove', this.update);
+  }
+}
 </script>
 
 <template>
@@ -975,14 +1094,17 @@ onUnmounted(() => {
 Vérifier si un slot est fourni
 
 ```vue
-<script setup>
-import { useSlots } from 'vue';
-
-const slots = useSlots();
-
-// Vérifier la présence d'un slot
-const hasHeader = !!slots.header;
-const hasFooter = !!slots.footer;
+<script>
+export default {
+  computed: {
+    hasHeader() {
+      return !!this.$slots.header;
+    },
+    hasFooter() {
+      return !!this.$slots.footer;
+    }
+  }
+}
 </script>
 
 <template>
@@ -1008,10 +1130,15 @@ const hasFooter = !!slots.footer;
 
 ```vue
 <!-- Accordion.vue -->
-<script setup>
-const props = defineProps({
-  items: Array
-});
+<script>
+export default {
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
+  }
+}
 </script>
 
 <template>

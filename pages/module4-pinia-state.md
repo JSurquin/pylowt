@@ -61,6 +61,10 @@ Avec State Management, **une banque centrale** :
 - Transactions faciles et traçables
 - Vue d'ensemble claire
 
+---
+
+# Le problème : Props Drilling
+
 ### 😱 Le cauchemar du Props Drilling
 
 ```
@@ -71,6 +75,10 @@ App (user)
 ```
 
 **3 composants intermédiaires** qui ne font que passer la donnée ! C'est lourd...
+
+---
+
+# La solution : Pinia !
 
 ### ✨ Solution avec Pinia
 
@@ -179,19 +187,31 @@ export const useCounterStore = defineStore('counter', () => {
 
 ---
 
-# Utiliser le Store
+# Utiliser le Store avec Options API
 
 ```vue
-<script setup>
+<script>
 import { useCounterStore } from '@/stores/counter';
 
-const counter = useCounterStore();
+export default {
+  computed: {
+    counter() {
+      return useCounterStore();
+    },
+    count() {
+      return this.counter.count;
+    },
+    doubleCount() {
+      return this.counter.doubleCount;
+    }
+  }
+}
 </script>
 
 <template>
   <div>
-    <p>Count: {{ counter.count }}</p>
-    <p>Double: {{ counter.doubleCount }}</p>
+    <p>Count: {{ count }}</p>
+    <p>Double: {{ doubleCount }}</p>
     
     <button @click="counter.increment">+</button>
     <button @click="counter.decrement">-</button>
@@ -240,25 +260,25 @@ export const useUserStore = defineStore('user', {
 
 # State - Données réactives
 
-Le state contient les données réactives du store
+Le state contient les données réactives du store - **Syntaxe Options recommandée**
 
 ```javascript
 import { defineStore } from 'pinia';
-import { ref, reactive } from 'vue';
 
-export const useProductStore = defineStore('products', () => {
-  // State avec ref
-  const loading = ref(false);
-  const error = ref(null);
-  
-  // State avec reactive
-  const products = reactive([]);
-  
-  // State avec objet
-  const filters = reactive({
-    search: '',
-    category: '',
-    minPrice: 0,
+export const useProductStore = defineStore('products', {
+  state: () => ({
+    // State simple
+    loading: false,
+    error: null,
+    
+    // State tableau
+    products: [],
+    
+    // State objet
+    filters: {
+      search: '',
+      category: '',
+      minPrice: 0,
     maxPrice: 1000
   });
   
@@ -295,6 +315,10 @@ const total = products.reduce((sum, p) => sum + p.prix, 0); // Duplication !
 ```javascript
 const total = store.totalPrice; // Simple et réutilisable !
 ```
+
+---
+
+# Getters vs Redux selectors
 
 ### 🆚 En Redux : ce sont les selectors (mais plus verbeux)
 
@@ -354,14 +378,22 @@ export const useProductStore = defineStore('products', () => {
 # Utilisation des getters
 
 ```vue
-<script setup>
+<script>
 import { useProductStore } from '@/stores/products';
 
-const store = useProductStore();
-
-// Utiliser un getter avec paramètre
-const product = store.getProductById(42);
-const electronics = store.getProductsByCategory('electronics');
+export default {
+  computed: {
+    store() {
+      return useProductStore();
+    },
+    product() {
+      return this.store.getProductById(42);
+    },
+    electronics() {
+      return this.store.getProductsByCategory('electronics');
+    }
+  }
+}
 </script>
 
 <template>
@@ -508,26 +540,31 @@ export const useUsersStore = defineStore('users', () => {
 # Utilisation dans un composant
 
 ```vue
-<script setup>
-import { onMounted } from 'vue';
+<script>
 import { useUsersStore } from '@/stores/users';
 
-const usersStore = useUsersStore();
-
-onMounted(() => {
-  usersStore.fetchUsers();
-});
-
-const handleCreateUser = async () => {
-  try {
-    await usersStore.createUser({
-      nom: 'Alice',
-      email: 'alice@example.com'
-    });
-  } catch (error) {
-    console.error('Erreur:', error);
+export default {
+  computed: {
+    usersStore() {
+      return useUsersStore();
+    }
+  },
+  methods: {
+    async handleCreateUser() {
+      try {
+        await this.usersStore.createUser({
+          nom: 'Alice',
+          email: 'alice@example.com'
+        });
+      } catch (error) {
+        console.error('Erreur:', error);
+      }
+    }
+  },
+  mounted() {
+    this.usersStore.fetchUsers();
   }
-};
+}
 </script>
 
 <template>
@@ -547,20 +584,33 @@ const handleCreateUser = async () => {
 
 ---
 
-# Destructuring du store
+# Accès au store avec Options API
 
 ```vue
-<script setup>
-import { storeToRefs } from 'pinia';
+<script>
 import { useUserStore } from '@/stores/user';
 
-const userStore = useUserStore();
-
-// ✅ Destructuring avec storeToRefs (garde la réactivité)
-const { nom, email, isLoggedIn } = storeToRefs(userStore);
-
-// ✅ Actions sans storeToRefs
-const { login, logout } = userStore;
+export default {
+  computed: {
+    userStore() {
+      return useUserStore();
+    },
+    nom() {
+      return this.userStore.nom;
+    },
+    email() {
+      return this.userStore.email;
+    },
+    isLoggedIn() {
+      return this.userStore.isLoggedIn;
+    }
+  },
+  methods: {
+    logout() {
+      this.userStore.logout();
+    }
+  }
+}
 </script>
 
 <template>
@@ -604,22 +654,33 @@ export const useProductsStore = defineStore('products', () => {
 # Utiliser plusieurs stores ensemble
 
 ```vue
-<script setup>
+<script>
 import { useAuthStore } from '@/stores/auth';
 import { useCartStore } from '@/stores/cart';
 import { useProductsStore } from '@/stores/products';
 
-const auth = useAuthStore();
-const cart = useCartStore();
-const products = useProductsStore();
-
-const addToCart = (product) => {
-  if (auth.user) {
-    cart.addToCart(product);
-  } else {
-    alert('Veuillez vous connecter');
+export default {
+  computed: {
+    auth() {
+      return useAuthStore();
+    },
+    cart() {
+      return useCartStore();
+    },
+    products() {
+      return useProductsStore();
+    }
+  },
+  methods: {
+    addToCart(product) {
+      if (this.auth.user) {
+        this.cart.addToCart(product);
+      } else {
+        alert('Veuillez vous connecter');
+      }
+    }
   }
-};
+}
 </script>
 ```
 
@@ -744,29 +805,35 @@ export const useUserStore = defineStore('user', () => {
 # $patch - Mise à jour groupée
 
 ```vue
-<script setup>
+<script>
 import { useUserStore } from '@/stores/user';
 
-const userStore = useUserStore();
-
-// Mise à jour individuelle (multiple réactivités)
-userStore.nom = 'Alice';
-userStore.email = 'alice@example.com';
-userStore.age = 25;
-
-// ✅ Mise à jour groupée (une seule réactivité)
-userStore.$patch({
-  nom: 'Alice',
-  email: 'alice@example.com',
-  age: 25
-});
-
-// Ou avec fonction
-userStore.$patch((state) => {
-  state.nom = 'Alice';
-  state.email = 'alice@example.com';
-  state.age = 25;
-});
+export default {
+  methods: {
+    updateUser() {
+      const userStore = useUserStore();
+      
+      // Mise à jour individuelle (multiple réactivités)
+      userStore.nom = 'Alice';
+      userStore.email = 'alice@example.com';
+      userStore.age = 25;
+      
+      // ✅ Mise à jour groupée (une seule réactivité)
+      userStore.$patch({
+        nom: 'Alice',
+        email: 'alice@example.com',
+        age: 25
+      });
+      
+      // Ou avec fonction
+      userStore.$patch((state) => {
+        state.nom = 'Alice';
+        state.email = 'alice@example.com';
+        state.age = 25;
+      });
+    }
+  }
+}
 </script>
 ```
 
