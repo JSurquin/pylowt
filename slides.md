@@ -73,21 +73,19 @@ routeAlias: 'sommaire'
 <br>
 
 <div class="flex flex-col gap-2">
-<Link to="introduction-vuejs">💚 1. Introduction à Vue.js 3</Link>
-<Link to="templates-directives">📝 2. Templates et Directives</Link>
-<Link to="composants-vuejs">🧩 3. Composants Vue.js</Link>
-<Link to="composition-api">🎯 4. Composition API</Link>
-<Link to="reactivite-computed">⚡ 5. Réactivité et Computed</Link>
+<Link to="module1-introduction">💚 1. Introduction à Vue.js et bases fondamentales</Link>
+<Link to="module2-slots">🎰 2. Slots et composants génériques</Link>
+<Link to="module3-avance">🚀 3. Vue.js - Fonctionnement avancé</Link>
 </div>
 
 ::right::
 
 <div class="flex flex-col gap-2">
-<Link to="formulaires-vmodel">📋 6. Formulaires et v-model</Link>
-<Link to="vue-router">🛤️ 7. Vue Router 4</Link>
-<Link to="pinia-state">🍍 8. Pinia - State Management</Link>
-<Link to="projet-final">🚀 9. Projet Final et Bonnes Pratiques</Link>
+<Link to="module4-pinia">🍍 4. State Management avec Pinia</Link>
+<Link to="module5-router">🛤️ 5. Navigation et routage avec Vue Router</Link>
+<Link to="module6-tests">🧪 6. Tests sous Vue.js avec Vitest</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
+<Link to="projet-final">🎓 Projet Final</Link>
 </div>
 
 **Note :** Chaque module contient :
@@ -100,23 +98,18 @@ layout: two-cols
 routeAlias: 'programme-jour1'
 ---
 
-### JOUR 1 - LES FONDAMENTAUX 📅
+### JOUR 1 - FONDAMENTAUX ET BASES 📅
 
 <small>
 
-**Module 1 - Introduction à Vue.js 3**
-- Qu'est-ce que Vue.js ?
-- Pourquoi choisir Vue.js ?
-- Installation et configuration
-- Premier projet avec Vite
-- Structure d'un projet Vue
-
-**Module 2 - Templates et Directives**
-- Syntaxe des templates
-- Interpolation (Mustache)
-- v-bind, v-on, v-if, v-else
-- v-for et les listes
-- v-show vs v-if
+**Module 1 - Introduction à Vue.js et bases fondamentales**
+- Rappels JavaScript ES6+
+- Architecture Vue.js (MVVM)
+- Outils et environnement (Node.js, Vite, Vue CLI)
+- Concepts fondamentaux (data binding, interpolation)
+- Directives (v-bind, v-if, v-for, v-on, v-model)
+- Composants et communication (props, emits)
+- Réactivité et logique (computed, hooks, composables)
 
 </small>
 
@@ -124,12 +117,14 @@ routeAlias: 'programme-jour1'
 
 <small>
 
-**Module 3 - Composants Vue.js**
-- Création de composants
-- Props et validation
-- Événements personnalisés (emit)
-- Slots et slots nommés
-- Provide / Inject
+**Module 2 - Slots et composants génériques**
+- Définition et intérêts des slots
+- Slots simples et nommés
+- Directive v-slot
+- Scoped slots (slots à portée)
+- Slots dynamiques
+- Combinaison props & slots
+- Composants génériques réutilisables
 
 </small>
 
@@ -138,23 +133,16 @@ layout: two-cols
 routeAlias: 'programme-jour2'
 ---
 
-### JOUR 2 - COMPOSITION ET RÉACTIVITÉ 📅
+### JOUR 2 - VUE.JS AVANCÉ ET STATE MANAGEMENT 📅
 
 <small>
 
-**Module 4 - Composition API**
-- setup() et script setup
-- Composables personnalisés
-- Lifecycle hooks
-- Template refs
-- Différences avec Options API
-
-**Module 5 - Réactivité et Computed**
-- Système de réactivité Vue 3
-- ref() et reactive()
-- Computed properties
-- Watchers (watch, watchEffect)
-- Réactivité en profondeur
+**Module 3 - Vue.js - Fonctionnement avancé**
+- Composants fonctionnels
+- Single File Components (SFC)
+- Directives personnalisées
+- Création de directives
+- Refactorisation de composants
 
 </small>
 
@@ -162,12 +150,13 @@ routeAlias: 'programme-jour2'
 
 <small>
 
-**Module 6 - Formulaires et v-model**
-- v-model en profondeur
-- Modificateurs (.lazy, .number, .trim)
-- Inputs, selects, checkboxes
-- Validation de formulaires
-- v-model sur composants
+**Module 4 - State Management avec Pinia**
+- Pattern State Management
+- Store global unique
+- Création d'un store Pinia
+- State, Getters, Actions
+- Mutations d'état
+- Intégration dans une application
 
 </small>
 
@@ -176,23 +165,18 @@ layout: two-cols
 routeAlias: 'programme-jour3'
 ---
 
-### JOUR 3 - ÉCOSYSTÈME ET PROJET 📅
+### JOUR 3 - ROUTING, TESTS ET PROJET 📅
 
 <small>
 
-**Module 7 - Vue Router 4**
+**Module 5 - Navigation et routage avec Vue Router**
+- Présentation de Vue Router
 - Installation et configuration
-- Routes dynamiques
+- Routes dynamiques et imbriquées
 - Navigation programmatique
-- Guards et middleware
-- Lazy loading des routes
-
-**Module 8 - Pinia - State Management**
-- Pourquoi Pinia ?
-- Stores et state
-- Getters et actions
-- Composition API avec Pinia
-- DevTools Vue
+- Guards de navigation
+- Gestion des erreurs
+- Modes hash et history
 
 </small>
 
@@ -200,120 +184,97 @@ routeAlias: 'programme-jour3'
 
 <small>
 
-**Module 9 - Projet Final**
-- Architecture d'un projet Vue
-- Bonnes pratiques 2025
-- Tests avec Vitest
-- Déploiement (Vercel, Netlify)
-- Optimisation et performances
+**Module 6 - Tests sous Vue.js avec Vitest**
+- Intérêt des tests automatisés
+- Installation de Vitest
+- Tests de composants Vue
+- Tests unitaires
+- Tests de logique applicative
 
-**QCM Final** ✅
-- Validation des connaissances
-- Tous les modules
-- Certification de la formation
+**Projet Final & QCM** 🎓
+- Projet fil rouge
+- Bonnes pratiques 2025
+- Déploiement
+- QCM de validation finale
 
 </small>
 
 ---
-src: './pages/01-introduction-vuejs.md'
+src: './pages/module1-introduction-bases.md'
 ---
 
 ---
-src: './pages/01-qcm-introduction-vuejs.md'
+src: './pages/module1-qcm.md'
 ---
 
 ---
-src: './pages/01-exercices-introduction-vuejs.md'
+src: './pages/module1-exercices.md'
 ---
 
 ---
-src: './pages/02-templates-directives.md'
+src: './pages/module2-slots-composants.md'
 ---
 
 ---
-src: './pages/02-qcm-templates-directives.md'
+src: './pages/module2-qcm.md'
 ---
 
 ---
-src: './pages/02-exercices-templates-directives.md'
+src: './pages/module2-exercices.md'
 ---
 
 ---
-src: './pages/04-composants-vuejs.md'
+src: './pages/module3-vuejs-avance.md'
 ---
 
 ---
-src: './pages/04-qcm-composants-vuejs.md'
+src: './pages/module3-qcm.md'
 ---
 
 ---
-src: './pages/04-exercices-composants-vuejs.md'
+src: './pages/module3-exercices.md'
 ---
 
 ---
-src: './pages/05-composition-api.md'
+src: './pages/module4-pinia-state.md'
 ---
 
 ---
-src: './pages/05-qcm-composition-api.md'
+src: './pages/module4-qcm.md'
 ---
 
 ---
-src: './pages/05-exercices-composition-api.md'
+src: './pages/module4-exercices.md'
 ---
 
 ---
-src: './pages/03-reactivite-computed.md'
+src: './pages/module5-vue-router.md'
 ---
 
 ---
-src: './pages/03-qcm-reactivite-computed.md'
+src: './pages/module5-qcm.md'
 ---
 
 ---
-src: './pages/03-exercices-reactivite-computed.md'
+src: './pages/module5-exercices.md'
 ---
 
 ---
-src: './pages/06-formulaires-vmodel.md'
+src: './pages/module6-tests-vitest.md'
 ---
 
 ---
-src: './pages/06-qcm-formulaires-vmodel.md'
+src: './pages/module6-qcm.md'
 ---
 
 ---
-src: './pages/06-exercices-formulaires-vmodel.md'
+src: './pages/module6-exercices.md'
 ---
 
 ---
-src: './pages/07-vue-router.md'
+src: './pages/qcm-final.md'
 ---
 
 ---
-src: './pages/07-qcm-vue-router.md'
----
-
----
-src: './pages/07-exercices-vue-router.md'
----
-
----
-src: './pages/08-pinia-state.md'
----
-
----
-src: './pages/08-qcm-pinia-state.md'
----
-
----
-src: './pages/08-exercices-pinia-state.md'
----
-
----
-src: './pages/09-projet-final.md'
----
-
----
-src: './pages/09-qcm-final.md'
+src: './pages/projet-final.md'
 ---
