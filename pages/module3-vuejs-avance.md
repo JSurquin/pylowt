@@ -8,41 +8,6 @@ routeAlias: 'module3-avance'
 
 ---
 
-# 🔥 Vous êtes prêts pour le niveau supérieur !
-
-### 📊 Votre progression
-
-```
-    ╔════════════════════════╗
-    ║ ████████████░░░░░░░░░░ ║  50% complété
-    ╚════════════════════════╝
-```
-
-### 🎯 Checkpoint : Où en êtes-vous ?
-
-Si vous êtes arrivés jusqu'ici, **bravo** ! 🎉
-
-Vous maîtrisez maintenant :
-✅ Les fondamentaux de Vue.js
-✅ Les composants et leur communication
-✅ Les slots pour des composants flexibles
-
-### 🚀 Module 3 : Les techniques de ninja
-
-Aujourd'hui on va voir les **fonctionnalités avancées** :
-- Directives personnalisées (créez vos propres v-xyz)
-- SFC avancés (Single File Components)
-- CSS dynamique et scoped
-
-### 💪 C'est là que vous devenez un vrai développeur Vue.js !
-
-**Promis** : ça peut sembler intimidant, mais vous POUVEZ le faire !
-
-### 🎓 Conseil de coach
-
-> "La maîtrise vient de la répétition. Vous ne comprendrez peut-être pas tout du premier coup, et c'est NORMAL ! Pratiquez, et ça viendra naturellement."
-
----
 layout: new-section
 ---
 
@@ -127,6 +92,37 @@ export default {
 # Single File Components (SFC)
 
 Les **SFC** sont des fichiers `.vue` contenant template, script et style
+
+```mermaid
+graph TB
+    subgraph SFC["Fichier MonComposant.vue"]
+        S["&lt;script&gt;<br/>Logique JavaScript<br/>data, methods, computed..."]
+        T["&lt;template&gt;<br/>Structure HTML<br/>Rendu du composant"]
+        ST["&lt;style scoped&gt;<br/>CSS isole<br/>Styles du composant"]
+    end
+    
+    subgraph Compilation["Compilation par Vite"]
+        C["Compilation"]
+    end
+    
+    subgraph Output["Resultat"]
+        JS["JavaScript optimise"]
+        HTML["DOM virtuel"]
+        CSS["CSS scope"]
+    end
+    
+    S --> C
+    T --> C
+    ST --> C
+    C --> JS
+    C --> HTML
+    C --> CSS
+    
+    style S fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style T fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style ST fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style C fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+```
 
 ### Avantages des SFC
 
@@ -591,6 +587,34 @@ export default {
 # Créer une directive personnalisée
 
 Syntaxe de base
+
+```mermaid
+graph TB
+    subgraph Definition["Definition de la directive"]
+        D["Directive v-focus"]
+        H["Hooks du cycle de vie:<br/>mounted, updated, unmounted"]
+    end
+    
+    subgraph Usage["Utilisation"]
+        T["Template:<br/>&lt;input v-focus /&gt;"]
+    end
+    
+    subgraph Execution["Execution"]
+        M["mounted el :<br/>el.focus"]
+        E["Element DOM modifie"]
+    end
+    
+    D --> H
+    H --> T
+    T --> M
+    M --> E
+    
+    style D fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style H fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style T fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style M fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style E fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+```
 
 ```javascript
 // directives/focus.js

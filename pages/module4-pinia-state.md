@@ -8,42 +8,6 @@ routeAlias: 'module4-pinia'
 
 ---
 
-# 🎊 Bienvenue au Jour 2 !
-
-### 📊 Votre progression
-
-```
-    ╔════════════════════════╗
-    ║ ████████████████░░░░░░ ║  65% complété
-    ╚════════════════════════╝
-```
-
-### 🏆 Récap Jour 1 : Vous êtes des warriors !
-
-Hier vous avez appris :
-✅ Les bases de Vue.js et la réactivité
-✅ Les composants et leur communication
-✅ Les slots et composants génériques
-✅ Les techniques avancées (directives, SFC...)
-
-**C'est ÉNORME** ! Donnez-vous une tape dans le dos ! 👏
-
-### 🎯 Jour 2 : On passe à la vitesse supérieure
-
-Aujourd'hui on attaque les **outils professionnels** :
-- **Pinia** : pour gérer l'état de votre app
-- **Vue Router** : pour naviguer entre les pages
-
-### 💡 Pourquoi c'est important ?
-
-**Sans Pinia** : votre code va devenir un spaghetti 🍝
-**Avec Pinia** : tout est organisé, propre, maintenable ✨
-
-### 🚀 Let's go !
-
-"La simplicité est la sophistication suprême" - Leonardo da Vinci
-
----
 
 # Qu'est-ce que le State Management ?
 
@@ -67,11 +31,21 @@ Avec State Management, **une banque centrale** :
 
 ### 😱 Le cauchemar du Props Drilling
 
-```
-App (user)
-  └── Header (user) ← Passe user
-       └── Nav (user) ← Passe user
-            └── UserMenu (user) ← Utilise ENFIN user !
+```mermaid
+graph TB
+    A[App<br/>user: { nom, email }]
+    H[Header<br/>Ne fait que passer user]
+    N[Nav<br/>Ne fait que passer user]
+    UM[UserMenu<br/>Utilise ENFIN user!]
+    
+    A -->|:user='user'| H
+    H -->|:user='user'| N
+    N -->|:user='user'| UM
+    
+    style A fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style H fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style N fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style UM fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
 ```
 
 **3 composants intermédiaires** qui ne font que passer la donnée ! C'est lourd...
@@ -82,11 +56,29 @@ App (user)
 
 ### ✨ Solution avec Pinia
 
-```
-App → utilise useUserStore()
-Header → n'a pas besoin de user
-Nav → n'a pas besoin de user
-UserMenu → utilise useUserStore() ← Accès direct !
+```mermaid
+graph TB
+    subgraph Store["Store Central Pinia"]
+        US["useUserStore<br/>state: user<br/>actions: login, logout"]
+    end
+    
+    A[App]
+    H[Header]
+    N[Nav]
+    UM[UserMenu]
+    
+    US -.->|Acces direct| A
+    US -.->|Acces direct| UM
+    
+    A --> H
+    H --> N
+    N --> UM
+    
+    style US fill:#42b883,stroke:#35495e,stroke-width:4px,color:#fff
+    style A fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style H fill:#95a5a6,stroke:#7f8c8d,stroke-width:1px,color:#fff
+    style N fill:#95a5a6,stroke:#7f8c8d,stroke-width:1px,color:#fff
+    style UM fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
 ```
 
 **Chaque composant prend ce dont il a besoin, directement à la source !**
@@ -154,6 +146,38 @@ app.mount('#app');
 ---
 
 # Créer un Store simple
+
+```mermaid
+graph TB
+    subgraph Store["Store Pinia - useCounterStore"]
+        S["State<br/>count: 0"]
+        G["Getters<br/>doubleCount: count * 2"]
+        A["Actions<br/>increment<br/>decrement"]
+    end
+    
+    subgraph Composants["Composants Vue"]
+        C1[Composant 1]
+        C2[Composant 2]
+        C3[Composant 3]
+    end
+    
+    S --> G
+    A --> S
+    
+    C1 -.->|Lit| S
+    C1 -.->|Lit| G
+    C1 -.->|Appelle| A
+    
+    C2 -.->|Lit| S
+    C3 -.->|Appelle| A
+    
+    style S fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style G fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style A fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style C1 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style C2 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style C3 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+```
 
 ```javascript
 // stores/counter.js

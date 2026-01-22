@@ -8,36 +8,6 @@ routeAlias: 'module2-slots'
 
 ---
 
-# 🎓 Félicitations pour le Module 1 !
-
-Vous venez de maîtriser les **fondamentaux** de Vue.js ! 👏
-
-### 📊 Votre progression
-
-```
-    ╔════════════════════════╗
-    ║ ████████░░░░░░░░░░░░░░ ║  30% complété
-    ╚════════════════════════╝
-```
-
-### 🧠 Ce que vous savez maintenant
-
-✅ Créer des composants réactifs
-✅ Gérer l'état local
-✅ Communiquer entre composants (props/emit)
-✅ Faire des appels API
-
-### 🚀 Module 2 : On monte en niveau !
-
-Aujourd'hui on va apprendre à créer des **composants ultra-réutilisables** avec les slots.
-
-**Objectif** : Un seul composant Modal pour TOUTE l'application !
-
-### 💡 Astuce du jour
-
-> "Un bon développeur est un développeur **fainéant** : il écrit du code réutilisable pour ne pas se répéter !"
-
----
 layout: new-section
 ---
 
@@ -181,22 +151,34 @@ Un **composant générique** est un composant réutilisable qui s'adapte à diff
 
 # Relations parent/enfant avec slots
 
-```
-┌─────────────────────────────────┐
-│         PARENT                  │
-│                                 │
-│  ┌───────────────────────────┐  │
-│  │       ENFANT              │  │
-│  │                           │  │
-│  │  <slot name="header">    │  │ ← Slot nommé
-│  │                           │  │
-│  │  <slot>                   │  │ ← Slot par défaut
-│  │                           │  │
-│  │  <slot name="footer">    │  │ ← Slot nommé
-│  │                           │  │
-│  └───────────────────────────┘  │
-│                                 │
-└─────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Parent["Composant Parent"]
+        PH["Contenu Header"]
+        PC["Contenu principal"]
+        PF["Contenu Footer"]
+    end
+    
+    subgraph Enfant["Composant Enfant Card"]
+        SH["&lt;slot name='header'&gt;<br/>Zone header"]
+        SD["&lt;slot&gt;<br/>Zone par defaut"]
+        SF["&lt;slot name='footer'&gt;<br/>Zone footer"]
+    end
+    
+    PH -->|template #header| SH
+    PC -->|Contenu direct| SD
+    PF -->|template #footer| SF
+    
+    SH --> R1[Rendu Header]
+    SD --> R2[Rendu Content]
+    SF --> R3[Rendu Footer]
+    
+    style PH fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style PC fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style PF fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style SH fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style SD fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style SF fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
 ```
 
 ---
@@ -342,6 +324,28 @@ Les **scoped slots** permettent au composant enfant de passer des données au pa
 
 Le composant enfant dit au parent :
 > "Tiens, voici les données (le cadeau 🎁), maintenant fais-en ce que tu veux !"
+
+```mermaid
+graph LR
+    subgraph Enfant["Composant Enfant TodoList"]
+        ED["Data:<br/>todos = [...]"]
+        ES["&lt;slot :todo='todo'&gt;<br/>Passe les donnees"]
+    end
+    
+    subgraph Parent["Composant Parent"]
+        PR["Recoit les donnees:<br/>template #default='{ todo }'"]
+        PD["Decide du rendu:<br/>Carte, Liste, Tableau..."]
+    end
+    
+    ED --> ES
+    ES -->|Donnees| PR
+    PR --> PD
+    
+    style ED fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style ES fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style PR fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style PD fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+```
 
 ### 🤔 Problème à résoudre
 

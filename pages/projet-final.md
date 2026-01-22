@@ -8,40 +8,6 @@ routeAlias: 'projet-final'
 
 ---
 
-# 🎉 VOUS Y ÊTES ! Le projet final ! 🚀
-
-### 📊 Votre progression
-
-```
-    ╔════════════════════════╗
-    ║ ████████████████████████ ║  100% DE LA FORMATION
-    ╚════════════════════════╝
-```
-
-### 🏆 CE QUE VOUS AVEZ ACCOMPLI
-
-En seulement **3 jours**, vous êtes passés de **zéro** à **héros** ! 💪
-
-✅ Maîtrise des fondamentaux Vue.js
-✅ Composants réutilisables et slots
-✅ Techniques avancées (directives, SFC...)
-✅ State management avec Pinia
-✅ Navigation avec Vue Router
-✅ Tests avec Vitest
-
-### 🎯 Le projet final : Votre chef-d'œuvre
-
-C'est **LE** projet qui va dans votre portfolio.
-C'est **LUI** que vous montrerez en entretien d'embauche.
-C'est **VOTRE** preuve de compétence !
-
-### 💡 Notre philosophie
-
-> "Je ne peux pas vous DONNER les compétences. Vous devez les PRENDRE en pratiquant !"
-
-### 🚀 Prêts ? C'est parti !
-
----
 
 # Présentation du projet
 

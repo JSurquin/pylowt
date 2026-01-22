@@ -8,47 +8,6 @@ routeAlias: 'module5-router'
 
 ---
 
-# 🎉 Déjà le Module 5 !
-
-### 📊 Votre progression
-
-```
-    ╔════════════════════════╗
-    ║ ████████████████████░░ ║  80% complété
-    ╚════════════════════════╝
-```
-
-### 🌟 Vous êtes presque au sommet !
-
-À ce stade, vous savez :
-✅ Créer des composants Vue.js réactifs
-✅ Les rendre réutilisables avec les slots
-✅ Maîtriser les techniques avancées
-✅ Gérer l'état global avec Pinia
-
-**Vous êtes déjà meilleurs que 70% des développeurs frontend !** 💪
-
-### 🗺️ Module 5 : On crée une vraie application
-
-Jusqu'ici, on a travaillé sur **une seule page**.
-Maintenant, on va créer une **vraie application multi-pages** avec Vue Router !
-
-### 🎯 Ce que vous allez construire
-
-Une application avec :
-- Page d'accueil
-- Liste de produits
-- Détail produit (route dynamique !)
-- Page admin (protégée par authentification)
-- Page 404
-
-**En gros : une vraie app professionnelle !** 🚀
-
-### 💡 Fun fact
-
-Les applications modernes sont appelées **SPA** (Single Page Application), mais elles donnent l'illusion d'avoir plusieurs pages !
-
----
 
 # Qu'est-ce que Vue Router ?
 
@@ -60,6 +19,29 @@ Imaginez votre application comme une ville :
 - **Les routes** = les rues de la ville 🏘️
 - **Le Router** = votre GPS 📱
 - **Les composants** = les destinations (maison, bureau, magasin...)
+
+```mermaid
+graph LR
+    U[Utilisateur<br/>Clique sur un lien]
+    R[Vue Router<br/>GPS de l'app]
+    H[Home Component]
+    A[About Component]
+    C[Contact Component]
+    
+    U -->|URL: /| R
+    U -->|URL: /about| R
+    U -->|URL: /contact| R
+    
+    R -->|Route '/'| H
+    R -->|Route '/about'| A
+    R -->|Route '/contact'| C
+    
+    style U fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style R fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style H fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style A fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style C fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+```
 
 Quand vous tapez une adresse (URL), le GPS (Router) vous emmène à la bonne destination (composant) !
 
@@ -366,6 +348,32 @@ Imaginez un **videur de boîte de nuit** :
 - Il vérifie votre carte d'identité 🪪
 - Si vous avez l'âge requis → **next()** (vous entrez ✅)
 - Sinon → **next('/home')** (vous dégagez ❌)
+
+```mermaid
+graph TB
+    U[Utilisateur<br/>Veut acceder a /admin]
+    G[Navigation Guard<br/>beforeEach]
+    A{Est authentifie?}
+    P{A les permissions?}
+    AD[Admin Page]
+    L[Login Page]
+    H[Home Page]
+    
+    U --> G
+    G --> A
+    A -->|Non| L
+    A -->|Oui| P
+    P -->|Oui| AD
+    P -->|Non| H
+    
+    style U fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style G fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style A fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style P fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style AD fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style L fill:#95a5a6,stroke:#7f8c8d,stroke-width:2px,color:#fff
+    style H fill:#95a5a6,stroke:#7f8c8d,stroke-width:2px,color:#fff
+```
 
 ### 🛡️ Types de guards
 

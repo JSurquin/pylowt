@@ -340,25 +340,29 @@ Vue.js suit le pattern MVVM (Model-View-ViewModel)
 
 ### 🏗️ Pensez à une maison :
 
-```
-┌──────────────┐
-│     VIEW     │  ← La FAÇADE (ce que vous voyez) 🏠
-│  (Template)  │     Template HTML
-└──────┬───────┘
-       │
-       ↕ Data Binding (la magie de Vue ✨)
-       │
-┌──────┴───────┐
-│  VIEWMODEL   │  ← L'ARCHITECTE (organise tout) 👷
-│ (Composant)  │     Composant Vue.js
-└──────┬───────┘
-       │
-       ↕ Logique métier
-       │
-┌──────┴───────┐
-│    MODEL     │  ← Les FONDATIONS (vos données) 🧱
-│   (State)    │     State / Données
-└──────────────┘
+```mermaid
+graph TB
+    subgraph VIEW["VIEW - Template HTML"]
+        A[Template<br/>Ce que vous voyez]
+    end
+    
+    subgraph VIEWMODEL["VIEWMODEL - Composant Vue.js"]
+        B[Composant<br/>L'architecte qui organise tout]
+    end
+    
+    subgraph MODEL["MODEL - State/Donnees"]
+        C[State<br/>Vos donnees]
+    end
+    
+    A <-->|Data Binding<br/>La magie de Vue| B
+    B <-->|Logique metier| C
+    
+    style VIEW fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style VIEWMODEL fill:#35495e,stroke:#42b883,stroke-width:3px,color:#fff
+    style MODEL fill:#34495e,stroke:#42b883,stroke-width:3px,color:#fff
+    style A fill:#42b883,stroke:#fff,color:#fff
+    style B fill:#5a6c7d,stroke:#fff,color:#fff
+    style C fill:#5a6c7d,stroke:#fff,color:#fff
 ```
 
 ---
@@ -669,6 +673,31 @@ Vue.js permet de lier les données du composant au template avec l'**Options API
 
 Imaginez que vos données sont l'électricité, et votre template est l'ampoule.
 **Vue.js est la multiprise** qui les connecte automatiquement !
+
+```mermaid
+graph LR
+    subgraph Component["Composant Vue.js"]
+        Data[(Data<br/>message: 'Bonjour')]
+    end
+    
+    subgraph Template["Template HTML"]
+        Interp["Interpolation<br/>{{ message }}"]
+        Bind["v-bind:src<br/>ou :src"]
+        Event["v-on:click<br/>ou @click"]
+        Model["v-model<br/>Bidirectionnel"]
+    end
+    
+    Data -->|Lecture seule| Interp
+    Data -->|Attributs| Bind
+    Event -->|Actions| Data
+    Data <-->|Sync auto| Model
+    
+    style Data fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style Interp fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style Bind fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style Event fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style Model fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+```
 
 ### Types de liaison (les 4 prises)
 
@@ -1226,6 +1255,25 @@ Chaque instance du composant a son propre état indépendant
 
 Les props permettent de passer des données du parent à l'enfant - **Options API**
 
+```mermaid
+graph TB
+    subgraph Parent["Composant Parent"]
+        PD[Data:<br/>utilisateur = {<br/>nom: 'Alice'<br/>age: 28<br/>}]
+    end
+    
+    subgraph Enfant["Composant Enfant UserCard"]
+        EP[Props:<br/>nom<br/>age<br/>email]
+        ET[Template:<br/>Affiche les props]
+    end
+    
+    PD -->|:nom='utilisateur.nom'<br/>:age='utilisateur.age'| EP
+    EP --> ET
+    
+    style PD fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style EP fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style ET fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+```
+
 ```vue
 <!-- UserCard.vue -->
 <script>
@@ -1406,6 +1454,31 @@ export default {
 # Événements personnalisés (emit) - 1/2
 
 Les enfants peuvent communiquer avec les parents via des événements - **Options API**
+
+```mermaid
+graph BT
+    subgraph Enfant["Composant Enfant"]
+        EB[Button @click]
+        EM[$emit'incrementer', 1]
+    end
+    
+    subgraph Parent["Composant Parent"]
+        PE[@incrementer='onIncrementer']
+        PM[Method:<br/>onIncrementer valeur]
+        PD[Data:<br/>compteur++]
+    end
+    
+    EB -->|Click| EM
+    EM -->|Evenement remonte| PE
+    PE --> PM
+    PM --> PD
+    
+    style EB fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style EM fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style PE fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style PM fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style PD fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+```
 
 **Script du composant enfant :**
 
@@ -1722,6 +1795,40 @@ layout: new-section
 
 Les propriétés calculées sont des valeurs dérivées qui se mettent à jour automatiquement - **Options API**
 
+```mermaid
+graph TB
+    subgraph Data["Data - Source"]
+        P[prenom: 'Jean']
+        N[nom: 'Dupont']
+        PR[prix: 100]
+        Q[quantite: 3]
+    end
+    
+    subgraph Computed["Computed - Mise en cache"]
+        NC[nomComplet<br/>Cache le resultat]
+        T[total<br/>Cache le resultat]
+    end
+    
+    subgraph Template["Template"]
+        D1["{{ nomComplet }}"]
+        D2["{{ total }}"]
+    end
+    
+    P --> NC
+    N --> NC
+    PR --> T
+    Q --> T
+    NC --> D1
+    T --> D2
+    
+    style P fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style N fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style PR fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style Q fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style NC fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style T fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+```
+
 **Script :**
 
 ```vue
@@ -1960,6 +2067,27 @@ Une application de gestion de tâches complète avec :
 # Hooks du cycle de vie
 
 Les hooks permettent d'exécuter du code à des moments précis - **Options API**
+
+```mermaid
+graph TB
+    Start([Creation du composant]) --> BC[beforeCreate]
+    BC --> C[created<br/>Donnees reactives disponibles]
+    C --> BM[beforeMount<br/>Template compile]
+    BM --> M[mounted<br/>DOM accessible<br/>Appels API ici]
+    M --> U{Mise a jour?}
+    U -->|Oui| BU[beforeUpdate]
+    BU --> UP[updated]
+    UP --> U
+    U -->|Non| BUN[beforeUnmount]
+    BUN --> UN[unmounted<br/>Nettoyage timers]
+    UN --> End([Composant detruit])
+    
+    style Start fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style End fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style M fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style C fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style UN fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+```
 
 ```vue
 <script>
@@ -2445,26 +2573,6 @@ export default {
 
 ---
 
-# Votre parcours d'apprentissage 🗺️
-
-```
-Niveau de maîtrise
-    ↑
-100%│                                    🏆 Expert
-    │                              ╱
- 80%│                         ╱
-    │                    ╱        Module 6 (Tests)
- 60%│               ╱             Module 5 (Router)
-    │          ╱                  Module 4 (Pinia)
- 40%│     ╱                       Module 3 (Avancé)
-    │ ╱                           Module 2 (Slots)
- 20%│                             Module 1 (Bases)
-    │                             ← VOUS ÊTES ICI !
-  0%└────────────────────────────────────────────→
-     Début                                    Fin
-```
-
----
 
 # Bilan de compétences
 

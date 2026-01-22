@@ -8,38 +8,6 @@ routeAlias: 'module6-tests'
 
 ---
 
-# 🎊 DERNIER MODULE ! Vous êtes des champions ! 🏆
-
-### 📊 Votre progression
-
-```
-    ╔════════════════════════╗
-    ║ ████████████████████████ ║  95% complété
-    ╚════════════════════════╝
-```
-
-### 🌟 Regardez le chemin parcouru !
-
-**Jour 1** : Vous découvriez Vue.js
-**Jour 2** : Vous maîtrisiez Pinia et le routing
-**Jour 3** : **Vous êtes des développeurs Vue.js confirmés !**
-
-### 🎯 Module 6 : La cerise sur le gâteau 🍒
-
-Les tests, c'est ce qui différencie :
-- Un **développeur junior** : "Ça marche sur ma machine !"
-- Un **développeur senior** : "J'ai 95% de coverage, déployons sereinement"
-
-### 💼 Dans le monde professionnel
-
-**Sans tests** : Vous ne serez jamais embauché dans une bonne entreprise
-**Avec tests** : Vous êtes un développeur **recherché** et **bien payé** 💰
-
-### 🚀 Dernier effort !
-
-> "Les tests sont l'assurance vie de votre code. Ça peut sembler ennuyeux maintenant, mais vous nous remercierez plus tard !"
-
----
 
 # Pourquoi tester son code ?
 
@@ -51,18 +19,32 @@ Les tests, c'est ce qui différencie :
 
 Vous faites des analyses de sang **AVANT** d'être malade, pas après !
 
-**Sans tests** :
-```
-Vous codez → Déployez → 💥 Bug en production → 😱 Panique
-```
-
----
-
-# Avec tests, tout change !
-
-**Avec tests** :
-```
-Vous codez → Tests échouent → Vous corrigez → Tests passent ✅ → 😎 Déploiement serein
+```mermaid
+graph LR
+    subgraph SansTests["Sans Tests - Dangereux"]
+        C1[Codez] --> D1[Deployez]
+        D1 --> B1[Bug en prod]
+        B1 --> P1[Panique]
+    end
+    
+    subgraph AvecTests["Avec Tests - Serein"]
+        C2[Codez] --> T2[Tests]
+        T2 --> E{Tests passent?}
+        E -->|Non| F2[Corrigez]
+        F2 --> T2
+        E -->|Oui| D2[Deployez en confiance]
+    end
+    
+    style C1 fill:#95a5a6,stroke:#7f8c8d,stroke-width:2px,color:#fff
+    style D1 fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style B1 fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style P1 fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    
+    style C2 fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style T2 fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style E fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style F2 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style D2 fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
 ```
 
 ---
@@ -94,15 +76,23 @@ Vous codez → Tests échouent → Vous corrigez → Tests passent ✅ → 😎 
 
 ### Pyramide des tests
 
+```mermaid
+graph TB
+    subgraph Pyramide["Pyramide des Tests"]
+        E2E["E2E - End to End<br/>Peu nombreux<br/>Lents mais complets<br/>Test toute l'app"]
+        INT["Integration<br/>Moyennement nombreux<br/>Testent plusieurs modules ensemble"]
+        UNIT["Unitaires<br/>Tres nombreux<br/>Rapides<br/>Testent une fonction isolee"]
+    end
+    
+    E2E --> INT
+    INT --> UNIT
+    
+    style E2E fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style INT fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style UNIT fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
 ```
-         /\
-        /E2E\          Tests End-to-End (peu nombreux)
-       /------\
-      /Intég. \        Tests d'intégration (moyennement nombreux)
-     /----------\
-    / Unitaires \      Tests unitaires (très nombreux)
-   /--------------\
-```
+
+**Plus on descend, plus il y a de tests !**
 
 ---
 
