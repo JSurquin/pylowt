@@ -19,6 +19,20 @@ routeAlias: 'module6-tests'
 
 Vous faites des analyses de sang **AVANT** d'être malade, pas après !
 
+**Sans tests** :
+```
+Vous codez → Déployez → 💥 Bug en production → 😱 Panique
+```
+
+**Avec tests** :
+```
+Vous codez → Tests échouent → Vous corrigez → Tests passent ✅ → 😎 Déploiement serein
+```
+
+---
+
+# Schéma : Avec vs Sans tests
+
 ```mermaid
 graph LR
     subgraph SansTests["Sans Tests - Dangereux"]
@@ -76,12 +90,22 @@ graph LR
 
 ### Pyramide des tests
 
+**Plus on descend, plus il y a de tests !**
+
+- **Tests E2E** (End-to-End) : Peu nombreux, lents mais complets
+- **Tests d'intégration** : Moyennement nombreux
+- **Tests unitaires** : Très nombreux, rapides
+
+---
+
+# Schéma : Pyramide des tests
+
 ```mermaid
 graph TB
     subgraph Pyramide["Pyramide des Tests"]
-        E2E["E2E - End to End<br/>Peu nombreux<br/>Lents mais complets<br/>Test toute l'app"]
-        INT["Integration<br/>Moyennement nombreux<br/>Testent plusieurs modules ensemble"]
-        UNIT["Unitaires<br/>Tres nombreux<br/>Rapides<br/>Testent une fonction isolee"]
+        E2E[E2E - End to End<br/>Peu nombreux<br/>Lents mais complets<br/>Test toute l'app]
+        INT[Integration<br/>Moyennement nombreux<br/>Testent plusieurs modules ensemble]
+        UNIT[Unitaires<br/>Tres nombreux<br/>Rapides<br/>Testent une fonction isolee]
     end
     
     E2E --> INT
@@ -91,8 +115,6 @@ graph TB
     style INT fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
     style UNIT fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
 ```
-
-**Plus on descend, plus il y a de tests !**
 
 ---
 

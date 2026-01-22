@@ -151,23 +151,34 @@ Un **composant générique** est un composant réutilisable qui s'adapte à diff
 
 # Relations parent/enfant avec slots
 
+Les slots nommés permettent de définir plusieurs zones d'injection de contenu.
+
+**3 types de slots** :
+- **Slot nommé** : `<slot name="header">`  
+- **Slot par défaut** : `<slot>`
+- **Slot nommé** : `<slot name="footer">`
+
+---
+
+# Schéma : Slots nommés
+
 ```mermaid
 graph TB
     subgraph Parent["Composant Parent"]
-        PH["Contenu Header"]
-        PC["Contenu principal"]
-        PF["Contenu Footer"]
+        PH[Contenu Header]
+        PC[Contenu principal]
+        PF[Contenu Footer]
     end
     
     subgraph Enfant["Composant Enfant Card"]
-        SH["&lt;slot name='header'&gt;<br/>Zone header"]
-        SD["&lt;slot&gt;<br/>Zone par defaut"]
-        SF["&lt;slot name='footer'&gt;<br/>Zone footer"]
+        SH[Slot header<br/>Zone header]
+        SD[Slot par defaut<br/>Zone par defaut]
+        SF[Slot footer<br/>Zone footer]
     end
     
-    PH -->|template #header| SH
+    PH -->|template header| SH
     PC -->|Contenu direct| SD
-    PF -->|template #footer| SF
+    PF -->|template footer| SF
     
     SH --> R1[Rendu Header]
     SD --> R2[Rendu Content]
@@ -325,16 +336,31 @@ Les **scoped slots** permettent au composant enfant de passer des données au pa
 Le composant enfant dit au parent :
 > "Tiens, voici les données (le cadeau 🎁), maintenant fais-en ce que tu veux !"
 
+### 🤔 Problème à résoudre
+
+**Sans scoped slots** : 
+- L'enfant décide TOUT (comment afficher)
+- Pas flexible
+
+**Avec scoped slots** : 
+- L'enfant donne les données
+- Le parent décide comment les afficher
+- **Super flexible** ! 🎨
+
+---
+
+# Schéma : Scoped Slots
+
 ```mermaid
 graph LR
     subgraph Enfant["Composant Enfant TodoList"]
-        ED["Data:<br/>todos = [...]"]
-        ES["&lt;slot :todo='todo'&gt;<br/>Passe les donnees"]
+        ED[Data todos]
+        ES[Slot avec todo<br/>Passe les donnees]
     end
     
     subgraph Parent["Composant Parent"]
-        PR["Recoit les donnees:<br/>template #default='{ todo }'"]
-        PD["Decide du rendu:<br/>Carte, Liste, Tableau..."]
+        PR[Recoit les donnees<br/>template default]
+        PD[Decide du rendu:<br/>Carte Liste Tableau]
     end
     
     ED --> ES
@@ -346,17 +372,6 @@ graph LR
     style PR fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
     style PD fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
 ```
-
-### 🤔 Problème à résoudre
-
-**Sans scoped slots** : 
-- L'enfant décide TOUT (comment afficher)
-- Pas flexible
-
-**Avec scoped slots** : 
-- L'enfant donne les données
-- Le parent décide comment les afficher
-- **Super flexible** ! 🎨
 
 ---
 

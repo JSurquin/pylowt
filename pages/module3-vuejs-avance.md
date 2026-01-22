@@ -93,22 +93,34 @@ export default {
 
 Les **SFC** sont des fichiers `.vue` contenant template, script et style
 
+### Avantages des SFC
+
+- 📦 Encapsulation complète
+- 🎨 Scoped CSS
+- 🔧 Syntaxe spécifique à Vue
+- ⚡ Hot Module Replacement
+- 📝 Support IDE excellent
+
+---
+
+# Schéma : Architecture SFC
+
 ```mermaid
 graph TB
     subgraph SFC["Fichier MonComposant.vue"]
-        S["&lt;script&gt;<br/>Logique JavaScript<br/>data, methods, computed..."]
-        T["&lt;template&gt;<br/>Structure HTML<br/>Rendu du composant"]
-        ST["&lt;style scoped&gt;<br/>CSS isole<br/>Styles du composant"]
+        S[Script<br/>Logique JavaScript<br/>data methods computed]
+        T[Template<br/>Structure HTML<br/>Rendu du composant]
+        ST[Style scoped<br/>CSS isole<br/>Styles du composant]
     end
     
     subgraph Compilation["Compilation par Vite"]
-        C["Compilation"]
+        C[Compilation]
     end
     
     subgraph Output["Resultat"]
-        JS["JavaScript optimise"]
-        HTML["DOM virtuel"]
-        CSS["CSS scope"]
+        JS[JavaScript optimise]
+        HTML[DOM virtuel]
+        CSS[CSS scope]
     end
     
     S --> C
@@ -123,14 +135,6 @@ graph TB
     style ST fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
     style C fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
 ```
-
-### Avantages des SFC
-
-- 📦 Encapsulation complète
-- 🎨 Scoped CSS
-- 🔧 Syntaxe spécifique à Vue
-- ⚡ Hot Module Replacement
-- 📝 Support IDE excellent
 
 ---
 
@@ -588,20 +592,33 @@ export default {
 
 Syntaxe de base
 
+```javascript
+// directives/focus.js
+export const vFocus = {
+  mounted(el) {
+    el.focus();
+  }
+};
+```
+
+---
+
+# Schéma : Cycle de vie directive
+
 ```mermaid
 graph TB
     subgraph Definition["Definition de la directive"]
-        D["Directive v-focus"]
-        H["Hooks du cycle de vie:<br/>mounted, updated, unmounted"]
+        D[Directive v-focus]
+        H[Hooks du cycle de vie:<br/>mounted updated unmounted]
     end
     
     subgraph Usage["Utilisation"]
-        T["Template:<br/>&lt;input v-focus /&gt;"]
+        T[Template:<br/>input v-focus]
     end
     
     subgraph Execution["Execution"]
-        M["mounted el :<br/>el.focus"]
-        E["Element DOM modifie"]
+        M[mounted el<br/>el.focus]
+        E[Element DOM modifie]
     end
     
     D --> H
@@ -614,15 +631,6 @@ graph TB
     style T fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
     style M fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
     style E fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
-```
-
-```javascript
-// directives/focus.js
-export const vFocus = {
-  mounted(el) {
-    el.focus();
-  }
-};
 ```
 
 ---

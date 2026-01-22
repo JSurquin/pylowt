@@ -31,16 +31,29 @@ Avec State Management, **une banque centrale** :
 
 ### 😱 Le cauchemar du Props Drilling
 
+**3 composants intermédiaires** qui ne font que passer la donnée ! C'est lourd...
+
+```
+App (user)
+  └── Header (user) ← Passe user
+       └── Nav (user) ← Passe user
+            └── UserMenu (user) ← Utilise ENFIN user !
+```
+
+---
+
+# Schéma : Props Drilling
+
 ```mermaid
 graph TB
-    A[App<br/>user: { nom, email }]
+    A[App<br/>user: nom email]
     H[Header<br/>Ne fait que passer user]
     N[Nav<br/>Ne fait que passer user]
     UM[UserMenu<br/>Utilise ENFIN user!]
     
-    A -->|:user='user'| H
-    H -->|:user='user'| N
-    N -->|:user='user'| UM
+    A -->|Passe user| H
+    H -->|Passe user| N
+    N -->|Passe user| UM
     
     style A fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
     style H fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
@@ -48,18 +61,35 @@ graph TB
     style UM fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
 ```
 
-**3 composants intermédiaires** qui ne font que passer la donnée ! C'est lourd...
-
 ---
 
 # La solution : Pinia !
 
 ### ✨ Solution avec Pinia
 
+```
+App → utilise useUserStore()
+Header → n'a pas besoin de user
+Nav → n'a pas besoin de user
+UserMenu → utilise useUserStore() ← Accès direct !
+```
+
+**Chaque composant prend ce dont il a besoin, directement à la source !**
+
+### 🆚 Comparaison
+
+- **Redux (React)** : Beaucoup de boilerplate, complexe
+- **Context API (React)** : Simple mais performances limitées
+- **Pinia (Vue)** : Simple ET performant ! Le meilleur des deux mondes 🎉
+
+---
+
+# Schéma : Solution avec Pinia
+
 ```mermaid
 graph TB
     subgraph Store["Store Central Pinia"]
-        US["useUserStore<br/>state: user<br/>actions: login, logout"]
+        US[useUserStore<br/>state user<br/>actions login logout]
     end
     
     A[App]
@@ -80,14 +110,6 @@ graph TB
     style N fill:#95a5a6,stroke:#7f8c8d,stroke-width:1px,color:#fff
     style UM fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
 ```
-
-**Chaque composant prend ce dont il a besoin, directement à la source !**
-
-### 🆚 Comparaison
-
-- **Redux (React)** : Beaucoup de boilerplate, complexe
-- **Context API (React)** : Simple mais performances limitées
-- **Pinia (Vue)** : Simple ET performant ! Le meilleur des deux mondes 🎉
 
 ---
 
@@ -147,38 +169,6 @@ app.mount('#app');
 
 # Créer un Store simple
 
-```mermaid
-graph TB
-    subgraph Store["Store Pinia - useCounterStore"]
-        S["State<br/>count: 0"]
-        G["Getters<br/>doubleCount: count * 2"]
-        A["Actions<br/>increment<br/>decrement"]
-    end
-    
-    subgraph Composants["Composants Vue"]
-        C1[Composant 1]
-        C2[Composant 2]
-        C3[Composant 3]
-    end
-    
-    S --> G
-    A --> S
-    
-    C1 -.->|Lit| S
-    C1 -.->|Lit| G
-    C1 -.->|Appelle| A
-    
-    C2 -.->|Lit| S
-    C3 -.->|Appelle| A
-    
-    style S fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
-    style G fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
-    style A fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
-    style C1 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
-    style C2 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
-    style C3 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
-```
-
 ```javascript
 // stores/counter.js
 import { defineStore } from 'pinia';
@@ -207,6 +197,42 @@ export const useCounterStore = defineStore('counter', () => {
     decrement
   };
 });
+```
+
+---
+
+# Schéma : Architecture d'un Store Pinia
+
+```mermaid
+graph TB
+    subgraph Store["Store Pinia - useCounterStore"]
+        S[State<br/>count: 0]
+        G[Getters<br/>doubleCount: count fois 2]
+        A[Actions<br/>increment<br/>decrement]
+    end
+    
+    subgraph Composants["Composants Vue"]
+        C1[Composant 1]
+        C2[Composant 2]
+        C3[Composant 3]
+    end
+    
+    S --> G
+    A --> S
+    
+    C1 -.->|Lit| S
+    C1 -.->|Lit| G
+    C1 -.->|Appelle| A
+    
+    C2 -.->|Lit| S
+    C3 -.->|Appelle| A
+    
+    style S fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style G fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style A fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style C1 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style C2 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style C3 fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
 ```
 
 ---

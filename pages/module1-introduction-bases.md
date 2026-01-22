@@ -340,6 +340,31 @@ Vue.js suit le pattern MVVM (Model-View-ViewModel)
 
 ### 🏗️ Pensez à une maison :
 
+```
+┌──────────────┐
+│     VIEW     │  ← La FAÇADE (ce que vous voyez) 🏠
+│  (Template)  │     Template HTML
+└──────┬───────┘
+       │
+       ↕ Data Binding (la magie de Vue ✨)
+       │
+┌──────┴───────┐
+│  VIEWMODEL   │  ← L'ARCHITECTE (organise tout) 👷
+│ (Composant)  │     Composant Vue.js
+└──────┬───────┘
+       │
+       ↕ Logique métier
+       │
+┌──────┴───────┐
+│    MODEL     │  ← Les FONDATIONS (vos données) 🧱
+│   (State)    │     State / Données
+└──────────────┘
+```
+
+---
+
+# Schéma : Architecture MVVM
+
 ```mermaid
 graph TB
     subgraph VIEW["VIEW - Template HTML"]
@@ -674,17 +699,28 @@ Vue.js permet de lier les données du composant au template avec l'**Options API
 Imaginez que vos données sont l'électricité, et votre template est l'ampoule.
 **Vue.js est la multiprise** qui les connecte automatiquement !
 
+### Types de liaison (les 4 prises)
+
+- **Interpolation** : `{{ variable }}` → Afficher du texte (lecture seule) 📖
+- **Attributs** : `v-bind:attr="value"` ou `:attr="value"` → Modifier les attributs HTML 🎨
+- **Événements** : `v-on:event="handler"` ou `@event="handler"` → Écouter les actions utilisateur 👂
+- **Bidirectionnelle** : `v-model="variable"` → Synchronisation automatique ↔️
+
+---
+
+# Schéma : Data Binding
+
 ```mermaid
 graph LR
     subgraph Component["Composant Vue.js"]
-        Data[(Data<br/>message: 'Bonjour')]
+        Data[Data<br/>message: Bonjour]
     end
     
     subgraph Template["Template HTML"]
-        Interp["Interpolation<br/>{{ message }}"]
-        Bind["v-bind:src<br/>ou :src"]
-        Event["v-on:click<br/>ou @click"]
-        Model["v-model<br/>Bidirectionnel"]
+        Interp[Interpolation<br/>Affichage texte]
+        Bind[v-bind:src<br/>Attributs]
+        Event[v-on:click<br/>Evenements]
+        Model[v-model<br/>Bidirectionnel]
     end
     
     Data -->|Lecture seule| Interp
@@ -698,13 +734,6 @@ graph LR
     style Event fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
     style Model fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
 ```
-
-### Types de liaison (les 4 prises)
-
-- **Interpolation** : `{{ variable }}` → Afficher du texte (lecture seule) 📖
-- **Attributs** : `v-bind:attr="value"` ou `:attr="value"` → Modifier les attributs HTML 🎨
-- **Événements** : `v-on:event="handler"` ou `@event="handler"` → Écouter les actions utilisateur 👂
-- **Bidirectionnelle** : `v-model="variable"` → Synchronisation automatique ↔️
 
 ---
 
@@ -1255,25 +1284,6 @@ Chaque instance du composant a son propre état indépendant
 
 Les props permettent de passer des données du parent à l'enfant - **Options API**
 
-```mermaid
-graph TB
-    subgraph Parent["Composant Parent"]
-        PD[Data:<br/>utilisateur = {<br/>nom: 'Alice'<br/>age: 28<br/>}]
-    end
-    
-    subgraph Enfant["Composant Enfant UserCard"]
-        EP[Props:<br/>nom<br/>age<br/>email]
-        ET[Template:<br/>Affiche les props]
-    end
-    
-    PD -->|:nom='utilisateur.nom'<br/>:age='utilisateur.age'| EP
-    EP --> ET
-    
-    style PD fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
-    style EP fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
-    style ET fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
-```
-
 ```vue
 <!-- UserCard.vue -->
 <script>
@@ -1296,6 +1306,29 @@ export default {
     <p>Email: {{ email }}</p>
   </div>
 </template>
+```
+
+---
+
+# Schéma : Communication par Props
+
+```mermaid
+graph TB
+    subgraph Parent["Composant Parent"]
+        PD[Data utilisateur:<br/>nom Alice<br/>age 28<br/>email contact]
+    end
+    
+    subgraph Enfant["Composant Enfant UserCard"]
+        EP[Props:<br/>nom age email]
+        ET[Template:<br/>Affiche les props]
+    end
+    
+    PD -->|Passage des props| EP
+    EP --> ET
+    
+    style PD fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
+    style EP fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style ET fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
 ```
 
 ---
@@ -1455,31 +1488,6 @@ export default {
 
 Les enfants peuvent communiquer avec les parents via des événements - **Options API**
 
-```mermaid
-graph BT
-    subgraph Enfant["Composant Enfant"]
-        EB[Button @click]
-        EM[$emit'incrementer', 1]
-    end
-    
-    subgraph Parent["Composant Parent"]
-        PE[@incrementer='onIncrementer']
-        PM[Method:<br/>onIncrementer valeur]
-        PD[Data:<br/>compteur++]
-    end
-    
-    EB -->|Click| EM
-    EM -->|Evenement remonte| PE
-    PE --> PM
-    PM --> PD
-    
-    style EB fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
-    style EM fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
-    style PE fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
-    style PM fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
-    style PD fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
-```
-
 **Script du composant enfant :**
 
 ```vue
@@ -1497,6 +1505,35 @@ export default {
   }
 }
 </script>
+```
+
+---
+
+# Schéma : Communication par Events
+
+```mermaid
+graph BT
+    subgraph Enfant["Composant Enfant"]
+        EB[Button click]
+        EM[Emit incrementer]
+    end
+    
+    subgraph Parent["Composant Parent"]
+        PE[Ecoute incrementer]
+        PM[Method:<br/>onIncrementer]
+        PD[Data:<br/>compteur++]
+    end
+    
+    EB -->|Click| EM
+    EM -->|Evenement remonte| PE
+    PE --> PM
+    PM --> PD
+    
+    style EB fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+    style EM fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
+    style PE fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
+    style PM fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
+    style PD fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
 ```
 
 ---
@@ -1795,40 +1832,6 @@ layout: new-section
 
 Les propriétés calculées sont des valeurs dérivées qui se mettent à jour automatiquement - **Options API**
 
-```mermaid
-graph TB
-    subgraph Data["Data - Source"]
-        P[prenom: 'Jean']
-        N[nom: 'Dupont']
-        PR[prix: 100]
-        Q[quantite: 3]
-    end
-    
-    subgraph Computed["Computed - Mise en cache"]
-        NC[nomComplet<br/>Cache le resultat]
-        T[total<br/>Cache le resultat]
-    end
-    
-    subgraph Template["Template"]
-        D1["{{ nomComplet }}"]
-        D2["{{ total }}"]
-    end
-    
-    P --> NC
-    N --> NC
-    PR --> T
-    Q --> T
-    NC --> D1
-    T --> D2
-    
-    style P fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
-    style N fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
-    style PR fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
-    style Q fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
-    style NC fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
-    style T fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
-```
-
 **Script :**
 
 ```vue
@@ -1852,6 +1855,44 @@ export default {
   }
 }
 </script>
+```
+
+---
+
+# Schéma : Computed Properties
+
+```mermaid
+graph TB
+    subgraph Data["Data - Source"]
+        P[prenom: Jean]
+        N[nom: Dupont]
+        PR[prix: 100]
+        Q[quantite: 3]
+    end
+    
+    subgraph Computed["Computed - Mise en cache"]
+        NC[nomComplet<br/>Cache le resultat]
+        T[total<br/>Cache le resultat]
+    end
+    
+    subgraph Template["Template"]
+        D1[Affichage nomComplet]
+        D2[Affichage total]
+    end
+    
+    P --> NC
+    N --> NC
+    PR --> T
+    Q --> T
+    NC --> D1
+    T --> D2
+    
+    style P fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style N fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style PR fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style Q fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style NC fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style T fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
 ```
 
 ---
@@ -2068,6 +2109,30 @@ Une application de gestion de tâches complète avec :
 
 Les hooks permettent d'exécuter du code à des moments précis - **Options API**
 
+```vue
+<script>
+export default {
+  beforeCreate() {
+    console.log('Avant la création');
+  },
+  created() {
+    console.log('Composant créé');
+  },
+  beforeMount() {
+    console.log('Avant le montage');
+  },
+  mounted() {
+    console.log('Composant monté');
+    // Appels API, initialisation
+  }
+}
+</script>
+```
+
+---
+
+# Schéma : Cycle de vie des composants
+
 ```mermaid
 graph TB
     Start([Creation du composant]) --> BC[beforeCreate]
@@ -2087,26 +2152,6 @@ graph TB
     style M fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
     style C fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
     style UN fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
-```
-
-```vue
-<script>
-export default {
-  beforeCreate() {
-    console.log('Avant la création');
-  },
-  created() {
-    console.log('Composant créé');
-  },
-  beforeMount() {
-    console.log('Avant le montage');
-  },
-  mounted() {
-    console.log('Composant monté');
-    // Appels API, initialisation
-  }
-}
-</script>
 ```
 
 ---

@@ -20,6 +20,21 @@ Imaginez votre application comme une ville :
 - **Le Router** = votre GPS 📱
 - **Les composants** = les destinations (maison, bureau, magasin...)
 
+Quand vous tapez une adresse (URL), le GPS (Router) vous emmène à la bonne destination (composant) !
+
+### 🆚 Sans Router : SPA = Single Page (vraiment UNE page)
+
+**Application traditionnelle multi-pages** :
+```
+/index.html      ← Page 1 (rechargement complet ⏳)
+/about.html      ← Page 2 (rechargement complet ⏳)
+/contact.html    ← Page 3 (rechargement complet ⏳)
+```
+
+---
+
+# Schéma : Vue Router - Navigation
+
 ```mermaid
 graph LR
     U[Utilisateur<br/>Clique sur un lien]
@@ -32,26 +47,15 @@ graph LR
     U -->|URL: /about| R
     U -->|URL: /contact| R
     
-    R -->|Route '/'| H
-    R -->|Route '/about'| A
-    R -->|Route '/contact'| C
+    R -->|Route /| H
+    R -->|Route /about| A
+    R -->|Route /contact| C
     
     style U fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
     style R fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
     style H fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
     style A fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#fff
     style C fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
-```
-
-Quand vous tapez une adresse (URL), le GPS (Router) vous emmène à la bonne destination (composant) !
-
-### 🆚 Sans Router : SPA = Single Page (vraiment UNE page)
-
-**Application traditionnelle multi-pages** :
-```
-/index.html      ← Page 1 (rechargement complet ⏳)
-/about.html      ← Page 2 (rechargement complet ⏳)
-/contact.html    ← Page 3 (rechargement complet ⏳)
 ```
 
 ---
@@ -349,6 +353,23 @@ Imaginez un **videur de boîte de nuit** :
 - Si vous avez l'âge requis → **next()** (vous entrez ✅)
 - Sinon → **next('/home')** (vous dégagez ❌)
 
+### 🛡️ Types de guards
+
+**beforeEach** : Garde global (vérifie TOUT le monde)
+**beforeEnter** : Garde spécifique (juste pour une route)
+**beforeRouteEnter** : Garde dans le composant
+
+### 💡 Cas d'usage typiques
+
+- 🔐 **Authentification** : "Es-tu connecté ?"
+- 👮 **Autorisation** : "As-tu le droit d'être admin ?"
+- 💾 **Sauvegarde** : "As-tu sauvegardé tes modifications ?"
+- 📊 **Analytics** : Tracker les visites de pages
+
+---
+
+# Schéma : Navigation Guards
+
 ```mermaid
 graph TB
     U[Utilisateur<br/>Veut acceder a /admin]
@@ -375,18 +396,9 @@ graph TB
     style H fill:#95a5a6,stroke:#7f8c8d,stroke-width:2px,color:#fff
 ```
 
-### 🛡️ Types de guards
+---
 
-**beforeEach** : Garde global (vérifie TOUT le monde)
-**beforeEnter** : Garde spécifique (juste pour une route)
-**beforeRouteEnter** : Garde dans le composant
-
-### 💡 Cas d'usage typiques
-
-- 🔐 **Authentification** : "Es-tu connecté ?"
-- 👮 **Autorisation** : "As-tu le droit d'être admin ?"
-- 💾 **Sauvegarde** : "As-tu sauvegardé tes modifications ?"
-- 📊 **Analytics** : Tracker les visites de pages
+# Exemple de Guard
 
 ```javascript
 router.beforeEach((to, from, next) => {
