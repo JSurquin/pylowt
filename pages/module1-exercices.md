@@ -719,6 +719,636 @@ Avant de passer au Module 2, assurez-vous de maîtriser :
 - ✅ Création de composants
 - ✅ Communication parent-enfant (props, emit)
 - ✅ Propriétés calculées (computed)
+- ✅ Watch (observateurs)
 - ✅ Lifecycle hooks (onMounted, onUnmounted)
-- ✅ Composables pour réutiliser la logique
 - ✅ Appels API avec fetch
+
+---
+layout: new-section
+---
+
+# 🎯 Fil Rouge : TaskFlow
+## Exercices Module 1
+
+---
+
+# TaskFlow - Exercice 1 : TaskItem.vue
+
+### Objectif
+Créer le composant de base pour afficher une tâche
+
+### Spécifications
+
+**Props** :
+- `task` (Object) : `{ id, title, description, done, priority }`
+
+**Features** :
+- Afficher le titre de la tâche
+- Afficher la description
+- Checkbox pour marquer comme terminée
+- Badge de priorité (low, medium, high, urgent)
+- Barrer le texte si `done === true`
+
+**Événements** :
+- `@toggle` : Émettre quand on coche/décoche
+- `@delete` : Émettre quand on clique sur supprimer
+
+---
+
+# TaskFlow - Solution TaskItem.vue (1/2)
+
+**Script :**
+
+```vue
+<script>
+export default {
+  name: 'TaskItem',
+  props: {
+    task: {
+      type: Object,
+      required: true,
+      validator: (task) => {
+        return task.id && task.title;
+      }
+    }
+  },
+  emits: ['toggle', 'delete'],
+  computed: {
+    priorityColor() {
+      const colors = {
+        low: '#10b981',
+        medium: '#f59e0b',
+        high: '#f97316',
+        urgent: '#ef4444'
+      };
+      return colors[this.task.priority] || '#6b7280';
+    },
+    priorityLabel() {
+      const labels = {
+        low: 'Basse',
+        medium: 'Moyenne',
+        high: 'Haute',
+        urgent: 'URGENT'
+      };
+      return labels[this.task.priority] || 'Normal';
+    }
+  }
+}
+</script>
+```
+
+---
+
+# TaskFlow - Solution TaskItem.vue (2/2)
+
+**Template :**
+
+```vue
+<template>
+  <div class="task-item" :class="{ done: task.done }">
+    <div class="task-checkbox">
+      <input 
+        type="checkbox" 
+        :checked="task.done"
+        @change="$emit('toggle', task.id)"
+      />
+    </div>
+    
+    <div class="task-content">
+      <h3 class="task-title">{{ task.title }}</h3>
+      <p class="task-description">{{ task.description }}</p>
+      
+      <span 
+        class="task-priority" 
+        :style="{ backgroundColor: priorityColor }"
+      >
+        {{ priorityLabel }}
+      </span>
+    </div>
+    
+    <button 
+      class="task-delete"
+      @click="$emit('delete', task.id)"
+    >
+      🗑️
+    </button>
+  </div>
+</template>
+```
+
+---
+
+# TaskFlow - Solution TaskItem Styles
+
+```vue
+<style scoped>
+.task-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s;
+}
+
+.task-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.done .task-title,
+.task-item.done .task-description {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.task-description {
+  margin: 0 0 0.5rem 0;
+  color: #6b7280;
+}
+
+.task-priority {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+</style>
+```
+
+---
+
+# TaskFlow - Exercice 2 : TaskList.vue
+
+### Objectif
+Créer un composant pour gérer une liste de tâches
+
+### Spécifications
+
+**Data** :
+- `tasks` (Array) : Liste des tâches
+- `filter` : 'all' | 'active' | 'done'
+
+**Computed** :
+- `filteredTasks` : Tâches filtrées selon `filter`
+- `activeCount` : Nombre de tâches non terminées
+- `doneCount` : Nombre de tâches terminées
+
+**Methods** :
+- `toggleTask(id)` : Toggle le statut done
+- `deleteTask(id)` : Supprimer une tâche
+- `clearCompleted()` : Supprimer toutes les tâches terminées
+
+**Bonus** :
+- Afficher un message si aucune tâche
+- Compteur de tâches
+
+---
+
+# TaskFlow - Solution TaskList.vue (1/3)
+
+**Script - Data :**
+
+```vue
+<script>
+import TaskItem from './TaskItem.vue';
+
+export default {
+  name: 'TaskList',
+  components: {
+    TaskItem
+  },
+  data() {
+    return {
+      tasks: [
+        { 
+          id: 1, 
+          title: 'Apprendre Vue.js', 
+          description: 'Suivre la formation complète',
+          done: false, 
+          priority: 'high' 
+        },
+        { 
+          id: 2, 
+          title: 'Créer TaskFlow', 
+          description: 'Application de gestion de tâches',
+          done: false, 
+          priority: 'urgent' 
+        },
+        { 
+          id: 3, 
+          title: 'Setup projet', 
+          description: 'Initialiser avec Vite',
+          done: true, 
+          priority: 'medium' 
+        }
+      ],
+      filter: 'all'
+    }
+  }
+}
+</script>
+```
+
+---
+
+# TaskFlow - Solution TaskList.vue (2/3)
+
+**Computed et Methods :**
+
+```vue
+<script>
+export default {
+  // ... data précédent
+  computed: {
+    filteredTasks() {
+      if (this.filter === 'active') {
+        return this.tasks.filter(t => !t.done);
+      }
+      if (this.filter === 'done') {
+        return this.tasks.filter(t => t.done);
+      }
+      return this.tasks;
+    },
+    activeCount() {
+      return this.tasks.filter(t => !t.done).length;
+    },
+    doneCount() {
+      return this.tasks.filter(t => t.done).length;
+    }
+  },
+  methods: {
+    toggleTask(id) {
+      const task = this.tasks.find(t => t.id === id);
+      if (task) {
+        task.done = !task.done;
+      }
+    },
+    deleteTask(id) {
+      this.tasks = this.tasks.filter(t => t.id !== id);
+    },
+    clearCompleted() {
+      this.tasks = this.tasks.filter(t => !t.done);
+    }
+  }
+}
+</script>
+```
+
+---
+
+# TaskFlow - Solution TaskList.vue (3/4)
+
+**Template - Header et Filtres :**
+
+```vue
+<template>
+  <div class="task-list">
+    <div class="task-header">
+      <h2>Mes Tâches</h2>
+      <div class="task-stats">
+        <span>{{ activeCount }} actives</span>
+        <span>{{ doneCount }} terminées</span>
+      </div>
+    </div>
+    
+    <div class="task-filters">
+      <button 
+        @click="filter = 'all'"
+        :class="{ active: filter === 'all' }"
+      >
+        Toutes ({{ tasks.length }})
+      </button>
+      <button 
+        @click="filter = 'active'"
+        :class="{ active: filter === 'active' }"
+      >
+        Actives ({{ activeCount }})
+      </button>
+      <button 
+        @click="filter = 'done'"
+        :class="{ active: filter === 'done' }"
+      >
+        Terminées ({{ doneCount }})
+      </button>
+    </div>
+  </div>
+</template>
+```
+
+---
+
+# TaskFlow - Solution TaskList.vue (4/4)
+
+**Template - Liste et Actions :**
+
+```vue
+<template>
+  <div class="task-list">
+    <!-- ... header et filtres de la slide précédente ... -->
+    
+    <div class="tasks">
+      <TaskItem 
+        v-for="task in filteredTasks"
+        :key="task.id"
+        :task="task"
+        @toggle="toggleTask"
+        @delete="deleteTask"
+      />
+      
+      <div v-if="filteredTasks.length === 0" class="empty">
+        Aucune tâche
+      </div>
+    </div>
+    
+    <button 
+      v-if="doneCount > 0"
+      class="clear-completed"
+      @click="clearCompleted"
+    >
+      Supprimer les tâches terminées ({{ doneCount }})
+    </button>
+  </div>
+</template>
+```
+
+---
+
+# TaskFlow - Exercice 3 : TaskForm.vue
+
+### Objectif
+Créer un formulaire pour ajouter/éditer des tâches
+
+### Spécifications
+
+**Data** :
+- `formData` : `{ title, description, priority }`
+
+**Props** (optionnel) :
+- `editTask` : Tâche à éditer (si mode édition)
+
+**Validation** :
+- Titre requis (min 3 caractères)
+- Description optionnelle
+- Priorité par défaut : 'medium'
+
+**Événements** :
+- `@submit` : Émettre les données du formulaire
+- `@cancel` : Annuler l'édition
+
+---
+
+# TaskFlow - Solution TaskForm.vue
+
+```vue
+<script>
+export default {
+  name: 'TaskForm',
+  props: {
+    editTask: {
+      type: Object,
+      default: null
+    }
+  },
+  emits: ['submit', 'cancel'],
+  data() {
+    return {
+      formData: {
+        title: '',
+        description: '',
+        priority: 'medium'
+      }
+    }
+  },
+  computed: {
+    isValid() {
+      return this.formData.title.trim().length >= 3;
+    }
+  },
+  methods: {
+    handleSubmit() {
+      if (this.isValid) {
+        this.$emit('submit', { ...this.formData });
+        this.resetForm();
+      }
+    },
+    resetForm() {
+      this.formData = {
+        title: '',
+        description: '',
+        priority: 'medium'
+      };
+    }
+  },
+  mounted() {
+    if (this.editTask) {
+      this.formData = { ...this.editTask };
+    }
+  }
+}
+</script>
+```
+
+---
+
+# TaskFlow - Solution TaskForm Template
+
+```vue
+<template>
+  <form @submit.prevent="handleSubmit" class="task-form">
+    <div class="form-group">
+      <label>Titre *</label>
+      <input 
+        v-model="formData.title"
+        type="text"
+        placeholder="Ma nouvelle tâche..."
+        required
+      />
+    </div>
+    
+    <div class="form-group">
+      <label>Description</label>
+      <textarea 
+        v-model="formData.description"
+        placeholder="Détails de la tâche..."
+        rows="3"
+      ></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label>Priorité</label>
+      <select v-model="formData.priority">
+        <option value="low">Basse</option>
+        <option value="medium">Moyenne</option>
+        <option value="high">Haute</option>
+        <option value="urgent">URGENT</option>
+      </select>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" :disabled="!isValid">
+        {{ editTask ? 'Modifier' : 'Ajouter' }}
+      </button>
+      <button type="button" @click="$emit('cancel')">
+        Annuler
+      </button>
+    </div>
+  </form>
+</template>
+```
+
+---
+
+# TaskFlow - Exercice 4 : Recherche avec Watch
+
+### Objectif
+Ajouter une recherche en temps réel avec debounce
+
+### Spécifications
+
+**Data** :
+- `searchQuery` : Terme de recherche
+
+**Watch** :
+- Surveiller `searchQuery`
+- Appliquer un debounce de 300ms
+- Filtrer les tâches par titre/description
+
+**Computed** :
+- `searchResults` : Tâches filtrées par recherche
+
+### Bonus
+- Surligner les résultats
+- Afficher "Aucun résultat"
+
+---
+
+# TaskFlow - Solution Recherche (1/2)
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      tasks: [ /* ... */ ],
+      searchQuery: '',
+      searchResults: [],
+      debounceTimer: null
+    }
+  },
+  watch: {
+    // ✅ WATCH avec debounce
+    searchQuery(newQuery) {
+      clearTimeout(this.debounceTimer);
+      
+      if (!newQuery.trim()) {
+        this.searchResults = [];
+        return;
+      }
+      
+      this.debounceTimer = setTimeout(() => {
+        const query = newQuery.toLowerCase();
+        this.searchResults = this.tasks.filter(task => {
+          return task.title.toLowerCase().includes(query) ||
+                 task.description.toLowerCase().includes(query);
+        });
+      }, 300);
+    }
+  },
+  computed: {
+    displayedTasks() {
+      return this.searchQuery.trim() 
+        ? this.searchResults 
+        : this.filteredTasks;
+    }
+  }
+}
+</script>
+```
+
+---
+
+# TaskFlow - Solution Recherche (2/2)
+
+```vue
+<template>
+  <div class="task-list">
+    <!-- Header -->
+    <div class="search-bar">
+      <input 
+        v-model="searchQuery"
+        type="search"
+        placeholder="🔍 Rechercher une tâche..."
+        class="search-input"
+      />
+      <span v-if="searchQuery" class="search-info">
+        {{ searchResults.length }} résultat(s)
+      </span>
+    </div>
+    
+    <!-- Filters -->
+    <div class="task-filters">
+      <!-- ... boutons filtres ... -->
+    </div>
+    
+    <!-- Task List -->
+    <div class="tasks">
+      <TaskItem 
+        v-for="task in displayedTasks"
+        :key="task.id"
+        :task="task"
+        @toggle="toggleTask"
+        @delete="deleteTask"
+      />
+      
+      <div v-if="displayedTasks.length === 0" class="empty">
+        {{ searchQuery 
+          ? `Aucune tâche trouvée pour "${searchQuery}"` 
+          : 'Aucune tâche' 
+        }}
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+---
+
+# 🎯 Récap Module 1 - TaskFlow
+
+### Ce que vous avez construit
+
+✅ **TaskItem.vue** : Composant de tâche avec props/events  
+✅ **TaskList.vue** : Gestion de liste avec filtres  
+✅ **TaskForm.vue** : Formulaire avec v-model et validation  
+✅ **Recherche** : Watch avec debounce  
+
+### Concepts utilisés
+
+- ✅ Data binding & v-model
+- ✅ Directives (v-for, v-if, v-bind, v-on)
+- ✅ Props & Events (communication parent/enfant)
+- ✅ Computed properties (filtrage, compteurs)
+- ✅ Watch (recherche avec debounce)
+- ✅ Lifecycle hooks (mounted)
+
+### 🚀 Next : Module 2
+
+On va rendre nos composants **ultra-réutilisables** avec les **slots** !
+
+- TaskCard avec slots (header, content, actions)
+- Modal réutilisable
+- BoardColumn flexible

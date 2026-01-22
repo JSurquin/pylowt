@@ -1818,6 +1818,145 @@ React recalcule tout à chaque render (sauf si vous utilisez `useMemo`)
 
 ---
 
+# Observateurs (watch)
+
+Les **watchers** permettent d'exécuter du code quand une donnée change - **Options API**
+
+### 🎯 Quand utiliser watch ?
+
+- **Computed** : Calculer une valeur dérivée (prénom + nom = nom complet)
+- **Watch** : Effectuer une action en réponse à un changement (sauvegarder, appel API...)
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      recherche: '',
+      resultats: []
+    }
+  },
+  watch: {
+    // Watcher simple
+    recherche(nouvelleValeur, ancienneValeur) {
+      console.log(`Recherche: ${ancienneValeur} → ${nouvelleValeur}`);
+      this.chercherProduits(nouvelleValeur);
+    }
+  },
+  methods: {
+    chercherProduits(terme) {
+      // Appel API...
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Watch - Options avancées
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      utilisateur: {
+        nom: 'Dupont',
+        prenom: 'Jean'
+      },
+      compteur: 0
+    }
+  },
+  watch: {
+    // Watch immédiat (exécuté au montage)
+    compteur: {
+      handler(newVal) {
+        console.log('Compteur:', newVal);
+      },
+      immediate: true // ← Exécuté dès le montage
+    },
+    
+    // Watch profond (objet imbriqué)
+    utilisateur: {
+      handler(newVal) {
+        console.log('Utilisateur modifié:', newVal);
+        this.sauvegarder();
+      },
+      deep: true // ← Surveille les propriétés imbriquées
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Watch vs Computed : Cas pratique
+
+**Exemple : Recherche avec debounce**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      searchQuery: '',
+      searchResults: [],
+      loading: false
+    }
+  },
+  watch: {
+    // ✅ WATCH : parfait pour les effets secondaires (API, etc.)
+    searchQuery(newQuery) {
+      this.loading = true;
+      
+      // Debounce pour éviter trop d'appels API
+      clearTimeout(this.debounceTimer);
+      this.debounceTimer = setTimeout(async () => {
+        const response = await fetch(`/api/search?q=${newQuery}`);
+        this.searchResults = await response.json();
+        this.loading = false;
+      }, 300);
+    }
+  },
+  computed: {
+    // ✅ COMPUTED : parfait pour les calculs
+    hasResults() {
+      return this.searchResults.length > 0;
+    }
+  }
+}
+</script>
+```
+
+---
+
+# 🎯 Fil rouge : TaskFlow (notre Trello-like)
+
+### 🎨 Ce qu'on va construire ensemble
+
+Une application de gestion de tâches complète avec :
+
+- 📋 **Boards** : Tableaux de tâches (Personnel, Travail, Projets)
+- 📝 **Tasks** : Tâches avec titre, description, priorité
+- 🏷️ **Colonnes** : À faire, En cours, Terminé
+- 🎨 **Labels** : Urgent, Bug, Feature
+- 👤 **Assignation** : Attribuer des tâches
+
+**À la fin de la formation, vous aurez une vraie app déployable !** 🚀
+
+### Module par module
+
+- **Module 1** : Composants de base (Task, TaskList, TaskForm)
+- **Module 2** : Slots pour composants réutilisables (TaskCard avec header/content/actions)
+- **Module 3** : Directive v-drag pour drag & drop
+- **Module 4** : Pinia pour centraliser l'état (tasks, boards, users)
+- **Module 5** : Router pour navigation (/boards, /board/:id, /settings)
+- **Module 6** : Tests de l'application
+
+---
+
 # Hooks du cycle de vie
 
 Les hooks permettent d'exécuter du code à des moments précis - **Options API**

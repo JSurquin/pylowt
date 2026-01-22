@@ -73,6 +73,8 @@ routeAlias: 'sommaire'
 <br>
 
 <div class="flex flex-col gap-2">
+<Link to="fil-rouge">🎯 Fil Rouge : TaskFlow (notre Trello-like)</Link>
+<br/>
 <Link to="module1-introduction">💚 1. Introduction à Vue.js et bases fondamentales</Link>
 <Link to="module2-slots">🎰 2. Slots et composants génériques</Link>
 <Link to="module3-avance">🚀 3. Vue.js - Fonctionnement avancé</Link>
@@ -96,6 +98,11 @@ routeAlias: 'sommaire'
 - 📖 Cours théorique
 - ✅ QCM de validation
 - 🎯 Exercices pratiques
+- 🎯 **Fil rouge TaskFlow** (notre Trello-like progressif)
+
+---
+src: './pages/00-fil-rouge-taskflow.md'
+---
 
 ---
 layout: two-cols
