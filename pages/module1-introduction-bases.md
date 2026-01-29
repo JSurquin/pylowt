@@ -259,15 +259,8 @@ routeAlias: "architecture"
 
 # Présentation de Vue.js
 
-<br>
-
 **Vue.js** est un framework JavaScript progressif pour construire des interfaces utilisateur
 
-### 🤔 Mais c'est quoi "progressif" ?
-
-Imaginez Vue.js comme des **Legos** :
-- Vous pouvez commencer avec juste une petite brique (un composant dans une page HTML)
-- Puis ajouter d'autres briques au fur et à mesure (router, state management...)
 ### Caractéristiques principales
 
 - 🎯 **Progressif** : peut être adopté progressivement (un composant, puis toute l'app)
@@ -275,12 +268,6 @@ Imaginez Vue.js comme des **Legos** :
 - 🔧 **Flexible** : s'adapte à tous types de projets (widget, SPA, SSR...)
 - 📦 **Écosystème riche** : Vue Router, Pinia, Vite... tout est intégré harmonieusement
 - 💚 **Communauté active** : support et ressources
-
-### 💪 Avantages
-
-- 📝 **Documentation de qualité**
-- 🔧 **Outils de développement puissants** : Vue DevTools
-- 💼 **Adopté par de grandes entreprises** : Alibaba, Adobe, GitLab, Nintendo
 
 ---
 
