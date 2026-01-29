@@ -33,14 +33,7 @@ Imaginez un **cadre photo** :
 
 ---
 
-# Slots : Vue vs React
-
-### 🆚 En React : ce sont les `children` !
-
-**Vue** : `<slot></slot>`
-**React** : `{children}` ou props personnalisées
-
-### Pourquoi utiliser des slots ?
+# Pourquoi utiliser des slots ?
 
 - 🎯 **Composants flexibles** : un composant Card pour 1000 usages différents
 - 🧩 **Composer des interfaces** : assembler des briques comme des Lego
@@ -388,14 +381,6 @@ Le parent décide du **rendu visuel** (ex: carte, tableau, liste...)
   </ul>
 </template>
 ```
-
----
-
-# Scoped Slots vs React
-
-### 💡 En React : render props ou children function
-
-Vue rend ça plus simple et plus lisible !
 
 ---
 
