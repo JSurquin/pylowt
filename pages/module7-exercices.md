@@ -1,5 +1,6 @@
 ---
-layout: section
+layout: exercices
+routeAlias: 'module7-exercices'
 ---
 
 # Exercices pratiques

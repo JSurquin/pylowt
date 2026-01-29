@@ -1,5 +1,6 @@
 ---
-layout: section
+layout: new-section
+routeAlias: 'module7-qcm'
 ---
 
 # QCM Module 7
