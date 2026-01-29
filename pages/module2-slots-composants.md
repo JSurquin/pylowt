@@ -8,6 +8,24 @@ routeAlias: 'module2-slots'
 
 ---
 
+# SOMMAIRE DU MODULE
+
+<div class="flex flex-col gap-2">
+<Link to="slots-introduction">🎰 2.1 Introduction aux slots</Link>
+<Link to="slots-implementation">🛠️ 2.2 Implémentation</Link>
+</div>
+
+---
+layout: new-section
+routeAlias: "slots-introduction"
+---
+
+<a name="slots-introduction" id="slots-introduction"></a>
+
+# 2.1 Introduction aux slots
+
+---
+
 # Qu'est-ce qu'un slot ?
 
 Les **slots** permettent de passer du contenu HTML (ou des composants) à un composant enfant
@@ -180,7 +198,10 @@ graph TB
 
 ---
 layout: new-section
+routeAlias: "slots-implementation"
 ---
+
+<a name="slots-implementation" id="slots-implementation"></a>
 
 # 2.2 Implémentation
 

@@ -83,26 +83,20 @@ routeAlias: 'sommaire'
 ::right::
 
 <div class="flex flex-col gap-2">
-<Link to="module4-pinia">🍍 4. State Management avec Pinia</Link>
-<Link to="module5-router">🛤️ 5. Navigation et routage avec Vue Router</Link>
+<Link to="module5-router">🛤️ 4. Navigation et routage avec Vue Router</Link>
+<Link to="module4-pinia">🍍 5. State Management avec Pinia</Link>
 <Link to="module6-tests">🧪 6. Tests sous Vue.js avec Vitest</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
-<Link to="projet-final">🎓 Projet Final</Link>
 <br/>
 <strong style="color: #42b883;">🎁 MODULES BONUS</strong>
 <Link to="bonus-composition-api">✨ Composition API</Link>
 <Link to="bonus-cicd">🚀 CI/CD avec GitLab</Link>
+<Link to="bonus-cheatsheet"> 🛟 CheatSheet d'aide </Link>
 </div>
 
 **Note :** Chaque module contient :
 - 📖 Cours théorique
-- ✅ QCM de validation
-- 🎯 Exercices pratiques
 - 🎯 **Fil rouge TaskFlow** (notre Trello-like progressif)
-
----
-src: './pages/00-fil-rouge-taskflow.md'
----
 
 ---
 layout: two-cols
@@ -245,18 +239,6 @@ src: './pages/module3-exercices.md'
 ---
 
 ---
-src: './pages/module4-pinia-state.md'
----
-
----
-src: './pages/module4-qcm.md'
----
-
----
-src: './pages/module4-exercices.md'
----
-
----
 src: './pages/module5-vue-router.md'
 ---
 
@@ -266,6 +248,18 @@ src: './pages/module5-qcm.md'
 
 ---
 src: './pages/module5-exercices.md'
+---
+
+---
+src: './pages/module4-pinia-state.md'
+---
+
+---
+src: './pages/module4-qcm.md'
+---
+
+---
+src: './pages/module4-exercices.md'
 ---
 
 ---
@@ -293,7 +287,7 @@ src: './pages/bonus-composition-api.md'
 ---
 
 ---
-src: './pages/bonus-cicd-gitlab.md'
+src: './pages/module7-cicd-gitlab.md'
 ---
 
 ---
@@ -302,4 +296,12 @@ src: './pages/bonus-cicd-qcm.md'
 
 ---
 src: './pages/bonus-cicd-exercices.md'
+---
+
+---
+src: './pages/bonus-cheatsheet-vuejs.md'
+---
+
+---
+src: './pages/00-fil-rouge-taskflow.md'
 ---

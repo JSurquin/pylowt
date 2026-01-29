@@ -8,6 +8,25 @@ routeAlias: 'module6-tests'
 
 ---
 
+# SOMMAIRE DU MODULE
+
+<div class="flex flex-col gap-2">
+<Link to="tests-intro">🧪 6.1 Pourquoi tester ?</Link>
+<Link to="vitest-setup">⚙️ 6.2 Configuration Vitest</Link>
+<Link to="tests-composants">🧩 6.3 Tester des composants</Link>
+<Link to="tests-integration">🔗 6.4 Tests d'intégration</Link>
+</div>
+
+---
+layout: new-section
+routeAlias: "tests-intro"
+---
+
+<a name="tests-intro" id="tests-intro"></a>
+
+# 6.1 Pourquoi tester ?
+
+---
 
 # Pourquoi tester son code ?
 
@@ -115,6 +134,17 @@ graph TB
     style INT fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
     style UNIT fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
 ```
+
+---
+
+---
+layout: new-section
+routeAlias: "vitest-setup"
+---
+
+<a name="vitest-setup" id="vitest-setup"></a>
+
+# 6.2 Configuration Vitest
 
 ---
 
@@ -253,6 +283,15 @@ describe('useCounter', () => {
 ```
 
 ---
+layout: new-section
+routeAlias: "tests-composants"
+---
+
+<a name="tests-composants" id="tests-composants"></a>
+
+# 6.3 Tester des composants
+
+---
 
 # Tester un composant Vue
 
@@ -368,6 +407,15 @@ describe('ProductList', () => {
   });
 });
 ```
+
+---
+layout: new-section
+routeAlias: "tests-integration"
+---
+
+<a name="tests-integration" id="tests-integration"></a>
+
+# 6.4 Tests d'intégration
 
 ---
 

@@ -8,6 +8,22 @@ routeAlias: 'module1-introduction'
 
 ---
 
+# SOMMAIRE DU MODULE
+
+<div class="flex flex-col gap-2">
+<Link to="rappels-javascript">🎯 1.1 Rappel Javascript</Link>
+<Link to="architecture">💚 1.2 Architecture Vue.js</Link>
+<Link to="outils-environnement">🚀 1.3. Outils et environnement</Link>
+<Link to="premier-composant">🚀 1.4. Votre premier composant</Link>
+</div>
+
+---
+layout: default
+routeAlias: "rappels-javascript"
+---
+
+<a name="rappels-javascript" id="rappels-javascript"></a>
+
 # 1.1 Rappels JavaScript ES6+
 
 <br>
@@ -230,7 +246,10 @@ const resultat = await Promise.race([
 
 ---
 layout: new-section
+routeAlias: "architecture"
 ---
+
+<a name="architecture" id="architecture"></a>
 
 # 1.2 Architecture Vue.js
 
@@ -388,7 +407,10 @@ mon-projet/
 
 ---
 layout: new-section
+routeAlias: "outils-environnement"
 ---
+
+<a name="outils-environnement" id="outils-environnement"></a>
 
 # 1.3 Outils et environnement
 
@@ -566,7 +588,10 @@ export default defineConfig({
 
 ---
 layout: new-section
+routeAlias: "premier-composant"
 ---
+
+<a name="premier-composant" id="premier-composant"></a>
 
 # 1.4 Votre premier composant Vue
 

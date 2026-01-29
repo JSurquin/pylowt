@@ -8,6 +8,24 @@ routeAlias: 'module5-router'
 
 ---
 
+# SOMMAIRE DU MODULE
+
+<div class="flex flex-col gap-2">
+<Link to="router-intro">🗺️ 5.1 Introduction à Vue Router</Link>
+<Link to="router-config">⚙️ 5.2 Configuration et routes</Link>
+<Link to="router-advanced">🚀 5.3 Fonctionnalités avancées</Link>
+</div>
+
+---
+layout: new-section
+routeAlias: "router-intro"
+---
+
+<a name="router-intro" id="router-intro"></a>
+
+# 5.1 Introduction à Vue Router
+
+---
 
 # Qu'est-ce que Vue Router ?
 
@@ -83,6 +101,17 @@ Une seule page HTML, mais l'illusion de plusieurs pages !
 - 🔐 **Guards** : "Tu ne passeras pas !" sans authentification
 - ⚡ **Lazy loading** : charger les pages à la demande
 - 🎯 **Routes dynamiques** : /user/:id pour tous les utilisateurs
+
+---
+
+---
+layout: new-section
+routeAlias: "router-config"
+---
+
+<a name="router-config" id="router-config"></a>
+
+# 5.2 Configuration et routes
 
 ---
 
@@ -257,6 +286,17 @@ const routes = [
   }
 ];
 ```
+
+---
+
+---
+layout: new-section
+routeAlias: "router-advanced"
+---
+
+<a name="router-advanced" id="router-advanced"></a>
+
+# 5.3 Fonctionnalités avancées
 
 ---
 

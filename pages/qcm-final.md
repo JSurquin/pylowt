@@ -12,12 +12,10 @@ routeAlias: 'qcm-final'
 
 Quelle fonction pour créer une référence réactive ?
 
-A. `reactive()`
-B. `ref()`
-C. `computed()`
-D. `watch()`
-
-**Réponse:** B
+- A. `reactive()`
+- B. `ref()`
+- C. `computed()`
+- D. `watch()`
 
 ---
 
@@ -25,12 +23,10 @@ D. `watch()`
 
 Quelle est la différence entre computed et method ?
 
-A. Aucune différence
-B. Computed est mis en cache
-C. Method est plus rapide
-D. Computed ne peut pas être async
-
-**Réponse:** B
+- A. Aucune différence
+- B. Computed est mis en cache
+- C. Method est plus rapide
+- D. Computed ne peut pas être async
 
 ---
 
@@ -38,12 +34,10 @@ D. Computed ne peut pas être async
 
 Que fait v-model ?
 
-A. Affiche une valeur
-B. Crée une liaison bidirectionnelle
-C. Boucle sur un tableau
-D. Écoute un événement
-
-**Réponse:** B
+- A. Affiche une valeur
+- B. Crée une liaison bidirectionnelle
+- C. Boucle sur un tableau
+- D. Écoute un événement
 
 ---
 
@@ -51,12 +45,10 @@ D. Écoute un événement
 
 Comment passer une prop ?
 
-A. `<Component prop="value" />`
-B. `<Component :prop="value" />`
-C. `<Component @prop="value" />`
-D. A et B selon le type
-
-**Réponse:** D
+- A. `<Component prop="value" />`
+- B. `<Component :prop="value" />`
+- C. `<Component @prop="value" />`
+- D. A et B selon le type
 
 ---
 
@@ -64,12 +56,10 @@ D. A et B selon le type
 
 Comment émettre un événement ?
 
-A. `emit('event', data)`
-B. `$emit('event', data)`
-C. `this.emit('event', data)`
-D. A (avec defineEmits)
-
-**Réponse:** D
+- A. `emit('event', data)`
+- B. `$emit('event', data)`
+- C. `this.emit('event', data)`
+- D. A (avec defineEmits)
 
 ---
 
@@ -77,12 +67,10 @@ D. A (avec defineEmits)
 
 À quoi servent les slots ?
 
-A. Passer du contenu HTML au composant
-B. Stocker des données
-C. Gérer les événements
-D. Créer des animations
-
-**Réponse:** A
+- A. Passer du contenu HTML au composant
+- B. Stocker des données
+- C. Gérer les événements
+- D. Créer des animations
 
 ---
 
@@ -90,12 +78,10 @@ D. Créer des animations
 
 Les scoped slots permettent :
 
-A. De limiter la portée du CSS
-B. De passer des données de l'enfant au parent
-C. De créer des slots privés
-D. D'améliorer les performances
-
-**Réponse:** B
+- A. De limiter la portée du CSS
+- B. De passer des données de l'enfant au parent
+- C. De créer des slots privés
+- D. D'améliorer les performances
 
 ---
 
@@ -103,12 +89,10 @@ D. D'améliorer les performances
 
 Quelle directive pour le rendu conditionnel ?
 
-A. `v-show`
-B. `v-if`
-C. `v-display`
-D. A et B
-
-**Réponse:** D
+- A. `v-show`
+- B. `v-if`
+- C. `v-display`
+- D. A et B
 
 ---
 
@@ -116,12 +100,10 @@ D. A et B
 
 Quel hook pour faire un appel API ?
 
-A. `onCreated`
-B. `onMounted`
-C. `onBeforeMount`
-D. `setup`
-
-**Réponse:** B
+- A. `onCreated`
+- B. `onMounted`
+- C. `onBeforeMount`
+- D. `setup`
 
 ---
 
@@ -129,12 +111,10 @@ D. `setup`
 
 À quoi servent les composables ?
 
-A. Créer des composants
-B. Réutiliser de la logique
-C. Gérer le routing
-D. Styliser les composants
-
-**Réponse:** B
+- A. Créer des composants
+- B. Réutiliser de la logique
+- C. Gérer le routing
+- D. Styliser les composants
 
 ---
 
@@ -142,12 +122,10 @@ D. Styliser les composants
 
 Pinia est :
 
-A. Un router
-B. Un gestionnaire d'état
-C. Un test runner
-D. Un bundler
-
-**Réponse:** B
+- A. Un router
+- B. Un gestionnaire d'état
+- C. Un test runner
+- D. Un bundler
 
 ---
 
@@ -155,12 +133,10 @@ D. Un bundler
 
 Comment accéder au state d'un store ?
 
-A. `store.state.value`
-B. `store.$state.value`
-C. `store.value`
-D. Directement les propriétés
-
-**Réponse:** D
+- A. `store.state.value`
+- B. `store.$state.value`
+- C. `store.value`
+- D. Directement les propriétés
 
 ---
 
@@ -168,12 +144,10 @@ D. Directement les propriétés
 
 Les actions peuvent-elles être async ?
 
-A. Non
-B. Oui
-C. Seulement avec un plugin
-D. Seulement en Options API
-
-**Réponse:** B
+- A. Non
+- B. Oui
+- C. Seulement avec un plugin
+- D. Seulement en Options API
 
 ---
 
@@ -181,12 +155,11 @@ D. Seulement en Options API
 
 Comment créer un lien de navigation ?
 
-A. `<a href="/path">Link</a>`
-B. `<RouterLink to="/path">Link</RouterLink>`
-C. `<Link href="/path">Link</Link>`
-D. `<router-link to="/path">Link</router-link>`
-
-**Réponse:** B
+- A. `<a href="/path">Link</a>`
+- B. `<RouterLink to="/path">Link</RouterLink>`
+- B. `<RouterLink to="/path">Link</RouterLink>`
+- C. `<Link href="/path">Link</Link>`
+- D. `<router-link to="/path">Link</router-link>`
 
 ---
 
@@ -194,12 +167,10 @@ D. `<router-link to="/path">Link</router-link>`
 
 Syntaxe pour une route dynamique ?
 
-A. `/user/{id}`
-B. `/user/:id`
-C. `/user/$id`
-D. `/user/[id]`
-
-**Réponse:** B
+- A. `/user/{id}`
+- B. `/user/:id`
+- C. `/user/$id`
+- D. `/user/[id]`
 
 ---
 
@@ -207,12 +178,10 @@ D. `/user/[id]`
 
 Comment naviguer en JavaScript ?
 
-A. `router.navigate('/path')`
-B. `router.push('/path')`
-C. `router.go('/path')`
-D. `window.location = '/path'`
-
-**Réponse:** B
+- A. `router.navigate('/path')`
+- B. `router.push('/path')`
+- C. `router.go('/path')`
+- D. `window.location = '/path'`
 
 ---
 
@@ -220,12 +189,10 @@ D. `window.location = '/path'`
 
 `beforeEach` est :
 
-A. Un lifecycle hook
-B. Un guard de navigation
-C. Une action Pinia
-D. Une directive
-
-**Réponse:** B
+- A. Un lifecycle hook
+- B. Un guard de navigation
+- C. Une action Pinia
+- D. Une directive
 
 ---
 
@@ -233,12 +200,10 @@ D. Une directive
 
 Comment faire du lazy loading ?
 
-A. `component: Home`
-B. `component: () => import('./Home.vue')`
-C. `component: lazy(Home)`
-D. `component: async Home`
-
-**Réponse:** B
+- A. `component: Home`
+- B. `component: () => import('./Home.vue')`
+- C. `component: lazy(Home)`
+- D. `component: async Home`
 
 ---
 
@@ -246,12 +211,10 @@ D. `component: async Home`
 
 Vitest est :
 
-A. Un router
-B. Un gestionnaire d'état
-C. Un framework de test
-D. Un bundler
-
-**Réponse:** C
+- A. Un router
+- B. Un gestionnaire d'état
+- C. Un framework de test
+- D. Un bundler
 
 ---
 
@@ -259,12 +222,10 @@ D. Un bundler
 
 Comment monter un composant pour le tester ?
 
-A. `render(Component)`
-B. `mount(Component)`
-C. `create(Component)`
-D. `new Component()`
-
-**Réponse:** B
+- A. `render(Component)`
+- B. `mount(Component)`
+- C. `create(Component)`
+- D. `new Component()`
 
 ---
 
@@ -272,12 +233,10 @@ D. `new Component()`
 
 Comment typer des props ?
 
-A. `defineProps<{ nom: string }>()`
-B. `defineProps({ nom: String })`
-C. A et B
-D. TypeScript pas supporté
-
-**Réponse:** C
+- A. `defineProps<{ nom: string }>()`
+- B. `defineProps({ nom: String })`
+- C. A et B
+- D. TypeScript pas supporté
 
 ---
 
@@ -285,12 +244,10 @@ D. TypeScript pas supporté
 
 Que signifie SFC ?
 
-A. Super Fast Component
-B. Single File Component
-C. Simple Function Component
-D. State Full Component
-
-**Réponse:** B
+- A. Super Fast Component
+- B. Single File Component
+- C. Simple Function Component
+- D. State Full Component
 
 ---
 
@@ -298,12 +255,10 @@ D. State Full Component
 
 `<style scoped>` limite le CSS :
 
-A. Globalement
-B. Au composant actuel
-C. Aux composants enfants
-D. N'a aucun effet
-
-**Réponse:** B
+- A. Globalement
+- B. Au composant actuel
+- C. Aux composants enfants
+- D. N'a aucun effet
 
 ---
 
@@ -311,12 +266,10 @@ D. N'a aucun effet
 
 Comment créer une directive ?
 
-A. `app.directive('name', {})`
-B. `Vue.directive('name', {})`
-C. `defineDirective('name', {})`
-D. `createDirective('name', {})`
-
-**Réponse:** A
+- A. `app.directive('name', {})`
+- B. `Vue.directive('name', {})`
+- C. `defineDirective('name', {})`
+- D. `createDirective('name', {})`
 
 ---
 
@@ -324,82 +277,10 @@ D. `createDirective('name', {})`
 
 À quoi sert provide/inject ?
 
-A. Tester les composants
-B. Passer des données sans props drilling
-C. Gérer le routing
-D. Créer des animations
-
-**Réponse:** B
-
----
-
-# Réponses - QCM Final
-
-<div class="grid grid-cols-3 gap-2 text-sm">
-
-<div>
-
-**Q1:** B - `ref()`
-
-**Q2:** B - Computed est mis en cache
-
-**Q3:** B - Crée une liaison bidirectionnelle
-
-**Q4:** D - A et B selon le type
-
-**Q5:** D - A (avec defineEmits)
-
-**Q6:** A - Passer du contenu HTML
-
-**Q7:** B - Passer des données enfant→parent
-
-**Q8:** D - A et B
-
-**Q9:** B - `onMounted`
-
-</div>
-
-<div>
-
-**Q10:** B - Réutiliser de la logique
-
-**Q11:** B - Un gestionnaire d'état
-
-**Q12:** D - Directement les propriétés
-
-**Q13:** B - Oui
-
-**Q14:** B - `<RouterLink to="/path">`
-
-**Q15:** B - `/user/:id`
-
-**Q16:** B - `router.push('/path')`
-
-**Q17:** B - Un guard de navigation
-
-</div>
-
-<div>
-
-**Q18:** B - `() => import('./Home.vue')`
-
-**Q19:** C - Un framework de test
-
-**Q20:** B - `mount(Component)`
-
-**Q21:** C - A et B
-
-**Q22:** B - Single File Component
-
-**Q23:** B - Au composant actuel
-
-**Q24:** A - `app.directive('name', {})`
-
-**Q25:** B - Passer données sans props drilling
-
-</div>
-
-</div>
+- A. Tester les composants
+- B. Passer des données sans props drilling
+- C. Gérer le routing
+- D. Créer des animations
 
 ---
 
@@ -421,3 +302,37 @@ Vous avez terminé la formation Vue.js 3 !
 - [Vue School](https://vueschool.io/)
 - [Vue Mastery](https://www.vuemastery.com/)
 - [Awesome Vue](https://github.com/vuejs/awesome-vue)
+
+---
+
+### Réponses - QCM Final
+
+<div class="text-[9px]">
+
+- **Q1:** B - `ref()`
+- **Q2:** B - Computed est mis en cache
+- **Q3:** B - Crée une liaison bidirectionnelle
+- **Q4:** D - A et B selon le type
+- **Q5:** D - A (avec defineEmits)
+- **Q6:** A - Passer du contenu HTML
+- **Q7:** B - Passer des données enfant→parent
+- **Q8:** D - A et B
+- **Q9:** B - `onMounted`
+- **Q10:** B - Réutiliser de la logique
+- **Q11:** B - Un gestionnaire d'état
+- **Q12:** D - Directement les propriétés
+- **Q13:** B - Oui
+- **Q14:** B - `<RouterLink to="/path">`
+- **Q15:** B - `/user/:id`
+- **Q16:** B - `router.push('/path')`
+- **Q17:** B - Un guard de navigation
+- **Q18:** B - `() => import('./Home.vue')`
+- **Q19:** C - Un framework de test
+- **Q20:** B - `mount(Component)`
+- **Q21:** C - A et B
+- **Q22:** B - Single File Component
+- **Q23:** B - Au composant actuel
+- **Q24:** A - `app.directive('name', {})`
+- **Q25:** B - Passer données sans props drilling
+
+</div>

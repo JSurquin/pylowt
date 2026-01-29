@@ -8,6 +8,24 @@ routeAlias: 'module4-pinia'
 
 ---
 
+# SOMMAIRE DU MODULE
+
+<div class="flex flex-col gap-2">
+<Link to="state-management-intro">🏦 4.1 Introduction au State Management</Link>
+<Link to="pinia-basics">📦 4.2 Bases de Pinia</Link>
+<Link to="pinia-advanced">🚀 4.3 Pinia avancé</Link>
+</div>
+
+---
+layout: new-section
+routeAlias: "state-management-intro"
+---
+
+<a name="state-management-intro" id="state-management-intro"></a>
+
+# 4.1 Introduction au State Management
+
+---
 
 # Qu'est-ce que le State Management ?
 
@@ -120,6 +138,17 @@ graph LR
 - 🌳 Tree-shaking automatique
 - 🧩 Modular par design
 - ✅ Composition API first
+
+---
+
+---
+layout: new-section
+routeAlias: "pinia-basics"
+---
+
+<a name="pinia-basics" id="pinia-basics"></a>
+
+# 4.2 Bases de Pinia
 
 ---
 
@@ -651,6 +680,17 @@ export default {
   </div>
 </template>
 ```
+
+---
+
+---
+layout: new-section
+routeAlias: "pinia-advanced"
+---
+
+<a name="pinia-advanced" id="pinia-advanced"></a>
+
+# 4.3 Pinia avancé
 
 ---
 

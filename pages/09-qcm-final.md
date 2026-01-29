@@ -1,4 +1,8 @@
 ---
+routeAlias: 'qcm-final'
+---
+
+<a name="qcm-final" id="qcm-final"></a>
 
 # QCM Final - Formation Vue.js 3 ✅
 
@@ -173,28 +177,6 @@ Le grand test final ! Questions sur l'ensemble de la formation.
 
 ---
 
-# 📝 Corrections - QCM Final
-
-| Q | Réponse | Explication |
-|---|---------|-------------|
-| 1 | **A** | `computed(() => ...)` depuis vue |
-| 2 | **A** | `:class="{ className: condition }"` |
-| 3 | **B** | Single File Component = .vue avec script/template/style |
-| 4 | **C** | Les deux syntaxes fonctionnent |
-| 5 | **B** | Suspense gere les composants async (loading states) |
-| 6 | **B** | Generics TypeScript pour types stricts |
-| 7 | **B** | Vercel/Netlify offre deploiement gratuit + CI/CD |
-| 8 | **C** | @vue/test-utils ou @testing-library/vue |
-| 9 | **D** | Plus rapide, isole, n'affecte pas enfants |
-| 10 | **B** | beforeEach est le guard global principal |
-| 11 | **B** | Attend la prochaine mise à jour du DOM |
-| 12 | **D** | Feature-based ou Layer-based selon projet |
-| 13 | **B** | camelCase + prefixe use (convention) |
-| 14 | **B** | v-memo + dependances (Vue 3.2+) |
-| 15 | **B** | unplugin-auto-import dans vite.config |
-
----
-
 # 🎉 Bravo ! Formation Terminée 🎉
 
 Tu as complete la formation Vue.js 3 !
@@ -202,3 +184,41 @@ Tu as complete la formation Vue.js 3 !
 Tu as maintenant toutes les cles pour creer des applications Vue modernes et performantes.
 
 **Continue à pratiquer et bon code ! 💚**
+
+---
+
+# 📝 Corrections - QCM Final
+
+<small>
+
+**Question 1:** **A** - `computed(() => ...)` depuis vue
+
+**Question 2:** **A** - `:class="{ className: condition }"`
+
+**Question 3:** **B** - Single File Component = .vue avec script/template/style
+
+**Question 4:** **C** - Les deux syntaxes fonctionnent
+
+**Question 5:** **B** - Suspense gere les composants async (loading states)
+
+**Question 6:** **B** - Generics TypeScript pour types stricts
+
+**Question 7:** **B** - Vercel/Netlify offre deploiement gratuit + CI/CD
+
+**Question 8:** **C** - @vue/test-utils ou @testing-library/vue
+
+**Question 9:** **D** - Plus rapide, isole, n'affecte pas enfants
+
+**Question 10:** **B** - beforeEach est le guard global principal
+
+**Question 11:** **B** - Attend la prochaine mise à jour du DOM
+
+**Question 12:** **D** - Feature-based ou Layer-based selon projet
+
+**Question 13:** **B** - camelCase + prefixe use (convention)
+
+**Question 14:** **B** - v-memo + dependances (Vue 3.2+)
+
+**Question 15:** **B** - unplugin-auto-import dans vite.config
+
+</small>

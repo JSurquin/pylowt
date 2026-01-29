@@ -764,7 +764,8 @@ cache:
     - .cypress/
   policy: pull-push
 
-.test_template: &test_template
+# Template pour les jobs de test
+.test_template:
   stage: test
   dependencies:
     - install:dependencies

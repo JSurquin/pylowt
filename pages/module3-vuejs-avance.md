@@ -8,6 +8,23 @@ routeAlias: 'module3-avance'
 
 ---
 
+# SOMMAIRE DU MODULE
+
+<div class="flex flex-col gap-2">
+<Link to="sfc-components">📦 3.1 Single File Components</Link>
+<Link to="directives-personnalisees">🎯 3.2 Directives personnalisées</Link>
+</div>
+
+---
+layout: new-section
+routeAlias: "sfc-components"
+---
+
+<a name="sfc-components" id="sfc-components"></a>
+
+# 3.1 Single File Components (SFC)
+
+---
 
 # Single File Components (SFC)
 
@@ -365,10 +382,10 @@ export default {
 
 ---
 layout: new-section
+routeAlias: "directives-personnalisees"
 ---
 
-
----
+<a name="directives-personnalisees" id="directives-personnalisees"></a>
 
 # 3.2 Directives personnalisées
 

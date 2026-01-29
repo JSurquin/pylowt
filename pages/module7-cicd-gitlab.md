@@ -1,6 +1,6 @@
 ---
 layout: new-section
-routeAlias: 'module7-cicd'
+routeAlias: 'bonus-cicd'
 ---
 
 # Module 7
@@ -493,17 +493,25 @@ Déploiement uniquement lors de la création d'un tag
 
 ---
 
-## 4. Environnements multiples
+## 4. Environnements multiples - Template
 
 ```yaml
-.deploy_template: &deploy_template
+# Définition du template de déploiement
+.deploy_template:
   stage: deploy
   script:
     - npm run build
     - echo "Deploying to $ENVIRONMENT"
+```
 
+---
+
+## 4. Environnements multiples - Development
+
+```yaml
+# Utilisation du template pour dev
 deploy:dev:
-  <<: *deploy_template
+  extends: .deploy_template
   variables:
     ENVIRONMENT: "development"
   environment:
@@ -514,18 +522,28 @@ deploy:dev:
 
 ---
 
+## 4. Environnements multiples - Staging
+
 ```yaml
+# Utilisation du template pour staging
 deploy:staging:
-  <<: *deploy_template
+  extends: .deploy_template
   variables:
     ENVIRONMENT: "staging"
   environment:
     name: staging
   only:
     - main
+```
 
+---
+
+## 4. Environnements multiples - Production
+
+```yaml
+# Utilisation du template pour production
 deploy:prod:
-  <<: *deploy_template
+  extends: .deploy_template
   variables:
     ENVIRONMENT: "production"
   environment:
@@ -748,10 +766,11 @@ test:expensive:
 
 ---
 
-## 5. Utiliser des templates
+## 5. Utiliser des templates - Définition
 
 ```yaml
-.test_template: &test_template
+# Définition du template
+.test_template:
   stage: test
   image: node:20
   before_script:
@@ -759,14 +778,21 @@ test:expensive:
   only:
     - merge_requests
     - main
+```
 
+---
+
+## 5. Utiliser des templates - Utilisation
+
+```yaml
+# Utilisation du template
 test:unit:
-  <<: *test_template
+  extends: .test_template
   script:
     - npm run test:unit
 
 test:integration:
-  <<: *test_template
+  extends: .test_template
   script:
     - npm run test:integration
 ```
@@ -1180,7 +1206,7 @@ cache:
 
 ```yaml
 # Template pour les jobs de test
-.test_template: &test_template
+.test_template:
   stage: test
   dependencies:
     - install:dependencies
@@ -1262,7 +1288,7 @@ lint:prettier:
 
 ```yaml
 test:unit:
-  <<: *test_template
+  extends: .test_template
   script:
     - echo "🧪 Exécution des tests unitaires..."
     - npm run test:unit -- --run --coverage
@@ -1284,7 +1310,7 @@ test:unit:
 
 ```yaml
 test:e2e:
-  <<: *test_template
+  extends: .test_template
   image: cypress/browsers:node20.11.0-chrome121.0.6167.85-1
   script:
     - echo "🎭 Exécution des tests E2E..."
