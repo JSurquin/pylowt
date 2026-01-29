@@ -117,10 +117,10 @@ routeAlias: 'programme-jour1'
 - Rappels JavaScript ES6+
 - Architecture Vue.js (MVVM)
 - Outils et environnement (Node.js, Vite)
-- Concepts fondamentaux (data binding, interpolation)
-- Directives (v-bind, v-if, v-for, v-on, v-model)
-- Composants et communication (props, emits)
-- Réactivité et logique (computed, hooks, composables)
+- Votre premier composant Vue (data, methods)
+- Directives et data binding (v-bind, v-if, v-for, v-on, v-model)
+- Communication entre composants (props, emits)
+- Réactivité avancée (computed, watchers, lifecycle, mixins)
 
 </small>
 
@@ -149,11 +149,11 @@ routeAlias: 'programme-jour2'
 <small>
 
 **Module 3 - Vue.js - Fonctionnement avancé**
-- Composants fonctionnels
-- Single File Components (SFC)
+- Single File Components approfondis (SFC)
+- Scoped CSS et CSS Modules
+- Variables CSS réactives
 - Directives personnalisées
-- Création de directives
-- Refactorisation de composants
+- Composants fonctionnels (cas avancés)
 
 </small>
 
