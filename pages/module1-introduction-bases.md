@@ -568,7 +568,101 @@ export default defineConfig({
 layout: new-section
 ---
 
-# 1.4 Concepts fondamentaux
+# 1.4 Votre premier composant Vue
+
+---
+
+# Qu'est-ce qu'un composant ?
+
+Les composants sont des **briques réutilisables** qui encapsulent :
+
+- 📝 Template (structure HTML)
+- 🎨 Styles (CSS)  
+- ⚙️ Logique (JavaScript)
+
+### 🧱 Analogie : Les composants sont comme des Lego
+
+- Vous **réutilisez** les mêmes briques partout
+- Chaque brique a sa **responsabilité**
+- Vous pouvez **assembler** ces briques de différentes façons
+
+---
+
+# Création d'un composant simple
+
+Fichier `MonCompteur.vue` - **Options API**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      compteur: 0
+    }
+  },
+  methods: {
+    incrementer() {
+      this.compteur++;
+    },
+    decrementer() {
+      this.compteur--;
+    }
+  }
+}
+</script>
+
+<template>
+  <div>
+    <h2>Compteur: {{ compteur }}</h2>
+    <button @click="incrementer">+</button>
+    <button @click="decrementer">-</button>
+  </div>
+</template>
+
+<style scoped>
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background: #42b883;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+</style>
+```
+
+---
+
+# Utiliser un composant
+
+```vue
+<script>
+import MonCompteur from './components/MonCompteur.vue';
+
+export default {
+  components: {
+    MonCompteur
+  }
+}
+</script>
+
+<template>
+  <div>
+    <h1>Mon Application</h1>
+    <MonCompteur />
+    <MonCompteur />
+  </div>
+</template>
+```
+
+Chaque instance est **indépendante** !
+
+---
+layout: new-section
+---
+
+# 1.5 Directives et data binding
 
 ---
 
@@ -1015,135 +1109,7 @@ v-model est un sucre syntaxique pour :
 layout: new-section
 ---
 
-# 1.5 Composants
-
----
-
-# Qu'est-ce qu'un composant ?
-
-Les composants sont des **briques réutilisables** qui encapsulent :
-
-- 📝 Template (structure HTML)
-- 🎨 Styles (CSS)
-- ⚙️ Logique (JavaScript)
-
-### 🧱 Analogie : Les composants sont comme des Lego
-
-Imaginez que vous construisez une maison en Lego :
-- Vous ne créez pas chaque brique individuellement
-- Vous **réutilisez** les mêmes briques partout
-- Chaque brique a sa **responsabilité** (mur, porte, fenêtre...)
-- Vous pouvez **assembler** ces briques de différentes façons
-
----
-
-# Structure d'une application en composants
-
-### 💡 Dans une application web :
-
-```
-App
-├── Header
-│   ├── Logo
-│   ├── Navigation
-│   └── UserMenu
-├── MainContent
-│   ├── ProductCard (x10)
-│   └── Pagination
-└── Footer
-```
-
----
-
-# Avantages des composants
-
-### 🎯 Avantages concrets
-
-- **Réutilisabilité** : créez une fois, utilisez partout
-- **Maintenabilité** : bug dans ProductCard ? Un seul endroit à corriger !
-- **Organisation du code** : chaque composant = un fichier
-- **Tests facilités** : testez chaque brique indépendamment
-
----
-
-# Création d'un composant (1/2)
-
-Fichier `MonBouton.vue` - **Options API**
-
-**Script et Template :**
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      compteur: 0
-    }
-  },
-  methods: {
-    incrementer() {
-      this.compteur++;
-    }
-  }
-}
-</script>
-
-<template>
-  <button @click="incrementer">
-    Cliqué {{ compteur }} fois
-  </button>
-</template>
-```
-
----
-
-# Création d'un composant (2/2)
-
-**Style scopé :**
-
-```vue
-<style scoped>
-button {
-  padding: 10px 20px;
-  background: #42b883;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>
-```
-
----
-
-# Utilisation d'un composant
-
-```vue
-<script>
-import MonBouton from './components/MonBouton.vue';
-
-export default {
-  components: {
-    MonBouton
-  }
-}
-</script>
-
-<template>
-  <div>
-    <h1>Mon Application</h1>
-    <MonBouton />
-    <MonBouton />
-    <MonBouton />
-  </div>
-</template>
-```
-
----
-
-# Composants indépendants
-
-Chaque instance du composant a son propre état indépendant
+# 1.6 Communication entre composants
 
 ---
 
@@ -1691,7 +1657,7 @@ export default {
 layout: new-section
 ---
 
-# 1.6 Réactivité et logique applicative
+# 1.7 Réactivité avancée
 
 ---
 
