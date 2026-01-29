@@ -1936,152 +1936,6 @@ Une application de gestion de tâches complète avec :
 
 ---
 
-# Hooks du cycle de vie
-
-Les hooks permettent d'exécuter du code à des moments précis - **Options API**
-
-```vue
-<script>
-export default {
-  beforeCreate() {
-    console.log('Avant la création');
-  },
-  created() {
-    console.log('Composant créé');
-  },
-  beforeMount() {
-    console.log('Avant le montage');
-  },
-  mounted() {
-    console.log('Composant monté');
-    // Appels API, initialisation
-  }
-}
-</script>
-```
-
----
-
-# Schéma : Cycle de vie des composants
-
-```mermaid
-graph LR
-    Start([Creation du composant]) --> BC[beforeCreate]
-    BC --> C[created<br/>Donnees reactives disponibles]
-    C --> BM[beforeMount<br/>Template compile]
-    BM --> M[mounted<br/>DOM accessible<br/>Appels API ici]
-    M --> U{Mise a jour?}
-    U -->|Oui| BU[beforeUpdate]
-    BU --> UP[updated]
-    UP --> U
-    U -->|Non| BUN[beforeUnmount]
-    BUN --> UN[unmounted<br/>Nettoyage timers]
-    UN --> End([Composant detruit])
-    
-    style Start fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
-    style End fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
-    style M fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
-    style C fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
-    style UN fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
-```
-
----
-
-# Hooks du cycle de vie (suite) - 1/2
-
-**Hooks de mise à jour :**
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      compteur: 0
-    }
-  },
-  updated() {
-    console.log('Composant mis à jour');
-    console.log('Nouvelle valeur:', this.compteur);
-  }
-}
-</script>
-```
-
----
-
-# Hooks du cycle de vie (suite) - 2/2
-
-**Hooks de démontage :**
-
-```vue
-<script>
-export default {
-  beforeUnmount() {
-    console.log('Avant destruction');
-  },
-  unmounted() {
-    console.log('Composant démonté');
-    // Nettoyage: timers, subscriptions, listeners
-  }
-}
-</script>
-```
-
----
-
-# Exemple pratique avec lifecycle (1/2)
-
-**Données et mounted :**
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      data: null,
-      loading: true,
-      interval: null
-    }
-  },
-  async mounted() {
-    // Charger des données
-    try {
-      const response = await fetch('/api/data');
-      this.data = await response.json();
-    } finally {
-      this.loading = false;
-    }
-    
-    // Démarrer un interval
-    this.interval = setInterval(() => {
-      console.log('Tick');
-    }, 1000);
-  }
-}
-</script>
-```
-
----
-
-# Exemple pratique avec lifecycle (2/2)
-
-**Nettoyage au démontage :**
-
-```vue
-<script>
-export default {
-  beforeUnmount() {
-    // Nettoyer l'interval
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
-  }
-}
-</script>
-```
-
----
-
 # Réutiliser la logique (Mixins) - 1/2
 
 Avec l'Options API, on utilise les **mixins** pour réutiliser de la logique
@@ -2432,3 +2286,159 @@ Commencer le développement d'une **mini-application de gestion de produits** av
 - Liste de produits
 - Ajout/suppression de produits
 - Recherche et filtres
+
+
+---
+layout: new-section
+---
+
+# 1.8 Cycle de vie des composants
+
+---
+
+# Hooks du cycle de vie
+
+Les hooks permettent d'exécuter du code à des moments précis - **Options API**
+
+```vue
+<script>
+export default {
+  beforeCreate() {
+    console.log('Avant la création');
+  },
+  created() {
+    console.log('Composant créé');
+  },
+  beforeMount() {
+    console.log('Avant le montage');
+  },
+  mounted() {
+    console.log('Composant monté');
+    // Appels API, initialisation
+  }
+}
+</script>
+```
+
+---
+
+# Schéma : Cycle de vie des composants
+
+```mermaid
+graph LR
+    Start([Creation du composant]) --> BC[beforeCreate]
+    BC --> C[created<br/>Donnees reactives disponibles]
+    C --> BM[beforeMount<br/>Template compile]
+    BM --> M[mounted<br/>DOM accessible<br/>Appels API ici]
+    M --> U{Mise a jour?}
+    U -->|Oui| BU[beforeUpdate]
+    BU --> UP[updated]
+    UP --> U
+    U -->|Non| BUN[beforeUnmount]
+    BUN --> UN[unmounted<br/>Nettoyage timers]
+    UN --> End([Composant detruit])
+    
+    style Start fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style End fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style M fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
+    style C fill:#42b883,stroke:#35495e,stroke-width:2px,color:#fff
+    style UN fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
+```
+
+---
+
+# Hooks du cycle de vie (suite) - 1/2
+
+**Hooks de mise à jour :**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      compteur: 0
+    }
+  },
+  updated() {
+    console.log('Composant mis à jour');
+    console.log('Nouvelle valeur:', this.compteur);
+  }
+}
+</script>
+```
+
+---
+
+# Hooks du cycle de vie (suite) - 2/2
+
+**Hooks de démontage :**
+
+```vue
+<script>
+export default {
+  beforeUnmount() {
+    console.log('Avant destruction');
+  },
+  unmounted() {
+    console.log('Composant démonté');
+    // Nettoyage: timers, subscriptions, listeners
+  }
+}
+</script>
+```
+
+---
+
+# Exemple pratique avec lifecycle (1/2)
+
+**Données et mounted :**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      data: null,
+      loading: true,
+      interval: null
+    }
+  },
+  async mounted() {
+    // Charger des données
+    try {
+      const response = await fetch('/api/data');
+      this.data = await response.json();
+    } finally {
+      this.loading = false;
+    }
+    
+    // Démarrer un interval
+    this.interval = setInterval(() => {
+      console.log('Tick');
+    }, 1000);
+  }
+}
+</script>
+```
+
+---
+
+# Exemple pratique avec lifecycle (2/2)
+
+**Nettoyage au démontage :**
+
+```vue
+<script>
+export default {
+  beforeUnmount() {
+    // Nettoyer l'interval
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+}
+</script>
+```
+
+---
+
