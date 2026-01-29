@@ -1,5 +1,6 @@
 ---
-layout: section
+layout: new-section
+routeAlias: 'bonus-cicd-qcm'
 ---
 
 # QCM Module Bonus

@@ -1,5 +1,6 @@
 ---
-layout: section
+layout: exercices
+routeAlias: 'bonus-cicd-exercices'
 ---
 
 # Exercices pratiques
