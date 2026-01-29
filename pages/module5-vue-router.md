@@ -415,14 +415,6 @@ router.beforeEach((to, from, next) => {
 
 ---
 
-# Navigation Guards vs React Router
-
-### 🆚 En React Router v6 : loaders et actions (concept similaire)
-
-Vue Router offre plus de flexibilité avec plusieurs types de guards (global, par route, dans le composant).
-
----
-
 # Guards par route
 
 ```javascript
