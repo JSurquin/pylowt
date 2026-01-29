@@ -207,19 +207,11 @@ src: './pages/module1-introduction-bases.md'
 ---
 
 ---
-src: './pages/module1-qcm.md'
----
-
----
 src: './pages/module1-exercices.md'
 ---
 
 ---
 src: './pages/module2-slots-composants.md'
----
-
----
-src: './pages/module2-qcm.md'
 ---
 
 ---
@@ -231,19 +223,11 @@ src: './pages/module3-vuejs-avance.md'
 ---
 
 ---
-src: './pages/module3-qcm.md'
----
-
----
 src: './pages/module3-exercices.md'
 ---
 
 ---
 src: './pages/module5-vue-router.md'
----
-
----
-src: './pages/module5-qcm.md'
 ---
 
 ---
@@ -255,19 +239,11 @@ src: './pages/module4-pinia-state.md'
 ---
 
 ---
-src: './pages/module4-qcm.md'
----
-
----
 src: './pages/module4-exercices.md'
 ---
 
 ---
 src: './pages/module6-tests-vitest.md'
----
-
----
-src: './pages/module6-qcm.md'
 ---
 
 ---
