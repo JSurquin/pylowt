@@ -371,7 +371,7 @@ Imaginez un **videur de boîte de nuit** :
 # Schéma : Navigation Guards
 
 ```mermaid
-graph TB
+graph LR
     U[Utilisateur<br/>Veut acceder a /admin]
     G[Navigation Guard<br/>beforeEach]
     A{Est authentifie?}

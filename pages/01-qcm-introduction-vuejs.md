@@ -65,12 +65,12 @@ Testons tes connaissances sur les fondamentaux de Vue.js !
 
 # Question 6 / 10
 
-### Quelle commande crée un nouveau projet Vue.js 3 ?
+### Quelle commande crée un nouveau projet Vue.js 3 avec Vite ?
 
-- A) `vue create mon-projet`
+- A) `npm create vite@latest mon-projet`
 - B) `npm create vue@latest mon-projet`
-- C) `npx vue-cli mon-projet`
-- D) `npm init vue mon-projet`
+- C) `npm init vite mon-projet`
+- D) `vite create mon-projet`
 
 ---
 
@@ -127,7 +127,7 @@ Testons tes connaissances sur les fondamentaux de Vue.js !
 | 3 | **C** | Vite est l'outil officiel recommandé (créé par Evan You) |
 | 4 | **B** | script, template, style sont les 3 sections |
 | 5 | **B** | scoped isole les styles au composant |
-| 6 | **B** | `npm create vue@latest` est la commande officielle |
+| 6 | **B** | `npm create vue@latest` utilise Vite sous le capot |
 | 7 | **C** | La Composition API est la nouveauté majeure de Vue 3 |
 | 8 | **B** | src/components/ pour les composants réutilisables |
 | 9 | **C** | Vue DevTools est indispensable |

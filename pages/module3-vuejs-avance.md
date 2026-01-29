@@ -8,13 +8,6 @@ routeAlias: 'module3-avance'
 
 ---
 
-layout: new-section
----
-
-# 3.1 Composants avancés
-
----
-
 # Composants fonctionnels
 
 Les composants fonctionnels sont des composants **sans état** optimisés pour les performances
@@ -606,7 +599,7 @@ export const vFocus = {
 # Schéma : Cycle de vie directive
 
 ```mermaid
-graph TB
+graph LR
     subgraph Definition["Definition de la directive"]
         D[Directive v-focus]
         H[Hooks du cycle de vie:<br/>mounted updated unmounted]

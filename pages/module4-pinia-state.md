@@ -45,7 +45,7 @@ App (user)
 # Schéma : Props Drilling
 
 ```mermaid
-graph TB
+graph LR
     A[App<br/>user: nom email]
     H[Header<br/>Ne fait que passer user]
     N[Nav<br/>Ne fait que passer user]
@@ -87,7 +87,7 @@ UserMenu → utilise useUserStore() ← Accès direct !
 # Schéma : Solution avec Pinia
 
 ```mermaid
-graph TB
+graph LR
     subgraph Store["Store Central Pinia"]
         US[useUserStore<br/>state user<br/>actions login logout]
     end
@@ -201,7 +201,7 @@ export const useCounterStore = defineStore('counter', () => {
 
 ---
 
-# Schéma : Architecture d'un Store Pinia
+#### Schéma : Architecture d'un Store Pinia
 
 ```mermaid
 graph TB

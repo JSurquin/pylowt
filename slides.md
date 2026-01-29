@@ -91,7 +91,7 @@ routeAlias: 'sommaire'
 <br/>
 <strong style="color: #42b883;">🎁 MODULES BONUS</strong>
 <Link to="bonus-composition-api">✨ Composition API</Link>
-<Link to="bonus-typescript">📘 TypeScript avec Vue.js</Link>
+<Link to="bonus-cicd">🚀 CI/CD avec GitLab</Link>
 </div>
 
 **Note :** Chaque module contient :
@@ -116,7 +116,7 @@ routeAlias: 'programme-jour1'
 **Module 1 - Introduction à Vue.js et bases fondamentales**
 - Rappels JavaScript ES6+
 - Architecture Vue.js (MVVM)
-- Outils et environnement (Node.js, Vite, Vue CLI)
+- Outils et environnement (Node.js, Vite)
 - Concepts fondamentaux (data binding, interpolation)
 - Directives (v-bind, v-if, v-for, v-on, v-model)
 - Composants et communication (props, emits)
@@ -176,22 +176,7 @@ layout: two-cols
 routeAlias: 'programme-jour3'
 ---
 
-### JOUR 3 - ROUTING, TESTS ET PROJET 📅
-
-<small>
-
-**Module 5 - Navigation et routage avec Vue Router**
-- Présentation de Vue Router
-- Installation et configuration
-- Routes dynamiques et imbriquées
-- Navigation programmatique
-- Guards de navigation
-- Gestion des erreurs
-- Modes hash et history
-
-</small>
-
-::right::
+### JOUR 3 - TESTS ET PROJET FINAL 📅
 
 <small>
 
@@ -201,12 +186,25 @@ routeAlias: 'programme-jour3'
 - Tests de composants Vue
 - Tests unitaires
 - Tests de logique applicative
+- Mocks et stubs
+- Coverage de code
 
-**Projet Final & QCM** 🎓
-- Projet fil rouge
+</small>
+
+::right::
+
+<small>
+
+**Projet Final - TaskFlow**
+- Mise en pratique complète
+- Application de tous les concepts
+- Architecture complète de l'application
 - Bonnes pratiques 2025
-- Déploiement
 - QCM de validation finale
+
+**Modules Bonus (optionnels)**
+- Composition API
+- CI/CD avec GitLab
 
 </small>
 
@@ -295,5 +293,13 @@ src: './pages/bonus-composition-api.md'
 ---
 
 ---
-src: './pages/bonus-typescript.md'
+src: './pages/bonus-cicd-gitlab.md'
+---
+
+---
+src: './pages/bonus-cicd-qcm.md'
+---
+
+---
+src: './pages/bonus-cicd-exercices.md'
 ---

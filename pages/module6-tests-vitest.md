@@ -31,7 +31,7 @@ Vous codez → Tests échouent → Vous corrigez → Tests passent ✅ → 😎 
 
 ---
 
-# Schéma : Avec vs Sans tests
+#### Schéma : Avec vs Sans tests
 
 ```mermaid
 graph LR

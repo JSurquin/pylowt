@@ -366,7 +366,7 @@ Vue.js suit le pattern MVVM (Model-View-ViewModel)
 # Schéma : Architecture MVVM
 
 ```mermaid
-graph TB
+graph LR
     subgraph VIEW["VIEW - Template HTML"]
         A[Template<br/>Ce que vous voyez]
     end
@@ -516,6 +516,8 @@ pnpm --version
 - 🎯 **Support TypeScript natif** : pas de configuration nécessaire
 - 🔌 **Système de plugins extensible** : écosystème riche
 
+---
+
 ### 💡 Fun fact
 
 Vite signifie "rapide" en français ! Et créé par Evan You, le créateur de Vue.js lui-même 🇫🇷
@@ -527,32 +529,6 @@ npm create vite@latest mon-projet -- --template vue
 # Avec TypeScript (recommandé pour les grands projets)
 npm create vite@latest mon-projet -- --template vue-ts
 ```
-
----
-
-# Vue CLI (legacy)
-
-**Vue CLI** : outil historique pour créer des projets Vue
-
-⚠️ **Note** : Vue CLI est maintenant en mode maintenance. Vite est recommandé pour les nouveaux projets.
-
-```bash
-# Installation globale (si nécessaire)
-npm install -g @vue/cli
-
-# Créer un projet
-vue create mon-projet
-
-# Interface graphique
-vue ui
-```
-
----
-
-# Quand utiliser Vue CLI ?
-
-- Projets legacy existants
-- Besoins spécifiques de configuration webpack
 
 ---
 
@@ -1313,7 +1289,7 @@ export default {
 # Schéma : Communication par Props
 
 ```mermaid
-graph TB
+graph LR
     subgraph Parent["Composant Parent"]
         PD[Data utilisateur:<br/>nom Alice<br/>age 28<br/>email contact]
     end
@@ -1512,7 +1488,7 @@ export default {
 # Schéma : Communication par Events
 
 ```mermaid
-graph BT
+graph LR
     subgraph Enfant["Composant Enfant"]
         EB[Button click]
         EM[Emit incrementer]
@@ -2092,7 +2068,7 @@ Une application de gestion de tâches complète avec :
 - 🎨 **Labels** : Urgent, Bug, Feature
 - 👤 **Assignation** : Attribuer des tâches
 
-**À la fin de la formation, vous aurez une vraie app déployable !** 🚀
+<small>
 
 ### Module par module
 
@@ -2102,6 +2078,8 @@ Une application de gestion de tâches complète avec :
 - **Module 4** : Pinia pour centraliser l'état (tasks, boards, users)
 - **Module 5** : Router pour navigation (/boards, /board/:id, /settings)
 - **Module 6** : Tests de l'application
+
+</small>
 
 ---
 
@@ -2134,7 +2112,7 @@ export default {
 # Schéma : Cycle de vie des composants
 
 ```mermaid
-graph TB
+graph LR
     Start([Creation du composant]) --> BC[beforeCreate]
     BC --> C[created<br/>Donnees reactives disponibles]
     C --> BM[beforeMount<br/>Template compile]

@@ -400,7 +400,7 @@ De plus, il installe les dépendances du projet, ce qui est utile dans notre cas
 
 Use code snippets and get the highlighting directly!
 
-```vue
+```js
 <script setup>
 import { TresCanvas } from '@tresjs/core'
 </script>
@@ -629,7 +629,7 @@ layout: two-cols
 
 Un autre exemple de code
 
-```vue
+```js
 // Model.vue
 <script setup lang="ts">
 import { useAnimations, useGLTF } from "@tresjs/cientos";
@@ -648,7 +648,7 @@ currentAction.value.play();
 
 ::right::
 
-```vue
+```js
 <template>
   <TresCanvas clear-color="”#82DBC5”" window-size>
     <TresPerspectiveCamera />

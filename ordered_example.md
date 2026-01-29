@@ -798,7 +798,7 @@ Use code snippets and get the highlighting directly!
 
 
 
-```vue
+```js
 
 <script setup>
 
@@ -1240,7 +1240,7 @@ Un autre exemple de code
 
 
 
-```vue
+```js
 
 // Model.vue
 
@@ -1278,7 +1278,7 @@ currentAction.value.play();
 
 
 
-```vue
+```js
 
 <template>
 

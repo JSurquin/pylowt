@@ -8,13 +8,6 @@ routeAlias: 'module2-slots'
 
 ---
 
-layout: new-section
----
-
-# 2.1 Concepts
-
----
-
 # Qu'est-ce qu'un slot ?
 
 Les **slots** permettent de passer du contenu HTML (ou des composants) à un composant enfant
@@ -80,9 +73,9 @@ Imaginez un **cadre photo** :
 
 # Pourquoi c'est problématique ?
 
-❌ Duplication de code
-❌ Un composant par type de message
-❌ Difficile à maintenir
+- ❌ Duplication de code
+- ❌ Un composant par type de message
+- ❌ Difficile à maintenir
 
 ---
 
@@ -129,9 +122,9 @@ Imaginez un **cadre photo** :
 
 # Avantages des slots
 
-✅ Un seul composant
-✅ Contenu flexible
-✅ Facile à maintenir
+- ✅ Un seul composant
+- ✅ Contenu flexible
+- ✅ Facile à maintenir
 
 ---
 
