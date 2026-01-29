@@ -1,5 +1,5 @@
 ---
-layout: section
+layout: new-section
 routeAlias: 'bonus-cicd'
 ---
 
