@@ -25,7 +25,7 @@ D. Un framework CSS
 Comment installer Pinia ?
 
 A. `npm install vue-store`
-B. `npm install vuex`
+B. `npm install @vue/store`
 C. `npm install pinia`
 D. `npm install state`
 
@@ -78,7 +78,7 @@ Les actions peuvent-elles être asynchrones ?
 
 A. Non, jamais
 B. Oui, avec async/await
-C. Seulement avec Vuex
+C. Non, seulement des opérations synchrones
 D. Seulement en Options API
 
 **Réponse:** B
@@ -87,7 +87,7 @@ D. Seulement en Options API
 
 # Question 7
 
-Pinia nécessite-t-il des mutations (comme Vuex) ?
+Pinia nécessite-t-il des mutations ?
 
 A. Oui, toujours
 B. Non, mutation directe du state autorisée

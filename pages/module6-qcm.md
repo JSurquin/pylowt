@@ -14,7 +14,7 @@ Comment installer Vitest ?
 A. `npm install vitest`
 B. `npm install -D vitest`
 C. `npm install test`
-D. `npm install jest`
+D. `npm install @vue/test-utils`
 
 **Réponse:** B
 
@@ -91,7 +91,7 @@ Comment mocker une fonction avec Vitest ?
 
 A. `mock(fn)`
 B. `vi.fn()`
-C. `jest.fn()`
+C. `vitest.mock(fn)`
 D. `spy(fn)`
 
 **Réponse:** B
