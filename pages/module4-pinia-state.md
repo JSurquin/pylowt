@@ -549,6 +549,132 @@ export const useCartStore = defineStore('cart', () => {
 
 ---
 
+# 🎯 Exercice TaskFlow : useTasksStore()
+
+Créons le store principal de TaskFlow avec **Pinia** !
+
+### 📝 Objectif
+
+Un store complet pour gérer toutes les tâches de l'application
+
+---
+
+# 🎯 useTasksStore - State & Getters (1/3)
+
+### State
+
+```javascript
+import { defineStore } from 'pinia';
+
+export const useTasksStore = defineStore('tasks', {
+  state: () => ({
+    tasks: [
+      { id: 1, title: 'Apprendre Vue.js', description: 'Compléter le module 4', priority: 'high', done: false },
+      { id: 2, title: 'Créer TaskFlow', description: '', priority: 'medium', done: false },
+      { id: 3, title: 'Tests unitaires', description: 'Tester les stores', priority: 'low', done: true }
+    ],
+    filter: 'all',
+    loading: false,
+    error: null
+  }),
+```
+
+### Getters
+
+```javascript
+  getters: {
+    filteredTasks(state) {
+      if (state.filter === 'active') return state.tasks.filter(t => !t.done);
+      if (state.filter === 'done') return state.tasks.filter(t => t.done);
+      return state.tasks;
+    },
+    activeCount: (state) => state.tasks.filter(t => !t.done).length,
+    doneCount: (state) => state.tasks.filter(t => t.done).length,
+    getTaskById: (state) => (id) => state.tasks.find(t => t.id === id)
+  },
+```
+
+---
+
+# 🎯 useTasksStore - Actions (2/3)
+
+```javascript
+  actions: {
+    addTask(taskData) {
+      const newTask = {
+        id: Date.now(),
+        title: taskData.title,
+        description: taskData.description || '',
+        priority: taskData.priority || 'medium',
+        done: false
+      };
+      this.tasks.push(newTask);
+      this._persist();
+    },
+    
+    updateTask(id, updates) {
+      const task = this.tasks.find(t => t.id === id);
+      if (task) {
+        Object.assign(task, updates);
+        this._persist();
+      }
+    },
+    
+    deleteTask(id) {
+      const index = this.tasks.findIndex(t => t.id === id);
+      if (index > -1) {
+        this.tasks.splice(index, 1);
+        this._persist();
+      }
+    },
+```
+
+---
+
+# 🎯 useTasksStore - Actions suite (3/3)
+
+```javascript
+    toggleTask(id) {
+      const task = this.tasks.find(t => t.id === id);
+      if (task) {
+        task.done = !task.done;
+        this._persist();
+      }
+    },
+    
+    setFilter(filter) {
+      this.filter = filter;
+    },
+    
+    clearCompleted() {
+      this.tasks = this.tasks.filter(t => !t.done);
+      this._persist();
+    },
+    
+    _persist() {
+      localStorage.setItem('taskflow_tasks', JSON.stringify(this.tasks));
+    },
+    
+    loadFromStorage() {
+      const saved = localStorage.getItem('taskflow_tasks');
+      if (saved) {
+        this.tasks = JSON.parse(saved);
+      }
+    }
+  }
+});
+```
+
+### 💡 N'oubliez pas
+
+Appelez `loadFromStorage()` dans `App.vue` au `mounted()` !
+
+### ✅ Correction
+
+👉 `taskflow-app/src/stores/tasks.js`
+
+---
+
 # Store avec données API
 
 ```javascript
@@ -786,6 +912,174 @@ export const useCartStore = defineStore('cart', () => {
   return { items, addToCart };
 });
 ```
+
+---
+
+# 🎯 Exercice TaskFlow : useCategoriesStore()
+
+Créons un store pour gérer les catégories de tâches !
+
+### 📝 Objectif
+
+Store pour créer, lister et supprimer des catégories
+
+---
+
+# 🎯 useCategoriesStore - Spécifications
+
+```javascript
+import { defineStore } from 'pinia';
+import { useTasksStore } from './tasks';
+
+export const useCategoriesStore = defineStore('categories', {
+  state: () => ({
+    categories: [
+      { id: 1, name: 'Personnel', color: '#3b82f6' },
+      { id: 2, name: 'Travail', color: '#10b981' },
+      { id: 3, name: 'Urgent', color: '#ef4444' }
+    ]
+  }),
+  
+  getters: {
+    getCategoryById: (state) => (id) => {
+      return state.categories.find(c => c.id === id);
+    },
+    categoryCount: (state) => state.categories.length
+  },
+  
+  actions: {
+    addCategory(categoryData) {
+      const newCategory = {
+        id: Date.now(),
+        name: categoryData.name,
+        color: categoryData.color || '#gray'
+      };
+      this.categories.push(newCategory);
+    },
+    
+    deleteCategory(id) {
+      // Communication inter-stores !
+      const tasksStore = useTasksStore();
+      
+      // Supprimer toutes les tâches de cette catégorie
+      const tasksInCategory = tasksStore.tasks.filter(t => t.categoryId === id);
+      tasksInCategory.forEach(task => {
+        tasksStore.deleteTask(task.id);
+      });
+      
+      // Supprimer la catégorie
+      const index = this.categories.findIndex(c => c.id === id);
+      if (index > -1) {
+        this.categories.splice(index, 1);
+      }
+    }
+  }
+});
+```
+
+### ✅ Correction
+
+👉 `taskflow-app/src/stores/categories.js`
+
+---
+
+# 🎯 Exercice TaskFlow : useAuthStore()
+
+Créons le store d'authentification pour sécuriser TaskFlow !
+
+### 📝 Objectif
+
+Gérer la connexion, les permissions et le profil utilisateur
+
+---
+
+# 🎯 useAuthStore - Spécifications (1/2)
+
+```javascript
+import { defineStore } from 'pinia';
+
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    user: null,
+    token: localStorage.getItem('authToken'),
+    isAuthenticated: false
+  }),
+  
+  getters: {
+    userDisplayName: (state) => {
+      return state.user ? `${state.user.prenom} ${state.user.nom}` : 'Invité';
+    },
+    
+    canDeleteTasks: (state) => {
+      return state.user?.role === 'admin' || state.user?.role === 'editor';
+    },
+    
+    canCreateCategories: (state) => {
+      return state.user?.role === 'admin';
+    }
+  },
+```
+
+---
+
+# 🎯 useAuthStore - Spécifications (2/2)
+
+```javascript
+  actions: {
+    async login(credentials) {
+      try {
+        // Simuler un appel API
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(credentials)
+        });
+        
+        const data = await response.json();
+        
+        this.user = data.user;
+        this.token = data.token;
+        this.isAuthenticated = true;
+        
+        localStorage.setItem('authToken', data.token);
+      } catch (error) {
+        console.error('Erreur de connexion:', error);
+        throw error;
+      }
+    },
+    
+    logout() {
+      this.user = null;
+      this.token = null;
+      this.isAuthenticated = false;
+      localStorage.removeItem('authToken');
+    },
+    
+    async checkAuth() {
+      if (this.token) {
+        // Vérifier la validité du token
+        try {
+          const response = await fetch('/api/me', {
+            headers: { 'Authorization': `Bearer ${this.token}` }
+          });
+          this.user = await response.json();
+          this.isAuthenticated = true;
+        } catch {
+          this.logout();
+        }
+      }
+    }
+  }
+});
+```
+
+### 💡 Utilisation dans Module 5
+
+Ce store sera utilisé dans les navigation guards du router !
+
+### ✅ Correction
+
+👉 `taskflow-app/src/stores/auth.js`
 
 ---
 

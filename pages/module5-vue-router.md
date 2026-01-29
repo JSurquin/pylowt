@@ -475,6 +475,466 @@ const routes = [
 
 ---
 
+# 🎯 Exercice TaskFlow : Navigation Guards
+
+Protégeons TaskFlow avec des **guards d'authentification** !
+
+### 📝 Objectif
+
+Empêcher l'accès aux routes protégées sans connexion
+
+---
+
+# 🎯 TaskFlow Router - Configuration (1/2)
+
+### Créer router/index.js
+
+```javascript
+import { createRouter, createWebHistory } from 'vue-router';
+import { useAuthStore } from '../stores/auth';
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('../views/HomeView.vue'),
+    meta: { title: 'Accueil - TaskFlow' }
+  },
+  {
+    path: '/tasks',
+    name: 'Tasks',
+    component: () => import('../views/TaskListView.vue'),
+    meta: { 
+      requiresAuth: true,
+      title: 'Mes tâches - TaskFlow'
+    }
+  },
+  {
+    path: '/task/:id',
+    name: 'TaskDetail',
+    component: () => import('../views/TaskDetailView.vue'),
+    meta: { requiresAuth: true }
+  },
+```
+
+---
+
+# 🎯 TaskFlow Router - Configuration (2/2)
+
+```javascript
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('../views/DashboardView.vue'),
+    meta: { 
+      requiresAuth: true,
+      requiresAdmin: true,
+      title: 'Dashboard - TaskFlow'
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/LoginView.vue'),
+    meta: { title: 'Connexion - TaskFlow' }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/NotFoundView.vue')
+  }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+});
+```
+
+---
+
+# 🎯 TaskFlow Router - Guards
+
+### Guard global beforeEach
+
+```javascript
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  
+  // 1. Changer le titre de la page
+  document.title = to.meta.title || 'TaskFlow';
+  
+  // 2. Vérifier l'authentification
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    next({
+      name: 'Login',
+      query: { redirect: to.fullPath }
+    });
+    return;
+  }
+  
+  // 3. Vérifier les droits admin
+  if (to.meta.requiresAdmin && !authStore.canCreateCategories) {
+    alert('Accès réservé aux administrateurs');
+    next({ name: 'Home' });
+    return;
+  }
+  
+  next();
+});
+
+export default router;
+```
+
+### 💡 N'oubliez pas
+
+Créer `useAuthStore()` dans Module 4 avec `isAuthenticated` et `canCreateCategories` !
+
+### ✅ Correction
+
+👉 `taskflow-app/src/router/index.js`
+
+---
+
+# 🎯 Exercice TaskFlow : TaskListView.vue
+
+Créons la vue principale qui affiche la liste des tâches !
+
+### 📝 Objectif
+
+Une vue complète qui utilise le **store Pinia** et le **router**
+
+---
+
+# 🎯 TaskListView - Spécifications
+
+```vue
+<script>
+import { useTasksStore } from '@/stores/tasks';
+import { useCategoriesStore } from '@/stores/categories';
+import TaskList from '@/components/TaskList.vue';
+import TaskForm from '@/components/TaskForm.vue';
+
+export default {
+  name: 'TaskListView',
+  components: {
+    TaskList,
+    TaskForm
+  },
+  computed: {
+    tasksStore() {
+      return useTasksStore();
+    },
+    categoriesStore() {
+      return useCategoriesStore();
+    }
+  },
+  methods: {
+    handleAddTask(taskData) {
+      this.tasksStore.addTask(taskData);
+    },
+    handleToggleTask(id) {
+      this.tasksStore.toggleTask(id);
+    },
+    handleDeleteTask(id) {
+      this.tasksStore.deleteTask(id);
+    },
+    goToTaskDetail(id) {
+      this.$router.push({ name: 'TaskDetail', params: { id } });
+    }
+  },
+  mounted() {
+    this.tasksStore.loadFromStorage();
+  }
+}
+</script>
+
+<template>
+  <div class="task-list-view">
+    <h1>Mes Tâches</h1>
+    
+    <TaskForm @add-task="handleAddTask" />
+    
+    <TaskList
+      :tasks="tasksStore.tasks"
+      @toggle="handleToggleTask"
+      @delete="handleDeleteTask"
+      @task-click="goToTaskDetail"
+    />
+  </div>
+</template>
+```
+
+### ✅ Correction
+
+👉 `taskflow-app/src/views/TaskListView.vue`
+
+---
+
+# 🎯 Exercice TaskFlow : TaskDetailView.vue
+
+Créons la vue de détail qui utilise les **params dynamiques** !
+
+### 📝 Objectif
+
+Afficher et éditer une tâche spécifique via son ID dans l'URL
+
+---
+
+# 🎯 TaskDetailView - Spécifications
+
+```vue
+<script>
+import { useTasksStore } from '@/stores/tasks';
+
+export default {
+  name: 'TaskDetailView',
+  data() {
+    return {
+      task: null,
+      isEditing: false
+    }
+  },
+  computed: {
+    tasksStore() {
+      return useTasksStore();
+    },
+    taskId() {
+      return parseInt(this.$route.params.id);
+    }
+  },
+  methods: {
+    loadTask() {
+      this.task = this.tasksStore.getTaskById(this.taskId);
+      if (!this.task) {
+        this.$router.push({ name: 'NotFound' });
+      }
+    },
+    saveTask() {
+      this.tasksStore.updateTask(this.taskId, this.task);
+      this.isEditing = false;
+    },
+    goBack() {
+      this.$router.back();
+    }
+  },
+  mounted() {
+    this.loadTask();
+  },
+  beforeRouteUpdate(to, from) {
+    // Recharger si on change d'ID dans l'URL
+    if (to.params.id !== from.params.id) {
+      this.loadTask();
+    }
+  }
+}
+</script>
+
+<template>
+  <div v-if="task" class="task-detail">
+    <button @click="goBack">← Retour</button>
+    
+    <h1>{{ task.title }}</h1>
+    
+    <div v-if="!isEditing">
+      <p>{{ task.description }}</p>
+      <p>Priorité: {{ task.priority }}</p>
+      <button @click="isEditing = true">Éditer</button>
+    </div>
+    
+    <form v-else @submit.prevent="saveTask">
+      <input v-model="task.title" required />
+      <textarea v-model="task.description"></textarea>
+      <button type="submit">Sauvegarder</button>
+      <button type="button" @click="isEditing = false">Annuler</button>
+    </form>
+  </div>
+</template>
+```
+
+### ✅ Correction
+
+👉 `taskflow-app/src/views/TaskDetailView.vue`
+
+---
+
+# 🎯 Exercice TaskFlow : LoginView.vue
+
+Créons la vue de connexion avec **redirection** !
+
+### 📝 Objectif
+
+Formulaire de connexion qui redirige vers la page d'origine après login
+
+---
+
+# 🎯 LoginView - Spécifications
+
+```vue
+<script>
+import { useAuthStore } from '@/stores/auth';
+
+export default {
+  name: 'LoginView',
+  data() {
+    return {
+      credentials: {
+        email: '',
+        password: ''
+      },
+      error: null
+    }
+  },
+  computed: {
+    authStore() {
+      return useAuthStore();
+    },
+    redirectPath() {
+      return this.$route.query.redirect || '/tasks';
+    }
+  },
+  methods: {
+    async handleLogin() {
+      try {
+        this.error = null;
+        await this.authStore.login(this.credentials);
+        
+        // Redirection vers la page d'origine ou /tasks
+        this.$router.push(this.redirectPath);
+      } catch (err) {
+        this.error = 'Identifiants incorrects';
+      }
+    }
+  }
+}
+</script>
+
+<template>
+  <div class="login-view">
+    <h1>Connexion</h1>
+    
+    <form @submit.prevent="handleLogin">
+      <div>
+        <label>Email</label>
+        <input
+          v-model="credentials.email"
+          type="email"
+          required
+          placeholder="votre@email.com"
+        />
+      </div>
+      
+      <div>
+        <label>Mot de passe</label>
+        <input
+          v-model="credentials.password"
+          type="password"
+          required
+          placeholder="••••••••"
+        />
+      </div>
+      
+      <p v-if="error" class="error">{{ error }}</p>
+      
+      <button type="submit">Se connecter</button>
+    </form>
+  </div>
+</template>
+```
+
+### 💡 Astuce
+
+Le `query.redirect` est défini par le guard `beforeEach` dans le router !
+
+### ✅ Correction
+
+👉 `taskflow-app/src/views/LoginView.vue`
+
+---
+
+# 🎯 Exercice TaskFlow : NotFoundView.vue
+
+Créons la page 404 pour les routes invalides !
+
+### 📝 Objectif
+
+Une page d'erreur élégante avec redirection vers l'accueil
+
+---
+
+# 🎯 NotFoundView - Spécifications
+
+```vue
+<script>
+export default {
+  name: 'NotFoundView',
+  methods: {
+    goHome() {
+      this.$router.push('/');
+    }
+  }
+}
+</script>
+
+<template>
+  <div class="not-found">
+    <h1>404</h1>
+    <h2>Page non trouvée</h2>
+    <p>La page que vous recherchez n'existe pas.</p>
+    
+    <button @click="goHome">Retour à l'accueil</button>
+    
+    <p class="url-info">
+      URL demandée : <code>{{ $route.fullPath }}</code>
+    </p>
+  </div>
+</template>
+
+<style scoped>
+.not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.not-found h1 {
+  font-size: 8rem;
+  font-weight: bold;
+  color: #ef4444;
+}
+
+.url-info {
+  margin-top: 2rem;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+code {
+  background: #f1f5f9;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+}
+</style>
+```
+
+### 💡 Route à ajouter
+
+N'oubliez pas d'ajouter la route catch-all dans `router/index.js` :
+
+```js
+{
+  path: '/:pathMatch(.*)*',
+  name: 'NotFound',
+  component: () => import('../views/NotFoundView.vue')
+}
+```
+
+### ✅ Correction
+
+👉 `taskflow-app/src/views/NotFoundView.vue`
+
+---
+
 # Guards dans le composant
 
 ```vue
@@ -653,15 +1113,52 @@ const router = createRouter({
 
 ---
 
+# 🎯 Bonus TaskFlow : HomePage.vue
+
+Créons une page d'accueil élégante !
+
+```vue
+<template>
+  <div class="home-page">
+    <div class="hero">
+      <h1>📋 Bienvenue sur TaskFlow</h1>
+      <p>Gérez vos tâches efficacement avec Vue.js 3</p>
+      
+      <div class="hero-actions">
+        <RouterLink to="/tasks" class="btn-primary">
+          Voir mes tâches
+        </RouterLink>
+        <RouterLink to="/login" class="btn-secondary">
+          Se connecter
+        </RouterLink>
+      </div>
+    </div>
+    
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h3>Gestion simple</h3>
+        <p>Créez, modifiez et supprimez vos tâches facilement</p>
+      </div>
+      <!-- + 2 autres feature cards -->
+    </div>
+  </div>
+</template>
+```
+
+✅ `taskflow-app/src/views/HomePage.vue`
+
+---
+
 # Travaux pratiques
 
-1. 🛤️ Créer un système de routing complet
-2. 🔐 Implémenter des guards d'authentification
-3. ⚡ Lazy loading des pages
-4. 🎯 Routes dynamiques pour les produits
-5. 🏗️ Routes imbriquées pour le dashboard
-6. 🚫 Page 404 personnalisée
+Vous avez maintenant TOUS les éléments pour reproduire TaskFlow :
 
-### Projet fil rouge
+✅ **Components** : TaskItem, TaskForm, TaskList, TaskCard, BoardColumn, TaskModal  
+✅ **Stores** : tasks, auth, categories  
+✅ **Router** : Guards, routes dynamiques, lazy loading  
+✅ **Vues** : TaskListView, TaskDetailView, LoginView, NotFoundView, HomePage
 
-Ajouter le routing à l'application de produits
+### 🎯 Application complète disponible
+
+👉 Voir `taskflow-app/` pour la correction complète

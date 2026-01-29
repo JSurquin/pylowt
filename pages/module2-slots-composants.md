@@ -336,6 +336,59 @@ Syntaxes disponibles pour les slots
 
 ---
 
+# 🎯 Exercice TaskFlow : TaskCard.vue
+
+Maintenant qu'on maîtrise les **slots nommés**, créons un composant réutilisable pour TaskFlow !
+
+### 📝 Objectif
+
+Créer une carte flexible avec plusieurs emplacements personnalisables
+
+---
+
+# 🎯 TaskCard.vue - Spécifications (1/2)
+
+### Props
+
+```vue
+variant: {
+  type: String,
+  default: 'default',
+  validator: (v) => ['default', 'success', 'warning', 'danger'].includes(v)
+},
+padding: {
+  type: Boolean,
+  default: true
+}
+```
+
+---
+
+# 🎯 TaskCard.vue - Spécifications (2/2)
+
+### Slots nommés requis
+
+- `header` : En-tête personnalisable (optionnel)
+- `default` : Contenu principal (obligatoire)
+- `actions` : Zone de boutons (optionnel)
+- `footer` : Pied de page (optionnel)
+
+### Comportements
+
+- N'afficher le header que si le slot est fourni → `v-if="$slots.header"`
+- Border-left colorée selon le variant
+- Padding conditionnel selon la prop
+
+### 💡 Astuce
+
+Utilisez `computed` pour générer les classes dynamiques !
+
+### ✅ Correction
+
+👉 `taskflow-app/src/components/TaskCard.vue`
+
+---
+
 # Scoped Slots - Introduction
 
 Les **scoped slots** permettent au composant enfant de passer des données au parent
@@ -522,6 +575,79 @@ export default {
 
 ---
 
+# 🎯 Exercice TaskFlow : BoardColumn.vue
+
+Créons une colonne Kanban avec **scoped slots** pour une flexibilité maximale !
+
+### 📝 Objectif
+
+Une colonne réutilisable qui expose les données des tâches au parent via scoped slots
+
+---
+
+# 🎯 BoardColumn.vue - Spécifications (1/3)
+
+### Props
+
+```vue
+title: { 
+  type: String, 
+  required: true 
+},
+tasks: { 
+  type: Array, 
+  default: () => [] 
+},
+color: { 
+  type: String, 
+  default: '#3b82f6' 
+}
+```
+
+---
+
+# 🎯 BoardColumn.vue - Spécifications (2/3)
+
+### Scoped Slot `task` (expose les données)
+
+```vue
+<slot 
+  name="task"
+  :task="task"
+  :index="index"
+  :isFirst="index === 0"
+  :isLast="index === tasks.length - 1"
+>
+  <!-- Fallback si pas de slot fourni -->
+</slot>
+```
+
+### Slots nommés additionnels
+
+- `header` : En-tête personnalisable (scoped: `title`, `count`)
+- `empty` : Message si `tasks.length === 0`
+
+---
+
+# 🎯 BoardColumn.vue - Spécifications (3/3)
+
+### Bonus (optionnel)
+
+Ajouter le **drag & drop** :
+- `@dragstart` : Sauvegarder l'ID de la tâche
+- `@drop` : Émettre un événement avec taskId + colonne
+- `@dragover` : Ajouter classe `.drag-over`
+
+### 💡 Astuce
+
+Les scoped slots permettent au parent de décider comment afficher chaque tâche !
+
+### ✅ Correction
+
+👉 `taskflow-app/src/components/BoardColumn.vue`
+
+---
+
 # Slots dynamiques
 
 Les slots peuvent être déterminés dynamiquement
@@ -553,6 +679,86 @@ export default {
   <button @click="slotActif = 'footer'">Footer</button>
 </template>
 ```
+
+---
+
+# Teleport : Rendu ailleurs 🚀
+
+Le composant **Teleport** permet de rendre un composant dans une autre partie du DOM
+
+### 🎯 Problème résolu
+
+**Sans Teleport** :
+- ❌ Les modales héritent du contexte CSS parent (z-index, overflow...)
+- ❌ Difficile de gérer les overlays plein écran
+- ❌ Problèmes de positionnement
+
+**Avec Teleport** :
+- ✅ Rendu directement dans `<body>` ou n'importe quel sélecteur
+- ✅ Plus de problèmes de z-index
+- ✅ Overlays plein écran faciles
+
+---
+
+# Teleport : Syntaxe
+
+```vue
+<template>
+  <button @click="showModal = true">Ouvrir Modal</button>
+  
+  <Teleport to="body">
+    <div v-if="showModal" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Je suis rendu dans body !</h2>
+        <button @click="showModal = false">Fermer</button>
+      </div>
+    </div>
+  </Teleport>
+</template>
+```
+
+---
+
+# Teleport : Résultat dans le DOM
+
+**Code Vue** :
+```vue
+<div id="app">
+  <button>Ouvrir Modal</button>
+  <Teleport to="body">
+    <div class="modal">...</div>
+  </Teleport>
+</div>
+```
+
+**Rendu HTML** :
+```html
+<body>
+  <div id="app">
+    <button>Ouvrir Modal</button>
+    <!-- Teleport rend ICI mais le contenu va ailleurs ! -->
+  </div>
+  
+  <!-- Le contenu Teleport apparaît ici ! -->
+  <div class="modal">...</div>
+</body>
+```
+
+---
+
+# Teleport : Cas d'usage
+
+Les cas d'usage courants pour Teleport :
+
+- 🎭 **Modales** : Évite les problèmes de z-index et overflow
+- 📋 **Tooltips** : Positionnement absolu libre
+- 🔔 **Notifications** : Toast en haut à droite de l'écran
+- 🖼️ **Overlays** : Plein écran sans contraintes CSS du parent
+- 🎨 **Dropdowns** : Éviter les problèmes de débordement
+
+### 💡 Astuce
+
+Utilisez `to="body"` pour la plupart des cas, ou un sélecteur CSS spécifique !
 
 ---
 
@@ -661,6 +867,86 @@ export default {
   </Modal>
 </template>
 ```
+
+---
+
+# 🎯 Exercice TaskFlow : TaskModal.vue
+
+Créons un composant Modal réutilisable avec **Teleport** et **slots** !
+
+### 📝 Objectif
+
+Une modale flexible pour TaskFlow (édition de tâches, confirmations, etc.)
+
+---
+
+# 🎯 TaskModal.vue - Spécifications (1/3)
+
+### Props
+
+```vue
+modelValue: {
+  type: Boolean,
+  default: false
+},
+size: {
+  type: String,
+  default: 'medium',
+  validator: (v) => ['small', 'medium', 'large'].includes(v)
+},
+closable: {
+  type: Boolean,
+  default: true
+}
+```
+
+### Events
+
+- `update:modelValue` : Pour v-model (fermeture)
+
+---
+
+# 🎯 TaskModal.vue - Spécifications (2/3)
+
+### Structure avec Teleport
+
+```vue
+<Teleport to="body">
+  <Transition name="modal">
+    <div v-if="modelValue" class="modal-overlay" @click="handleClose">
+      <div class="modal-content" :class="`modal-${size}`" @click.stop>
+        <!-- Slots ici -->
+      </div>
+    </div>
+  </Transition>
+</Teleport>
+```
+
+### Slots nommés
+
+- `title` : Titre de la modale
+- `default` : Contenu principal
+- `footer` : Boutons d'actions
+
+---
+
+# 🎯 TaskModal.vue - Spécifications (3/3)
+
+### Comportements
+
+- Clic sur l'overlay → ferme la modale (si `closable: true`)
+- Touche Escape → ferme la modale
+- `@click.stop` sur `.modal-content` pour empêcher la fermeture
+
+### 💡 Astuces
+
+- Utilisez `v-if="modelValue"` pour conditionner l'affichage
+- Ajoutez une `Transition` pour animer l'apparition
+- Gérez l'événement `keydown.escape` dans `mounted()`
+
+### ✅ Correction
+
+👉 `taskflow-app/src/components/TaskModal.vue`
 
 ---
 
