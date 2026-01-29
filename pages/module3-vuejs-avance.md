@@ -219,7 +219,7 @@ export default {
 </script>
 ```
 
-**💡 Note :** Pour des cas d'usage avancés, Vue 3 propose aussi la Composition API (voir module bonus)
+**💡 Note :** Pour des cas d'usage avancés, Vue 3 propose aussi la Composition API disponible en module bonus
 
 ---
 

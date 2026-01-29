@@ -8,38 +8,6 @@ routeAlias: 'module1-introduction'
 
 ---
 
-# Bienvenue dans l'aventure Vue.js ! 🎉
-
-### 🌟 Vous êtes au bon endroit !
-
-Que vous veniez de :
-- **JavaScript pur** : Vue va vous faire gagner un temps fou ⏰
-- **jQuery** : Bienvenue en 2025 ! Vous allez adorer la réactivité 
-- **React** : Préparez-vous à une syntaxe plus intuitive
-- **Rien du tout** : Parfait ! Vue est fait pour les débutants
-
-### 💪 Ce que vous allez apprendre
-
-En 3 jours, vous serez capable de créer des **applications web modernes et performantes** !
-
----
-
-# Ce qui vous attend 🎯
-
-### 🎯 Notre promesse
-
-À la fin de cette formation :
-- Vous comprendrez VRAIMENT comment fonctionne Vue.js
-- Vous aurez créé une application complète
-- Vous aurez les outils pour continuer seul
-
-### 🚀 Conseil de pro
-
-**N'ayez pas peur de l'erreur** : les erreurs sont vos meilleurs professeurs !
-Chaque développeur a commencé comme vous. La seule différence ? Ils ont persévéré 💪
-
----
-
 # 1.1 Rappels JavaScript ES6+
 
 <br>
@@ -279,58 +247,19 @@ layout: new-section
 Imaginez Vue.js comme des **Legos** :
 - Vous pouvez commencer avec juste une petite brique (un composant dans une page HTML)
 - Puis ajouter d'autres briques au fur et à mesure (router, state management...)
-- Contrairement à Angular qui vous impose tout dès le départ !
-
 ### Caractéristiques principales
 
 - 🎯 **Progressif** : peut être adopté progressivement (un composant, puis toute l'app)
-- ⚡ **Performant** : Virtual DOM et réactivité optimisée (plus rapide que React dans certains cas)
+- ⚡ **Performant** : Virtual DOM et réactivité optimisée
 - 🔧 **Flexible** : s'adapte à tous types de projets (widget, SPA, SSR...)
 - 📦 **Écosystème riche** : Vue Router, Pinia, Vite... tout est intégré harmonieusement
-- 💚 **Communauté active** : support et ressources (et une mascotte adorable !)
+- 💚 **Communauté active** : support et ressources
 
----
+### 💪 Avantages
 
-# Pourquoi choisir Vue.js en 2025 ?
-
-### 📊 La courbe d'apprentissage
-
-```
-Difficulté
-    │
-    │         React ────────────┐
-    │                           │
-    │    Angular ───────────────┤
-    │                           │
-    │ Vue ────┐                 │
-    │         └─────────────────┘
-    └────────────────────────────> Temps
-```
-
----
-
-# La courbe d'apprentissage expliquée
-
-**Vue.js c'est comme apprendre le vélo avec des petites roues** : vous avancez vite au début, puis vous les enlevez quand vous êtes prêt !
-
----
-
-# Avantages de Vue.js
-
-### 💪 Avantages concrets
-
-- ✨ **Courbe d'apprentissage douce** : HTML que vous connaissez déjà + un peu de JS = Vue !
-- 🚀 **Performances excellentes** : plus rapide que React pour les grandes listes
-- 📝 **Documentation de qualité** : la meilleure de tous les frameworks (dixit la communauté)
-- 🔧 **Outils de développement puissants** : Vue DevTools est magique 🪄
-- 💼 **Adopté par de grandes entreprises** : Alibaba, Adobe, GitLab, Nintendo...
-
-### 🎯 Cas d'usage réels
-
-- Applications web modernes (SPA) - ex: GitLab
-- Interfaces utilisateur interactives - ex: Behance d'Adobe
-- Tableaux de bord et dashboards - ex: Grammarly
-- Progressive Web Apps (PWA) - ex: 9GAG
+- 📝 **Documentation de qualité**
+- 🔧 **Outils de développement puissants** : Vue DevTools
+- 💼 **Adopté par de grandes entreprises** : Alibaba, Adobe, GitLab, Nintendo
 
 ---
 
@@ -1936,10 +1865,6 @@ const sommeMethod = () => {
 **Computed** : valeur dérivée qui dépend d'autres valeurs (nom complet = prénom + nom)
 **Methods** : actions/opérations (envoyer email, sauvegarder...)
 
-### 🆚 En React : pas de computed !
-
-React recalcule tout à chaque render (sauf si vous utilisez `useMemo`)
-
 ---
 
 # Observateurs (watch)
@@ -2236,11 +2161,6 @@ Les composables permettent d'extraire et de réutiliser de la logique
 ### 🧰 Pensez aux composables comme une boîte à outils
 
 Au lieu de refaire le même tournevis dans chaque pièce, vous avez **UNE boîte à outils** que vous emmenez partout !
-
-### 🆚 En React : ce sont les Custom Hooks
-
-**Vue** : `useCompteur()` 
-**React** : `useCounter()` (même concept, syntaxe similaire !)
 
 ---
 
@@ -2611,7 +2531,7 @@ export default {
 ### 💪 Vous êtes capable de :
 
 - Créer une application Vue.js de A à Z
-- Gérer l'état local avec ref/reactive
+- Gérer l'état local
 - Créer des composants réutilisables
 - Faire des appels API
 - Utiliser les directives Vue
