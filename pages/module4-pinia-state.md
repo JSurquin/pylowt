@@ -76,12 +76,6 @@ UserMenu → utilise useUserStore() ← Accès direct !
 
 **Chaque composant prend ce dont il a besoin, directement à la source !**
 
-### 🆚 Comparaison
-
-- **Redux (React)** : Beaucoup de boilerplate, complexe
-- **Context API (React)** : Simple mais performances limitées
-- **Pinia (Vue)** : Simple ET performant ! Le meilleur des deux mondes 🎉
-
 ---
 
 # Schéma : Solution avec Pinia
@@ -126,19 +120,6 @@ graph LR
 - 🌳 Tree-shaking automatique
 - 🧩 Modular par design
 - ✅ Composition API first
-
----
-
-# Pinia vs Vuex
-
-| Caractéristique | Pinia | Vuex |
-|-----------------|-------|------|
-| **Complexité** | Simple | Plus complexe |
-| **Mutations** | Non (directement les actions) | Oui |
-| **TypeScript** | Excellent | Moyen |
-| **DevTools** | Excellents | Bons |
-| **Modules** | Natif | Configuration nécessaire |
-| **Statut** | Officiellement recommandé | Legacy |
 
 ---
 
@@ -500,7 +481,7 @@ export const useProductStore = defineStore('products', () => {
 
 # Actions avec mutation directe
 
-Pinia permet la mutation directe du state (contrairement à Vuex)
+Pinia permet la mutation directe du state
 
 ```javascript
 export const useCartStore = defineStore('cart', () => {
