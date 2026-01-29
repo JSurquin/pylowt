@@ -8,79 +8,6 @@ routeAlias: 'module3-avance'
 
 ---
 
-# Composants fonctionnels
-
-Les composants fonctionnels sont des composants **sans état** optimisés pour les performances
-
-### Caractéristiques
-
-- Pas d'instance de composant
-- Pas d'état réactif
-- Pas de lifecycle hooks
-- Plus légers et plus rapides
-- Utiles pour les composants de présentation purs
-
----
-
-# Composant fonctionnel - Syntaxe
-
-```vue
-<script>
-export default {
-  props: {
-    nom: String,
-    email: String
-  }
-}
-</script>
-
-<template>
-  <div class="user-info">
-    <p><strong>{{ nom }}</strong></p>
-    <p>{{ email }}</p>
-  </div>
-</template>
-```
-
----
-
-# Composant fonctionnel avec render function
-
-```vue
-<script>
-export default {
-  functional: true,
-  props: {
-    level: {
-      type: Number,
-      required: true
-    }
-  },
-  render(h, { props, children }) {
-    return h(`h${props.level}`, children);
-  }
-};
-</script>
-```
-
----
-
-# Quand utiliser un composant fonctionnel ?
-
-### ✅ Utiliser pour :
-
-- Composants de présentation simples
-- Composants très réutilisés (performance)
-- Wrappers de composants
-- Rendu conditionnel simple
-
-### ❌ Éviter pour :
-
-- Composants avec état complexe
-- Composants nécessitant des lifecycle hooks
-- Composants avec logique métier
-
----
 
 # Single File Components (SFC)
 
@@ -438,6 +365,9 @@ export default {
 
 ---
 layout: new-section
+---
+
+
 ---
 
 # 3.2 Directives personnalisées
@@ -1213,3 +1143,80 @@ export default {
 ### Projet fil rouge
 
 Refactoriser l'application avec des directives personnalisées
+
+---
+
+# Composants fonctionnels
+
+Les composants fonctionnels sont des composants **sans état** optimisés pour les performances
+
+### Caractéristiques
+
+- Pas d'instance de composant
+- Pas d'état réactif
+- Pas de lifecycle hooks
+- Plus légers et plus rapides
+- Utiles pour les composants de présentation purs
+
+---
+
+# Composant fonctionnel - Syntaxe
+
+```vue
+<script>
+export default {
+  props: {
+    nom: String,
+    email: String
+  }
+}
+</script>
+
+<template>
+  <div class="user-info">
+    <p><strong>{{ nom }}</strong></p>
+    <p>{{ email }}</p>
+  </div>
+</template>
+```
+
+---
+
+# Composant fonctionnel avec render function
+
+```vue
+<script>
+export default {
+  functional: true,
+  props: {
+    level: {
+      type: Number,
+      required: true
+    }
+  },
+  render(h, { props, children }) {
+    return h(`h${props.level}`, children);
+  }
+};
+</script>
+```
+
+---
+
+# Quand utiliser un composant fonctionnel ?
+
+### ✅ Utiliser pour :
+
+- Composants de présentation simples
+- Composants très réutilisés (performance)
+- Wrappers de composants
+- Rendu conditionnel simple
+
+### ❌ Éviter pour :
+
+- Composants avec état complexe
+- Composants nécessitant des lifecycle hooks
+- Composants avec logique métier
+
+---
+
