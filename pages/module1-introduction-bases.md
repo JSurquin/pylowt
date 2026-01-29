@@ -321,14 +321,6 @@ graph LR
 
 ---
 
-# MVVM : Vue vs JavaScript pur
-
-**En JS pur** : vous devez tout câbler à la main (querySelector, addEventListener...)
-
-**Avec Vue** : le data binding fait le travail automatiquement ! 🎉
-
----
-
 # MVVM dans Vue.js - Exemple (1/2)
 
 **MODEL + VIEWMODEL (Script)**
@@ -412,19 +404,7 @@ layout: new-section
 # Vérifier les versions
 node --version  # v20.x ou supérieur
 npm --version   # v10.x ou supérieur
-
-# Alternative : pnpm (plus rapide)
-npm install -g pnpm
-pnpm --version
 ```
-
----
-
-# Package managers en 2025
-
-- **npm** : package manager par défaut
-- **pnpm** : plus rapide, économise de l'espace
-- **yarn** : alternative populaire
 
 ---
 
@@ -454,9 +434,6 @@ Vite signifie "rapide" en français ! Et créé par Evan You, le créateur de Vu
 ```bash
 # Créer un projet avec Vite (ULTRA simple)
 npm create vite@latest mon-projet -- --template vue
-
-# Avec TypeScript (recommandé pour les grands projets)
-npm create vite@latest mon-projet -- --template vue-ts
 ```
 
 ---
@@ -642,22 +619,7 @@ graph LR
 
 ---
 
-# Data Binding : Vue vs JavaScript pur
-
-### 🆚 En JavaScript pur, vous devriez faire :
-
-```javascript
-// Afficher
-element.textContent = variable;
-
-// Mettre à jour quand ça change
-variable = newValue;
-element.textContent = variable; // Il faut le refaire manuellement !
-```
-
----
-
-# La magie de Vue !
+# La réactivité de Vue
 
 **Avec Vue** : changez la variable, l'affichage se met à jour automatiquement ! ✨
 
