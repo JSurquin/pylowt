@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'module7-qcm'
 ---
 
+<a name="module7-qcm" id="module7-qcm"></a>
+
 # QCM Module 7
 ## CI/CD avec GitLab ✅
 

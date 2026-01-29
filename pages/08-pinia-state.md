@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'pinia-state'
 ---
 
+<a name="pinia-state" id="pinia-state"></a>
+
 # Module 8 : Pinia - State Management 🍍
 
 Le gestionnaire d'état officiel de Vue.js !

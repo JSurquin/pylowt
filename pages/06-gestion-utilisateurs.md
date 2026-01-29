@@ -3,6 +3,8 @@ layout: intro
 routeAlias: 'gestion-utilisateurs'
 ---
 
+<a name="gestion-utilisateurs" id="gestion-utilisateurs"></a>
+
 # Gestion des utilisateurs 👥
 
 ### Administration des comptes utilisateurs et groupes

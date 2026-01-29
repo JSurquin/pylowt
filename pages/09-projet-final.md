@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'projet-final'
 ---
 
+<a name="projet-final" id="projet-final"></a>
+
 # Module 9 : Projet Final et Bonnes Pratiques 🚀
 
 Consolidons tout ce que tu as appris !

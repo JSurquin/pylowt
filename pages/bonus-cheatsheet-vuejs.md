@@ -3,6 +3,8 @@ layout: section
 routeAlias: 'bonus-cheatsheet'
 ---
 
+<a name="bonus-cheatsheet" id="bonus-cheatsheet"></a>
+
 # 📋 Cheatsheet Vue.js 3
 
 Guide de référence rapide 2025

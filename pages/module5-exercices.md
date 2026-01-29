@@ -3,6 +3,8 @@ layout: exercices
 routeAlias: 'module5-exercices'
 ---
 
+<a name="module5-exercices" id="module5-exercices"></a>
+
 # Exercices Pratiques
 ## Module 5 - Vue Router
 

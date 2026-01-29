@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'bonus-typescript'
 ---
 
+<a name="bonus-typescript" id="bonus-typescript"></a>
+
 # MODULE BONUS
 ## TypeScript avec Vue.js 3
 

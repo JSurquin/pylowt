@@ -3,6 +3,8 @@ layout: intro
 routeAlias: 'paquets-logiciels'
 ---
 
+<a name="paquets-logiciels" id="paquets-logiciels"></a>
+
 # Paquets Logiciels 📦
 
 ### Gestion des paquets et logiciels Linux

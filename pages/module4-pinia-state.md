@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'module4-pinia'
 ---
 
+<a name="module4-pinia" id="module4-pinia"></a>
+
 # Module 4
 ## State Management avec Pinia
 

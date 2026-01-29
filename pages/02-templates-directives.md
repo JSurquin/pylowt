@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'templates-directives'
 ---
 
+<a name="templates-directives" id="templates-directives"></a>
+
 # Module 2 : Templates et Directives 📝
 
 Maîtrise la syntaxe qui fait la magie de Vue.js !

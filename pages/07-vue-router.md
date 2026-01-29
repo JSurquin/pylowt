@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'vue-router'
 ---
 
+<a name="vue-router" id="vue-router"></a>
+
 # Module 7 : Vue Router 4 🛤️
 
 Navigation et routage pour tes applications Vue.js !

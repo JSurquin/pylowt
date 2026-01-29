@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'projet-final'
 ---
 
+<a name="projet-final" id="projet-final"></a>
+
 # Projet Final
 ## Application de gestion de produits complète
 

@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'formulaires-vmodel'
 ---
 
+<a name="formulaires-vmodel" id="formulaires-vmodel"></a>
+
 # Module 6 : Formulaires et v-model 📋
 
 Maîtrise la liaison bidirectionnelle et les formulaires !

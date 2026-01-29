@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'bonus-cicd-qcm'
 ---
 
+<a name="bonus-cicd-qcm" id="bonus-cicd-qcm"></a>
+
 # QCM Module Bonus
 ## CI/CD avec GitLab ✅
 

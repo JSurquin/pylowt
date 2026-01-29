@@ -3,6 +3,8 @@ layout: exercices
 routeAlias: 'module6-exercices'
 ---
 
+<a name="module6-exercices" id="module6-exercices"></a>
+
 # Exercices Pratiques
 ## Module 6 - Tests avec Vitest
 

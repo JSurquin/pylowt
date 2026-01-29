@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'module2-slots'
 ---
 
+<a name="module2-slots" id="module2-slots"></a>
+
 # Module 2
 ## Slots et composants génériques
 

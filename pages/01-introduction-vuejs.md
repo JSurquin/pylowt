@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'introduction-vuejs'
 ---
 
+<a name="introduction-vuejs" id="introduction-vuejs"></a>
+
 # Module 1 : Introduction à Vue.js 3 💚
 
 Découvrons ensemble le framework progressif qui a conquis le monde du développement web !

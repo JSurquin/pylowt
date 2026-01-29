@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'module5-router'
 ---
 
+<a name="module5-router" id="module5-router"></a>
+
 # Module 5
 ## Navigation et routage avec Vue Router
 

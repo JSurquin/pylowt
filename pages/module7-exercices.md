@@ -3,6 +3,8 @@ layout: exercices
 routeAlias: 'module7-exercices'
 ---
 
+<a name="module7-exercices" id="module7-exercices"></a>
+
 # Exercices pratiques
 ## Module 7 - CI/CD avec GitLab 🎯
 

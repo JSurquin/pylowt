@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'reactivite-computed'
 ---
 
+<a name="reactivite-computed" id="reactivite-computed"></a>
+
 # Module 5 : Réactivité et Computed ⚡
 
 Le cœur battant de Vue.js - la magie qui fait tout fonctionner !

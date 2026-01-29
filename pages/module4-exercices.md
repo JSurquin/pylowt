@@ -3,6 +3,8 @@ layout: exercices
 routeAlias: 'module4-exercices'
 ---
 
+<a name="module4-exercices" id="module4-exercices"></a>
+
 # Exercices Pratiques
 ## Module 4 - State Management avec Pinia
 

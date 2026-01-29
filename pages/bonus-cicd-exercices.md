@@ -3,6 +3,8 @@ layout: exercices
 routeAlias: 'bonus-cicd-exercices'
 ---
 
+<a name="bonus-cicd-exercices" id="bonus-cicd-exercices"></a>
+
 # Exercices pratiques
 ## Module Bonus - CI/CD avec GitLab 🎯
 

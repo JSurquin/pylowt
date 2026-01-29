@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'module3-avance'
 ---
 
+<a name="module3-avance" id="module3-avance"></a>
+
 # Module 3
 ## Vue.js - Fonctionnement avancé
 

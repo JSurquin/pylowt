@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'qcm-final'
 ---
 
+<a name="qcm-final" id="qcm-final"></a>
+
 # QCM Final
 ## Validation de la formation Vue.js 3
 

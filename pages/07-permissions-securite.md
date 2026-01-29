@@ -3,6 +3,8 @@ layout: intro
 routeAlias: 'permissions-securite'
 ---
 
+<a name="permissions-securite" id="permissions-securite"></a>
+
 # Permissions et Sécurité 🔒
 
 ### Gestion avancée des permissions et sécurité système

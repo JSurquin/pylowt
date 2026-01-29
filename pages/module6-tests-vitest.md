@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'module6-tests'
 ---
 
+<a name="module6-tests" id="module6-tests"></a>
+
 # Module 6
 ## Tests sous Vue.js avec Vitest
 

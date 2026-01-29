@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'composants-vuejs'
 ---
 
+<a name="composants-vuejs" id="composants-vuejs"></a>
+
 # Module 3 : Composants Vue.js 🧩
 
 Les briques de construction de ton application !

@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'bonus-composition-api'
 ---
 
+<a name="bonus-composition-api" id="bonus-composition-api"></a>
+
 # MODULE BONUS
 ## Composition API - L'alternative moderne
 

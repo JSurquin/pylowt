@@ -3,6 +3,8 @@ layout: exercices
 routeAlias: 'module2-exercices'
 ---
 
+<a name="module2-exercices" id="module2-exercices"></a>
+
 # Exercices Pratiques
 ## Module 2 - Slots et composants génériques
 

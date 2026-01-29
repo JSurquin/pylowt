@@ -3,6 +3,8 @@ layout: exercices
 routeAlias: 'module3-exercices'
 ---
 
+<a name="module3-exercices" id="module3-exercices"></a>
+
 # Exercices Pratiques
 ## Module 3 - Vue.js avancé
 

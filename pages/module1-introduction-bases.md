@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'module1-introduction'
 ---
 
+<a name="module1-introduction" id="module1-introduction"></a>
+
 # Module 1
 ## Introduction à Vue.js et bases fondamentales
 

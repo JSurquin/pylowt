@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'composition-api'
 ---
 
+<a name="composition-api" id="composition-api"></a>
+
 # Module 4 : Composition API 🎯
 
 La nouvelle façon d'organiser ton code Vue.js !

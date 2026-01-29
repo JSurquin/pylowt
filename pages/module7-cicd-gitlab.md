@@ -3,6 +3,8 @@ layout: new-section
 routeAlias: 'bonus-cicd'
 ---
 
+<a name="bonus-cicd" id="bonus-cicd"></a>
+
 # Module 7
 ## CI/CD avec GitLab 🚀
 
