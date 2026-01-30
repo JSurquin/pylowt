@@ -23,7 +23,7 @@ themeConfig:
   #- "@slidev/addon-sharp-long-code"
 ---
 
-# Vue.js 3 - 2026 x 2026
+# Vue.js 3 - 2026
 
 💚 Une formation présentée par Ascent et Andromed.
 
