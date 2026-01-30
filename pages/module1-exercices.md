@@ -15,21 +15,6 @@ routeAlias: 'module1-exercices'
 
 Maintenant que vous avez vu tous les concepts théoriques du Module 1, il est temps de les mettre en pratique en construisant les composants de base de notre application TaskFlow !
 
-### Rappel des concepts du Module 1
-
-<div class="text-sm">
-
-**1.1 JavaScript ES6+** : Arrow functions, destructuring, modules  
-**1.2 Architecture Vue.js** : MVVM, organisation  
-**1.3 Outils** : Node.js, Vite  
-**1.4 Composants** : Structure .vue, data, methods  
-**1.5 Directives** : v-bind, v-if, v-for, v-model, v-on  
-**1.6 Communication** : Props, events ($emit)  
-**1.7 Réactivité** : Computed, watch  
-**1.8 Lifecycle** : mounted, unmounted
-
-</div>
-
 ### Les 5 exercices progressifs
 
 Nous allons créer 5 exercices qui couvrent tous ces concepts dans le contexte de TaskFlow.

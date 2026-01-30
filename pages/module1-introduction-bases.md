@@ -295,7 +295,7 @@ Vue.js suit le pattern MVVM (Model-View-ViewModel)
        │
 ┌──────┴───────┐
 │  VIEWMODEL   │  ← L'ARCHITECTE (organise tout) 👷
-│ (Composant)  │     Composant Vue.js
+│ (Composant)  │     Composant
 └──────┬───────┘
        │
        ↕ Logique métier
@@ -316,7 +316,7 @@ graph LR
         A[Template<br/>Ce que vous voyez]
     end
     
-    subgraph VIEWMODEL["VIEWMODEL - Composant Vue.js"]
+    subgraph VIEWMODEL["VIEWMODEL - Composant"]
         B[Composant<br/>L'architecte qui organise tout]
     end
     
@@ -711,6 +711,8 @@ Imaginez que vos données sont l'électricité, et votre template est l'ampoule.
 
 # Schéma : Data Binding
 
+<div class="-mt-20" style="transform: scale(0.75); transform-origin: center;">
+
 ```mermaid
 graph LR
     subgraph Component["Composant Vue.js"]
@@ -735,6 +737,8 @@ graph LR
     style Event fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
     style Model fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
 ```
+
+</div>
 
 ---
 
@@ -2285,10 +2289,6 @@ export default {
 - ✅ **Concepts fondamentaux** : Data binding, interpolation, directives
 - ✅ **Composants** : Création, props, événements, dynamiques
 - ✅ **Réactivité** : Computed, lifecycle, composables, requêtes HTTP
-
-### 🚀 Prochaine étape : Slots et composants génériques !
-
-"Le voyage de mille lieues commence par un pas" - Vous venez de faire le premier pas ! 👣
 
 ---
 layout: new-section
