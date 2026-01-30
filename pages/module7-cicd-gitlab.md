@@ -12,6 +12,15 @@ Intégration Continue et Déploiement Continu
 
 ---
 
+# LIENS UTILES
+
+<div class="flex flex-col gap-2">
+<Link to="bonus-cicd-exercices">💪 Exercices Pratiques CI/CD</Link>
+<Link to="bonus-cicd-qcm">📝 QCM CI/CD</Link>
+</div>
+
+---
+
 # Qu'est-ce que le CI/CD ? 🔄
 
 **CI/CD = Continuous Integration / Continuous Deployment**

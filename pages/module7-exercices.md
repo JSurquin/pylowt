@@ -1,5 +1,5 @@
 ---
-layout: exercices
+layout: new-section
 routeAlias: 'module7-exercices'
 ---
 

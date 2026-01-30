@@ -4,7 +4,7 @@ colorSchema: "auto"
 layout: intro
 highlighter: shiki
 # https://sli.dev/custom/highlighters.html
-title: Formation Vue.js 3 - Initiation 2025
+title: Formation Vue.js 3 - Initiation 2026
 # download: true
 #transition: slide-left
 # remoteAssets: false
@@ -23,7 +23,7 @@ themeConfig:
   #- "@slidev/addon-sharp-long-code"
 ---
 
-# Vue.js 3 - 2025 x 2026
+# Vue.js 3 - 2026 x 2026
 
 💚 Une formation présentée par Ascent et Andromed.
 
@@ -54,7 +54,7 @@ Fondateur <a  href="https://www.andromed.fr/"><logos-storyblok-icon  mr-1/>Andro
 ---
 layout: text-image
 media: 'https://vuejs.org/images/logo.png'
-caption: 'Vue.js 3 - 2025'
+caption: 'Vue.js 3 - 2026'
 ---
 
 # DISCLAIMER 💚
@@ -87,6 +87,7 @@ routeAlias: 'sommaire'
 <Link to="module4-pinia">🍍 5. State Management avec Pinia</Link>
 <Link to="module6-tests">🧪 6. Tests sous Vue.js avec Vitest</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
+<a target="_blank" href="https://github.com/jsurquin/taskflow-app">🔗 Lien du projet Github</a>
 <br/>
 <strong style="color: #42b883;">🎁 MODULES BONUS</strong>
 <Link to="bonus-composition-api">✨ Composition API</Link>
@@ -193,7 +194,7 @@ routeAlias: 'programme-jour3'
 - Mise en pratique complète
 - Application de tous les concepts
 - Architecture complète de l'application
-- Bonnes pratiques 2025
+- Bonnes pratiques 2026
 - QCM de validation finale
 
 **Modules Bonus (optionnels)**

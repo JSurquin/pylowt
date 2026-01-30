@@ -18,6 +18,10 @@ routeAlias: 'module5-router'
 <Link to="router-advanced">🚀 5.3 Fonctionnalités avancées</Link>
 </div>
 
+<br>
+
+<Link to="module5-exercices">💪 Exercices Pratiques du Module 5</Link>
+
 ---
 layout: new-section
 routeAlias: "router-intro"

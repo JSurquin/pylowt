@@ -19,6 +19,10 @@ routeAlias: 'module6-tests'
 <Link to="tests-integration">🔗 6.4 Tests d'intégration</Link>
 </div>
 
+<br>
+
+<Link to="module6-exercices">💪 Exercices Pratiques du Module 6</Link>
+
 ---
 layout: new-section
 routeAlias: "tests-intro"

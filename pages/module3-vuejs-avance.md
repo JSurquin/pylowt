@@ -14,8 +14,12 @@ routeAlias: 'module3-avance'
 
 <div class="flex flex-col gap-2">
 <Link to="sfc-components">📦 3.1 Single File Components</Link>
-<Link to="directives-personnalisees">🎯 3.2 Directives personnalisées</Link>
+<Link to="directives-personnalisees">✨ 3.2 Directives personnalisées</Link>
 </div>
+
+<br>
+
+<Link to="module3-exercices">💪 Exercices Pratiques du Module 3</Link>
 
 ---
 layout: new-section

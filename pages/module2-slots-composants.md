@@ -14,8 +14,12 @@ routeAlias: 'module2-slots'
 
 <div class="flex flex-col gap-2">
 <Link to="slots-introduction">🎰 2.1 Introduction aux slots</Link>
-<Link to="slots-implementation">🛠️ 2.2 Implémentation</Link>
+<Link to="slots-implementation">🛠️ 2.2 Implémentation des slots</Link>
 </div>
+
+<br>
+
+<Link to="module2-exercices">💪 Exercices Pratiques du Module 2</Link>
 
 ---
 layout: new-section
@@ -336,59 +340,6 @@ Syntaxes disponibles pour les slots
 
 ---
 
-# 🎯 Exercice TaskFlow : TaskCard.vue
-
-Maintenant qu'on maîtrise les **slots nommés**, créons un composant réutilisable pour TaskFlow !
-
-### 📝 Objectif
-
-Créer une carte flexible avec plusieurs emplacements personnalisables
-
----
-
-# 🎯 TaskCard.vue - Spécifications (1/2)
-
-### Props
-
-```vue
-variant: {
-  type: String,
-  default: 'default',
-  validator: (v) => ['default', 'success', 'warning', 'danger'].includes(v)
-},
-padding: {
-  type: Boolean,
-  default: true
-}
-```
-
----
-
-# 🎯 TaskCard.vue - Spécifications (2/2)
-
-### Slots nommés requis
-
-- `header` : En-tête personnalisable (optionnel)
-- `default` : Contenu principal (obligatoire)
-- `actions` : Zone de boutons (optionnel)
-- `footer` : Pied de page (optionnel)
-
-### Comportements
-
-- N'afficher le header que si le slot est fourni → `v-if="$slots.header"`
-- Border-left colorée selon le variant
-- Padding conditionnel selon la prop
-
-### 💡 Astuce
-
-Utilisez `computed` pour générer les classes dynamiques !
-
-### ✅ Correction
-
-👉 `taskflow-app/src/components/TaskCard.vue`
-
----
-
 # Scoped Slots - Introduction
 
 Les **scoped slots** permettent au composant enfant de passer des données au parent
@@ -575,79 +526,6 @@ export default {
 
 ---
 
-# 🎯 Exercice TaskFlow : BoardColumn.vue
-
-Créons une colonne Kanban avec **scoped slots** pour une flexibilité maximale !
-
-### 📝 Objectif
-
-Une colonne réutilisable qui expose les données des tâches au parent via scoped slots
-
----
-
-# 🎯 BoardColumn.vue - Spécifications (1/3)
-
-### Props
-
-```vue
-title: { 
-  type: String, 
-  required: true 
-},
-tasks: { 
-  type: Array, 
-  default: () => [] 
-},
-color: { 
-  type: String, 
-  default: '#3b82f6' 
-}
-```
-
----
-
-# 🎯 BoardColumn.vue - Spécifications (2/3)
-
-### Scoped Slot `task` (expose les données)
-
-```vue
-<slot 
-  name="task"
-  :task="task"
-  :index="index"
-  :isFirst="index === 0"
-  :isLast="index === tasks.length - 1"
->
-  <!-- Fallback si pas de slot fourni -->
-</slot>
-```
-
-### Slots nommés additionnels
-
-- `header` : En-tête personnalisable (scoped: `title`, `count`)
-- `empty` : Message si `tasks.length === 0`
-
----
-
-# 🎯 BoardColumn.vue - Spécifications (3/3)
-
-### Bonus (optionnel)
-
-Ajouter le **drag & drop** :
-- `@dragstart` : Sauvegarder l'ID de la tâche
-- `@drop` : Émettre un événement avec taskId + colonne
-- `@dragover` : Ajouter classe `.drag-over`
-
-### 💡 Astuce
-
-Les scoped slots permettent au parent de décider comment afficher chaque tâche !
-
-### ✅ Correction
-
-👉 `taskflow-app/src/components/BoardColumn.vue`
-
----
-
 # Slots dynamiques
 
 Les slots peuvent être déterminés dynamiquement
@@ -762,6 +640,54 @@ Utilisez `to="body"` pour la plupart des cas, ou un sélecteur CSS spécifique !
 
 ---
 
+# Teleport : Rendu ailleurs 🚀
+
+Le composant **Teleport** permet de rendre un composant dans une autre partie du DOM
+
+### 🎯 Pourquoi Teleport ?
+
+**Problème** : Une modale créée dans un composant enfant hérite du contexte CSS parent (z-index, overflow)
+
+**Solution** : Teleport permet de rendre la modale directement dans `<body>` !
+
+---
+
+# Teleport : Syntaxe
+
+```vue
+<template>
+  <button @click="showModal = true">Ouvrir</button>
+  
+  <Teleport to="body">
+    <div v-if="showModal" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Je suis rendu dans body !</h2>
+        <button @click="showModal = false">Fermer</button>
+      </div>
+    </div>
+  </Teleport>
+</template>
+```
+
+### Résultat dans le DOM
+
+Le contenu du `<Teleport>` est téléporté directement dans `<body>`, pas dans le composant parent !
+
+---
+
+# Teleport : Cas d'usage
+
+- 🎭 **Modales** : Éviter les problèmes de z-index et overflow
+- 📋 **Tooltips** : Positionnement absolu libre
+- 🔔 **Notifications** : Toast/snackbar en haut à droite
+- 🖼️ **Overlays** : Plein écran sans contraintes CSS du parent
+
+### 💡 Conseil
+
+Utilisez `to="body"` pour la plupart des cas !
+
+---
+
 # Combinaison Props & Slots
 
 Les slots et props travaillent ensemble pour créer des composants puissants
@@ -867,86 +793,6 @@ export default {
   </Modal>
 </template>
 ```
-
----
-
-# 🎯 Exercice TaskFlow : TaskModal.vue
-
-Créons un composant Modal réutilisable avec **Teleport** et **slots** !
-
-### 📝 Objectif
-
-Une modale flexible pour TaskFlow (édition de tâches, confirmations, etc.)
-
----
-
-# 🎯 TaskModal.vue - Spécifications (1/3)
-
-### Props
-
-```vue
-modelValue: {
-  type: Boolean,
-  default: false
-},
-size: {
-  type: String,
-  default: 'medium',
-  validator: (v) => ['small', 'medium', 'large'].includes(v)
-},
-closable: {
-  type: Boolean,
-  default: true
-}
-```
-
-### Events
-
-- `update:modelValue` : Pour v-model (fermeture)
-
----
-
-# 🎯 TaskModal.vue - Spécifications (2/3)
-
-### Structure avec Teleport
-
-```vue
-<Teleport to="body">
-  <Transition name="modal">
-    <div v-if="modelValue" class="modal-overlay" @click="handleClose">
-      <div class="modal-content" :class="`modal-${size}`" @click.stop>
-        <!-- Slots ici -->
-      </div>
-    </div>
-  </Transition>
-</Teleport>
-```
-
-### Slots nommés
-
-- `title` : Titre de la modale
-- `default` : Contenu principal
-- `footer` : Boutons d'actions
-
----
-
-# 🎯 TaskModal.vue - Spécifications (3/3)
-
-### Comportements
-
-- Clic sur l'overlay → ferme la modale (si `closable: true`)
-- Touche Escape → ferme la modale
-- `@click.stop` sur `.modal-content` pour empêcher la fermeture
-
-### 💡 Astuces
-
-- Utilisez `v-if="modelValue"` pour conditionner l'affichage
-- Ajoutez une `Transition` pour animer l'apparition
-- Gérez l'événement `keydown.escape` dans `mounted()`
-
-### ✅ Correction
-
-👉 `taskflow-app/src/components/TaskModal.vue`
 
 ---
 
@@ -1515,6 +1361,103 @@ export default {
 | **Scoped slots** | Personnalisation du rendu (List, Table) |
 | **Renderless** | Logique réutilisable (Mouse, Fetch) |
 | **Slots dynamiques** | UI configurable dynamiquement |
+
+---
+layout: new-section
+---
+
+# 🎯 Exercices Fil Rouge TaskFlow
+## Module 2
+
+Créons les composants réutilisables avec slots !
+
+---
+
+# 🎯 Exercice 1 : TaskCard.vue
+
+Créez une carte flexible avec slots nommés
+
+### Props
+
+- `variant` : 'default' | 'success' | 'warning' | 'danger'
+- `padding` (Boolean)
+
+### Slots nommés
+
+- `header` : En-tête personnalisable
+- `default` : Contenu principal
+- `actions` : Boutons d'actions
+- `footer` : Pied de page
+
+### Comportement
+
+- N'afficher le header que si `$slots.header` existe
+- Border-left colorée selon le variant
+
+### 💡 Correction
+
+👉 **Module 2 - Exercices** OU `taskflow-app/src/components/TaskCard.vue`
+
+---
+
+# 🎯 Exercice 2 : BoardColumn.vue
+
+Créez une colonne Kanban avec scoped slots
+
+### Props
+
+- `title` (String, required)
+- `tasks` (Array)
+- `color` (String, default: '#3b82f6')
+
+### Scoped slot `task`
+
+Exposer : `task`, `index`, `isFirst`, `isLast`
+
+### Slots nommés
+
+- `header` (scoped: title, count)
+- `empty` : Message si aucune tâche
+
+### Bonus
+
+Drag & drop : `@dragstart`, `@drop`, `@dragover`, classe `.drag-over`
+
+### 💡 Correction
+
+👉 **Module 2 - Exercices** OU `taskflow-app/src/components/BoardColumn.vue`
+
+---
+
+# 🎯 Exercice 3 : TaskModal.vue
+
+Créez une modale avec Teleport et slots
+
+### Props
+
+- `modelValue` (Boolean) : Pour v-model
+- `size` : 'small' | 'medium' | 'large'
+- `closable` (Boolean)
+
+### Structure
+
+```vue
+<Teleport to="body">
+  <Transition name="modal">
+    <div v-if="modelValue" class="modal-overlay">
+      <!-- Slots : title, default, footer -->
+    </div>
+  </Transition>
+</Teleport>
+```
+
+### Event
+
+- `update:modelValue` : Pour fermer la modale
+
+### 💡 Correction
+
+👉 **Module 2 - Exercices** OU `taskflow-app/src/components/TaskModal.vue`
 
 ---
 
