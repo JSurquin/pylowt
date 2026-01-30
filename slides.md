@@ -83,8 +83,8 @@ routeAlias: 'sommaire'
 ::right::
 
 <div class="flex flex-col gap-2">
-<Link to="module5-router">🛤️ 4. Navigation et routage avec Vue Router</Link>
-<Link to="module4-pinia">🍍 5. State Management avec Pinia</Link>
+<Link to="module4-pinia">🍍 4. State Management avec Pinia</Link>
+<Link to="module5-router">🛤️ 5. Navigation et routage avec Vue Router</Link>
 <Link to="module6-tests">🧪 6. Tests sous Vue.js avec Vitest</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
 <a target="_blank" href="https://github.com/jsurquin/taskflow-app">🔗 Lien du projet Github</a>
@@ -228,19 +228,19 @@ src: './pages/module3-exercices.md'
 ---
 
 ---
-src: './pages/module5-vue-router.md'
----
-
----
-src: './pages/module5-exercices.md'
----
-
----
-src: './pages/module4-pinia-state.md'
+src: './pages/module4-vue-router.md'
 ---
 
 ---
 src: './pages/module4-exercices.md'
+---
+
+---
+src: './pages/module5-pinia-state.md'
+---
+
+---
+src: './pages/module5-exercices.md'
 ---
 
 ---

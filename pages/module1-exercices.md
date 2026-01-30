@@ -143,6 +143,39 @@ VITE v5.x.x  ready in XXX ms
 
 Préparer App.vue pour recevoir nos composants TaskFlow.
 
+### ⚠️ IMPORTANT : Options API vs Composition API
+
+**Attention !** Le template Vite génère par défaut du code avec **Composition API** :
+
+```vue
+<!-- Ce que Vite génère -->
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+</script>
+```
+
+**Dans cette formation, nous utilisons l'Options API** :
+
+```vue
+<!-- Ce que nous allons utiliser -->
+<script>
+export default {
+  name: 'App',
+  data() { return {} },
+  methods: {},
+  computed: {}
+}
+</script>
+```
+
+**Pourquoi Options API ?**
+- ✅ Plus facile à apprendre pour les débutants
+- ✅ Structure claire (data, methods, computed bien séparés)
+- ✅ Meilleure compréhension des concepts Vue
+- ✅ La Composition API sera vue dans le Module Bonus !
+
+---
+
 ### Remplacer le contenu de src/App.vue
 
 ```vue
@@ -179,9 +212,7 @@ body {
 }
 
 #app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
 }
 
 header {
@@ -261,6 +292,7 @@ Créer le composant de base pour afficher une tâche
 **Événements** :
 - `@toggle` : Émettre quand on coche/décoche
 - `@delete` : Émettre quand on clique sur supprimer
+- `@edit` : Émettre quand on clique sur éditer
 
 ---
 
@@ -281,7 +313,7 @@ export default {
       }
     }
   },
-  emits: ['toggle', 'delete'],
+  emits: ['toggle', 'delete', 'edit'],
   computed: {
     priorityColor() {
       const colors = {
@@ -335,12 +367,20 @@ export default {
       </span>
     </div>
     
-    <button 
-      class="task-delete"
-      @click="$emit('delete', task.id)"
-    >
-      🗑️
-    </button>
+    <div class="task-actions">
+      <button 
+        class="task-edit"
+        @click="$emit('edit', task)"
+      >
+        ✏️
+      </button>
+      <button 
+        class="task-delete"
+        @click="$emit('delete', task.id)"
+      >
+        🗑️
+      </button>
+    </div>
   </div>
 </template>
 ```
@@ -394,6 +434,27 @@ export default {
   color: white;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.task-edit,
+.task-delete {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.task-edit:hover,
+.task-delete:hover {
+  opacity: 1;
 }
 </style>
 ```
@@ -647,6 +708,18 @@ export default {
       return this.formData.title.trim().length >= 3;
     }
   },
+  watch: {
+    editTask: {
+      handler(newTask) {
+        if (newTask) {
+          this.formData = { ...newTask };
+        } else {
+          this.resetForm();
+        }
+      },
+      immediate: true
+    }
+  },
   methods: {
     handleSubmit() {
       if (this.isValid) {
@@ -661,15 +734,27 @@ export default {
         priority: 'medium'
       };
     }
-  },
-  mounted() {
-    if (this.editTask) {
-      this.formData = { ...this.editTask };
-    }
   }
 }
 </script>
 ```
+
+---
+
+# 💡 Pourquoi le watch ?
+
+### Le problème sans watch
+
+Sans le `watch`, si vous éditez une tâche puis annulez, **les inputs gardent les anciennes valeurs** quand vous créez une nouvelle tâche.
+
+### La solution avec watch
+
+Le `watch` avec `immediate: true` :
+- ✅ Charge les données au montage (si `editTask` existe)
+- ✅ Réagit quand `editTask` change
+- ✅ **Réinitialise quand `editTask` devient `null`** ← FIX du bug !
+
+**C'est une bonne pratique pour les formulaires d'édition !**
 
 ---
 

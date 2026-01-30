@@ -1,661 +1,296 @@
 ---
 layout: new-section
-routeAlias: 'module5-exercices'
+routeAlias: 'module4-exercices'
 ---
 
-<a name="module5-exercices" id="module5-exercices"></a>
+<a name="module4-exercices" id="module4-exercices"></a>
 
 # Exercices Pratiques
-## Module 5 - Vue Router
+## Module 4 - Pinia (State Management)
 
 ---
 
 # 🎯 Fil Rouge : TaskFlow
-## Exercices Module 5
+## Exercices Module 4
 
-Maintenant que vous avez vu tous les concepts théoriques du Module 5, il est temps d'ajouter la navigation et le routing à TaskFlow !
+Maintenant que vous avez vu tous les concepts théoriques du Module 4, il est temps de centraliser l'état de TaskFlow avec Pinia !
 
-### Rappel des concepts du Module 5
+### Rappel des concepts du Module 4
 
 <div class="text-sm">
 
-**5.1 Configuration** : createRouter, routes, history mode  
-**5.2 Navigation** : RouterLink, RouterView, programmatic navigation  
-**5.3 Routes dynamiques** : Paramètres, props  
-**5.4 Guards** : beforeEach, beforeEnter, onBeforeRouteLeave  
-**5.5 Meta fields** : requiresAuth, title
+**4.1 Introduction à Pinia** : Store, State, Getters, Actions  
+**4.2 Stores avancés** : Composition entre stores, plugins  
+**4.3 Persistence** : localStorage, sessionStorage
 
 </div>
 
-### Les 7 exercices progressifs
+### Les 3 exercices progressifs
 
-Nous allons créer un système de navigation complet pour TaskFlow.
+Nous allons créer 3 stores Pinia pour gérer l'état global de TaskFlow.
 
 ---
 
-# Exercice 1 : Configuration Router
+# Exercice 1 : Store Tasks
 
 ### Objectif
-Configurer Vue Router pour TaskFlow
-
-### Routes à créer
-
-```
-/ (Home)
-/tasks (Liste des tâches)
-/task/:id (Détail d'une tâche)
-/categories (Catégories)
-/login (Connexion)
-/dashboard (Protégé - Admin)
-/404 (Not Found)
-```
-
-### Installation
-
-```bash
-npm install vue-router@4
-```
-
----
-
-# Exercice 1 - Solution router/index.js (1/2)
-
-```js
-// router/index.js
-import { createRouter, createWebHistory } from 'vue-router';
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import('../views/HomePage.vue'),
-    meta: {
-      title: 'TaskFlow - Accueil',
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/tasks',
-    name: 'TaskList',
-    component: () => import('../views/TaskListView.vue'),
-    meta: {
-      title: 'Mes Tâches',
-      requiresAuth: true
-    }
-  },
-  {
-    path: '/task/:id',
-    name: 'TaskDetail',
-    component: () => import('../views/TaskDetailView.vue'),
-    meta: {
-      title: 'Détail de la tâche',
-      requiresAuth: true
-    },
-    props: true
-  },
-  {
-    path: '/categories',
-    name: 'Categories',
-    component: () => import('../views/CategoriesView.vue'),
-    meta: {
-      title: 'Catégories',
-      requiresAuth: true
-    }
-  }
-];
-```
-
----
-
-# Exercice 1 - Solution router/index.js (2/2)
-
-```js
-// router/index.js (suite)
-const routes = [
-  // ... routes précédentes
-  
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('../views/LoginView.vue'),
-    meta: {
-      title: 'Connexion',
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: () => import('../views/DashboardView.vue'),
-    meta: {
-      title: 'Dashboard Admin',
-      requiresAuth: true,
-      requiresAdmin: true
-    }
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: () => import('../views/NotFoundView.vue'),
-    meta: {
-      title: 'Page non trouvée'
-    }
-  }
-];
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-});
-
-export default router;
-```
-
----
-
-# Exercice 1 - main.js avec Router
-
-```js
-// main.js
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import App from './App.vue';
-import router from './router';
-import './styles/main.css';
-
-const app = createApp(App);
-const pinia = createPinia();
-
-app.use(pinia);
-app.use(router);
-
-app.mount('#app');
-```
-
----
-
-# Exercice 1 - App.vue avec Navigation
-
-```vue
-<script>
-import { useAuthStore } from '@/stores/auth';
-
-export default {
-  name: 'App',
-  setup() {
-    const authStore = useAuthStore();
-    authStore.checkAuth();
-    
-    return {
-      authStore
-    };
-  }
-}
-</script>
-
-<template>
-  <div id="app">
-    <nav class="main-nav">
-      <div class="nav-brand">
-        <RouterLink to="/">
-          📋 TaskFlow
-        </RouterLink>
-      </div>
-      
-      <div class="nav-links">
-        <RouterLink to="/">Accueil</RouterLink>
-        <RouterLink to="/tasks">Mes Tâches</RouterLink>
-        <RouterLink to="/categories">Catégories</RouterLink>
-        
-        <RouterLink 
-          v-if="authStore.canCreateCategories"
-          to="/dashboard"
-        >
-          Dashboard
-        </RouterLink>
-      </div>
-      
-      <div class="nav-user">
-        <span v-if="authStore.isAuthenticated">
-          👤 {{ authStore.userDisplayName }}
-        </span>
-        <RouterLink v-else to="/login">
-          Connexion
-        </RouterLink>
-      </div>
-    </nav>
-    
-    <main class="main-content">
-      <RouterView />
-    </main>
-  </div>
-</template>
-```
-
----
-
-# Exercice 2 : Guards de Navigation
-
-### Objectif
-Protéger les routes avec des guards
+Créer un store Pinia pour gérer les tâches
 
 ### Spécifications
 
-**Guard global** :
-- Vérifier l'authentification
-- Rediriger vers `/login` si non authentifié
-- Rediriger les admins uniquement vers `/dashboard`
+**State** :
+- `tasks` : Array de tâches
+- `filter` : 'all' | 'active' | 'done'
+- `loading` : Boolean
+- `error` : String | null
 
-**Guard dans composant** :
-- `onBeforeRouteLeave` : Confirmer avant de quitter une page d'édition
+**Actions** :
+- `fetchTasks()` : Charger depuis API/localStorage
+- `addTask(task)` : Ajouter une tâche
+- `updateTask(id, updates)` : Modifier une tâche
+- `deleteTask(id)` : Supprimer une tâche
+- `toggleTask(id)` : Toggle done/undone
+- `setFilter(filter)` : Changer le filtre
 
 ---
 
-# Exercice 2 - Solution Navigation Guards
+# Exercice 1 - Solution Store Tasks (1/4)
 
 ```js
-// router/index.js (avec guards)
-import { createRouter, createWebHistory } from 'vue-router';
-import { useAuthStore } from '@/stores/auth';
+// stores/tasks.js
+import { defineStore } from 'pinia';
 
-// ... définition des routes
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes
+export const useTasksStore = defineStore('tasks', {
+  state: () => ({
+    tasks: [],
+    filter: 'all',
+    loading: false,
+    error: null
+  }),
+  
+  getters: {
+    // Tâches filtrées selon le filtre actif
+    filteredTasks(state) {
+      switch (state.filter) {
+        case 'active':
+          return state.tasks.filter(t => !t.done);
+        case 'done':
+          return state.tasks.filter(t => t.done);
+        default:
+          return state.tasks;
+      }
+    },
+    
+    // Nombre de tâches actives
+    activeCount(state) {
+      return state.tasks.filter(t => !t.done).length;
+    },
+    
+    // Nombre de tâches terminées
+    doneCount(state) {
+      return state.tasks.filter(t => t.done).length;
+    },
+    
+    // Tâches par priorité
+    tasksByPriority(state) {
+      return (priority) => {
+        return state.tasks.filter(t => t.priority === priority);
+      };
+    },
+    
+    // Rechercher une tâche par ID
+    getTaskById(state) {
+      return (id) => state.tasks.find(t => t.id === id);
+    }
+  }
 });
-
-// ✅ GUARD GLOBAL
-router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore();
-  
-  // Changer le titre de la page
-  document.title = to.meta.title || 'TaskFlow';
-  
-  // Vérifier si la route nécessite une authentification
-  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
-    // Rediriger vers login avec query pour revenir après
-    next({
-      name: 'Login',
-      query: { redirect: to.fullPath }
-    });
-    return;
-  }
-  
-  // Vérifier si la route nécessite les droits admin
-  if (to.meta.requiresAdmin && !authStore.canCreateCategories) {
-    alert('Accès réservé aux administrateurs');
-    next({ name: 'Home' });
-    return;
-  }
-  
-  // Si déjà connecté et tente d'aller sur /login
-  if (to.name === 'Login' && authStore.isAuthenticated) {
-    next({ name: 'TaskList' });
-    return;
-  }
-  
-  next();
-});
-
-export default router;
 ```
 
 ---
 
-# Exercice 2 - Solution onBeforeRouteLeave
+# Exercice 1 - Solution Store Tasks (2/4)
 
-```vue
-<script>
-import { onBeforeRouteLeave } from 'vue-router';
-import { ref } from 'vue';
-
-export default {
-  name: 'TaskEditView',
-  setup() {
-    const hasUnsavedChanges = ref(false);
-    
-    // ✅ GUARD dans le composant
-    onBeforeRouteLeave((to, from, next) => {
-      if (hasUnsavedChanges.value) {
-        const answer = window.confirm(
-          'Vous avez des modifications non sauvegardées. Voulez-vous vraiment quitter ?'
-        );
-        
-        if (answer) {
-          next();
-        } else {
-          next(false);
+```js
+// stores/tasks.js (suite)
+export const useTasksStore = defineStore('tasks', {
+  // ... state et getters précédents
+  
+  actions: {
+    // Charger les tâches
+    async fetchTasks() {
+      this.loading = true;
+      this.error = null;
+      
+      try {
+        // Option 1: Depuis localStorage
+        const stored = localStorage.getItem('taskflow-tasks');
+        if (stored) {
+          this.tasks = JSON.parse(stored);
         }
-      } else {
-        next();
+        
+        // Option 2: Depuis une API
+        // const response = await fetch('/api/tasks');
+        // this.tasks = await response.json();
+        
+      } catch (err) {
+        this.error = err.message;
+      } finally {
+        this.loading = false;
       }
-    });
-    
-    return {
-      hasUnsavedChanges
-    };
-  }
-}
-</script>
-
-<template>
-  <div>
-    <h1>Éditer la tâche</h1>
-    
-    <form @input="hasUnsavedChanges = true">
-      <!-- Formulaire -->
-    </form>
-  </div>
-</template>
-```
-
----
-
-# Exercice 3 : TaskDetailView
-
-### Objectif
-Créer la vue de détail d'une tâche
-
-### Spécifications
-
-**Route** : `/task/:id`
-
-**Fonctionnalités** :
-- Charger la tâche depuis le store
-- Afficher tous les détails
-- Modifier en ligne
-- Bouton supprimer
-- Breadcrumb de navigation
-- Bouton retour
-
----
-
-# Exercice 3 - Solution TaskDetailView.vue (1/4)
-
-```vue
-<script>
-import { useTasksStore } from '@/stores/tasks';
-import { useCategoriesStore } from '@/stores/categories';
-import { useRouter, useRoute } from 'vue-router';
-
-export default {
-  name: 'TaskDetailView',
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const tasksStore = useTasksStore();
-    const categoriesStore = useCategoriesStore();
-    
-    // ✅ Récupérer l'ID depuis la route
-    const taskId = parseInt(route.params.id);
-    
-    return {
-      router,
-      taskId,
-      tasksStore,
-      categoriesStore
-    };
-  },
-  data() {
-    return {
-      isEditing: false,
-      editForm: {}
-    };
-  },
-  computed: {
-    task() {
-      return this.tasksStore.getTaskById(this.taskId);
     },
-    category() {
-      if (!this.task?.categoryId) return null;
-      return this.categoriesStore.categoryById(this.task.categoryId);
-    }
-  },
-  mounted() {
-    // Si tâche inexistante, rediriger vers 404
-    if (!this.task) {
-      this.router.push({ name: 'NotFound' });
-    }
+    
+    // Ajouter une tâche
+    addTask(task) {
+      const newTask = {
+        id: Date.now(),
+        done: false,
+        createdAt: new Date().toISOString(),
+        ...task
+      };
+      
+      this.tasks.push(newTask);
+      this._persist();
+    },
+    
+    // Suite dans la slide suivante...
   }
-}
-</script>
+});
 ```
 
 ---
 
-# Exercice 3 - Solution TaskDetailView.vue (2/4)
+# Exercice 1 - Solution Store Tasks (3/4)
 
-**Methods :**
-
-```vue
-<script>
-export default {
-  // ... setup et computed précédents
+```js
+// stores/tasks.js (suite)
+export const useTasksStore = defineStore('tasks', {
+  // ... state, getters et actions précédentes
   
-  methods: {
-    startEdit() {
-      this.editForm = { ...this.task };
-      this.isEditing = true;
-    },
+  actions: {
+    // ... actions précédentes
     
-    saveEdit() {
-      this.tasksStore.updateTask(this.taskId, this.editForm);
-      this.isEditing = false;
-    },
-    
-    cancelEdit() {
-      this.isEditing = false;
-    },
-    
-    async deleteTask() {
-      if (confirm('Supprimer cette tâche ?')) {
-        this.tasksStore.deleteTask(this.taskId);
-        this.router.push({ name: 'TaskList' });
+    // Modifier une tâche
+    updateTask(id, updates) {
+      const index = this.tasks.findIndex(t => t.id === id);
+      if (index !== -1) {
+        this.tasks[index] = {
+          ...this.tasks[index],
+          ...updates,
+          updatedAt: new Date().toISOString()
+        };
+        this._persist();
       }
     },
     
-    goBack() {
-      this.router.back();
+    // Supprimer une tâche
+    deleteTask(id) {
+      this.tasks = this.tasks.filter(t => t.id !== id);
+      this._persist();
+    },
+    
+    // Toggle done/undone
+    toggleTask(id) {
+      const task = this.tasks.find(t => t.id === id);
+      if (task) {
+        task.done = !task.done;
+        task.completedAt = task.done ? new Date().toISOString() : null;
+        this._persist();
+      }
+    },
+    
+    // Changer le filtre
+    setFilter(filter) {
+      this.filter = filter;
+    },
+    
+    // Suite dans la slide suivante...
+  }
+});
+```
+
+---
+
+# Exercice 1 - Solution Store Tasks (4/4)
+
+```js
+// stores/tasks.js (suite)
+export const useTasksStore = defineStore('tasks', {
+  // ... state, getters et actions précédentes
+  
+  actions: {
+    // ... actions précédentes
+    
+    // Supprimer toutes les tâches terminées
+    clearCompleted() {
+      this.tasks = this.tasks.filter(t => !t.done);
+      this._persist();
+    },
+    
+    // Marquer toutes comme terminées
+    markAllDone() {
+      this.tasks.forEach(t => {
+        t.done = true;
+        t.completedAt = new Date().toISOString();
+      });
+      this._persist();
+    },
+    
+    // Méthode privée pour la persistence
+    _persist() {
+      localStorage.setItem('taskflow-tasks', JSON.stringify(this.tasks));
     }
   }
-}
-</script>
+});
 ```
 
 ---
 
-# Exercice 3 - Solution TaskDetailView.vue (3/4)
-
-**Template - Header et Édition :**
-
-```vue
-<template>
-  <div class="task-detail" v-if="task">
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb">
-      <RouterLink to="/">Accueil</RouterLink>
-      <span>/</span>
-      <RouterLink to="/tasks">Tâches</RouterLink>
-      <span>/</span>
-      <span>{{ task.title }}</span>
-    </nav>
-    
-    <!-- En-tête -->
-    <div class="task-header">
-      <h1>{{ task.title }}</h1>
-      
-      <div class="task-actions">
-        <button @click="startEdit" v-if="!isEditing">
-          ✏️ Modifier
-        </button>
-        <button @click="deleteTask" class="btn-danger">
-          🗑️ Supprimer
-        </button>
-        <button @click="goBack" class="btn-secondary">
-          ← Retour
-        </button>
-      </div>
-    </div>
-    
-    <!-- Mode édition -->
-    <div v-if="isEditing" class="edit-mode">
-      <div class="form-group">
-        <label>Titre</label>
-        <input v-model="editForm.title" />
-      </div>
-      
-      <div class="form-group">
-        <label>Description</label>
-        <textarea v-model="editForm.description"></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label>Priorité</label>
-        <select v-model="editForm.priority">
-          <option value="low">Basse</option>
-          <option value="medium">Moyenne</option>
-          <option value="high">Haute</option>
-          <option value="urgent">URGENT</option>
-        </select>
-      </div>
-      
-      <div class="form-actions">
-        <button @click="saveEdit" class="btn-primary">
-          💾 Sauvegarder
-        </button>
-        <button @click="cancelEdit" class="btn-secondary">
-          Annuler
-        </button>
-      </div>
-    </div>
-  </div>
-</template>
-```
-
----
-
-# Exercice 3 - Solution TaskDetailView.vue (4/4)
-
-**Template - Mode Lecture :**
-
-```vue
-<template>
-  <div class="task-detail" v-if="task">
-    <!-- ... header et mode édition précédents -->
-    
-    <!-- Mode lecture -->
-    <div v-else class="view-mode">
-      <div class="task-meta">
-        <div class="meta-item">
-          <strong>Statut :</strong>
-          <span :class="task.done ? 'status-done' : 'status-active'">
-            {{ task.done ? '✅ Terminée' : '⏳ En cours' }}
-          </span>
-        </div>
-        
-        <div class="meta-item">
-          <strong>Priorité :</strong>
-          <span :class="`priority-${task.priority}`">
-            {{ task.priority }}
-          </span>
-        </div>
-        
-        <div class="meta-item" v-if="category">
-          <strong>Catégorie :</strong>
-          <span :style="{ color: category.color }">
-            {{ category.icon }} {{ category.name }}
-          </span>
-        </div>
-        
-        <div class="meta-item">
-          <strong>Créée le :</strong>
-          {{ new Date(task.createdAt).toLocaleDateString('fr-FR') }}
-        </div>
-        
-        <div class="meta-item" v-if="task.completedAt">
-          <strong>Terminée le :</strong>
-          {{ new Date(task.completedAt).toLocaleDateString('fr-FR') }}
-        </div>
-      </div>
-      
-      <div class="task-content">
-        <h2>Description</h2>
-        <p>{{ task.description || 'Aucune description' }}</p>
-      </div>
-    </div>
-  </div>
-</template>
-```
-
----
-
-# Exercice 4 : LoginView avec Redirect
-
-### Objectif
-Gérer la connexion avec redirection après login
-
-### Spécifications
-
-**Route** : `/login`
-
-**Fonctionnalités** :
-- Formulaire de connexion
-- Appeler `authStore.login()`
-- Rediriger vers la page d'origine (`query.redirect`)
-- Sinon rediriger vers `/tasks`
-
----
-
-# Exercice 4 - Solution LoginView.vue (1/2)
+# Exercice 1 - Utilisation Store Tasks (1/2)
 
 **Script :**
 
 ```vue
 <script>
-import { useAuthStore } from '@/stores/auth';
-import { useRouter, useRoute } from 'vue-router';
+import { useTasksStore } from '@/stores/tasks';
 
 export default {
-  name: 'LoginView',
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const authStore = useAuthStore();
-    
-    return {
-      router,
-      route,
-      authStore
-    };
+  name: 'TaskList',
+  computed: {
+    // ✅ Style Options API moderne : appel direct du store
+    // Plus clair, plus explicite, sans helpers magiques
+    tasksStore() {
+      return useTasksStore();
+    },
+    // Accès aux propriétés du store via des computed explicites
+    filteredTasks() {
+      return this.tasksStore.filteredTasks;
+    },
+    activeCount() {
+      return this.tasksStore.activeCount;
+    },
+    doneCount() {
+      return this.tasksStore.doneCount;
+    },
+    loading() {
+      return this.tasksStore.loading;
+    }
   },
-  data() {
-    return {
-      form: {
-        email: '',
-        password: ''
-      },
-      error: null,
-      loading: false
-    };
+  mounted() {
+    this.tasksStore.fetchTasks();
   },
   methods: {
-    async handleLogin() {
-      this.error = null;
-      this.loading = true;
-      
-      try {
-        await this.authStore.login(this.form.email, this.form.password);
-        
-        // ✅ Rediriger vers l'URL d'origine ou /tasks
-        const redirect = this.route.query.redirect || '/tasks';
-        this.router.push(redirect);
-        
-      } catch (err) {
-        this.error = 'Email ou mot de passe incorrect';
-      } finally {
-        this.loading = false;
-      }
+    addNewTask() {
+      this.tasksStore.addTask({
+        title: 'Nouvelle tâche',
+        description: 'Description',
+        priority: 'medium'
+      });
+    },
+    handleToggle(id) {
+      this.tasksStore.toggleTask(id);
+    },
+    handleDelete(id) {
+      this.tasksStore.deleteTask(id);
     }
   }
 }
@@ -664,337 +299,416 @@ export default {
 
 ---
 
-# Exercice 4 - Solution LoginView.vue (2/2)
+# Exercice 1 - Utilisation Store Tasks (2/2)
 
 **Template :**
 
 ```vue
 <template>
-  <div class="login-view">
-    <div class="login-card">
-      <h1>📋 TaskFlow</h1>
-      <h2>Connexion</h2>
-      
-      <form @submit.prevent="handleLogin">
-        <div class="form-group">
-          <label>Email</label>
-          <input 
-            v-model="form.email"
-            type="email"
-            required
-            placeholder="admin@taskflow.com"
-          />
-        </div>
-        
-        <div class="form-group">
-          <label>Mot de passe</label>
-          <input 
-            v-model="form.password"
-            type="password"
-            required
-            placeholder="••••••••"
-          />
-        </div>
-        
-        <div v-if="error" class="error">
-          {{ error }}
-        </div>
-        
-        <button 
-          type="submit"
-          :disabled="loading"
-          class="btn-primary"
-        >
-          {{ loading ? 'Connexion...' : 'Se connecter' }}
-        </button>
-      </form>
-      
-      <p class="demo-info">
-        💡 Utilisez <code>admin@taskflow.com</code> pour tester les permissions admin
-      </p>
+  <div>
+    <div class="stats">
+      <span>{{ activeCount }} actives</span>
+      <span>{{ doneCount }} terminées</span>
     </div>
+    
+    <div v-if="loading">Chargement...</div>
+    
+    <TaskItem 
+      v-for="task in filteredTasks"
+      :key="task.id"
+      :task="task"
+      @toggle="handleToggle"
+      @delete="handleDelete"
+    />
+    
+    <button @click="addNewTask">➕ Nouvelle tâche</button>
   </div>
 </template>
 ```
 
 ---
 
-# Exercice 5 : TaskListView.vue
+# Exercice 2 : Store Categories
 
 ### Objectif
-Créer la vue principale qui affiche toutes les tâches
+Créer un store pour gérer les catégories de tâches
 
 ### Spécifications
 
-**Imports** :
-- `useTasksStore`, `useCategoriesStore`
-- Composants : `TaskForm`, `TaskList`
+**State** :
+- `categories` : Array de catégories
+- `selectedCategory` : ID de la catégorie active
 
-**Fonctionnalités** :
-- Afficher la liste des tâches
-- Ajouter une tâche
-- Toggle tâche terminée
-- Supprimer une tâche
-- Cliquer sur une tâche pour voir le détail
+**Actions** :
+- `addCategory(category)`
+- `updateCategory(id, updates)`
+- `deleteCategory(id)`
+- `selectCategory(id)`
+
+**Getters** :
+- `categoryById(id)` : Trouver une catégorie
+- `tasksByCategory(categoryId)` : Tâches d'une catégorie
+
+**Interaction** :
+- Utiliser le store `tasks` dans les getters
 
 ---
 
-# Exercice 5 - Solution TaskListView.vue
+# Exercice 2 - Solution Store Categories (1/2)
+
+```js
+// stores/categories.js
+import { defineStore } from 'pinia';
+import { useTasksStore } from './tasks';
+
+export const useCategoriesStore = defineStore('categories', {
+  state: () => ({
+    categories: [
+      { id: 1, name: 'Personnel', color: '#3b82f6', icon: '👤' },
+      { id: 2, name: 'Travail', color: '#8b5cf6', icon: '💼' },
+      { id: 3, name: 'Urgent', color: '#ef4444', icon: '🚨' }
+    ],
+    selectedCategory: null
+  }),
+  
+  getters: {
+    // Catégorie par ID
+    categoryById(state) {
+      return (id) => state.categories.find(c => c.id === id);
+    },
+    
+    // Catégorie sélectionnée
+    activeCategory(state) {
+      return state.categories.find(c => c.id === state.selectedCategory);
+    },
+    
+    // ✅ Tâches de la catégorie (utilise le store tasks)
+    tasksByCategory() {
+      return (categoryId) => {
+        const tasksStore = useTasksStore();
+        return tasksStore.tasks.filter(t => t.categoryId === categoryId);
+      };
+    },
+    
+    // Nombre de tâches par catégorie
+    taskCountByCategory() {
+      return (categoryId) => {
+        const tasksStore = useTasksStore();
+        return tasksStore.tasks.filter(
+          t => t.categoryId === categoryId && !t.done
+        ).length;
+      };
+    }
+  }
+});
+```
+
+---
+
+# Exercice 2 - Solution Store Categories (2/2)
+
+```js
+// stores/categories.js (suite)
+export const useCategoriesStore = defineStore('categories', {
+  // ... state et getters précédents
+  
+  actions: {
+    // Ajouter une catégorie
+    addCategory(category) {
+      const newCategory = {
+        id: Date.now(),
+        ...category
+      };
+      this.categories.push(newCategory);
+      this._persist();
+    },
+    
+    // Modifier une catégorie
+    updateCategory(id, updates) {
+      const index = this.categories.findIndex(c => c.id === id);
+      if (index !== -1) {
+        this.categories[index] = {
+          ...this.categories[index],
+          ...updates
+        };
+        this._persist();
+      }
+    },
+    
+    // Supprimer une catégorie
+    deleteCategory(id) {
+      // ⚠️ Avant de supprimer, vérifier qu'aucune tâche ne l'utilise
+      const tasksStore = useTasksStore();
+      const hasTasks = tasksStore.tasks.some(t => t.categoryId === id);
+      
+      if (hasTasks) {
+        throw new Error('Impossible de supprimer une catégorie contenant des tâches');
+      }
+      
+      this.categories = this.categories.filter(c => c.id !== id);
+      this._persist();
+    },
+    
+    // Sélectionner une catégorie
+    selectCategory(id) {
+      this.selectedCategory = id;
+    },
+    
+    // Persistence
+    _persist() {
+      localStorage.setItem('taskflow-categories', JSON.stringify(this.categories));
+    }
+  }
+});
+```
+
+---
+
+# Exercice 3 : Store Auth
+
+### Objectif
+Créer un store d'authentification pour TaskFlow
+
+### Spécifications
+
+**State** :
+- `user` : Object | null
+- `token` : String | null
+- `isAuthenticated` : Boolean
+
+**Actions** :
+- `login(email, password)` : Authentifier
+- `logout()` : Déconnecter
+- `checkAuth()` : Vérifier le token au démarrage
+
+**Getters** :
+- `userDisplayName` : Nom formaté
+- `canDeleteTasks` : Permission
+- `canCreateCategories` : Permission
+
+---
+
+# Exercice 3 - Solution Store Auth (1/3)
+
+**State et Getters :**
+
+```js
+// stores/auth.js
+import { defineStore } from 'pinia';
+
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    user: null,
+    token: null,
+    isAuthenticated: false
+  }),
+  
+  getters: {
+    userDisplayName(state) {
+      if (!state.user) return 'Invité';
+      return `${state.user.firstName} ${state.user.lastName}`;
+    },
+    
+    canDeleteTasks(state) {
+      return state.user?.role === 'admin' || state.user?.role === 'editor';
+    },
+    
+    canCreateCategories(state) {
+      return state.user?.role === 'admin';
+    }
+  }
+});
+```
+
+---
+
+# Exercice 3 - Solution Store Auth (2/3)
+
+**Action login :**
+
+```js
+// stores/auth.js (suite)
+export const useAuthStore = defineStore('auth', {
+  // ... state et getters précédents
+  
+  actions: {
+    async login(email, password) {
+      try {
+        // Simulation d'appel API
+        // const response = await fetch('/api/auth/login', { ... });
+        
+        // Mock pour l'exemple
+        const mockUser = {
+          id: 1,
+          email,
+          firstName: 'John',
+          lastName: 'Doe',
+          role: email === 'admin@taskflow.com' ? 'admin' : 'user'
+        };
+        
+        this.user = mockUser;
+        this.token = 'fake-jwt-token-' + Date.now();
+        this.isAuthenticated = true;
+        
+        // Sauvegarder dans localStorage
+        localStorage.setItem('taskflow-token', this.token);
+        localStorage.setItem('taskflow-user', JSON.stringify(this.user));
+        
+      } catch (err) {
+        this.error = err.message;
+        throw err;
+      }
+    }
+  }
+});
+```
+
+---
+
+# Exercice 3 - Solution Store Auth (3/3)
+
+**Actions logout et checkAuth :**
+
+```js
+// stores/auth.js (suite)
+export const useAuthStore = defineStore('auth', {
+  // ... state, getters et login précédents
+  
+  actions: {
+    // ... login précédent
+    
+    logout() {
+      this.user = null;
+      this.token = null;
+      this.isAuthenticated = false;
+      localStorage.removeItem('taskflow-token');
+      localStorage.removeItem('taskflow-user');
+    },
+    
+    checkAuth() {
+      const token = localStorage.getItem('taskflow-token');
+      const user = localStorage.getItem('taskflow-user');
+      
+      if (token && user) {
+        this.token = token;
+        this.user = JSON.parse(user);
+        this.isAuthenticated = true;
+      }
+    }
+  }
+});
+```
+
+---
+
+# Interaction entre Stores (1/2)
+
+**Script :**
 
 ```vue
 <script>
 import { useTasksStore } from '@/stores/tasks';
-import { useCategoriesStore } from '@/stores/categories';
-import TaskList from '@/components/TaskList.vue';
-import TaskForm from '@/components/TaskForm.vue';
+import { useAuthStore } from '@/stores/auth';
 
 export default {
-  name: 'TaskListView',
-  components: { TaskList, TaskForm },
+  name: 'TaskActions',
   computed: {
-    tasksStore() { return useTasksStore(); },
-    categoriesStore() { return useCategoriesStore(); }
-  },
-  methods: {
-    handleAddTask(taskData) {
-      this.tasksStore.addTask(taskData);
+    // ✅ Style Options API moderne : appel direct des stores
+    tasksStore() {
+      return useTasksStore();
     },
-    handleToggleTask(id) {
-      this.tasksStore.toggleTask(id);
+    authStore() {
+      return useAuthStore();
     },
-    handleDeleteTask(id) {
-      this.tasksStore.deleteTask(id);
-    },
-    goToTaskDetail(id) {
-      this.$router.push({ name: 'TaskDetail', params: { id } });
+    // Accès aux getters du store via computed
+    canDeleteTasks() {
+      return this.authStore.canDeleteTasks;
     }
   },
-  mounted() {
-    this.tasksStore.fetchTasks();
+  methods: {
+    handleDelete(taskId) {
+      // ✅ Vérifier la permission AVANT de supprimer
+      if (!this.canDeleteTasks) {
+        alert('Vous n\'avez pas la permission de supprimer des tâches');
+        return;
+      }
+      
+      this.tasksStore.deleteTask(taskId);
+    },
+    
+    handleAddCategory() {
+      if (!this.authStore.canCreateCategories) {
+        alert('Seuls les admins peuvent créer des catégories');
+        return;
+      }
+      
+      // Logique de création...
+    }
   }
 }
 </script>
-
-<template>
-  <div class="task-list-view">
-    <h1>Mes Tâches</h1>
-    
-    <TaskForm @add-task="handleAddTask" />
-    
-    <TaskList
-      :tasks="tasksStore.filteredTasks"
-      @toggle="handleToggleTask"
-      @delete="handleDeleteTask"
-      @task-click="goToTaskDetail"
-    />
-  </div>
-</template>
 ```
 
 ---
 
-# Exercice 6 : NotFoundView.vue
+# Interaction entre Stores (2/2)
 
-### Objectif
-Créer une page 404 élégante
-
-### Spécifications
-
-- Grand titre "404"
-- Message "Page non trouvée"
-- Afficher l'URL demandée : `{{ $route.fullPath }}`
-- Bouton "Retour à l'accueil" : `this.$router.push('/')`
-
----
-
-# Exercice 6 - Solution NotFoundView.vue
+**Template :**
 
 ```vue
-<script>
-export default {
-  name: 'NotFoundView',
-  methods: {
-    goHome() {
-      this.$router.push('/');
-    }
-  }
-}
-</script>
-
 <template>
-  <div class="not-found">
-    <h1>404</h1>
-    <h2>Page non trouvée</h2>
-    <p>La page que vous recherchez n'existe pas.</p>
+  <div>
+    <p>Connecté en tant que : {{ authStore.userDisplayName }}</p>
     
-    <div class="url-info">
-      URL demandée : <code>{{ $route.fullPath }}</code>
-    </div>
-    
-    <button @click="goHome" class="btn-primary">
-      Retour à l'accueil
+    <button 
+      v-if="canDeleteTasks"
+      @click="handleDelete(task.id)"
+    >
+      🗑️ Supprimer
     </button>
-  </div>
-</template>
-
-<style scoped>
-.not-found {
-  text-align: center;
-  padding: 4rem 2rem;
-}
-
-.not-found h1 {
-  font-size: 8rem;
-  font-weight: bold;
-  color: #ef4444;
-  margin: 0;
-}
-
-.not-found h2 {
-  font-size: 2rem;
-  color: #64748b;
-  margin: 1rem 0;
-}
-
-.url-info {
-  margin: 2rem 0;
-  color: #64748b;
-  font-size: 0.875rem;
-}
-
-code {
-  background: #f1f5f9;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-family: monospace;
-}
-</style>
-```
-
----
-
-# Exercice 7 : HomePage.vue
-
-### Objectif
-Créer une page d'accueil attractive
-
-### Spécifications
-
-- Hero avec titre + description
-- Boutons : `<RouterLink to="/tasks">` et `<RouterLink to="/login">`
-- 3 feature cards (avec icônes emoji)
-
----
-
-# Exercice 7 - Solution HomePage.vue (1/2)
-
-**Script et Template Hero :**
-
-```vue
-<script>
-export default {
-  name: 'HomePage'
-}
-</script>
-
-<template>
-  <div class="home-page">
-    <div class="hero">
-      <h1>📋 Bienvenue sur TaskFlow</h1>
-      <p class="hero-subtitle">
-        Gérez vos tâches efficacement avec Vue.js 3
-      </p>
-      
-      <div class="hero-actions">
-        <RouterLink to="/tasks" class="btn-primary">
-          Voir mes tâches
-        </RouterLink>
-        <RouterLink to="/login" class="btn-secondary">
-          Se connecter
-        </RouterLink>
-      </div>
-    </div>
-  </div>
-</template>
-```
-
----
-
-# Exercice 7 - Solution HomePage.vue (2/2)
-
-**Template Features :**
-
-```vue
-<template>
-  <div class="home-page">
-    <!-- ... hero précédent -->
     
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon">✅</div>
-        <h3>Gestion simple</h3>
-        <p>Créez, modifiez et supprimez vos tâches facilement</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <h3>Priorisez</h3>
-        <p>Définissez des priorités pour rester organisé</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">🏷️</div>
-        <h3>Catégorisez</h3>
-        <p>Organisez vos tâches par catégories</p>
-      </div>
-    </div>
+    <p v-else class="warning">
+      Vous n'avez pas les permissions de suppression
+    </p>
   </div>
 </template>
 ```
 
-**Styles** : Grid layout, hover effects, responsive
-
 ---
 
-# 🎯 Récap Module 5 - TaskFlow
+# 🎯 Récap Module 4 - TaskFlow
 
 ### Ce que vous avez construit
 
-✅ **Router config** : 7 routes avec lazy loading  
-✅ **Guards** : Protection auth + admin  
-✅ **TaskDetailView** : Vue détaillée avec édition  
-✅ **LoginView** : Connexion avec redirect  
-✅ **TaskListView** : Liste avec navigation  
-✅ **NotFoundView** : Page 404 élégante  
-✅ **HomePage** : Page d'accueil attractive  
+✅ **Store Tasks** : CRUD complet avec filtres  
+✅ **Store Categories** : Gestion de catégories  
+✅ **Store Auth** : Authentification et permissions  
+✅ **Interactions** : Communication entre stores  
 
-### Concepts du Module 5 utilisés
+### Concepts du Module 4 utilisés
 
-- ✅ **5.1 Configuration** : createRouter, routes, history mode
-- ✅ **5.2 Navigation** : RouterLink, RouterView, programmatic
-- ✅ **5.3 Routes dynamiques** : :id params, props: true
-- ✅ **5.4 Guards** : beforeEach, onBeforeRouteLeave
-- ✅ **5.5 Meta fields** : requiresAuth, title
+- ✅ **4.1 Introduction** : defineStore, State, Getters, Actions
+- ✅ **4.2 Stores avancés** : Composition entre stores, getters paramétrés
+- ✅ **4.3 Persistence** : localStorage pour sauvegarder l'état
 
 ### Détails techniques
 
-- **createRouter** : createWebHistory() pour URL propres
-- **Lazy loading** : import() pour chaque route
-- **beforeEach** : Guard global pour auth + title
-- **onBeforeRouteLeave** : Confirmation avant quitter
-- **useRouter** : router.push(), router.back()
-- **useRoute** : route.params, route.query
-- **Meta fields** : requiresAuth, requiresAdmin
-- **Query params** : redirect après login
-- **Breadcrumb** : Navigation contextuelle
+- **defineStore** : Options API avec state/getters/actions
+- **Options API moderne** : Computed qui retournent `useXxxStore()` (pas de helpers)
+- **Getters paramétrés** : Retourner une fonction pour passer des arguments
+- **Interaction stores** : Importer et utiliser un store dans un autre
+- **Actions asynchrones** : async/await pour fetch
+- **Persistence** : localStorage.setItem/getItem
+- **Permissions** : Système de rôles dans le store auth
+- **Accès explicite** : `this.xxxStore.property` ou computed explicites
 
-### 🚀 Prochaine étape : Module 6
+### 🚀 Prochaine étape : Module 5
 
-On va **tester** TaskFlow avec **Vitest** !
+On va ajouter le **routing** à TaskFlow avec **Vue Router** !
 
-- Tests unitaires des stores
-- Tests des composants
-- Tests des guards de navigation
+- Navigation entre vues
+- Routes dynamiques (/task/:id)
+- Guards de navigation (auth required)
 
 ---
 
@@ -1002,47 +716,44 @@ On va **tester** TaskFlow avec **Vitest** !
 
 ### Documentation officielle
 
-- 📚 [Vue Router Documentation](https://router.vuejs.org/)
-- 🎯 [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html)
-- 🚀 [Lazy Loading](https://router.vuejs.org/guide/advanced/lazy-loading.html)
+- 📚 [Pinia Documentation](https://pinia.vuejs.org/)
+- 🎯 [Core Concepts](https://pinia.vuejs.org/core-concepts/)
+- 🔧 [Store Composition](https://pinia.vuejs.org/cookbook/composing-stores.html)
 
 ### Concepts avancés
 
-- 🔧 Nested Routes (routes imbriquées)
-- ⚡ Scroll Behavior
-- 🎭 Transitions de routes
-- 🔗 Named Views
+- 🚀 Setup Stores (Composition API)
+- 💾 Plugins de persistence
+- 🔌 DevTools integration
 
 ### Exemples
 
-- 💡 [Vue Router Examples](https://github.com/vuejs/vue-router/tree/main/examples)
-- 🎨 [Advanced Routing Patterns](https://router.vuejs.org/guide/advanced/)
+- 💡 [Pinia Examples](https://pinia.vuejs.org/cookbook/)
+- 🎭 [Testing Stores](https://pinia.vuejs.org/cookbook/testing.html)
 
 ---
 
 # Félicitations ! 🎉
 
-### Vous avez terminé le Module 5 !
+### Vous avez terminé le Module 4 !
 
 Vous maîtrisez maintenant :
-- ✅ Configuration complète de Vue Router
-- ✅ Routes dynamiques avec paramètres
-- ✅ Lazy loading des composants
-- ✅ Navigation guards (global + composant)
-- ✅ Navigation programmatique
-- ✅ Meta fields pour la configuration
-- ✅ Query params et redirections
-- ✅ Gestion des erreurs 404
+- ✅ Création de stores Pinia avec Options API
+- ✅ State, getters et actions
+- ✅ Options API moderne sans helpers (pas de mapStores, mapState)
+- ✅ Computed explicites pour accéder aux stores
+- ✅ Composition entre stores
+- ✅ Persistence avec localStorage
+- ✅ Gestion des permissions et rôles
+- ✅ Actions asynchrones
 
-### Votre application TaskFlow
+### Vos stores TaskFlow
 
-**Navigation complète** :
-- 7 routes configurées
-- Guards d'authentification
-- Vues détaillées
-- Page 404 personnalisée
-- Login avec redirect
+**3 stores centralisés** :
+- useTasksStore : CRUD complet + filtres
+- useCategoriesStore : Catégories + interaction
+- useAuthStore : Auth + permissions
 
-### 🚀 Prochaine étape : Module 6
+### 🚀 Prochaine étape : Module 5
 
-Rendez-vous au Module 6 pour tester TaskFlow avec Vitest !
+Rendez-vous au Module 5 pour ajouter le routing avec Vue Router !

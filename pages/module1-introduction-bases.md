@@ -1944,33 +1944,6 @@ export default {
 
 ---
 
-# 🎯 Fil rouge : TaskFlow (notre Trello-like)
-
-### 🎨 Ce qu'on va construire ensemble
-
-Une application de gestion de tâches complète avec :
-
-- 📋 **Boards** : Tableaux de tâches (Personnel, Travail, Projets)
-- 📝 **Tasks** : Tâches avec titre, description, priorité
-- 🏷️ **Colonnes** : À faire, En cours, Terminé
-- 🎨 **Labels** : Urgent, Bug, Feature
-- 👤 **Assignation** : Attribuer des tâches
-
-<small>
-
-### Module par module
-
-- **Module 1** : Composants de base (Task, TaskList, TaskForm)
-- **Module 2** : Slots pour composants réutilisables (TaskCard avec header/content/actions)
-- **Module 3** : Directive v-drag pour drag & drop
-- **Module 4** : Pinia pour centraliser l'état (tasks, boards, users)
-- **Module 5** : Router pour navigation (/boards, /board/:id, /settings)
-- **Module 6** : Tests de l'application
-
-</small>
-
----
-
 # Réutiliser la logique (Mixins) - 1/2
 
 Avec l'Options API, on utilise les **mixins** pour réutiliser de la logique
@@ -2444,3 +2417,31 @@ export default {
 }
 </script>
 ```
+
+---
+
+# 🎯 Fil rouge : TaskFlow (notre Trello-like)
+
+### 🎨 Ce qu'on va construire ensemble
+
+Une application de gestion de tâches complète avec :
+
+- 📋 **Boards** : Tableaux de tâches (Personnel, Travail, Projets)
+- 📝 **Tasks** : Tâches avec titre, description, priorité
+- 🏷️ **Colonnes** : À faire, En cours, Terminé
+- 🎨 **Labels** : Urgent, Bug, Feature
+- 👤 **Assignation** : Attribuer des tâches
+
+<small>
+
+### Module par module
+
+- **Module 1** : Composants de base (Task, TaskList, TaskForm)
+- **Module 2** : Slots pour composants réutilisables (TaskCard avec header/content/actions)
+- **Module 3** : Directive v-drag pour drag & drop
+- **Module 4** : Pinia pour centraliser l'état (tasks, boards, users)
+- **Module 5** : Router pour navigation (/boards, /board/:id, /settings)
+- **Module 6** : Tests de l'application
+
+</small>
+
