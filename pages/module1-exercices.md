@@ -10,731 +10,253 @@ routeAlias: 'module1-exercices'
 
 ---
 
-# Exercice 1 - Setup de l'environnement
+# 🎯 Fil Rouge : TaskFlow
+## Exercices Module 1
+
+Maintenant que vous avez vu tous les concepts théoriques du Module 1, il est temps de les mettre en pratique en construisant les composants de base de notre application TaskFlow !
+
+### Rappel des concepts du Module 1
+
+<div class="text-sm">
+
+**1.1 JavaScript ES6+** : Arrow functions, destructuring, modules  
+**1.2 Architecture Vue.js** : MVVM, organisation  
+**1.3 Outils** : Node.js, Vite  
+**1.4 Composants** : Structure .vue, data, methods  
+**1.5 Directives** : v-bind, v-if, v-for, v-model, v-on  
+**1.6 Communication** : Props, events ($emit)  
+**1.7 Réactivité** : Computed, watch  
+**1.8 Lifecycle** : mounted, unmounted
+
+</div>
+
+### Les 5 exercices progressifs
+
+Nous allons créer 5 exercices qui couvrent tous ces concepts dans le contexte de TaskFlow.
+
+---
+
+# Exercice 0 : Setup du projet TaskFlow
 
 ### Objectif
-Mettre en place votre environnement de développement Vue.js
 
-### Instructions
+Mettre en place le projet TaskFlow avec Vite et créer la structure de base.
 
-1. Vérifier l'installation de Node.js (v20+)
-2. Créer un nouveau projet avec Vite
-3. Explorer la structure du projet
-4. Lancer le serveur de développement
-5. Modifier le composant App.vue
+### Étapes à suivre
+
+1. **Créer le projet avec Vite**
+2. **Explorer la structure du projet**
+3. **Créer les dossiers nécessaires**
+4. **Lancer le serveur de développement**
+
+### Concepts couverts
+
+✅ **1.3 Outils et environnement** : Node.js, npm, Vite, structure de projet
+
+---
+
+# Exercice 0 - Étape 1 : Créer le projet
 
 ### Commandes
 
 ```bash
+# Vérifier Node.js (v20+)
 node --version
-npm create vite@latest mon-projet-vue -- --template vue
-cd mon-projet-vue
+
+# Créer le projet TaskFlow avec Vite
+npm create vite@latest taskflow-app -- --template vue
+
+# Entrer dans le dossier
+cd taskflow-app
+
+# Installer les dépendances
 npm install
+```
+
+### Ce qui se passe
+
+- Vite génère un projet Vue 3 avec la structure optimale
+- Configuration automatique du build tool
+- Dépendances installées (vue, @vitejs/plugin-vue)
+
+---
+
+# Exercice 0 - Étape 2 : Structure du projet
+
+### Arborescence générée
+
+```
+taskflow-app/
+├── node_modules/         # Dépendances (ne pas modifier)
+├── public/              
+│   └── vite.svg         # Favicon
+├── src/
+│   ├── assets/          # Images, CSS
+│   ├── components/      # Composants Vue (on va y travailler !)
+│   ├── App.vue          # Composant racine
+│   └── main.js          # Point d'entrée
+├── index.html           # Page HTML principale
+├── package.json         # Configuration npm
+├── vite.config.js       # Configuration Vite
+└── README.md
+```
+
+---
+
+# Exercice 0 - Étape 3 : Créer la structure TaskFlow
+
+### Créer les dossiers nécessaires
+
+```bash
+# Dans le dossier src/
+mkdir src/components
+```
+
+### Structure finale souhaitée
+
+```
+src/
+├── components/
+│   ├── TaskItem.vue      # (Exercice 1)
+│   ├── TaskList.vue      # (Exercice 2)
+│   └── TaskForm.vue      # (Exercice 3)
+├── App.vue
+└── main.js
+```
+
+---
+
+# Exercice 0 - Étape 4 : Lancer le projet
+
+### Commande de démarrage
+
+```bash
 npm run dev
 ```
 
+### Résultat attendu
+
+```
+VITE v5.x.x  ready in XXX ms
+
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+➜  press h + enter to show help
+```
+
+### Vérification
+
+- Ouvrir http://localhost:5173/ dans votre navigateur
+- Vous devriez voir la page d'accueil Vite + Vue
+- Le hot reload fonctionne : modifiez App.vue et voyez les changements instantanés !
+
 ---
 
-# Exercice 2 - Compteur simple
+# Exercice 0 - Nettoyer App.vue
 
 ### Objectif
-Créer un composant compteur avec les fonctionnalités de base
 
-### Fonctionnalités à implémenter
+Préparer App.vue pour recevoir nos composants TaskFlow.
 
-- Afficher la valeur du compteur
-- Bouton pour incrémenter (+1)
-- Bouton pour décrémenter (-1)
-- Bouton pour réinitialiser à 0
-- Afficher si le nombre est pair ou impair
-
-### Bonus
-
-- Ajouter un bouton +5 et -5
-- Bloquer le décrement si compteur = 0
-- Changer la couleur selon positif/négatif
-
----
-
-# Exercice 2 - Solution de base (1/2)
-
-**Script :**
+### Remplacer le contenu de src/App.vue
 
 ```vue
 <script>
 export default {
-  data() {
-    return {
-      compteur: 0
-    }
-  },
-  computed: {
-    estPair() {
-      return this.compteur % 2 === 0;
-    }
-  },
-  methods: {
-    increment() {
-      this.compteur++;
-    },
-    decrement() {
-      this.compteur--;
-    },
-    reset() {
-      this.compteur = 0;
-    }
-  }
-}
-</script>
-```
-
----
-
-# Exercice 2 - Solution de base (2/2)
-
-**Template :**
-
-```vue
-<template>
-  <div>
-    <h1>Compteur: {{ compteur }}</h1>
-    <p>{{ estPair ? 'Pair' : 'Impair' }}</p>
-    <button @click="increment">+1</button>
-    <button @click="decrement">-1</button>
-    <button @click="reset">Reset</button>
-  </div>
-</template>
-```
-
----
-
-# Exercice 3 - Todo List
-
-### Objectif
-Créer une application de gestion de tâches
-
-### Fonctionnalités
-
-- Ajouter une tâche
-- Afficher la liste des tâches
-- Marquer une tâche comme terminée
-- Supprimer une tâche
-- Afficher le nombre de tâches restantes
-
-### Bonus
-
-- Filtrer (toutes/actives/terminées)
-- Modifier une tâche
-- Sauvegarder dans le localStorage
-- Ajouter une priorité (haute/moyenne/basse)
-
----
-
-# Exercice 3 - Structure de données
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      nouveauTodo: '',
-      todos: [
-        { id: 1, text: 'Apprendre Vue.js', done: false },
-        { id: 2, text: 'Créer un projet', done: false }
-      ]
-    }
-  },
-  methods: {
-    ajouterTodo() {
-      if (this.nouveauTodo.trim()) {
-        this.todos.push({
-          id: Date.now(),
-          text: this.nouveauTodo,
-          done: false
-        });
-        this.nouveauTodo = '';
-      }
-    },
-    supprimerTodo(id) {
-      this.todos = this.todos.filter(t => t.id !== id);
-    }
-  }
-}
-</script>
-```
-
----
-
-# Exercice 3 - Template
-
-```vue
-<template>
-  <div>
-    <h1>Ma Todo List</h1>
-    
-    <form @submit.prevent="ajouterTodo">
-      <input 
-        v-model="nouveauTodo" 
-        placeholder="Nouvelle tâche..."
-      />
-      <button type="submit">Ajouter</button>
-    </form>
-
-    <ul>
-      <li v-for="todo in todos" :key="todo.id">
-        <input 
-          type="checkbox" 
-          v-model="todo.done"
-        />
-        <span :class="{ done: todo.done }">
-          {{ todo.text }}
-        </span>
-        <button @click="supprimerTodo(todo.id)">X</button>
-      </li>
-    </ul>
-  </div>
-</template>
-```
-
----
-
-# Exercice 4 - Composant UserCard
-
-### Objectif
-Créer un composant réutilisable de carte utilisateur
-
-### Props à recevoir
-
-- `nom` (String, required)
-- `email` (String, required)
-- `age` (Number)
-- `avatar` (String)
-- `role` (String)
-
-### Événements à émettre
-
-- `click` : quand on clique sur la carte
-- `edit` : quand on clique sur éditer
-- `delete` : quand on clique sur supprimer
-
----
-
-# Exercice 4 - Composant UserCard.vue
-
-```vue
-<script>
-export default {
-  props: {
-    nom: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    age: Number,
-    avatar: String,
-    role: {
-      type: String,
-      default: 'user'
-    }
-  },
-  emits: ['click', 'edit', 'delete']
-}
-</script>
-```
-
----
-
-# Exercice 4 - Template UserCard
-
-```vue
-<template>
-  <div class="user-card" @click="emit('click')">
-    <img 
-      :src="avatar || '/default-avatar.png'" 
-      :alt="nom"
-    />
-    <h3>{{ nom }}</h3>
-    <p>{{ email }}</p>
-    <p v-if="age">Âge: {{ age }} ans</p>
-    <span class="role">{{ role }}</span>
-    
-    <div class="actions">
-      <button @click.stop="emit('edit')">Éditer</button>
-      <button @click.stop="emit('delete')">Supprimer</button>
-    </div>
-  </div>
-</template>
-```
-
----
-
-# Exercice 5 - Liste d'utilisateurs
-
-### Objectif
-Utiliser le composant UserCard pour afficher une liste
-
-### Fonctionnalités
-
-- Afficher une liste de 5-10 utilisateurs
-- Gérer le clic sur une carte (afficher détails)
-- Gérer l'édition (modal ou form)
-- Gérer la suppression (confirmation)
-- Ajouter un nouveau utilisateur
-
-### Bonus
-
-- Recherche par nom
-- Filtre par rôle
-- Tri par nom/âge
-- Pagination
-
----
-
-# Exercice 5 - Utilisation du composant
-
-```vue
-<script>
-import UserCard from './components/UserCard.vue';
-
-export default {
-  components: {
-    UserCard
-  },
-  data() {
-    return {
-      users: [
-        { 
-          id: 1, 
-          nom: 'Alice Martin', 
-          email: 'alice@example.com',
-          age: 28,
-          role: 'admin'
-        },
-        { 
-          id: 2, 
-          nom: 'Bob Dupont', 
-          email: 'bob@example.com',
-          age: 35,
-          role: 'user'
-        }
-      ]
-    }
-  },
-  methods: {
-    handleEdit(user) {
-      console.log('Edit:', user);
-    },
-    handleDelete(userId) {
-      this.users = this.users.filter(u => u.id !== userId);
-    }
-  }
-}
-</script>
-```
-
----
-
-# Exercice 5 - Template
-
-```vue
-<template>
-  <div class="users-list">
-    <h1>Liste des utilisateurs</h1>
-    
-    <div class="grid">
-      <UserCard
-        v-for="user in users"
-        :key="user.id"
-        v-bind="user"
-        @edit="handleEdit(user)"
-        @delete="handleDelete(user.id)"
-      />
-    </div>
-  </div>
-</template>
-```
-
----
-
-# Exercice 6 - Fetch API users
-
-### Objectif
-Récupérer et afficher des utilisateurs depuis une API
-
-### Instructions
-
-1. Utiliser l'API JSONPlaceholder : `https://jsonplaceholder.typicode.com/users`
-2. Afficher un loader pendant le chargement
-3. Afficher les utilisateurs dans des cartes
-4. Gérer les erreurs
-5. Ajouter un bouton pour recharger
-
-### API à utiliser
-
-```javascript
-const API_URL = 'https://jsonplaceholder.typicode.com/users';
-```
-
----
-
-# Exercice 6 - Solution fetch
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      users: [],
-      loading: true,
-      error: null
-    }
-  },
-  methods: {
-    async fetchUsers() {
-      this.loading = true;
-      this.error = null;
-      
-      try {
-        const response = await fetch(
-          'https://jsonplaceholder.typicode.com/users'
-        );
-        
-        if (!response.ok) {
-          throw new Error('Erreur réseau');
-        }
-        
-        this.users = await response.json();
-      } catch (e) {
-        this.error = e.message;
-      } finally {
-        this.loading = false;
-      }
-    }
-  },
-  mounted() {
-    this.fetchUsers();
-  }
-}
-</script>
-```
-
----
-
-# Exercice 6 - Template avec états
-
-```vue
-<template>
-  <div>
-    <h1>Utilisateurs</h1>
-    
-    <div v-if="loading" class="loader">
-      Chargement...
-    </div>
-    
-    <div v-else-if="error" class="error">
-      Erreur: {{ error }}
-      <button @click="fetchUsers">Réessayer</button>
-    </div>
-    
-    <div v-else class="users-grid">
-      <UserCard 
-        v-for="user in users"
-        :key="user.id"
-        :nom="user.name"
-        :email="user.email"
-      />
-    </div>
-  </div>
-</template>
-```
-
----
-
-# Exercice 7 - Composable useCompteur
-
-### Objectif
-Créer un composable réutilisable pour gérer un compteur
-
-### Fonctionnalités du composable
-
-- État du compteur
-- Fonction increment
-- Fonction decrement
-- Fonction reset
-- Computed pour pair/impair
-- Option pour min/max
-
----
-
-# Exercice 7 - Solution useCompteur.js
-
-```javascript
-import { ref, computed } from 'vue';
-
-export function useCompteur(initialValue = 0, options = {}) {
-  const { min = -Infinity, max = Infinity } = options;
-  
-  const count = ref(initialValue);
-  
-  const increment = (step = 1) => {
-    count.value = Math.min(count.value + step, max);
-  };
-  
-  const decrement = (step = 1) => {
-    count.value = Math.max(count.value - step, min);
-  };
-  
-  const reset = () => {
-    count.value = initialValue;
-  };
-  
-  const estPair = computed(() => count.value % 2 === 0);
-  
-  return {
-    count,
-    increment,
-    decrement,
-    reset,
-    estPair
-  };
-}
-```
-
----
-
-# Exercice 7 - Utilisation avec mixin (1/2)
-
-**Définition du mixin :**
-
-```javascript
-// Avec Options API, on utilise les mixins plutôt que les composables
-const compteurMixin = {
-  data() {
-    return {
-      count: 0,
-      min: 0,
-      max: 100
-    }
-  },
-  computed: {
-    estPair() {
-      return this.count % 2 === 0;
-    }
-  },
-  methods: {
-    increment(step = 1) {
-      this.count = Math.min(this.count + step, this.max);
-    },
-    decrement(step = 1) {
-      this.count = Math.max(this.count - step, this.min);
-    },
-    reset() {
-      this.count = 0;
-    }
-  }
-};
-```
-
----
-
-# Exercice 7 - Utilisation avec mixin (2/2)
-
-**Utilisation dans le composant :**
-
-```vue
-<script>
-export default {
-  mixins: [compteurMixin]
+  name: 'App'
 }
 </script>
 
 <template>
-  <div>
-    <h1>{{ count }}</h1>
-    <p>{{ estPair ? 'Pair' : 'Impair' }}</p>
-    <button @click="increment()">+1</button>
-    <button @click="increment(5)">+5</button>
-    <button @click="decrement()">-1</button>
-    <button @click="reset">Reset</button>
+  <div id="app">
+    <header>
+      <h1>🎯 TaskFlow</h1>
+      <p>Votre gestionnaire de tâches moderne</p>
+    </header>
+    
+    <main>
+      <p>Prêt pour les exercices !</p>
+    </main>
   </div>
 </template>
-```
 
----
-
-# Exercice 8 - Composable useFetch
-
-### Objectif
-Créer un composable pour gérer les appels API
-
-### Fonctionnalités
-
-- État data, loading, error
-- Fonction fetch automatique
-- Fonction refresh
-- Support des méthodes GET/POST/PUT/DELETE
-- Gestion du cache (bonus)
-
----
-
-# Exercice 8 - Solution useFetch.js
-
-```javascript
-import { ref } from 'vue';
-
-export function useFetch(url, options = {}) {
-  const data = ref(null);
-  const loading = ref(false);
-  const error = ref(null);
-
-  const execute = async (method = 'GET', body = null) => {
-    loading.value = true;
-    error.value = null;
-    
-    try {
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          ...options.headers
-        },
-        body: body ? JSON.stringify(body) : null
-      });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      data.value = await response.json();
-    } catch (e) {
-      error.value = e.message;
-    } finally {
-      loading.value = false;
-    }
-  };
-
-  return { data, loading, error, execute };
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #f5f7fa;
+  color: #2c3e50;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #42b883;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+main {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+</style>
 ```
 
 ---
 
-# Projet Fil Rouge - Partie 1
+# Exercice 0 - Vérification finale
 
-### Application de gestion de produits
+### Checklist
 
-Créer une application complète avec les fonctionnalités suivantes :
+- ✅ Projet créé avec Vite
+- ✅ Dépendances installées
+- ✅ Structure de dossiers créée
+- ✅ Serveur de développement lancé (http://localhost:5173/)
+- ✅ App.vue nettoyé et prêt
+- ✅ Hot reload fonctionne
 
-**Phase 1 - Liste de produits**
-- Afficher une liste de produits (nom, prix, description, image)
-- Créer un composant ProductCard réutilisable
-- Utiliser v-for pour la liste
+### Commandes utiles
 
-**Phase 2 - CRUD basique**
-- Ajouter un produit
-- Supprimer un produit
-- Éditer un produit
+```bash
+# Démarrer le serveur
+npm run dev
 
----
+# Construire pour la production (plus tard)
+npm run build
 
-# Projet Fil Rouge - Structure
-
-```javascript
-// Structure de données
-const produits = ref([
-  {
-    id: 1,
-    nom: 'Ordinateur portable',
-    prix: 899.99,
-    description: 'PC performant',
-    image: '/laptop.jpg',
-    stock: 15,
-    categorie: 'Informatique'
-  },
-  {
-    id: 2,
-    nom: 'Souris gaming',
-    prix: 49.99,
-    description: 'Souris RGB',
-    image: '/mouse.jpg',
-    stock: 42,
-    categorie: 'Accessoires'
-  }
-]);
+# Prévisualiser le build de production
+npm run preview
 ```
 
----
+### 🎉 Félicitations !
 
-# Projet Fil Rouge - Fonctionnalités bonus
-
-**Phase 3 - Recherche et filtres**
-- Barre de recherche par nom
-- Filtre par catégorie
-- Filtre par prix (min-max)
-- Tri (prix, nom, stock)
-
-**Phase 4 - Computed et watchers**
-- Total du panier
-- Nombre d'articles
-- Prix moyen
-- Produits en rupture de stock
-
-**Phase 5 - Persistance**
-- Sauvegarder dans localStorage
-- Charger au démarrage
+Votre environnement TaskFlow est prêt ! Passons maintenant à la création des composants.
 
 ---
 
-# Ressources complémentaires
-
-### Documentation officielle
-
-- 📚 [Vue.js 3 Documentation](https://vuejs.org/)
-- 🔧 [Vite Guide](https://vitejs.dev/)
-- 📦 [npm Documentation](https://docs.npmjs.com/)
-
-### Tutoriels
-
-- 🎥 Vue Mastery
-- 🎓 Vue School
-- 📺 Chaînes YouTube Vue.js
-
-### Outils
-
-- 🛠️ [Vue DevTools](https://devtools.vuejs.org/)
-- 💻 [VS Code + Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-- 🎨 [Tailwind CSS](https://tailwindcss.com/)
-
----
-
-# Checklist de validation
-
-Avant de passer au Module 2, assurez-vous de maîtriser :
-
-- ✅ Installation et configuration de l'environnement
-- ✅ Syntaxe JavaScript ES6+ (arrow functions, destructuring, async/await)
-- ✅ Création d'un projet Vue avec Vite
-- ✅ Utilisation des directives (v-bind, v-if, v-for, v-model)
-- ✅ Création de composants
-- ✅ Communication parent-enfant (props, emit)
-- ✅ Propriétés calculées (computed)
-- ✅ Watch (observateurs)
-- ✅ Lifecycle hooks (onMounted, onUnmounted)
-- ✅ Appels API avec fetch
-
----
-layout: new-section
----
-
-# 🎯 Fil Rouge : TaskFlow
-## Exercices Module 1
-
----
-
-# TaskFlow - Exercice 1 : TaskItem.vue
+# Exercice 1 : TaskItem.vue
 
 ### Objectif
 Créer le composant de base pour afficher une tâche
@@ -757,7 +279,7 @@ Créer le composant de base pour afficher une tâche
 
 ---
 
-# TaskFlow - Solution TaskItem.vue (1/2)
+# Exercice 1 - Solution TaskItem.vue (1/2)
 
 **Script :**
 
@@ -801,7 +323,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskItem.vue (2/2)
+# Exercice 1 - Solution TaskItem.vue (2/2)
 
 **Template :**
 
@@ -840,7 +362,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskItem Styles
+# Exercice 1 - Solution TaskItem Styles
 
 ```vue
 <style scoped>
@@ -893,7 +415,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 2 : TaskList.vue
+# Exercice 2 : TaskList.vue
 
 ### Objectif
 Créer un composant pour gérer une liste de tâches
@@ -920,7 +442,7 @@ Créer un composant pour gérer une liste de tâches
 
 ---
 
-# TaskFlow - Solution TaskList.vue (1/3)
+# Exercice 2 - Solution TaskList.vue (1/3)
 
 **Script - Data :**
 
@@ -967,7 +489,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskList.vue (2/3)
+# Exercice 2 - Solution TaskList.vue (2/3)
 
 **Computed et Methods :**
 
@@ -1012,7 +534,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskList.vue (3/4)
+# Exercice 2 - Solution TaskList.vue (3/4)
 
 **Template - Header et Filtres :**
 
@@ -1053,7 +575,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskList.vue (4/4)
+# Exercice 2 - Solution TaskList.vue (4/4)
 
 **Template - Liste et Actions :**
 
@@ -1089,7 +611,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 3 : TaskForm.vue
+# Exercice 3 : TaskForm.vue
 
 ### Objectif
 Créer un formulaire pour ajouter/éditer des tâches
@@ -1113,7 +635,7 @@ Créer un formulaire pour ajouter/éditer des tâches
 
 ---
 
-# TaskFlow - Solution TaskForm.vue
+# Exercice 3 - Solution TaskForm.vue
 
 ```vue
 <script>
@@ -1166,7 +688,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskForm Template
+# Exercice 3 - Solution TaskForm Template
 
 ```vue
 <template>
@@ -1214,7 +736,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 4 : Recherche avec Watch
+# Exercice 4 : Recherche avec Watch
 
 ### Objectif
 Ajouter une recherche en temps réel avec debounce
@@ -1238,7 +760,7 @@ Ajouter une recherche en temps réel avec debounce
 
 ---
 
-# TaskFlow - Solution Recherche (1/2)
+# Exercice 4 - Solution Recherche (1/2)
 
 ```vue
 <script>
@@ -1283,7 +805,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution Recherche (2/2)
+# Exercice 4 - Solution Recherche (2/2)
 
 ```vue
 <template>
@@ -1329,28 +851,589 @@ export default {
 
 ---
 
+# Exercice 5 : Intégration dans App.vue
+
+### Objectif
+
+Assembler tous les composants créés dans les exercices précédents pour créer l'application TaskFlow complète et fonctionnelle.
+
+### Spécifications
+
+**Data dans App.vue** :
+- `tasks` : Array de tâches (avec id, title, description, priority, done)
+- `showForm` : Boolean pour afficher/masquer le formulaire
+- `editingTask` : Tâche en cours d'édition (ou null)
+
+**Methods** :
+- `addTask(taskData)` : Ajouter une nouvelle tâche
+- `toggleTask(id)` : Basculer le statut done d'une tâche
+- `deleteTask(id)` : Supprimer une tâche
+- `editTask(task)` : Préparer l'édition d'une tâche
+- `updateTask(taskData)` : Mettre à jour une tâche existante
+
+### Concepts couverts
+
+✅ **Intégration complète** : Tous les concepts du Module 1 réunis
+
+---
+
+# Exercice 5 - Solution App.vue (1/3)
+
+**Script - Data et imports :**
+
+```vue
+<script>
+import TaskForm from './components/TaskForm.vue';
+import TaskList from './components/TaskList.vue';
+
+export default {
+  name: 'App',
+  components: {
+    TaskForm,
+    TaskList
+  },
+  data() {
+    return {
+      tasks: [
+        {
+          id: 1,
+          title: 'Apprendre Vue.js 3',
+          description: 'Maîtriser les bases fondamentales',
+          priority: 'high',
+          done: false
+        },
+        {
+          id: 2,
+          title: 'Créer TaskFlow',
+          description: 'Application complète de gestion de tâches',
+          priority: 'urgent',
+          done: false
+        },
+        {
+          id: 3,
+          title: 'Setup du projet',
+          description: 'Installer Vite et créer la structure',
+          priority: 'medium',
+          done: true
+        }
+      ],
+      showForm: false,
+      editingTask: null
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Exercice 5 - Solution App.vue (2/3)
+
+**Methods :**
+
+```vue
+<script>
+export default {
+  // ... data précédent
+  methods: {
+    addTask(taskData) {
+      this.tasks.push({
+        id: Date.now(),
+        ...taskData,
+        done: false
+      });
+      this.showForm = false;
+    },
+    
+    toggleTask(id) {
+      const task = this.tasks.find(t => t.id === id);
+      if (task) {
+        task.done = !task.done;
+      }
+    },
+    
+    deleteTask(id) {
+      if (confirm('Supprimer cette tâche ?')) {
+        this.tasks = this.tasks.filter(t => t.id !== id);
+      }
+    },
+    
+    editTask(task) {
+      this.editingTask = { ...task };
+      this.showForm = true;
+    },
+    
+    updateTask(taskData) {
+      const index = this.tasks.findIndex(t => t.id === this.editingTask.id);
+      if (index !== -1) {
+        this.tasks[index] = {
+          ...this.editingTask,
+          ...taskData
+        };
+      }
+      this.editingTask = null;
+      this.showForm = false;
+    },
+    
+    cancelForm() {
+      this.showForm = false;
+      this.editingTask = null;
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Exercice 5 - Solution App.vue (3/3)
+
+**Template :**
+
+```vue
+<template>
+  <div id="app">
+    <header>
+      <h1>🎯 TaskFlow</h1>
+      <p>Votre gestionnaire de tâches moderne</p>
+    </header>
+    
+    <main>
+      <div class="actions-bar">
+        <button 
+          @click="showForm = !showForm"
+          class="btn-primary"
+        >
+          {{ showForm ? '✖ Annuler' : '➕ Nouvelle tâche' }}
+        </button>
+      </div>
+      
+      <TaskForm
+        v-if="showForm"
+        :editTask="editingTask"
+        @submit="editingTask ? updateTask($event) : addTask($event)"
+        @cancel="cancelForm"
+      />
+      
+      <TaskList
+        :tasks="tasks"
+        @toggle="toggleTask"
+        @delete="deleteTask"
+        @edit="editTask"
+      />
+    </main>
+  </div>
+</template>
+```
+
+---
+
+# Exercice 5 - Styles App.vue
+
+```vue
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+#app {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+main {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.actions-bar {
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background: #42b883;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: #35a372;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 184, 131, 0.4);
+}
+</style>
+```
+
+---
+
+# Exercice 5 - Améliorations optionnelles
+
+### Fonctionnalités bonus à ajouter
+
+**1. Persistance localStorage** :
+```javascript
+mounted() {
+  const saved = localStorage.getItem('taskflow-tasks');
+  if (saved) {
+    this.tasks = JSON.parse(saved);
+  }
+},
+watch: {
+  tasks: {
+    handler(newTasks) {
+      localStorage.setItem('taskflow-tasks', JSON.stringify(newTasks));
+    },
+    deep: true
+  }
+}
+```
+
+**2. Bouton "Tout effacer"** :
+```javascript
+clearAll() {
+  if (confirm('Supprimer toutes les tâches ?')) {
+    this.tasks = [];
+  }
+}
+```
+
+**3. Export/Import JSON** :
+- Bouton pour télécharger les tâches en JSON
+- Bouton pour importer un fichier JSON
+
+---
+
+# Exercice 5 - Test de l'application
+
+### Checklist de validation
+
+Testez toutes les fonctionnalités :
+
+- ✅ Afficher la liste des tâches initiales
+- ✅ Ouvrir le formulaire avec le bouton "Nouvelle tâche"
+- ✅ Ajouter une nouvelle tâche
+- ✅ Cocher/décocher une tâche (toggle done)
+- ✅ Supprimer une tâche
+- ✅ Filtrer les tâches (toutes/actives/terminées)
+- ✅ Rechercher une tâche
+- ✅ Voir les statistiques (compteurs)
+- ✅ Éditer une tâche existante
+- ✅ Annuler l'ajout/édition
+
+### 🎉 Félicitations !
+
+Vous avez créé une application Vue.js complète avec tous les concepts du Module 1 !
+
+---
+
 # 🎯 Récap Module 1 - TaskFlow
 
 ### Ce que vous avez construit
 
 ✅ **TaskItem.vue** : Composant de tâche avec props/events  
-✅ **TaskList.vue** : Gestion de liste avec filtres  
+✅ **TaskList.vue** : Gestion de liste avec filtres et recherche  
 ✅ **TaskForm.vue** : Formulaire avec v-model et validation  
-✅ **Recherche** : Watch avec debounce  
+✅ **App.vue** : Intégration complète de tous les composants  
 
-### Concepts utilisés
+### Concepts du Module 1 utilisés
 
-- ✅ Data binding & v-model
-- ✅ Directives (v-for, v-if, v-bind, v-on)
-- ✅ Props & Events (communication parent/enfant)
-- ✅ Computed properties (filtrage, compteurs)
-- ✅ Watch (recherche avec debounce)
-- ✅ Lifecycle hooks (mounted)
+- ✅ **1.1 JavaScript ES6+** : Arrow functions, destructuring, spread operator
+- ✅ **1.2 Architecture** : MVVM, organisation composants
+- ✅ **1.3 Outils** : Vite, npm, structure projet
+- ✅ **1.4 Composants** : .vue, data(), methods, structure
+- ✅ **1.5 Directives** : v-bind, v-on, v-if, v-for, v-model
+- ✅ **1.6 Communication** : Props (validation), Events ($emit)
+- ✅ **1.7 Réactivité** : Computed properties, Watch (debounce)
+- ✅ **1.8 Lifecycle** : mounted pour initialisation
 
-### 🚀 Next : Module 2
+### 🚀 Prochaine étape : Module 2
 
 On va rendre nos composants **ultra-réutilisables** avec les **slots** !
 
 - TaskCard avec slots (header, content, actions)
 - Modal réutilisable
 - BoardColumn flexible
+
+---
+layout: new-section
+---
+
+# Concepts du Module 1 - Couverture complète
+
+Vérification que tous les concepts théoriques ont été mis en pratique
+
+---
+
+# Couverture des concepts - 1.1 à 1.4
+
+### ✅ 1.1 JavaScript ES6+ (Rappels)
+
+- **Arrow functions** : Utilisées dans methods, computed, watch
+- **Destructuring** : Props, événements ($event)
+- **Spread operator** : `{ ...task }`, `{ ...taskData }`
+- **Modules ES6** : import/export des composants
+- **Template literals** : Interpolation dans les templates
+
+### ✅ 1.2 Architecture Vue.js
+
+- **Pattern MVVM** : Séparation Model/View/ViewModel dans chaque composant
+- **Organisation** : Structure components/, réutilisabilité
+- **Single File Components** : .vue avec script/template/style
+
+### ✅ 1.3 Outils et environnement
+
+- **Node.js & npm** : Installation, gestion dépendances
+- **Vite** : Création projet, dev server, hot reload
+- **Structure projet** : src/, components/, main.js, App.vue
+
+### ✅ 1.4 Votre premier composant Vue
+
+- **Structure .vue** : script, template, style
+- **data()** : État local réactif
+- **methods** : Logique métier
+- **Composants utilisés** : TaskItem, TaskList, TaskForm
+
+---
+
+# Couverture des concepts - 1.5 Directives
+
+### ✅ 1.5 Directives et data binding
+
+**Interpolation {{ }}** :
+- TaskItem : `{{ task.title }}`, `{{ task.description }}`
+- TaskList : `{{ activeCount }}`, `{{ doneCount }}`
+
+**v-bind (:**) :
+- Attributs : `:src`, `:alt`, `:class`, `:style`
+- Props : `:task="task"`, `:tasks="tasks"`
+- Classes dynamiques : `:class="{ done: task.done }"`
+- Styles dynamiques : `:style="{ backgroundColor: priorityColor }"`
+
+**v-on (@)** :
+- Events : `@click`, `@change`, `@submit`
+- Modificateurs : `@submit.prevent`, `@click.stop`
+- Custom events : `@toggle`, `@delete`, `@edit`
+
+**v-if / v-else** :
+- Affichage conditionnel : TaskForm selon `showForm`
+- Empty states : "Aucune tâche" si liste vide
+
+**v-for** :
+- Listes : `v-for="task in tasks"` avec `:key="task.id"`
+- Rendu optimisé avec key unique
+
+**v-model** :
+- Input text : `v-model="formData.title"`
+- Textarea : `v-model="formData.description"`
+- Select : `v-model="formData.priority"`
+- Checkbox : `v-model="task.done"`
+- Search : `v-model="searchQuery"`
+
+---
+
+# Couverture des concepts - 1.6 Communication
+
+### ✅ 1.6 Communication entre composants
+
+**Props (Parent → Enfant)** :
+- **Validation complète** : type, required, default, validator
+- TaskItem : `task` (Object, required avec validator)
+- TaskForm : `editTask` (Object, optional)
+- TaskList : `tasks` (Array)
+
+**Events (Enfant → Parent)** :
+- **$emit** : `this.$emit('toggle', task.id)`
+- **Déclaration** : `emits: ['toggle', 'delete']`
+- **Validation** : Validation des types d'événements
+- **Événements utilisés** : toggle, delete, edit, submit, cancel
+
+**Gestion de listes** :
+- v-for avec composants : `<TaskItem v-for="..." />`
+- Propagation d'events : `@toggle="$emit('toggle', $event)"`
+
+**Affichage conditionnel** :
+- `v-if="showForm"` pour TaskForm
+- `v-if="filteredTasks.length === 0"` pour empty state
+
+---
+
+# Couverture des concepts - 1.7 Réactivité
+
+### ✅ 1.7 Réactivité avancée
+
+**Computed properties** :
+- **TaskItem** : `priorityColor()`, `priorityLabel()`
+- **TaskList** : `filteredTasks()`, `activeCount()`, `doneCount()`, `displayedTasks()`
+- **Mise en cache** : Recalculé uniquement si dépendances changent
+- **Performance** : Évite recalculs inutiles
+
+**Watch (Observateurs)** :
+- **Watch simple** : `searchQuery` avec debounce de 300ms
+- **Debounce pattern** : clearTimeout + setTimeout
+- **Use case** : Recherche en temps réel sans surcharge
+
+**Différence Computed vs Methods** :
+- Computed : Valeurs dérivées avec cache (filtres, compteurs)
+- Methods : Actions/opérations (addTask, deleteTask)
+
+**Mixins** :
+- Concept vu en théorie (réutilisation logique Options API)
+- Pas utilisé dans TaskFlow Module 1 (concepts avancés)
+
+---
+
+# Couverture des concepts - 1.8 Lifecycle
+
+### ✅ 1.8 Cycle de vie des composants
+
+**mounted()** :
+- **TaskForm** : Charger `editTask` si mode édition
+- **App.vue** : Charger depuis localStorage (bonus)
+- **Use case** : Initialisation, fetch data
+
+**Lifecycle complet** :
+- **beforeCreate** → **created** → **beforeMount** → **mounted**
+- **beforeUpdate** → **updated** (quand réactivité change)
+- **beforeUnmount** → **unmounted** (cleanup)
+
+**Cleanup (unmounted)** :
+- Concept vu en théorie
+- Use case : clearInterval, removeEventListener
+- Pas nécessaire dans TaskFlow Module 1
+
+**Pattern utilisé** :
+```javascript
+mounted() {
+  if (this.editTask) {
+    this.formData = { ...this.editTask };
+  }
+}
+```
+
+---
+
+# Checklist de validation finale
+
+### Avant de passer au Module 2, vérifiez que vous maîtrisez :
+
+**Fondamentaux** :
+- ✅ Installation et configuration environnement (Node.js, npm, Vite)
+- ✅ Syntaxe JavaScript ES6+ (arrow functions, destructuring, spread, modules)
+- ✅ Création projet Vue avec Vite
+- ✅ Structure .vue (script, template, style)
+
+**Composants** :
+- ✅ Création de composants réutilisables
+- ✅ data(), methods, computed
+- ✅ Props avec validation (type, required, default, validator)
+- ✅ Events personnalisés ($emit, emits declaration)
+
+**Directives** :
+- ✅ Interpolation {{ }}
+- ✅ v-bind (: shorthand) - classes, styles, props
+- ✅ v-on (@ shorthand) - events, modificateurs
+- ✅ v-if / v-else / v-show
+- ✅ v-for avec :key
+- ✅ v-model (input, textarea, select, checkbox)
+
+**Réactivité** :
+- ✅ Computed properties et mise en cache
+- ✅ Watch avec options (debounce pattern)
+- ✅ Différence computed vs methods
+
+**Lifecycle** :
+- ✅ mounted() pour initialisation
+- ✅ Comprendre le cycle complet
+- ✅ Cleanup (concept, même si pas utilisé)
+
+---
+
+# Ressources complémentaires
+
+### Documentation officielle
+
+- 📚 [Vue.js 3 Documentation](https://vuejs.org/) - Doc complète et tutoriels
+- 🔧 [Vite Guide](https://vitejs.dev/) - Build tool rapide
+- 📦 [npm Documentation](https://docs.npmjs.com/) - Gestionnaire de paquets
+
+### Tutoriels vidéo
+
+- 🎥 [Vue Mastery](https://www.vuemastery.com/) - Cours premium Vue.js
+- 🎓 [Vue School](https://vueschool.io/) - Formations certifiantes
+- 📺 Chaînes YouTube Vue.js (Net Ninja, Traversy Media)
+
+### Outils de développement
+
+- 🛠️ [Vue DevTools](https://devtools.vuejs.org/) - Extension navigateur indispensable
+- 💻 [VS Code + Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - IDE support
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utility-first
+
+### Communauté
+
+- 💬 [Discord Vue Land](https://chat.vuejs.org/) - Communauté active
+- 🐦 [@vuejs](https://twitter.com/vuejs) - Actualités officielles
+- 📰 [Vue.js News](https://news.vuejs.org/) - Newsletter hebdomadaire
+
+---
+
+# Félicitations ! 🎉
+
+### Vous avez terminé le Module 1 !
+
+Vous maîtrisez maintenant :
+- ✅ Les bases fondamentales de Vue.js 3
+- ✅ La création de composants réutilisables
+- ✅ La communication parent-enfant
+- ✅ La réactivité avec computed et watch
+- ✅ Le cycle de vie des composants
+
+### Votre première application
+
+**TaskFlow** - Une application complète de gestion de tâches avec :
+- 5 composants fonctionnels (App, TaskList, TaskItem, TaskForm)
+- Props et events bien structurés
+- Filtres, recherche, statistiques
+- Interface moderne et réactive
+
+### 🚀 Prochaine étape : Module 2 - Slots
+
+Rendez-vous au Module 2 pour découvrir comment créer des composants encore plus flexibles et réutilisables avec les **slots** !
+
+**Au programme** :
+- Slots simples et nommés
+- Scoped slots
+- Composants génériques ultra-réutilisables
+- TaskCard avec slots personnalisables

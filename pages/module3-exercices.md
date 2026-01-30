@@ -10,500 +10,29 @@ routeAlias: 'module3-exercices'
 
 ---
 
-# Exercice 1 - Badge fonctionnel
-
-### Objectif
-Créer un composant Badge optimisé
-
-### Spécifications
-
-- Composant fonctionnel
-- Props: `type` (success, error, warning, info)
-- Props: `size` (small, medium, large)
-- Slot pour le contenu
-- Styles appropriés par type
-
----
-
-# Exercice 2 - Composant avec CSS dynamique
-
-### Objectif
-Créer un composant avec variables CSS réactives
-
-### Fonctionnalités
-
-- Thème personnalisable (couleur primaire, secondaire)
-- Taille de texte ajustable
-- Espacement configurable
-- Coin arrondis ajustables
-- Mode clair/sombre
-
----
-
-# Exercice 3 - Directive v-click-outside
-
-### Objectif
-Implémenter une directive qui détecte les clics extérieurs
-
-### Utilisation
-
-```vue
-<div v-click-outside="handleClickOutside">
-  Contenu
-</div>
-```
-
----
-
-# Exercice 2 - Bonus
-
-### Bonus
-
-- Support des modificateurs (capture, once)
-- Exclure certains éléments
-- Support touch events
-
----
-
-# Exercice 3 - Solution
-
-```javascript
-// directives/clickOutside.js
-export const vClickOutside = {
-  mounted(el, binding) {
-    el.clickOutsideEvent = (event) => {
-      if (!(el === event.target || el.contains(event.target))) {
-        binding.value(event);
-      }
-    };
-    
-    const capture = binding.modifiers.capture || false;
-    document.addEventListener('click', el.clickOutsideEvent, capture);
-  },
-  
-  unmounted(el) {
-    document.removeEventListener('click', el.clickOutsideEvent);
-  }
-};
-```
-
----
-
-# Exercice 4 - Directive v-tooltip
-
-### Objectif
-Créer une directive pour afficher des tooltips
-
-### Fonctionnalités
-
-- Position configurable (top, bottom, left, right)
-- Délai d'affichage
-- Styling personnalisable
-- Support HTML dans le tooltip (avec modificateur)
-
----
-
-# Exercice 4 - Solution (1/2)
-
-```javascript
-// directives/tooltip.js
-export const vTooltip = {
-  mounted(el, binding) {
-    const tooltip = document.createElement('div');
-    tooltip.className = 'v-tooltip';
-    
-    if (binding.modifiers.html) {
-      tooltip.innerHTML = binding.value;
-    } else {
-      tooltip.textContent = binding.value;
-    }
-    
-    tooltip.style.position = 'absolute';
-    tooltip.style.display = 'none';
-    tooltip.style.zIndex = '9999';
-    document.body.appendChild(tooltip);
-    
-    const position = binding.arg || 'top';
-    const delay = 200;
-    let timeout;
-```
-
----
-
-# Exercice 4 - Solution (2/2)
-
-```javascript
-    el.addEventListener('mouseenter', () => {
-      timeout = setTimeout(() => {
-        const rect = el.getBoundingClientRect();
-        
-        switch(position) {
-          case 'top':
-            tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
-            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
-            break;
-          case 'bottom':
-            tooltip.style.top = rect.bottom + 10 + 'px';
-            tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
-            break;
-        }
-        
-        tooltip.style.display = 'block';
-      }, delay);
-    });
-    
-    el.addEventListener('mouseleave', () => {
-      clearTimeout(timeout);
-      tooltip.style.display = 'none';
-    });
-    
-    el._tooltip = tooltip;
-  },
-  
-  unmounted(el) {
-    if (el._tooltip) {
-      el._tooltip.remove();
-    }
-  }
-};
-```
-
----
-
-# Exercice 5 - Directive v-lazy-load
-
-### Objectif
-Implémenter le lazy loading pour les images
-
-### Fonctionnalités
-
-- Utiliser IntersectionObserver
-- Placeholder pendant le chargement
-- Gestion des erreurs
-- Support des backgrounds
-- Effet de transition
-
----
-
-# Exercice 5 - Solution
-
-```javascript
-// directives/lazyLoad.js
-export const vLazyLoad = {
-  mounted(el, binding) {
-    const options = {
-      threshold: 0.1,
-      rootMargin: '50px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          
-          img.addEventListener('load', () => {
-            img.classList.add('loaded');
-          });
-          
-          img.addEventListener('error', () => {
-            img.src = '/placeholder-error.jpg';
-          });
-          
-          if (binding.modifiers.background) {
-            img.style.backgroundImage = `url(${binding.value})`;
-          } else {
-            img.src = binding.value;
-          }
-          
-          observer.unobserve(img);
-        }
-      });
-    }, options);
-    
-    observer.observe(el);
-    el._observer = observer;
-  },
-  
-  unmounted(el) {
-    if (el._observer) {
-      el._observer.disconnect();
-    }
-  }
-};
-```
-
----
-
-# Exercice 6 - Directive v-permission
-
-### Objectif
-Système de contrôle d'accès basé sur les permissions
-
-### Fonctionnalités
-
-- Cacher/Afficher selon permissions
-- Support AND et OR
-- Désactiver au lieu de cacher (modificateur)
-- Récupérer les permissions du store Pinia
-
----
-
-# Exercice 6 - Solution
-
-```javascript
-// directives/permission.js
-import { useAuthStore } from '@/stores/auth';
-
-export const vPermission = {
-  mounted(el, binding) {
-    const authStore = useAuthStore();
-    const requiredPermissions = Array.isArray(binding.value) 
-      ? binding.value 
-      : [binding.value];
-    
-    const userPermissions = authStore.permissions || [];
-    
-    let hasPermission;
-    
-    if (binding.modifiers.or) {
-      // Au moins une permission
-      hasPermission = requiredPermissions.some(
-        perm => userPermissions.includes(perm)
-      );
-    } else {
-      // Toutes les permissions (AND par défaut)
-      hasPermission = requiredPermissions.every(
-        perm => userPermissions.includes(perm)
-      );
-    }
-    
-    if (!hasPermission) {
-      if (binding.modifiers.disable) {
-        el.disabled = true;
-        el.style.opacity = '0.5';
-        el.style.cursor = 'not-allowed';
-      } else {
-        el.style.display = 'none';
-      }
-    }
-  }
-};
-```
-
----
-
-# Exercice 6 - Utilisation
-
-```vue
-<script>
-import { vPermission } from './directives/permission';
-
-export default {
-  directives: {
-    permission: vPermission
-  }
-}
-</script>
-
-<template>
-  <!-- Cacher si pas la permission -->
-  <button v-permission="'write'">
-    Éditer
-  </button>
-  
-  <!-- Désactiver au lieu de cacher -->
-  <button v-permission.disable="'admin'">
-    Admin Panel
-  </button>
-  
-  <!-- Multiples permissions (AND) -->
-  <button v-permission="['write', 'delete']">
-    Supprimer
-  </button>
-  
-  <!-- Au moins une permission (OR) -->
-  <button v-permission.or="['user', 'admin']">
-    Voir
-  </button>
-</template>
-```
-
----
-
-# Exercice 7 - Directive v-infinite-scroll
-
-### Objectif
-Détecter quand l'utilisateur atteint le bas de la page
-
-### Fonctionnalités
-
-- Callback quand proche du bas
-- Distance configurable
-- Throttle des événements
-- Support pour éléments scrollables
-
----
-
-# Exercice 7 - Solution
-
-```javascript
-// directives/infiniteScroll.js
-export const vInfiniteScroll = {
-  mounted(el, binding) {
-    const distance = binding.arg ? parseInt(binding.arg) : 100;
-    let isLoading = false;
-    
-    const checkScroll = () => {
-      if (isLoading) return;
-      
-      const scrollable = el === window ? document.documentElement : el;
-      const scrollTop = el === window ? window.scrollY : el.scrollTop;
-      const scrollHeight = scrollable.scrollHeight;
-      const clientHeight = el === window ? window.innerHeight : el.clientHeight;
-      
-      if (scrollTop + clientHeight >= scrollHeight - distance) {
-        isLoading = true;
-        
-        const result = binding.value();
-        
-        if (result && result.finally) {
-          result.finally(() => {
-            isLoading = false;
-          });
-        } else {
-          isLoading = false;
-        }
-      }
-    };
-    
-    let throttleTimeout;
-    const throttledCheck = () => {
-      if (throttleTimeout) return;
-      
-      throttleTimeout = setTimeout(() => {
-        checkScroll();
-        throttleTimeout = null;
-      }, 200);
-    };
-    
-    const target = el === window ? window : el;
-    target.addEventListener('scroll', throttledCheck);
-    
-    el._scrollHandler = throttledCheck;
-    el._target = target;
-  },
-  
-  unmounted(el) {
-    if (el._scrollHandler && el._target) {
-      el._target.removeEventListener('scroll', el._scrollHandler);
-    }
-  }
-};
-```
-
----
-
-# Exercice 8 - Plugin de directives
-
-### Objectif
-Créer un plugin regroupant toutes vos directives
-
-### Structure
-
-```
-plugins/
-└── directives/
-    ├── index.js
-    ├── clickOutside.js
-    ├── tooltip.js
-    ├── lazyLoad.js
-    ├── permission.js
-    └── infiniteScroll.js
-```
-
----
-
-# Exercice 8 - Solution
-
-```javascript
-// plugins/directives/index.js
-import { vClickOutside } from './clickOutside';
-import { vTooltip } from './tooltip';
-import { vLazyLoad } from './lazyLoad';
-import { vPermission } from './permission';
-import { vInfiniteScroll } from './infiniteScroll';
-
-export default {
-  install(app) {
-    app.directive('click-outside', vClickOutside);
-    app.directive('tooltip', vTooltip);
-    app.directive('lazy-load', vLazyLoad);
-    app.directive('permission', vPermission);
-    app.directive('infinite-scroll', vInfiniteScroll);
-  }
-};
-```
-
----
-
-# Utilisation du plugin
-
-```javascript
-// main.js
-import { createApp } from 'vue';
-import App from './App.vue';
-import directivesPlugin from './plugins/directives';
-
-const app = createApp(App);
-
-app.use(directivesPlugin);
-
-app.mount('#app');
-```
-
----
-
-# Projet Fil Rouge - Partie 3
-
-### Améliorer l'application avec les fonctionnalités avancées
-
-**Objectifs**:
-
-1. Migrer vers TypeScript
-2. Ajouter v-lazy-load sur les images produits
-3. Implémenter v-tooltip pour les descriptions
-4. Utiliser v-permission pour les actions admin
-5. Ajouter v-infinite-scroll pour le chargement progressif
-6. Créer des composants fonctionnels pour les badges
-7. Utiliser des variables CSS dynamiques pour le thème
-
----
-
-# Checklist de validation
-
-Avant de passer au Module 4, assurez-vous de maîtriser :
-
-- ✅ Comprendre les composants fonctionnels
-- ✅ Maîtriser la structure des SFC
-- ✅ Utiliser scoped CSS et CSS modules
-- ✅ Implémenter des variables CSS réactives
-- ✅ Utiliser TypeScript dans les composants
-- ✅ Connaître les directives natives avancées
-- ✅ Créer des directives personnalisées
-- ✅ Gérer le lifecycle des directives
-- ✅ Nettoyer les ressources (event listeners, observers)
-- ✅ Créer un plugin de directives
-
----
-layout: new-section
----
-
 # 🎯 Fil Rouge : TaskFlow
 ## Exercices Module 3
 
+Maintenant que vous avez vu tous les concepts avancés du Module 3, il est temps d'enrichir TaskFlow avec des directives personnalisées !
+
+### Rappel des concepts du Module 3
+
+<div class="text-sm">
+
+**3.1 SFC avancés** : Scoped CSS, CSS Modules, Variables CSS réactives  
+**3.2 Directives** : Directives personnalisées, lifecycle, manipulation DOM  
+**3.3 Composants fonctionnels** : Performance et cas d'usage  
+**3.4 Plugins** : Création et utilisation de plugins Vue
+
+</div>
+
+### Les 4 exercices progressifs
+
+Nous allons ajouter des directives personnalisées pour améliorer l'UX de TaskFlow.
+
 ---
 
-# TaskFlow - Exercice 1 : Directive v-auto-focus
+# Exercice 1 : Directive v-auto-focus
 
 ### Objectif
 Créer une directive qui focus automatiquement un input
@@ -524,7 +53,7 @@ Créer une directive qui focus automatiquement un input
 
 ---
 
-# TaskFlow - Solution v-auto-focus
+# Exercice 1 - Solution v-auto-focus
 
 ```js
 // directives/autoFocus.js
@@ -552,7 +81,7 @@ export const vAutoFocus = {
 
 ---
 
-# TaskFlow - Utilisation v-auto-focus
+# Exercice 1 - Utilisation v-auto-focus
 
 ```vue
 <script>
@@ -603,7 +132,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 2 : Directive v-click-outside
+# Exercice 2 : Directive v-click-outside
 
 ### Objectif
 Détecter les clics en dehors d'un élément
@@ -625,7 +154,7 @@ Détecter les clics en dehors d'un élément
 
 ---
 
-# TaskFlow - Solution v-click-outside (1/2)
+# Exercice 2 - Solution v-click-outside (1/2)
 
 ```js
 // directives/clickOutside.js
@@ -657,7 +186,7 @@ export const vClickOutside = {
 
 ---
 
-# TaskFlow - Solution v-click-outside (2/2)
+# Exercice 2 - Solution v-click-outside (2/2)
 
 ```vue
 <script>
@@ -716,7 +245,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 3 : Directive v-tooltip
+# Exercice 3 : Directive v-tooltip
 
 ### Objectif
 Afficher un tooltip au survol d'un élément
@@ -740,7 +269,7 @@ Afficher un tooltip au survol d'un élément
 
 ---
 
-# TaskFlow - Solution v-tooltip (1/3)
+# Exercice 3 - Solution v-tooltip (1/3)
 
 ```js
 // directives/tooltip.js
@@ -797,7 +326,7 @@ export const vTooltip = {
 
 ---
 
-# TaskFlow - Solution v-tooltip (2/3)
+# Exercice 3 - Solution v-tooltip (2/3)
 
 ```js
 // directives/tooltip.js (suite)
@@ -842,7 +371,7 @@ export const vTooltip = {
 
 ---
 
-# TaskFlow - Solution v-tooltip Styles
+# Exercice 3 - Solution v-tooltip Styles
 
 ```css
 /* styles/tooltip.css */
@@ -885,7 +414,7 @@ export const vTooltip = {
 
 ---
 
-# TaskFlow - Utilisation v-tooltip
+# Exercice 3 - Utilisation v-tooltip
 
 ```vue
 <script>
@@ -940,7 +469,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 4 : Plugin de Directives
+# Exercice 4 : Plugin de Directives
 
 ### Objectif
 Créer un plugin pour enregistrer toutes les directives TaskFlow
@@ -965,7 +494,7 @@ app.use(TaskFlowDirectives);
 
 ---
 
-# TaskFlow - Solution Plugin Directives
+# Exercice 4 - Solution Plugin Directives
 
 ```js
 // plugins/taskflowDirectives.js
@@ -1017,20 +546,72 @@ export const TaskFlowDirectives = {
 ✅ **v-tooltip** : Tooltips personnalisables  
 ✅ **Plugin** : Package réutilisable de directives  
 
-### Concepts utilisés
+### Concepts du Module 3 utilisés
 
-- ✅ Lifecycle des directives (mounted, updated, unmounted)
-- ✅ Binding values (string, object)
-- ✅ Manipulation DOM directe
-- ✅ Event listeners (addEventListener, removeEventListener)
-- ✅ Cleanup des ressources
-- ✅ Positionnement absolu/fixe
-- ✅ Création de plugins Vue
+- ✅ **3.1 SFC avancés** : Scoped styles, CSS modules
+- ✅ **3.2 Directives** : Lifecycle (mounted, updated, unmounted), binding values
+- ✅ **3.3 Manipulation DOM** : createElement, appendChild, event listeners
+- ✅ **3.4 Plugins** : Structure plugin.install, config globale
 
-### 🚀 Next : Module 4
+### Détails techniques
+
+- **Lifecycle des directives** : mounted, updated, unmounted
+- **Binding values** : String simple ou Object avec options
+- **Event listeners** : addEventListener, removeEventListener
+- **Cleanup** : Suppression listeners et éléments DOM
+- **Positionnement** : getBoundingClientRect, fixed/absolute
+- **Plugin pattern** : app.directive(), globalProperties
+
+### 🚀 Prochaine étape : Module 4
 
 On va gérer l'**état global** de TaskFlow avec **Pinia** !
 
 - Store de tâches centralisé
 - Actions asynchrones
 - Persistance localStorage
+
+---
+
+# Ressources complémentaires
+
+### Documentation officielle
+
+- 📚 [Vue.js Custom Directives](https://vuejs.org/guide/reusability/custom-directives.html)
+- 🔌 [Vue.js Plugins](https://vuejs.org/guide/reusability/plugins.html)
+- 🎨 [SFC CSS Features](https://vuejs.org/api/sfc-css-features.html)
+
+### Concepts avancés
+
+- 🔧 Render Functions
+- ⚡ Teleport API
+- 🎭 Async Components
+
+### Exemples
+
+- 💡 [Directive Examples](https://vuejs.org/examples/#custom-directive)
+- 🎯 [Plugin Patterns](https://vuejs.org/guide/reusability/plugins.html#writing-a-plugin)
+
+---
+
+# Félicitations ! 🎉
+
+### Vous avez terminé le Module 3 !
+
+Vous maîtrisez maintenant :
+- ✅ Directives personnalisées avec lifecycle complet
+- ✅ Manipulation DOM directe et sécurisée
+- ✅ Event listeners et cleanup
+- ✅ Création de plugins Vue réutilisables
+- ✅ Patterns avancés pour l'UX
+
+### Vos directives TaskFlow
+
+**4 directives professionnelles** :
+- v-auto-focus : UX améliorée
+- v-click-outside : Fermeture dropdowns
+- v-tooltip : Aide contextuelle
+- Plugin complet : Package réutilisable
+
+### 🚀 Prochaine étape : Module 4
+
+Rendez-vous au Module 4 pour centraliser l'état de TaskFlow avec Pinia !

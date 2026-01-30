@@ -6,112 +6,32 @@ routeAlias: 'module4-exercices'
 <a name="module4-exercices" id="module4-exercices"></a>
 
 # Exercices Pratiques
-## Module 4 - State Management avec Pinia
+## Module 4 - Pinia (State Management)
 
----
-
-# Exercice 1 - Store Products
-
-### Objectif
-Créer un store pour gérer une liste de produits
-
-### Fonctionnalités
-
-- State: products[], loading, error
-- Actions: fetchProducts(), addProduct(), deleteProduct(), updateProduct()
-- Getters: productCount, totalValue, getProductById
-- Intégration API (JSONPlaceholder ou mockAPI)
-
----
-
-# Exercice 2 - Store Cart (Panier)
-
-### Objectif
-Créer un store pour gérer un panier d'achat
-
-### Fonctionnalités
-
-- State: items[] (avec quantity)
-- Actions: addToCart(), removeFromCart(), updateQuantity(), clearCart()
-- Getters: itemCount, totalItems, totalPrice, cartSummary
-- Vérifier le stock avant d'ajouter
-
----
-
-# Exercice 3 - Store Auth
-
-### Objectif
-Créer un store d'authentification
-
-### Fonctionnalités
-
-- State: user, token, isLoggedIn, permissions
-- Actions: login(), logout(), refreshToken(), checkAuth()
-- Getters: userFullName, hasPermission(perm)
-- Persistence du token dans localStorage
-
----
-
-# Exercice 4 - Interaction entre stores
-
-### Objectif
-Faire communiquer les stores entre eux
-
-### Scénarios
-
-- Cart doit vérifier si user est logged in (Auth store)
-- Cart doit vérifier le stock (Products store)
-- Products affiche différemment selon le role (Auth store)
-- Actions admin disponibles selon permissions
-
----
-
-# Exercice 5 - Plugin de persistence
-
-### Objectif
-Créer un plugin Pinia pour la persistence
-
-### Fonctionnalités
-
-- Auto-save dans localStorage
-- Auto-load au démarrage
-- Configuration par store (quels stores persister)
-- Expiration optionnelle
-
----
-
-# Projet Fil Rouge - Partie 4
-
-### Intégrer Pinia dans l'application de produits
-
-**Objectifs**:
-
-1. Migrer le state local vers Pinia
-2. Créer les stores: products, cart, auth
-3. Implémenter la persistence du panier
-4. Ajouter l'authentification simulée
-5. Gérer les permissions (admin/user)
-6. Intégrer les DevTools Vue
-
-**Checklist**:
-- ✅ Installation et configuration de Pinia
-- ✅ Store products avec CRUD
-- ✅ Store cart avec calculs
-- ✅ Store auth avec permissions
-- ✅ Persistence localStorage
-- ✅ Communication entre stores
-- ✅ TypeScript (bonus)
-
----
-layout: new-section
 ---
 
 # 🎯 Fil Rouge : TaskFlow
 ## Exercices Module 4
 
+Maintenant que vous avez vu tous les concepts théoriques du Module 4, il est temps de centraliser l'état de TaskFlow avec Pinia !
+
+### Rappel des concepts du Module 4
+
+<div class="text-sm">
+
+**4.1 Introduction à Pinia** : Store, State, Getters, Actions  
+**4.2 Stores avancés** : Composition entre stores, plugins  
+**4.3 Persistence** : localStorage, sessionStorage
+
+</div>
+
+### Les 3 exercices progressifs
+
+Nous allons créer 3 stores Pinia pour gérer l'état global de TaskFlow.
+
 ---
 
-# TaskFlow - Exercice 1 : Store Tasks
+# Exercice 1 : Store Tasks
 
 ### Objectif
 Créer un store Pinia pour gérer les tâches
@@ -134,7 +54,7 @@ Créer un store Pinia pour gérer les tâches
 
 ---
 
-# TaskFlow - Solution Store Tasks (1/4)
+# Exercice 1 - Solution Store Tasks (1/4)
 
 ```js
 // stores/tasks.js
@@ -188,7 +108,7 @@ export const useTasksStore = defineStore('tasks', {
 
 ---
 
-# TaskFlow - Solution Store Tasks (2/4)
+# Exercice 1 - Solution Store Tasks (2/4)
 
 ```js
 // stores/tasks.js (suite)
@@ -239,7 +159,7 @@ export const useTasksStore = defineStore('tasks', {
 
 ---
 
-# TaskFlow - Solution Store Tasks (3/4)
+# Exercice 1 - Solution Store Tasks (3/4)
 
 ```js
 // stores/tasks.js (suite)
@@ -290,7 +210,7 @@ export const useTasksStore = defineStore('tasks', {
 
 ---
 
-# TaskFlow - Solution Store Tasks (4/4)
+# Exercice 1 - Solution Store Tasks (4/4)
 
 ```js
 // stores/tasks.js (suite)
@@ -325,7 +245,7 @@ export const useTasksStore = defineStore('tasks', {
 
 ---
 
-# TaskFlow - Utilisation Store Tasks (1/2)
+# Exercice 1 - Utilisation Store Tasks (1/2)
 
 **Script :**
 
@@ -374,7 +294,7 @@ export default {
 
 ---
 
-# TaskFlow - Utilisation Store Tasks (2/2)
+# Exercice 1 - Utilisation Store Tasks (2/2)
 
 **Template :**
 
@@ -403,7 +323,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 2 : Store Categories
+# Exercice 2 : Store Categories
 
 ### Objectif
 Créer un store pour gérer les catégories de tâches
@@ -429,7 +349,7 @@ Créer un store pour gérer les catégories de tâches
 
 ---
 
-# TaskFlow - Solution Store Categories (1/2)
+# Exercice 2 - Solution Store Categories (1/2)
 
 ```js
 // stores/categories.js
@@ -480,7 +400,7 @@ export const useCategoriesStore = defineStore('categories', {
 
 ---
 
-# TaskFlow - Solution Store Categories (2/2)
+# Exercice 2 - Solution Store Categories (2/2)
 
 ```js
 // stores/categories.js (suite)
@@ -539,7 +459,7 @@ export const useCategoriesStore = defineStore('categories', {
 
 ---
 
-# TaskFlow - Exercice 3 : Store Auth
+# Exercice 3 : Store Auth
 
 ### Objectif
 Créer un store d'authentification pour TaskFlow
@@ -563,7 +483,7 @@ Créer un store d'authentification pour TaskFlow
 
 ---
 
-# TaskFlow - Solution Store Auth (1/2)
+# Exercice 3 - Solution Store Auth (1/3)
 
 **State et Getters :**
 
@@ -597,7 +517,7 @@ export const useAuthStore = defineStore('auth', {
 
 ---
 
-# TaskFlow - Solution Store Auth (2/3)
+# Exercice 3 - Solution Store Auth (2/3)
 
 **Action login :**
 
@@ -640,7 +560,7 @@ export const useAuthStore = defineStore('auth', {
 
 ---
 
-# TaskFlow - Solution Store Auth (3/3)
+# Exercice 3 - Solution Store Auth (3/3)
 
 **Actions logout et checkAuth :**
 
@@ -676,7 +596,7 @@ export const useAuthStore = defineStore('auth', {
 
 ---
 
-# TaskFlow - Interaction entre Stores (1/2)
+# Interaction entre Stores (1/2)
 
 **Script :**
 
@@ -726,7 +646,7 @@ export default {
 
 ---
 
-# TaskFlow - Interaction entre Stores (2/2)
+# Interaction entre Stores (2/2)
 
 **Template :**
 
@@ -760,21 +680,73 @@ export default {
 ✅ **Store Auth** : Authentification et permissions  
 ✅ **Interactions** : Communication entre stores  
 
-### Concepts utilisés
+### Concepts du Module 4 utilisés
 
-- ✅ defineStore avec Options API
-- ✅ State, Getters, Actions
-- ✅ storeToRefs pour la réactivité
-- ✅ Utilisation d'un store dans un autre
-- ✅ Persistence localStorage
-- ✅ Gestion des permissions
-- ✅ Getters paramétrés
-- ✅ Actions asynchrones
+- ✅ **4.1 Introduction** : defineStore, State, Getters, Actions
+- ✅ **4.2 Stores avancés** : Composition entre stores, getters paramétrés
+- ✅ **4.3 Persistence** : localStorage pour sauvegarder l'état
 
-### 🚀 Next : Module 5
+### Détails techniques
+
+- **defineStore** : Options API avec state/getters/actions
+- **storeToRefs** : Préserver la réactivité lors de la destructuration
+- **Getters paramétrés** : Retourner une fonction pour passer des arguments
+- **Interaction stores** : Importer et utiliser un store dans un autre
+- **Actions asynchrones** : async/await pour fetch
+- **Persistence** : localStorage.setItem/getItem
+- **Permissions** : Système de rôles dans le store auth
+
+### 🚀 Prochaine étape : Module 5
 
 On va ajouter le **routing** à TaskFlow avec **Vue Router** !
 
 - Navigation entre vues
 - Routes dynamiques (/task/:id)
 - Guards de navigation (auth required)
+
+---
+
+# Ressources complémentaires
+
+### Documentation officielle
+
+- 📚 [Pinia Documentation](https://pinia.vuejs.org/)
+- 🎯 [Core Concepts](https://pinia.vuejs.org/core-concepts/)
+- 🔧 [Store Composition](https://pinia.vuejs.org/cookbook/composing-stores.html)
+
+### Concepts avancés
+
+- 🚀 Setup Stores (Composition API)
+- 💾 Plugins de persistence
+- 🔌 DevTools integration
+
+### Exemples
+
+- 💡 [Pinia Examples](https://pinia.vuejs.org/cookbook/)
+- 🎭 [Testing Stores](https://pinia.vuejs.org/cookbook/testing.html)
+
+---
+
+# Félicitations ! 🎉
+
+### Vous avez terminé le Module 4 !
+
+Vous maîtrisez maintenant :
+- ✅ Création de stores Pinia avec Options API
+- ✅ State, getters et actions
+- ✅ storeToRefs pour la réactivité
+- ✅ Composition entre stores
+- ✅ Persistence avec localStorage
+- ✅ Gestion des permissions et rôles
+- ✅ Actions asynchrones
+
+### Vos stores TaskFlow
+
+**3 stores centralisés** :
+- useTasksStore : CRUD complet + filtres
+- useCategoriesStore : Catégories + interaction
+- useAuthStore : Auth + permissions
+
+### 🚀 Prochaine étape : Module 5
+
+Rendez-vous au Module 5 pour ajouter le routing avec Vue Router !

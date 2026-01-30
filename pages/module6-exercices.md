@@ -10,189 +10,30 @@ routeAlias: 'module6-exercices'
 
 ---
 
-# Exercice 1 - Configuration Vitest
-
-### Objectif
-Installer et configurer Vitest dans le projet
-
-### Tâches
-
-1. Installer Vitest et @vue/test-utils
-2. Configurer vite.config.js
-3. Ajouter les scripts npm
-4. Créer le premier test simple
-5. Lancer les tests en watch mode
-
----
-
-# Exercice 2 - Tester un composable
-
-### Objectif
-Tester useCounter et useFetch
-
-### Tests à écrire pour useCounter
-
-- Initialisation avec valeur par défaut
-- Initialisation avec valeur custom
-- increment()
-- decrement()
-- reset()
-- Valeurs min/max
-
-### Tests à écrire pour useFetch
-
-- État initial (loading, data, error)
-- Fetch réussi
-- Fetch avec erreur
-- Retry
-
----
-
-# Exercice 3 - Tester des composants
-
-### Counter.vue
-
-- Rendu initial
-- Affichage de la valeur
-- Increment au clic
-- Decrement au clic
-- Props initialValue
-
-### UserCard.vue
-
-- Affichage du nom et email
-- Événement delete au clic
-- Événement edit au clic
-- Props validation
-
-### TodoList.vue
-
-- Affichage de la liste
-- Ajout d'une tâche
-- Toggle d'une tâche
-- Suppression d'une tâche
-- Filtre actif/terminé
-
----
-
-# Exercice 4 - Tester avec Pinia
-
-### Store Products
-
-- État initial
-- fetchProducts()
-- addProduct()
-- updateProduct()
-- deleteProduct()
-- Getters (productCount, totalValue)
-
-### Store Cart
-
-- addToCart()
-- removeFromCart()
-- updateQuantity()
-- clearCart()
-- totalPrice
-- itemCount
-
----
-
-# Exercice 5 - Tester avec Vue Router
-
-### Navigation Component
-
-- Liens de navigation
-- Navigation programmatique
-- Route active (classe CSS)
-- RouterLink
-
-### Guards
-
-- beforeEach (auth)
-- beforeEnter (permissions)
-- onBeforeRouteLeave
-
----
-
-# Exercice 6 - Mocks et API
-
-### Objectif
-Mocker les appels API
-
-### Tests
-
-- Fetch users (succès)
-- Fetch users (erreur)
-- Create user
-- Update user
-- Delete user
-- Loading states
-
----
-
-# Exercice 7 - Coverage
-
-### Objectif
-Atteindre un bon coverage
-
-### Tâches
-
-1. Générer le rapport de coverage
-2. Identifier les zones non testées
-3. Ajouter des tests manquants
-4. Viser > 80% de coverage
-5. Configurer les seuils minimums
-
----
-
-# Projet Fil Rouge - Partie 6
-
-### Suite de tests complète
-
-**Tests à implémenter** :
-
-1. **Composables**
-   - useCounter
-   - useProduct
-   - useFetch
-   - useAuth
-
-2. **Composants**
-   - ProductCard
-   - ProductList
-   - Cart
-   - UserCard
-   - Modal
-   - Tabs
-
-3. **Stores Pinia**
-   - productsStore
-   - cartStore
-   - authStore
-
-4. **Router**
-   - Navigation
-   - Guards
-   - Routes dynamiques
-
-**Objectifs** :
-- ✅ > 80% coverage
-- ✅ Tests rapides (< 2s)
-- ✅ Tests isolés
-- ✅ Mocks appropriés
-- ✅ AAA pattern
-- ✅ Noms descriptifs
-
----
-layout: new-section
----
-
 # 🎯 Fil Rouge : TaskFlow
 ## Exercices Module 6
 
+Maintenant que vous avez vu tous les concepts théoriques du Module 6, il est temps de tester TaskFlow avec Vitest !
+
+### Rappel des concepts du Module 6
+
+<div class="text-sm">
+
+**6.1 Configuration Vitest** : Installation, vite.config.js  
+**6.2 Tests unitaires** : describe, it, expect  
+**6.3 Tests composants** : @vue/test-utils, mount, wrapper  
+**6.4 Mocks** : vi.fn, vi.mock, fetch  
+**6.5 Coverage** : v8, rapports
+
+</div>
+
+### Les 6 exercices progressifs
+
+Nous allons tester l'application TaskFlow complète.
+
 ---
 
-# TaskFlow - Exercice 1 : Configuration Vitest
+# Exercice 1 : Configuration Vitest
 
 ### Objectif
 Configurer Vitest pour tester TaskFlow
@@ -231,7 +72,7 @@ export default defineConfig({
 
 ---
 
-# TaskFlow - Scripts package.json
+# Exercice 1 - Scripts package.json
 
 ```json
 {
@@ -245,9 +86,17 @@ export default defineConfig({
 }
 ```
 
+**Lancer les tests** :
+
+```bash
+npm run test
+npm run test:ui
+npm run test:coverage
+```
+
 ---
 
-# TaskFlow - Exercice 2 : Tester Store Tasks
+# Exercice 2 : Tester Store Tasks
 
 ### Objectif
 Créer des tests pour le store tasks
@@ -266,7 +115,7 @@ Créer des tests pour le store tasks
 
 ---
 
-# TaskFlow - Solution tasks.spec.js (1/3)
+# Exercice 2 - Solution tasks.spec.js (1/3)
 
 ```js
 // __tests__/stores/tasks.spec.js
@@ -312,7 +161,7 @@ describe('Tasks Store', () => {
 
 ---
 
-# TaskFlow - Solution tasks.spec.js (2/3)
+# Exercice 2 - Solution tasks.spec.js (2/3)
 
 ```js
 // __tests__/stores/tasks.spec.js (suite)
@@ -368,7 +217,7 @@ describe('Tasks Store', () => {
 
 ---
 
-# TaskFlow - Solution tasks.spec.js (3/3)
+# Exercice 2 - Solution tasks.spec.js (3/3)
 
 ```js
 // __tests__/stores/tasks.spec.js (suite)
@@ -419,7 +268,7 @@ describe('Tasks Store - Getters', () => {
 
 ---
 
-# TaskFlow - Exercice 3 : Tester TaskItem.vue
+# Exercice 3 : Tester TaskItem.vue
 
 ### Objectif
 Tester le composant TaskItem
@@ -437,7 +286,7 @@ Tester le composant TaskItem
 
 ---
 
-# TaskFlow - Solution TaskItem.spec.js (1/2)
+# Exercice 3 - Solution TaskItem.spec.js (1/2)
 
 ```js
 // __tests__/components/TaskItem.spec.js
@@ -483,7 +332,7 @@ describe('TaskItem.vue', () => {
 
 ---
 
-# TaskFlow - Solution TaskItem.spec.js (2/2)
+# Exercice 3 - Solution TaskItem.spec.js (2/2)
 
 ```js
 // __tests__/components/TaskItem.spec.js (suite)
@@ -533,7 +382,7 @@ describe('TaskItem.vue - Events', () => {
 
 ---
 
-# TaskFlow - Exercice 4 : Tester Navigation Guards
+# Exercice 4 : Tester Navigation Guards
 
 ### Objectif
 Tester les guards de navigation
@@ -550,21 +399,20 @@ Tester les guards de navigation
 
 ---
 
-# TaskFlow - Solution guards.spec.js (1/2)
+# Exercice 4 - Solution guards.spec.js (1/2)
 
 ```js
 // __tests__/router/guards.spec.js
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { useAuthStore } from '@/stores/auth';
-import router from '@/router';
 
 describe('Navigation Guards', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
   
-  it('redirige vers /login si non authentifié', async () => {
+  it('redirige vers /login si non authentifié', () => {
     const authStore = useAuthStore();
     authStore.isAuthenticated = false;
     
@@ -573,7 +421,6 @@ describe('Navigation Guards', () => {
       meta: { requiresAuth: true },
       fullPath: '/tasks'
     };
-    const from = { name: 'Home' };
     const next = vi.fn();
     
     // Simuler le guard
@@ -597,7 +444,7 @@ describe('Navigation Guards', () => {
 
 ---
 
-# TaskFlow - Solution guards.spec.js (2/2)
+# Exercice 4 - Solution guards.spec.js (2/2)
 
 ```js
 // __tests__/router/guards.spec.js (suite)
@@ -653,7 +500,7 @@ describe('Navigation Guards', () => {
 
 ---
 
-# TaskFlow - Exercice 5 : Tester avec Mocks
+# Exercice 5 : Tester avec Mocks
 
 ### Objectif
 Tester les appels API avec des mocks
@@ -669,7 +516,7 @@ Tester les appels API avec des mocks
 
 ---
 
-# TaskFlow - Solution tasks-api.spec.js (1/2)
+# Exercice 5 - Solution tasks-api.spec.js (1/2)
 
 **Setup et test de succès :**
 
@@ -712,7 +559,7 @@ describe('Tasks Store - API', () => {
 
 ---
 
-# TaskFlow - Solution tasks-api.spec.js (2/2)
+# Exercice 5 - Solution tasks-api.spec.js (2/2)
 
 **Tests d'erreur et loading :**
 
@@ -754,7 +601,7 @@ describe('Tasks Store - API', () => {
 
 ---
 
-# TaskFlow - Exercice 6 : Coverage
+# Exercice 6 : Coverage
 
 ### Objectif
 Générer et analyser le coverage
@@ -798,24 +645,98 @@ All      |   91.23 |    85.19 |   95.45 |   90.89 |
 ✅ **Mocks API** : fetch, localStorage  
 ✅ **Coverage** : > 90% sur toute la base  
 
-### Concepts utilisés
+### Concepts du Module 6 utilisés
 
-- ✅ Vitest (describe, it, expect)
-- ✅ @vue/test-utils (mount, wrapper)
-- ✅ Pinia testing (setActivePinia)
-- ✅ Mocks (vi.fn, vi.mock)
-- ✅ Assertions (toBe, toEqual, toContain)
-- ✅ Events testing (emitted)
-- ✅ Coverage (--coverage)
+- ✅ **6.1 Configuration** : vite.config.js, happy-dom
+- ✅ **6.2 Tests unitaires** : describe, it, expect, beforeEach
+- ✅ **6.3 Tests composants** : mount, wrapper, emitted
+- ✅ **6.4 Mocks** : vi.fn, vi.mock, global.fetch
+- ✅ **6.5 Coverage** : v8 provider, rapports HTML
+
+### Détails techniques
+
+- **Vitest** : describe, it, expect, beforeEach
+- **@vue/test-utils** : mount, wrapper.find(), wrapper.text()
+- **Pinia testing** : setActivePinia, createPinia
+- **Mocks** : vi.fn(), vi.mock(), mockResolvedValue
+- **Assertions** : toBe, toEqual, toContain, toBeDefined
+- **Events** : wrapper.emitted(), trigger()
+- **Coverage** : --coverage, seuils, exclusions
 
 ### 🎉 FIN DU FIL ROUGE TASKFLOW !
 
 **Vous avez construit une application complète** :
-- ✅ 20+ composants
-- ✅ 3 stores Pinia
-- ✅ 7 routes
-- ✅ 3 directives custom
-- ✅ 50+ tests
-- ✅ > 90% coverage
+- ✅ 20+ composants Vue
+- ✅ 3 stores Pinia (tasks, categories, auth)
+- ✅ 7 routes avec Vue Router
+- ✅ 3 directives personnalisées
+- ✅ 50+ tests avec Vitest
+- ✅ > 90% code coverage
 
 **Félicitations ! 🚀**
+
+---
+
+# Ressources complémentaires
+
+### Documentation officielle
+
+- 📚 [Vitest Documentation](https://vitest.dev/)
+- 🎯 [Vue Test Utils](https://test-utils.vuejs.org/)
+- 🔧 [Testing Pinia](https://pinia.vuejs.org/cookbook/testing.html)
+
+### Concepts avancés
+
+- 🚀 Snapshot testing
+- ⚡ E2E tests avec Playwright
+- 🎭 Visual regression testing
+- 🔌 CI/CD integration
+
+### Exemples
+
+- 💡 [Vitest Examples](https://github.com/vitest-dev/vitest/tree/main/examples)
+- 🎨 [Testing Best Practices](https://vitest.dev/guide/best-practices.html)
+
+---
+
+# Félicitations ! 🎉🎉🎉
+
+### Vous avez terminé le Module 6 !
+
+Vous maîtrisez maintenant :
+- ✅ Configuration complète de Vitest
+- ✅ Tests unitaires des stores Pinia
+- ✅ Tests de composants Vue
+- ✅ Mocks et spies avec vi
+- ✅ Tests asynchrones
+- ✅ Coverage et analyse de qualité
+- ✅ Best practices de testing
+
+### 🏆 Vous avez terminé TOUTE la formation Vue.js !
+
+**Votre parcours complet** :
+
+**Module 1** : Bases Vue.js + composants  
+**Module 2** : Slots et composants flexibles  
+**Module 3** : Directives personnalisées  
+**Module 4** : Pinia state management  
+**Module 5** : Vue Router navigation  
+**Module 6** : Tests avec Vitest  
+
+### 🚀 TaskFlow : Application complète et professionnelle
+
+- Architecture MVVM
+- State management centralisé
+- Routing avec guards
+- Tests > 90% coverage
+- Directives réutilisables
+- Composants modulaires
+
+### 🎓 Prochaines étapes
+
+- Déployez TaskFlow en production
+- Ajoutez de nouvelles fonctionnalités
+- Contribuez à des projets open source
+- Partagez vos connaissances
+
+**Bravo pour ce parcours exceptionnel ! 🌟**

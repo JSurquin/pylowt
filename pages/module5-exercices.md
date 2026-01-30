@@ -10,137 +10,30 @@ routeAlias: 'module5-exercices'
 
 ---
 
-# Exercice 1 - Configuration de base
-
-### Objectif
-Installer et configurer Vue Router
-
-### Tâches
-
-1. Installer Vue Router 4
-2. Créer le dossier `router/`
-3. Configurer les routes de base (Home, About, Contact)
-4. Intégrer dans `main.js`
-5. Ajouter RouterView et RouterLink dans App.vue
-
----
-
-# Exercice 2 - Routes dynamiques
-
-### Objectif
-Créer des pages de détails avec routes dynamiques
-
-### Tâches
-
-- Route `/product/:id` pour les produits
-- Route `/user/:username` pour les profils
-- Afficher les paramètres dans le composant
-- Navigation avec boutons (router.push)
-
----
-
-# Exercice 3 - Lazy Loading
-
-### Objectif
-Optimiser le chargement avec lazy loading
-
-### Tâches
-
-- Convertir toutes les routes en lazy loading
-- Vérifier dans Network tab du navigateur
-- Ajouter des groupes de chunks (webpackChunkName)
-
----
-
-# Exercice 4 - Guards d'authentification
-
-### Objectif
-Protéger les routes avec des guards
-
-### Tâches
-
-- Guard global `beforeEach`
-- Protéger `/admin` et `/profile`
-- Rediriger vers `/login` si non authentifié
-- Utiliser le store Auth de Pinia
-- Guard dans le composant avec `onBeforeRouteLeave`
-
----
-
-# Exercice 5 - Routes imbriquées
-
-### Objectif
-Créer un dashboard avec routes imbriquées
-
-### Routes
-
-- `/dashboard` (layout)
-  - `/dashboard` (overview)
-  - `/dashboard/stats` (statistiques)
-  - `/dashboard/settings` (paramètres)
-  - `/dashboard/users` (utilisateurs)
-
----
-
-# Exercice 6 - Page 404
-
-### Objectif
-Gérer les routes inexistantes
-
-### Tâches
-
-- Créer un composant NotFound.vue
-- Route catch-all pour 404
-- Design personnalisé
-- Bouton retour à l'accueil
-
----
-
-# Projet Fil Rouge - Partie 5
-
-### Ajouter le routing à l'application
-
-**Structure des routes** :
-
-```
-/ - Accueil (liste produits)
-/products - Liste produits
-/product/:id - Détail produit
-/cart - Panier
-/auth/login - Connexion
-/auth/register - Inscription
-/dashboard - Dashboard admin (protégé)
-  /dashboard/products - Gestion produits
-  /dashboard/users - Gestion utilisateurs
-  /dashboard/orders - Commandes
-/profile - Profil utilisateur (protégé)
-/404 - Page not found
-```
-
----
-
-# Exercice 3 - Checklist
-
-**Checklist** :
-- ✅ Configuration Vue Router
-- ✅ Routes dynamiques
-- ✅ Lazy loading
-- ✅ Guards d'authentification
-- ✅ Routes imbriquées pour le dashboard
-- ✅ Page 404
-- ✅ Navigation programmatique
-- ✅ Meta fields pour les titres de page
-
----
-layout: new-section
----
-
 # 🎯 Fil Rouge : TaskFlow
 ## Exercices Module 5
 
+Maintenant que vous avez vu tous les concepts théoriques du Module 5, il est temps d'ajouter la navigation et le routing à TaskFlow !
+
+### Rappel des concepts du Module 5
+
+<div class="text-sm">
+
+**5.1 Configuration** : createRouter, routes, history mode  
+**5.2 Navigation** : RouterLink, RouterView, programmatic navigation  
+**5.3 Routes dynamiques** : Paramètres, props  
+**5.4 Guards** : beforeEach, beforeEnter, onBeforeRouteLeave  
+**5.5 Meta fields** : requiresAuth, title
+
+</div>
+
+### Les 7 exercices progressifs
+
+Nous allons créer un système de navigation complet pour TaskFlow.
+
 ---
 
-# TaskFlow - Exercice 1 : Configuration Router
+# Exercice 1 : Configuration Router
 
 ### Objectif
 Configurer Vue Router pour TaskFlow
@@ -165,7 +58,7 @@ npm install vue-router@4
 
 ---
 
-# TaskFlow - Solution router/index.js (1/2)
+# Exercice 1 - Solution router/index.js (1/2)
 
 ```js
 // router/index.js
@@ -214,7 +107,7 @@ const routes = [
 
 ---
 
-# TaskFlow - Solution router/index.js (2/2)
+# Exercice 1 - Solution router/index.js (2/2)
 
 ```js
 // router/index.js (suite)
@@ -260,7 +153,7 @@ export default router;
 
 ---
 
-# TaskFlow - main.js avec Router
+# Exercice 1 - main.js avec Router
 
 ```js
 // main.js
@@ -281,7 +174,7 @@ app.mount('#app');
 
 ---
 
-# TaskFlow - App.vue avec Navigation
+# Exercice 1 - App.vue avec Navigation
 
 ```vue
 <script>
@@ -341,7 +234,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 2 : Guards de Navigation
+# Exercice 2 : Guards de Navigation
 
 ### Objectif
 Protéger les routes avec des guards
@@ -358,7 +251,7 @@ Protéger les routes avec des guards
 
 ---
 
-# TaskFlow - Solution Navigation Guards (1/2)
+# Exercice 2 - Solution Navigation Guards
 
 ```js
 // router/index.js (avec guards)
@@ -410,11 +303,12 @@ export default router;
 
 ---
 
-# TaskFlow - Solution onBeforeRouteLeave
+# Exercice 2 - Solution onBeforeRouteLeave
 
 ```vue
 <script>
 import { onBeforeRouteLeave } from 'vue-router';
+import { ref } from 'vue';
 
 export default {
   name: 'TaskEditView',
@@ -458,7 +352,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 3 : TaskDetailView
+# Exercice 3 : TaskDetailView
 
 ### Objectif
 Créer la vue de détail d'une tâche
@@ -477,7 +371,7 @@ Créer la vue de détail d'une tâche
 
 ---
 
-# TaskFlow - Solution TaskDetailView.vue (1/2)
+# Exercice 3 - Solution TaskDetailView.vue (1/4)
 
 ```vue
 <script>
@@ -530,7 +424,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskDetailView.vue (2/3)
+# Exercice 3 - Solution TaskDetailView.vue (2/4)
 
 **Methods :**
 
@@ -571,9 +465,9 @@ export default {
 
 ---
 
-# TaskFlow - Solution TaskDetailView.vue (3/3)
+# Exercice 3 - Solution TaskDetailView.vue (3/4)
 
-**Template - Header :**
+**Template - Header et Édition :**
 
 ```vue
 <template>
@@ -603,18 +497,6 @@ export default {
         </button>
       </div>
     </div>
-  </div>
-</template>
-```
-
----
-
-# TaskFlow - TaskDetailView Template
-
-```vue
-<template>
-  <div class="task-detail" v-if="task">
-    <!-- ... header précédent -->
     
     <!-- Mode édition -->
     <div v-if="isEditing" class="edit-mode">
@@ -647,15 +529,15 @@ export default {
         </button>
       </div>
     </div>
-    
-    <!-- Mode lecture (suite slide suivante) -->
   </div>
 </template>
 ```
 
 ---
 
-# TaskFlow - TaskDetailView Mode Lecture
+# Exercice 3 - Solution TaskDetailView.vue (4/4)
+
+**Template - Mode Lecture :**
 
 ```vue
 <template>
@@ -708,7 +590,7 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 4 : LoginView avec Redirect
+# Exercice 4 : LoginView avec Redirect
 
 ### Objectif
 Gérer la connexion avec redirection après login
@@ -725,7 +607,7 @@ Gérer la connexion avec redirection après login
 
 ---
 
-# TaskFlow - Solution LoginView.vue (1/2)
+# Exercice 4 - Solution LoginView.vue (1/2)
 
 **Script :**
 
@@ -782,7 +664,7 @@ export default {
 
 ---
 
-# TaskFlow - Solution LoginView.vue (2/2)
+# Exercice 4 - Solution LoginView.vue (2/2)
 
 **Template :**
 
@@ -837,34 +719,9 @@ export default {
 
 ---
 
-# 🎯 Récap Module 5 - TaskFlow
-
-### Ce que vous avez construit
-
-✅ **Router config** : 7 routes avec lazy loading  
-✅ **Guards** : Protection auth + admin  
-✅ **TaskDetailView** : Vue détaillée avec édition  
-✅ **LoginView** : Connexion avec redirect  
-✅ **Navigation** : RouterLink, programmatic, breadcrumb  
-
-### Concepts utilisés
-
-- ✅ createRouter avec history mode
-- ✅ Routes dynamiques (:id)
-- ✅ Lazy loading (import())
-- ✅ beforeEach (guard global)
-- ✅ onBeforeRouteLeave (guard composant)
-- ✅ useRouter, useRoute
-- ✅ Meta fields
-- ✅ Query params (redirect)
-- ✅ router.push, router.back
-
----
-
-# TaskFlow - Exercice 5 : TaskListView.vue
+# Exercice 5 : TaskListView.vue
 
 ### Objectif
-
 Créer la vue principale qui affiche toutes les tâches
 
 ### Spécifications
@@ -873,23 +730,17 @@ Créer la vue principale qui affiche toutes les tâches
 - `useTasksStore`, `useCategoriesStore`
 - Composants : `TaskForm`, `TaskList`
 
-**Computed** :
-```vue
-computed: {
-  tasksStore() {
-    return useTasksStore();
-  },
-  categoriesStore() {
-    return useCategoriesStore();
-  }
-}
-```
+**Fonctionnalités** :
+- Afficher la liste des tâches
+- Ajouter une tâche
+- Toggle tâche terminée
+- Supprimer une tâche
+- Cliquer sur une tâche pour voir le détail
 
 ---
 
-# TaskFlow - Solution TaskListView.vue
+# Exercice 5 - Solution TaskListView.vue
 
-**Script** :
 ```vue
 <script>
 import { useTasksStore } from '@/stores/tasks';
@@ -919,7 +770,7 @@ export default {
     }
   },
   mounted() {
-    this.tasksStore.loadFromStorage();
+    this.tasksStore.fetchTasks();
   }
 }
 </script>
@@ -927,9 +778,11 @@ export default {
 <template>
   <div class="task-list-view">
     <h1>Mes Tâches</h1>
+    
     <TaskForm @add-task="handleAddTask" />
+    
     <TaskList
-      :tasks="tasksStore.tasks"
+      :tasks="tasksStore.filteredTasks"
       @toggle="handleToggleTask"
       @delete="handleDeleteTask"
       @task-click="goToTaskDetail"
@@ -940,10 +793,9 @@ export default {
 
 ---
 
-# TaskFlow - Exercice 6 : NotFoundView.vue
+# Exercice 6 : NotFoundView.vue
 
 ### Objectif
-
 Créer une page 404 élégante
 
 ### Spécifications
@@ -955,7 +807,7 @@ Créer une page 404 élégante
 
 ---
 
-# TaskFlow - Solution NotFoundView.vue
+# Exercice 6 - Solution NotFoundView.vue
 
 ```vue
 <script>
@@ -975,11 +827,13 @@ export default {
     <h2>Page non trouvée</h2>
     <p>La page que vous recherchez n'existe pas.</p>
     
-    <button @click="goHome">Retour à l'accueil</button>
-    
-    <p class="url-info">
+    <div class="url-info">
       URL demandée : <code>{{ $route.fullPath }}</code>
-    </p>
+    </div>
+    
+    <button @click="goHome" class="btn-primary">
+      Retour à l'accueil
+    </button>
   </div>
 </template>
 
@@ -993,10 +847,17 @@ export default {
   font-size: 8rem;
   font-weight: bold;
   color: #ef4444;
+  margin: 0;
+}
+
+.not-found h2 {
+  font-size: 2rem;
+  color: #64748b;
+  margin: 1rem 0;
 }
 
 .url-info {
-  margin-top: 2rem;
+  margin: 2rem 0;
   color: #64748b;
   font-size: 0.875rem;
 }
@@ -1005,16 +866,16 @@ code {
   background: #f1f5f9;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
+  font-family: monospace;
 }
 </style>
 ```
 
 ---
 
-# TaskFlow - Exercice 7 : HomePage.vue
+# Exercice 7 : HomePage.vue
 
 ### Objectif
-
 Créer une page d'accueil attractive
 
 ### Spécifications
@@ -1025,19 +886,17 @@ Créer une page d'accueil attractive
 
 ---
 
-# TaskFlow - Solution HomePage.vue (1/2)
+# Exercice 7 - Solution HomePage.vue (1/2)
 
-**Script** :
+**Script et Template Hero :**
+
 ```vue
 <script>
 export default {
   name: 'HomePage'
 }
 </script>
-```
 
-**Template** :
-```vue
 <template>
   <div class="home-page">
     <div class="hero">
@@ -1055,14 +914,21 @@ export default {
         </RouterLink>
       </div>
     </div>
+  </div>
+</template>
 ```
 
 ---
 
-# TaskFlow - Solution HomePage.vue (2/2)
+# Exercice 7 - Solution HomePage.vue (2/2)
 
-**Suite du template** :
+**Template Features :**
+
 ```vue
+<template>
+  <div class="home-page">
+    <!-- ... hero précédent -->
+    
     <div class="features">
       <div class="feature-card">
         <div class="feature-icon">✅</div>
@@ -1090,10 +956,93 @@ export default {
 
 ---
 
-### 🚀 Next : Module 6
+# 🎯 Récap Module 5 - TaskFlow
+
+### Ce que vous avez construit
+
+✅ **Router config** : 7 routes avec lazy loading  
+✅ **Guards** : Protection auth + admin  
+✅ **TaskDetailView** : Vue détaillée avec édition  
+✅ **LoginView** : Connexion avec redirect  
+✅ **TaskListView** : Liste avec navigation  
+✅ **NotFoundView** : Page 404 élégante  
+✅ **HomePage** : Page d'accueil attractive  
+
+### Concepts du Module 5 utilisés
+
+- ✅ **5.1 Configuration** : createRouter, routes, history mode
+- ✅ **5.2 Navigation** : RouterLink, RouterView, programmatic
+- ✅ **5.3 Routes dynamiques** : :id params, props: true
+- ✅ **5.4 Guards** : beforeEach, onBeforeRouteLeave
+- ✅ **5.5 Meta fields** : requiresAuth, title
+
+### Détails techniques
+
+- **createRouter** : createWebHistory() pour URL propres
+- **Lazy loading** : import() pour chaque route
+- **beforeEach** : Guard global pour auth + title
+- **onBeforeRouteLeave** : Confirmation avant quitter
+- **useRouter** : router.push(), router.back()
+- **useRoute** : route.params, route.query
+- **Meta fields** : requiresAuth, requiresAdmin
+- **Query params** : redirect après login
+- **Breadcrumb** : Navigation contextuelle
+
+### 🚀 Prochaine étape : Module 6
 
 On va **tester** TaskFlow avec **Vitest** !
 
 - Tests unitaires des stores
 - Tests des composants
 - Tests des guards de navigation
+
+---
+
+# Ressources complémentaires
+
+### Documentation officielle
+
+- 📚 [Vue Router Documentation](https://router.vuejs.org/)
+- 🎯 [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html)
+- 🚀 [Lazy Loading](https://router.vuejs.org/guide/advanced/lazy-loading.html)
+
+### Concepts avancés
+
+- 🔧 Nested Routes (routes imbriquées)
+- ⚡ Scroll Behavior
+- 🎭 Transitions de routes
+- 🔗 Named Views
+
+### Exemples
+
+- 💡 [Vue Router Examples](https://github.com/vuejs/vue-router/tree/main/examples)
+- 🎨 [Advanced Routing Patterns](https://router.vuejs.org/guide/advanced/)
+
+---
+
+# Félicitations ! 🎉
+
+### Vous avez terminé le Module 5 !
+
+Vous maîtrisez maintenant :
+- ✅ Configuration complète de Vue Router
+- ✅ Routes dynamiques avec paramètres
+- ✅ Lazy loading des composants
+- ✅ Navigation guards (global + composant)
+- ✅ Navigation programmatique
+- ✅ Meta fields pour la configuration
+- ✅ Query params et redirections
+- ✅ Gestion des erreurs 404
+
+### Votre application TaskFlow
+
+**Navigation complète** :
+- 7 routes configurées
+- Guards d'authentification
+- Vues détaillées
+- Page 404 personnalisée
+- Login avec redirect
+
+### 🚀 Prochaine étape : Module 6
+
+Rendez-vous au Module 6 pour tester TaskFlow avec Vitest !
