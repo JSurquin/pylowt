@@ -1005,6 +1005,8 @@ On va **tester** TaskFlow avec **Vitest** !
 
 ### Vous avez terminé le Module 5 !
 
+<small>
+
 Vous maîtrisez maintenant :
 - ✅ Configuration complète de Vue Router
 - ✅ Routes dynamiques avec paramètres
@@ -1015,7 +1017,11 @@ Vous maîtrisez maintenant :
 - ✅ Query params et redirections
 - ✅ Gestion des erreurs 404
 
+</small>
+
 ### Votre application TaskFlow
+
+<small>
 
 **Navigation complète** :
 - 7 routes configurées
@@ -1023,6 +1029,8 @@ Vous maîtrisez maintenant :
 - Vues détaillées
 - Page 404 personnalisée
 - Login avec redirect
+
+</small>
 
 ### 🚀 Prochaine étape : Module 6
 

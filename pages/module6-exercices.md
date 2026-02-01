@@ -712,26 +712,6 @@ Vous maîtrisez maintenant :
 - ✅ Coverage et analyse de qualité
 - ✅ Best practices de testing
 
-### 🏆 Vous avez terminé TOUTE la formation Vue.js !
-
-**Votre parcours complet** :
-
-**Module 1** : Bases Vue.js + composants  
-**Module 2** : Slots et composants flexibles  
-**Module 3** : Directives personnalisées  
-**Module 4** : Pinia state management  
-**Module 5** : Vue Router navigation  
-**Module 6** : Tests avec Vitest  
-
-### 🚀 TaskFlow : Application complète et professionnelle
-
-- Architecture MVVM
-- State management centralisé
-- Routing avec guards
-- Tests > 90% coverage
-- Directives réutilisables
-- Composants modulaires
-
 ### 🎓 Prochaines étapes
 
 - Déployez TaskFlow en production

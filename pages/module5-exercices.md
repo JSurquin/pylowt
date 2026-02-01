@@ -737,6 +737,8 @@ On va ajouter le **routing** à TaskFlow avec **Vue Router** !
 
 ### Vous avez terminé le Module 4 !
 
+<small>
+
 Vous maîtrisez maintenant :
 - ✅ Création de stores Pinia avec Options API
 - ✅ State, getters et actions
@@ -747,12 +749,18 @@ Vous maîtrisez maintenant :
 - ✅ Gestion des permissions et rôles
 - ✅ Actions asynchrones
 
-### Vos stores TaskFlow
+</small>
+
+#### Vos stores TaskFlow
+
+<small>
 
 **3 stores centralisés** :
 - useTasksStore : CRUD complet + filtres
 - useCategoriesStore : Catégories + interaction
 - useAuthStore : Auth + permissions
+
+</small>
 
 ### 🚀 Prochaine étape : Module 5
 

@@ -1317,20 +1317,6 @@ Vous maîtrisez maintenant :
 - ✅ La réactivité avec computed et watch
 - ✅ Le cycle de vie des composants
 
-### Votre première application
-
-**TaskFlow** - Une application complète de gestion de tâches avec :
-- 5 composants fonctionnels (App, TaskList, TaskItem, TaskForm)
-- Props et events bien structurés
-- Filtres, recherche, statistiques
-- Interface moderne et réactive
-
 ### 🚀 Prochaine étape : Module 2 - Slots
 
 Rendez-vous au Module 2 pour découvrir comment créer des composants encore plus flexibles et réutilisables avec les **slots** !
-
-**Au programme** :
-- Slots simples et nommés
-- Scoped slots
-- Composants génériques ultra-réutilisables
-- TaskCard avec slots personnalisables
