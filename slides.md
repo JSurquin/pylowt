@@ -47,7 +47,7 @@ themeConfig:
 
 <div class="absolute bottom-0 right-0 z-50 flex flex-col gap-y-2 p-2">
 <div class="hover:bg-white hover:bg-opacity-10 neon-border border-2 rounded-xl w-[200px] p-2 flex flex-col gap-y-2">
-  <img src="./ascent.png" alt="Ascent" class="w-6 h-6 mx-auto rounded-full"></img>
+  <img src="/ascent.png" alt="Ascent" class="w-6 h-6 mx-auto rounded-full"></img>
   <span class="text-gray-400 text-xs">Programme : <b>4-047</b></span>
   <span class="text-gray-400 text-xs">Lot: <b>4</b></span>
 </div>
@@ -179,11 +179,12 @@ routeAlias: 'programme-jour2'
 **Module 4 - Navigation et routage avec Vue Router**
 - Introduction à Vue Router
 - Installation et configuration
-- Routes et navigation
+- Routes et navigation (RouterLink, RouterView)
 - Routes dynamiques et paramètres
 - Navigation programmatique
-- Guards de navigation
+- Guards de navigation (beforeEach, meta fields)
 - Routes imbriquées
+- Lazy loading
 
 </small>
 
@@ -198,10 +199,13 @@ routeAlias: 'programme-jour3'
 
 **Module 5 - State Management avec Pinia**
 - Pattern State Management
-- Store global unique
+- Introduction à Pinia
+- Installation et configuration
 - Création d'un store Pinia
 - State, Getters, Actions
-- Mutations d'état
+- Options API avec Pinia
+- Communication entre stores
+- Persistence localStorage
 - Intégration dans une application
 
 </small>
@@ -212,10 +216,13 @@ routeAlias: 'programme-jour3'
 
 **Module 6 - Tests sous Vue.js avec Vitest**
 - Intérêt des tests automatisés
+- Pourquoi tester ? (pyramide des tests)
 - Installation de Vitest
+- Configuration (vite.config.js, jsdom)
+- Tests unitaires (fonctions, composables)
 - Tests de composants Vue
-- Tests unitaires
-- Tests de logique applicative
+- Tests avec Pinia
+- Tests avec Router
 - Mocks et stubs
 - Coverage de code
 
