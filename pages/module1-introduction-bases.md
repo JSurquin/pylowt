@@ -283,28 +283,12 @@ routeAlias: "architecture"
 
 Vue.js suit le pattern MVVM (Model-View-ViewModel)
 
-### 🏗️ Pensez à une maison :
+### 🏗️ Pensez à une maison (vue, composant, state)
 
-```
-┌──────────────┐
-│     VIEW     │  ← La FAÇADE (ce que vous voyez) 🏠
-│  (Template)  │     Template HTML
-└──────┬───────┘
-       │
-       ↕ Data Binding (la magie de Vue ✨)
-       │
-┌──────┴───────┐
-│  VIEWMODEL   │  ← L'ARCHITECTE (organise tout) 👷
-│ (Composant)  │     Composant
-└──────┬───────┘
-       │
-       ↕ Logique métier
-       │
-┌──────┴───────┐
-│    MODEL     │  ← Les FONDATIONS (vos données) 🧱
-│   (State)    │     State / Données
-└──────────────┘
-```
+Nous allons voir un schéma à la slide suivante, mais pour résumer :
+- VIEW : Template HTML (html)
+- VIEWMODEL : Composant (script et template)
+- MODEL : State / Données (data)
 
 ---
 
@@ -425,6 +409,16 @@ node --version  # v20.x ou supérieur
 npm --version   # v10.x ou supérieur
 ```
 
+Vous pouvez utiliser nvm (Node Version Manager) pour gérer les versions de Node.js.
+
+Je vous expliquerais en live pour l'installation de nvm et de Node.js.
+
+Concernant les autres gestionnaires de paquets, vous pouvez utiliser pnpm, yarn, bun, etc.
+
+- Pnpm : gestionnaire de paquets rapide et efficace, vous permez de centraliser les dépendances de vos projets.
+- Yarn : gestionnaire de paquets rapide , créer par Facebook (meta)
+- Bun : gestionnaire de paquets ultra rapide, mais moins mature que pnpm et yarn.
+
 ---
 
 # Vite - Build tool moderne ⚡
@@ -433,8 +427,14 @@ npm --version   # v10.x ou supérieur
 
 ### 🏎️ Analogie : Vite vs Webpack
 
-**Webpack** = Préparer TOUS les ingrédients avant de cuisiner (lent au démarrage)
-**Vite** = Cuisiner à la demande, seulement ce dont vous avez besoin (instantané !)
+- **Webpack** = Préparer TOUS les ingrédients avant de cuisiner (lent au démarrage)
+- **Vite** = Cuisiner à la demande, seulement ce dont vous avez besoin (instantané !)
+
+<br> 
+
+> Je vous le dis de suite, mais nous n'utiliserons plus webpack en 2026, sur aucun projets.
+
+<br>
 
 ### Avantages de Vite
 
@@ -454,6 +454,22 @@ Vite signifie "rapide" en français ! Et créé par Evan You, le créateur de Vu
 # Créer un projet avec Vite (ULTRA simple)
 npm create vite@latest mon-projet -- --template vue
 ```
+
+avec pnpm :
+
+```bash
+pnpm create vite@latest mon-projet -- --template vue
+```
+
+On peut l'écrire de différentes façons, avec npx par exemple :
+
+```bash
+npx create-vite@latest mon-projet -- --template vue
+```
+
+<br/>
+
+> npx est un outil qui permet d'exécuter des commandes sans installer de package globalement. Il est très pratique pour exécuter des commandes sans installer de package sur son pc.
 
 ---
 
@@ -541,15 +557,7 @@ export default {
     </button>
   </div>
 </template>
-```
 
----
-
-# Le fichier App.vue (2/2)
-
-**Style du composant**
-
-```vue
 <style scoped>
 <!-- scoped = les styles sont uniquement appliqués à ce composant -->
 button {
@@ -583,6 +591,22 @@ export default defineConfig({
   }
 });
 ```
+
+Pour le resolve : on peut utiliser un alias pour les chemins de fichiers.
+
+```javascript
+alias: {
+  '@': path.resolve(__dirname, './src')
+}
+```
+
+Cela permet de simplifier les chemins de fichiers dans le code.
+
+```javascript
+import HelloWorld from '@/components/HelloWorld.vue';
+```
+
+Utile, à la place de mettre le chemin relatif : `./components/HelloWorld.vue`, on peut utiliser l'alias `@` pour le chemin `./src/components/HelloWorld.vue`.
 
 ---
 layout: new-section
@@ -692,6 +716,14 @@ routeAlias: "directives"
 
 ---
 
+# Directives et data binding
+
+Nous allons parcourir les directives et les data binding de Vue.js.
+
+Nous allons commencer par le data binding et en suite faire un petit tour sur les directives et les conditions.
+
+---
+
 # Liaison de données (Data Binding)
 
 Vue.js permet de lier les données du composant au template avec l'**Options API**
@@ -747,7 +779,7 @@ graph LR
 
 **Avec Vue** : changez la variable, l'affichage se met à jour automatiquement ! ✨
 
-C'est ça la **réactivité** : Vue observe vos données et met à jour le DOM automatiquement !
+C'est ça la **réactivité** : Vue observe vos données et met à jour le DOM automatiquement ! (comme React et Angular)
 
 ---
 
@@ -791,6 +823,26 @@ export default {
   </div>
 </template>
 ```
+
+---
+
+# Directives
+
+Les directives sont des attributs HTML qui permettent de manipuler le DOM de manière dynamique.
+
+Elles sont préfixées par `v-` et sont utilisées pour lier des données au template.
+
+Voici une liste des directives que nous allons voir :
+
+- v-bind
+- v-on
+- v-if
+- v-else
+- v-show
+- v-for
+- v-model
+
+Nous verrons les autres directives dans un autre module plus tard.
 
 ---
 
@@ -1134,6 +1186,14 @@ v-model est un sucre syntaxique pour :
   @input="texte = $event.target.value" 
 />
 ```
+
+**En fait ce principe s'appelle le two-way data binding ou le banana in the box.**
+
+two-way c'est bidirectionnel, c'est à dire que la donnée est liée à la vue et à la vue est liée à la donnée.
+
+Elle s'injecte dans le template, et elle est liée à la donnée, donc si on met à un jour via un input par exemple, a donnée sera mise à jour en direct.
+
+Très connu chez Angular , donc en clair , quand vous apprenez une librarie ou un framework js moderne, vous allez pouvoir repetez la même chose. :)
 
 ---
 layout: new-section
@@ -2282,18 +2342,35 @@ Les hooks permettent d'exécuter du code à des moments précis - **Options API*
 ```vue
 <script>
 export default {
+  data() {
+    return {
+      message: 'Hello',
+      users: []
+    }
+  },
   beforeCreate() {
     console.log('Avant la création');
+    // On peut modifier les props par exemple, même si elles sont censé être immuables.
+    console.log(this.message); // undefined - les données ne sont pas encore disponibles
   },
   created() {
     console.log('Composant créé');
+    // On peut accéder aux données réactives, on peut les modifier.
+    this.message = 'Bonjour Vue!';
+    console.log(this.message); // 'Bonjour Vue!'
   },
   beforeMount() {
     console.log('Avant le montage');
+    // On peut modifier le template, on peut ajouter des éléments au DOM.
+    console.log(this.$el); // undefined - le DOM n'est pas encore créé
   },
   mounted() {
     console.log('Composant monté');
     // Appels API, initialisation
+    fetch('https://api.example.com/users')
+      .then(response => response.json())
+      .then(data => this.users = data);
+    console.log(this.$el); // Accès au DOM disponible
   }
 }
 </script>
@@ -2341,6 +2418,9 @@ export default {
   updated() {
     console.log('Composant mis à jour');
     console.log('Nouvelle valeur:', this.compteur);
+    // par exemple pour des mesures (getBoundingClientRect, scroll, etc.)
+    // mais en général on utilisera plutot computed ou watch pour ce genre de choses.
+    // à peu utiliser donc
   }
 }
 </script>
@@ -2361,6 +2441,7 @@ export default {
   unmounted() {
     console.log('Composant démonté');
     // Nettoyage: timers, subscriptions, listeners
+    // important de nettoyer les événements, les timers, les subscriptions, les listeners, etc si non => fuite de mémoire potentielle.
   }
 }
 </script>
