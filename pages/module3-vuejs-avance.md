@@ -38,11 +38,15 @@ Les **SFC** sont des fichiers `.vue` contenant template, script et style
 
 ### Avantages des SFC
 
+<small>
+
 - 📦 Encapsulation complète
 - 🎨 Scoped CSS
 - 🔧 Syntaxe spécifique à Vue
 - ⚡ Hot Module Replacement
 - 📝 Support IDE excellent
+
+</small>
 
 ---
 
@@ -369,6 +373,8 @@ Les directives sont des attributs spéciaux qui modifient le comportement des é
 
 ### Directives natives Vue.js
 
+<small>
+
 - `v-if` / `v-show`
 - `v-for`
 - `v-bind` (`:`)
@@ -377,6 +383,8 @@ Les directives sont des attributs spéciaux qui modifient le comportement des é
 - `v-html` / `v-text`
 - `v-cloak`
 - `v-pre` / `v-once`
+
+</small>
 
 ---
 
@@ -482,6 +490,8 @@ export default {
 
 # Lifecycle hooks des directives
 
+<small>
+
 ```javascript
 const myDirective = {
   // Avant que l'élément soit inséré dans le DOM
@@ -506,6 +516,8 @@ const myDirective = {
   unmounted(el, binding, vnode, prevVnode) {}
 };
 ```
+
+</small>
 
 ---
 
@@ -596,6 +608,8 @@ export default {
 
 # Exemple : Directive v-tooltip
 
+<small>
+
 ```javascript
 // directives/tooltip.js
 export const vTooltip = {
@@ -629,9 +643,13 @@ export const vTooltip = {
 };
 ```
 
+</small>
+
 ---
 
 # Utilisation de v-tooltip
+
+<small>
 
 ```vue
 <script>
@@ -665,6 +683,8 @@ export default {
 }
 </style>
 ```
+
+</small>
 
 ---
 
@@ -735,18 +755,26 @@ app.mount('#app');
 
 ### ✅ Faire
 
+<small>
+
 - Nettoyer les event listeners dans unmounted
 - Utiliser des noms descriptifs
 - Documenter les arguments et modificateurs
 - Gérer les cas edge
 - Utiliser TypeScript pour les types
 
+</small>
+
 ### ❌ Éviter
+
+<small>
 
 - Manipuler le state du composant
 - Logique métier complexe
 - Directives trop génériques
 - Oublier le nettoyage des ressources
+
+</small>
 
 ---
 

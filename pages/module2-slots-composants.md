@@ -59,10 +59,14 @@ Imaginez un **cadre photo** :
 
 # Pourquoi utiliser des slots ?
 
+<small>
+
 - 🎯 **Composants flexibles** : un composant Card pour 1000 usages différents
 - 🧩 **Composer des interfaces** : assembler des briques comme des Lego
 - 🎨 **Personnaliser sans casser** : chaque utilisation est unique
 - ♻️ **DRY** : un seul composant Modal, 50 contenus différents
+
+</small>
 
 ---
 
@@ -139,9 +143,13 @@ Imaginez un **cadre photo** :
 
 # Avantages des slots
 
+<small>
+
 - ✅ Un seul composant
 - ✅ Contenu flexible
 - ✅ Facile à maintenir
+
+</small>
 
 ---
 
@@ -151,10 +159,14 @@ Un **composant générique** est un composant réutilisable qui s'adapte à diff
 
 ### Exemples de composants génériques
 
+<small>
+
 - 📦 **Card** : conteneur avec header, body, footer
 - 🔘 **Button** : bouton personnalisable
 - 📋 **Modal** : fenêtre modale
 - 📰 **Layout** : mise en page avec sidebar, content, header
+
+</small>
 
 ---
 
@@ -394,6 +406,8 @@ graph LR
 Le composant enfant fait le **travail de récupération/logique** (ex: boucle, tri)
 Le parent décide du **rendu visuel** (ex: carte, tableau, liste...)
 
+<small>
+
 ```vue
 <!-- TodoList.vue - L'enfant donne les données -->
 <template>
@@ -408,9 +422,13 @@ Le parent décide du **rendu visuel** (ex: carte, tableau, liste...)
 </template>
 ```
 
+</small>
+
 ---
 
 # Scoped Slots - Utilisation
+
+<small>
 
 ```vue
 <script>
@@ -443,6 +461,8 @@ export default {
 </template>
 ```
 
+</small>
+
 ---
 
 # Scoped Slots - Cas avancé (1/2)
@@ -473,6 +493,8 @@ export default {
 
 **Template avec scoped slots :**
 
+<small>
+
 ```vue
 <template>
   <table>
@@ -499,6 +521,8 @@ export default {
   </table>
 </template>
 ```
+
+</small>
 
 ---
 
@@ -627,11 +651,15 @@ Le composant **Teleport** permet de rendre un composant dans une autre partie du
 
 Les cas d'usage courants pour Teleport :
 
+<small>
+
 - 🎭 **Modales** : Évite les problèmes de z-index et overflow
 - 📋 **Tooltips** : Positionnement absolu libre
 - 🔔 **Notifications** : Toast en haut à droite de l'écran
 - 🖼️ **Overlays** : Plein écran sans contraintes CSS du parent
 - 🎨 **Dropdowns** : Éviter les problèmes de débordement
+
+</small>
 
 ### 💡 Astuce
 
@@ -691,6 +719,8 @@ Utilisez `to="body"` pour la plupart des cas !
 
 Les slots et props travaillent ensemble pour créer des composants puissants
 
+<small>
+
 ```vue
 <!-- Modal.vue -->
 <script>
@@ -713,9 +743,13 @@ export default {
 </script>
 ```
 
+</small>
+
 ---
 
 # Modal - Template
+
+<small>
 
 ```vue
 <template>
@@ -747,6 +781,8 @@ export default {
   </Teleport>
 </template>
 ```
+
+</small>
 
 ---
 
@@ -861,17 +897,25 @@ export default {
 
 ### ✅ Faire
 
+<small>
+
 - Utiliser des noms de slots descriptifs
 - Fournir du contenu fallback pertinent
 - Documenter les props des scoped slots
 - Utiliser TypeScript pour typer les slots
 
+</small>
+
 ### ❌ Éviter
+
+<small>
 
 - Trop de slots dans un seul composant (> 5)
 - Noms de slots génériques (slot1, slot2...)
 - Slots obligatoires sans fallback
 - Logique complexe dans les slots
+
+</small>
 
 ---
 

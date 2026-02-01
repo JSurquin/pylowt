@@ -187,6 +187,8 @@ console.log(Math.PI);
 
 Les Promises représentent une valeur qui peut être disponible maintenant, plus tard, ou jamais
 
+<small>
+
 ```javascript
 // Création d'une Promise
 const fetchData = () => {
@@ -206,11 +208,15 @@ fetchData()
   .finally(() => console.log('Terminé'));
 ```
 
+</small>
+
 ---
 
 # Async / Await
 
 Syntaxe plus claire pour gérer les opérations asynchrones
+
+<small>
 
 ```javascript
 // Fonction asynchrone
@@ -230,9 +236,13 @@ const utilisateur = await chargerUtilisateur(1);
 console.log(utilisateur);
 ```
 
+</small>
+
 ---
 
 # Async / Await - Opérations parallèles
+
+<small>
 
 ```javascript
 // Opérations séquentielles (lent)
@@ -254,6 +264,8 @@ const resultat = await Promise.race([
 ]);
 ```
 
+</small>
+
 ---
 layout: new-section
 routeAlias: "architecture"
@@ -271,11 +283,15 @@ routeAlias: "architecture"
 
 ### Caractéristiques principales
 
+<small>
+
 - 🎯 **Progressif** : peut être adopté progressivement (un composant, puis toute l'app)
 - ⚡ **Performant** : Virtual DOM et réactivité optimisée
 - 🔧 **Flexible** : s'adapte à tous types de projets (widget, SPA, SSR...)
 - 📦 **Écosystème riche** : Vue Router, Pinia, Vite... tout est intégré harmonieusement
 - 💚 **Communauté active** : support et ressources
+
+</small>
 
 ---
 
@@ -438,11 +454,15 @@ Concernant les autres gestionnaires de paquets, vous pouvez utiliser pnpm, yarn,
 
 ### Avantages de Vite
 
+<small>
+
 - ⚡ **Démarrage instantané** : < 1 seconde vs 30-60 sec avec Webpack
 - 🔥 **Hot Module Replacement (HMR) ultra-rapide** : vos changements apparaissent instantanément
 - 📦 **Build optimisé avec Rollup** : bundle de production ultra-performant
 - 🎯 **Support TypeScript natif** : pas de configuration nécessaire
 - 🔌 **Système de plugins extensible** : écosystème riche
+
+</small>
 
 ---
 
@@ -573,6 +593,8 @@ button {
 
 Fichier `vite.config.js`
 
+<small>
+
 ```javascript
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -592,7 +614,15 @@ export default defineConfig({
 });
 ```
 
+</small>
+
+---
+
+# Alias de chemins
+
 Pour le resolve : on peut utiliser un alias pour les chemins de fichiers.
+
+<small>
 
 ```javascript
 alias: {
@@ -605,6 +635,8 @@ Cela permet de simplifier les chemins de fichiers dans le code.
 ```javascript
 import HelloWorld from '@/components/HelloWorld.vue';
 ```
+
+</small>
 
 Utile, à la place de mettre le chemin relatif : `./components/HelloWorld.vue`, on peut utiliser l'alias `@` pour le chemin `./src/components/HelloWorld.vue`.
 
@@ -638,6 +670,8 @@ Les composants sont des **briques réutilisables** qui encapsulent :
 # Création d'un composant simple
 
 Fichier `MonCompteur.vue` - **Options API**
+
+<small>
 
 ```vue
 <script>
@@ -678,6 +712,8 @@ button {
 }
 </style>
 ```
+
+</small>
 
 ---
 
@@ -1969,6 +2005,8 @@ export default {
 
 **Exemple : Recherche avec debounce**
 
+<small>
+
 ```vue
 <script>
 export default {
@@ -2002,6 +2040,8 @@ export default {
 }
 </script>
 ```
+
+</small>
 
 ---
 
@@ -2168,12 +2208,16 @@ export default {
 
 ### 🎯 Ce que vous savez maintenant
 
+<small>
+
 - ✅ **JavaScript ES6+** : Arrow functions, destructuring, modules, async/await
 - ✅ **Architecture Vue.js** : MVVM, organisation d'application
 - ✅ **Outils** : Node.js, Vite, structure de projet
 - ✅ **Concepts fondamentaux** : Data binding, interpolation, directives
 - ✅ **Composants** : Création, props, événements, dynamiques
 - ✅ **Réactivité** : Computed, lifecycle, composables, requêtes HTTP
+
+</small>
 
 ---
 layout: new-section
@@ -2189,6 +2233,8 @@ routeAlias: "cycle-de-vie-des-composants"
 # Hooks du cycle de vie
 
 Les hooks permettent d'exécuter du code à des moments précis - **Options API**
+
+<small>
 
 ```vue
 <script>
@@ -2226,6 +2272,8 @@ export default {
 }
 </script>
 ```
+
+</small>
 
 ---
 

@@ -49,11 +49,16 @@ Quand vous tapez une adresse (URL), le GPS (Router) vous emmène à la bonne des
 ### 🆚 Sans Router : SPA = Single Page (vraiment UNE page)
 
 **Application traditionnelle multi-pages** :
+
+<small>
+
 ```
 /index.html      ← Page 1 (rechargement complet ⏳)
 /about.html      ← Page 2 (rechargement complet ⏳)
 /contact.html    ← Page 3 (rechargement complet ⏳)
 ```
+
+</small>
 
 ---
 
@@ -87,11 +92,16 @@ graph LR
 # SPA avec Vue Router
 
 **SPA avec Router** :
+
+<small>
+
 ```
 /                ← Home Component (instantané ⚡)
 /about           ← About Component (instantané ⚡)
 /contact         ← Contact Component (instantané ⚡)
 ```
+
+</small>
 
 ---
 
@@ -101,12 +111,16 @@ Une seule page HTML, mais l'illusion de plusieurs pages !
 
 ### Fonctionnalités
 
+<small>
+
 - 🛤️ **Navigation entre "pages"** : sans rechargement complet !
 - 📍 **Gestion de l'URL** : /products/123 au lieu de ?page=products&id=123
 - 🔙 **Historique** : boutons retour/avant fonctionnent
 - 🔐 **Guards** : "Tu ne passeras pas !" sans authentification
 - ⚡ **Lazy loading** : charger les pages à la demande
 - 🎯 **Routes dynamiques** : /user/:id pour tous les utilisateurs
+
+</small>
 
 ---
 
@@ -487,6 +501,8 @@ Empêcher l'accès aux routes protégées sans connexion
 
 ### Créer router/index.js
 
+<small>
+
 ```javascript
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
@@ -515,9 +531,13 @@ const routes = [
   },
 ```
 
+</small>
+
 ---
 
 # 🎯 TaskFlow Router - Configuration (2/2)
+
+<small>
 
 ```javascript
   {
@@ -549,11 +569,15 @@ const router = createRouter({
 });
 ```
 
+</small>
+
 ---
 
 # 🎯 TaskFlow Router - Guards
 
 ### Guard global beforeEach
+
+<small>
 
 ```javascript
 router.beforeEach((to, from, next) => {
@@ -584,6 +608,8 @@ router.beforeEach((to, from, next) => {
 export default router;
 ```
 
+</small>
+
 ### 💡 N'oubliez pas
 
 Créer `useAuthStore()` dans Module 4 avec `isAuthenticated` et `canCreateCategories` !
@@ -605,6 +631,8 @@ Une vue complète qui utilise le **store Pinia** et le **router**
 ---
 
 # 🎯 TaskListView - Spécifications
+
+<small>
 
 ```vue
 <script>
@@ -663,6 +691,8 @@ export default {
 </template>
 ```
 
+</small>
+
 ### ✅ Correction
 
 👉 `taskflow-app/src/views/TaskListView.vue`
@@ -680,6 +710,8 @@ Afficher et éditer une tâche spécifique via son ID dans l'URL
 ---
 
 # 🎯 TaskDetailView - Spécifications
+
+<small>
 
 ```vue
 <script>
@@ -750,6 +782,8 @@ export default {
 </template>
 ```
 
+</small>
+
 ### ✅ Correction
 
 👉 `taskflow-app/src/views/TaskDetailView.vue`
@@ -767,6 +801,8 @@ Formulaire de connexion qui redirige vers la page d'origine après login
 ---
 
 # 🎯 LoginView - Spécifications
+
+<small>
 
 ```vue
 <script>
@@ -840,6 +876,8 @@ export default {
 </template>
 ```
 
+</small>
+
 ### 💡 Astuce
 
 Le `query.redirect` est défini par le guard `beforeEach` dans le router !
@@ -861,6 +899,8 @@ Une page d'erreur élégante avec redirection vers l'accueil
 ---
 
 # 🎯 NotFoundView - Spécifications
+
+<small>
 
 ```vue
 <script>
@@ -915,9 +955,13 @@ code {
 </style>
 ```
 
+</small>
+
 ### 💡 Route à ajouter
 
 N'oubliez pas d'ajouter la route catch-all dans `router/index.js` :
+
+<small>
 
 ```js
 {
@@ -926,6 +970,8 @@ N'oubliez pas d'ajouter la route catch-all dans `router/index.js` :
   component: () => import('../views/NotFoundView.vue')
 }
 ```
+
+</small>
 
 ### ✅ Correction
 

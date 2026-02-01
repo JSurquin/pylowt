@@ -98,12 +98,16 @@ graph LR
 
 ### Avantages des tests
 
+<small>
+
 - ✅ **Détection précoce des bugs** : trouvez-les AVANT vos utilisateurs
 - 🔒 **Confiance lors des refactorings** : changez du code sans peur
 - 📝 **Documentation vivante** : les tests montrent comment utiliser votre code
 - 🚀 **Maintenance facile** : comprenez le code 6 mois après
 - 👥 **Collaboration** : vos collègues vous remercieront
 - ⚡ **Plus rapide au final** : moins de temps en debug
+
+</small>
 
 ### 🎯 La règle d'or
 
@@ -160,6 +164,8 @@ routeAlias: "vitest-setup"
 
 ### Avantages de Vitest
 
+<small>
+
 - ⚡ Ultra-rapide (compatible Vite)
 - 🔧 Configuration minimale
 - 🎯 Compatible Jest API
@@ -167,6 +173,8 @@ routeAlias: "vitest-setup"
 - 🔥 Hot Module Replacement
 - 🌐 Support ESM natif
 - ⚙️ Watch mode intelligent
+
+</small>
 
 ---
 
@@ -597,18 +605,26 @@ export default defineConfig({
 
 ### ✅ Faire
 
+<small>
+
 - Tester le comportement, pas l'implémentation
 - Tests clairs et lisibles
 - Un test = une fonctionnalité
 - Noms descriptifs
 - Arrange-Act-Assert pattern
 
+</small>
+
 ### ❌ Éviter
+
+<small>
 
 - Tests trop complexes
 - Dépendances entre tests
 - Tester les détails d'implémentation
 - Mocks excessifs
+
+</small>
 
 ---
 

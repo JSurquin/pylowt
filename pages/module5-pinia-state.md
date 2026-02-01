@@ -137,6 +137,8 @@ graph LR
 
 ### Avantages de Pinia (2025)
 
+<small>
+
 - 🎯 Simple et intuitif
 - ⚡ Léger (~ 1kb)
 - 🔧 Support TypeScript natif
@@ -144,6 +146,8 @@ graph LR
 - 🌳 Tree-shaking automatique
 - 🧩 Modular par design
 - ✅ Composition API first
+
+</small>
 
 ---
 
@@ -524,6 +528,8 @@ export const useProductStore = defineStore('products', {
 
 Pinia permet la mutation directe du state
 
+<small>
+
 ```javascript
 export const useCartStore = defineStore('cart', {
   state: () => ({
@@ -559,9 +565,13 @@ export const useCartStore = defineStore('cart', {
 });
 ```
 
+</small>
+
 ---
 
 # Store avec données API
+
+<small>
 
 ```javascript
 // stores/users.js
@@ -610,9 +620,13 @@ export const useUsersStore = defineStore('users', {
 });
 ```
 
+</small>
+
 ---
 
 # Utilisation dans un composant
+
+<small>
 
 ```vue
 <script>
@@ -656,6 +670,8 @@ export default {
   </div>
 </template>
 ```
+
+</small>
 
 ---
 
@@ -774,6 +790,8 @@ export default {
 
 # Communication entre stores
 
+<small>
+
 ```javascript
 // stores/cart.js
 import { useAuthStore } from './auth';
@@ -801,6 +819,8 @@ export const useCartStore = defineStore('cart', {
   }
 });
 ```
+
+</small>
 
 ---
 
@@ -841,11 +861,15 @@ Pinia s'intègre parfaitement aux Vue DevTools
 
 ### Fonctionnalités
 
+<small>
+
 - 🔍 Inspection du state
 - 📊 Timeline des actions
 - ⏮️ Time-travel debugging
 - 💾 Export/Import du state
 - 🎯 Édition du state en direct
+
+</small>
 
 ---
 
