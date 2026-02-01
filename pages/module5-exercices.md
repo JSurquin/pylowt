@@ -680,6 +680,8 @@ export default {
 
 ### Ce que vous avez construit
 
+<small>
+
 ✅ **Store Tasks** : CRUD complet avec filtres  
 ✅ **Store Categories** : Gestion de catégories  
 ✅ **Store Auth** : Authentification et permissions  
@@ -691,17 +693,6 @@ export default {
 - ✅ **4.2 Stores avancés** : Composition entre stores, getters paramétrés
 - ✅ **4.3 Persistence** : localStorage pour sauvegarder l'état
 
-### Détails techniques
-
-- **defineStore** : Options API avec state/getters/actions
-- **Options API moderne** : Computed qui retournent `useXxxStore()` (pas de helpers)
-- **Getters paramétrés** : Retourner une fonction pour passer des arguments
-- **Interaction stores** : Importer et utiliser un store dans un autre
-- **Actions asynchrones** : async/await pour fetch
-- **Persistence** : localStorage.setItem/getItem
-- **Permissions** : Système de rôles dans le store auth
-- **Accès explicite** : `this.xxxStore.property` ou computed explicites
-
 ### 🚀 Prochaine étape : Module 5
 
 On va ajouter le **routing** à TaskFlow avec **Vue Router** !
@@ -709,6 +700,8 @@ On va ajouter le **routing** à TaskFlow avec **Vue Router** !
 - Navigation entre vues
 - Routes dynamiques (/task/:id)
 - Guards de navigation (auth required)
+
+</small>
 
 ---
 
