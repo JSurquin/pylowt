@@ -18,14 +18,13 @@ Tout au long de la formation, nous allons construire **TaskFlow**, une applicati
 
 ### 🎨 Fonctionnalités
 
-- 📋 **Boards multiples** : Personnel, Travail, Projets
-- 📝 **Tasks complètes** : Titre, description, priorité, deadline
-- 🏷️ **Colonnes customisables** : À faire, En cours, Terminé, En attente
-- 🎨 **Labels colorés** : Urgent, Bug, Feature, Idée
-- 👤 **Assignation** : Attribuer des tâches aux membres
-- 🔍 **Recherche & filtres** : Trouver rapidement vos tâches
-- 📊 **Dashboard** : Vue d'ensemble de votre productivité
-- 🌙 **Dark mode** : Parce que c'est stylé !
+- 📋 **Liste de tâches centralisée** : Toutes vos tâches au même endroit
+- 📝 **Tasks complètes** : Titre, description, priorité
+- 🏷️ **Catégories** : Personnel, Travail, Urgent (avec couleurs et icônes)
+- 📊 **Filtres** : Toutes, Actives, Terminées
+- 🔍 **Recherche** : Trouver rapidement vos tâches
+- 📊 **Dashboard** : Vue d'ensemble de votre productivité (admin)
+- 🔐 **Authentification** : Gestion des permissions (admin, editor, user)
 
 ---
 
@@ -66,28 +65,32 @@ Tout au long de la formation, nous allons construire **TaskFlow**, une applicati
 # 📦 Module 3 - Fonctionnalités avancées
 
 **Directives personnalisées** :
-- `v-drag` : Drag & drop pour déplacer les tâches
 - `v-auto-focus` : Focus automatique sur les inputs
 - `v-click-outside` : Fermer les modals en cliquant dehors
+- `v-tooltip` : Afficher des infobulles
+
+**Drag & Drop** :
+- Implémentation native HTML5 dans `BoardColumn.vue`
+- Attributs `draggable` et événements `@dragstart`, `@drop`
 
 **SFC avancés** :
 - CSS Scoped pour chaque composant
 - Variables CSS réactives pour le thème
-- TypeScript pour les interfaces Task, Board, User
+- TypeScript pour les interfaces Task, Category, User
 
 ---
 
 # 📦 Module 4 - State Management avec Pinia
 
 **Stores** :
-- `useTaskStore()` : Gestion des tâches (CRUD complet)
-- `useBoardStore()` : Gestion des boards
-- `useUserStore()` : Authentification & préférences
-- `useFilterStore()` : État des filtres actifs
+- `useTasksStore()` : Gestion des tâches (CRUD, filtres, persistence)
+- `useCategoriesStore()` : Gestion des catégories de tâches
+- `useAuthStore()` : Authentification & permissions (admin, editor, user)
 
-**Actions** :
-- Créer, modifier, supprimer des tâches
-- Déplacer entre colonnes
+**Fonctionnalités** :
+- CRUD complet des tâches
+- Liaison tasks ↔ categories
+- Filtres intégrés (all, active, done)
 - Persistence avec localStorage
 - Communication entre stores
 
@@ -97,20 +100,21 @@ Tout au long de la formation, nous allons construire **TaskFlow**, une applicati
 
 **Routes** :
 ```javascript
-/                    → Dashboard (vue d'ensemble)
-/boards              → Liste des boards
-/board/:id           → Vue détaillée d'un board
-/board/:id/task/:taskId  → Détail d'une tâche (nested route)
-/settings            → Paramètres utilisateur
+/                    → HomePage (page d'accueil)
+/tasks               → Liste des tâches (TaskListView)
+/task/:id            → Détail d'une tâche (TaskDetailView)
+/categories          → Gestion des catégories (CategoriesView)
+/dashboard           → Dashboard admin (statistiques)
 /login               → Page de connexion
 /404                 → Page non trouvée
 ```
 
 **Features** :
-- Lazy loading des boards
-- Guards pour protéger /settings
-- Navigation programmatique
-- Transitions entre pages
+- Lazy loading de toutes les vues
+- Guards pour protéger `/dashboard` (admin uniquement)
+- Guard pour protéger toutes les routes sauf `/` et `/login`
+- Navigation programmatique (`$router.push`)
+- Redirection après login avec query param `?redirect=`
 
 ---
 
@@ -141,43 +145,34 @@ Tout au long de la formation, nous allons construire **TaskFlow**, une applicati
 TaskFlow/
 ├── src/
 │   ├── components/
-│   │   ├── task/
-│   │   │   ├── TaskItem.vue
-│   │   │   ├── TaskList.vue
-│   │   │   ├── TaskForm.vue
-│   │   │   └── TaskFilter.vue
-│   │   ├── board/
-│   │   │   ├── BoardColumn.vue
-│   │   │   ├── BoardHeader.vue
-│   │   │   └── BoardCard.vue
-│   │   ├── common/
-│   │   │   ├── Modal.vue
-│   │   │   ├── Button.vue
-│   │   │   ├── Input.vue
-│   │   │   └── Select.vue
-│   │   └── layout/
-│   │       ├── AppHeader.vue
-│   │       ├── AppSidebar.vue
-│   │       └── AppFooter.vue
+│   │   ├── TaskItem.vue
+│   │   ├── TaskList.vue
+│   │   ├── TaskForm.vue
+│   │   ├── TaskCard.vue
+│   │   ├── BoardColumn.vue
+│   │   └── TaskModal.vue
 │   ├── views/
+│   │   ├── HomePage.vue
+│   │   ├── TaskListView.vue
+│   │   ├── TaskDetailView.vue
+│   │   ├── CategoriesView.vue
 │   │   ├── DashboardView.vue
-│   │   ├── BoardsView.vue
-│   │   ├── BoardDetailView.vue
-│   │   ├── SettingsView.vue
-│   │   └── LoginView.vue
+│   │   ├── LoginView.vue
+│   │   └── NotFoundView.vue
 │   ├── stores/
-│   │   ├── task.js
-│   │   ├── board.js
-│   │   ├── user.js
-│   │   └── filter.js
+│   │   ├── tasks.js        # Store principal des tâches
+│   │   ├── categories.js   # Catégories avec liaison tasks
+│   │   └── auth.js         # Authentification et permissions
 │   ├── directives/
-│   │   ├── drag.js
-│   │   ├── auto-focus.js
-│   │   └── click-outside.js
+│   │   ├── autoFocus.js
+│   │   ├── clickOutside.js
+│   │   ├── tooltip.js
+│   │   └── index.js        # Plugin de directives
 │   ├── router/
 │   │   └── index.js
-│   └── types/
-│       └── index.ts
+│   └── __tests__/
+│       ├── components/
+│       └── stores/
 ```
 
 ---
@@ -186,32 +181,30 @@ TaskFlow/
 
 ```typescript
 interface Task {
-  id: string;
+  id: number;
   title: string;
   description: string;
-  columnId: 'todo' | 'in-progress' | 'done' | 'blocked';
   priority: 'low' | 'medium' | 'high' | 'urgent';
-  labels: Label[];
-  assignee: User | null;
-  dueDate: Date | null;
-  createdAt: Date;
-  updatedAt: Date;
+  categoryId: number;
+  done: boolean;
+  createdAt: string;
+  updatedAt?: string;
+  completedAt?: string;
 }
 
-interface Board {
-  id: string;
+interface Category {
+  id: number;
   name: string;
-  description: string;
-  columns: Column[];
-  members: User[];
   color: string;
+  icon: string;
 }
 
-interface Column {
-  id: string;
-  name: string;
-  tasks: Task[];
-  order: number;
+interface User {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: 'admin' | 'editor' | 'user';
 }
 ```
 
@@ -242,26 +235,33 @@ Vous aurez :
 ┌──────────────────────────────────────────────────────────┐
 │  TaskFlow                    🔍 Search...   👤 User  ⚙️  │
 ├──────────────────────────────────────────────────────────┤
-│  📋 Boards  │  📊 Dashboard  │  ⚙️ Settings              │
-├──────────┬──────────────┬─────────────┬──────────────────┤
-│          │              │             │                  │
-│ À FAIRE  │  EN COURS    │  TERMINÉ    │  BLOQUÉ          │
-│ ──────── │  ─────────── │  ────────   │  ───────         │
-│          │              │             │                  │
-│ ┌──────┐ │ ┌──────────┐ │ ┌─────────┐ │                  │
-│ │ Task │ │ │ Task     │ │ │ Task    │ │                  │
-│ │ #1   │ │ │ #2       │ │ │ #3      │ │                  │
-│ │ 🔴   │ │ │ 🟡       │ │ │ 🟢      │ │                  │
-│ └──────┘ │ └──────────┘ │ └─────────┘ │                  │
-│          │              │             │                  │
-│ ┌──────┐ │ ┌──────────┐ │             │                  │
-│ │ Task │ │ │ Task     │ │             │                  │
-│ │ #4   │ │ │ #5       │ │             │                  │
-│ │ 🟠   │ │ │ 🔵       │ │             │                  │
-│ └──────┘ │ └──────────┘ │             │                  │
-│          │              │             │                  │
-│ + Add    │ + Add        │ + Add       │ + Add            │
-└──────────┴──────────────┴─────────────┴──────────────────┘
+│  📋 Mes tâches  │  🏷️ Catégories  │  📊 Dashboard       │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│  Filtres : [Toutes] [Actives] [Terminées]              │
+│                                                          │
+│  Catégories : 👤 Personnel (3)  💼 Travail (5)  🚨 Urgent (1) │
+│                                                          │
+│  ┌─────────────────────────────────────────┐            │
+│  │ ✅ Apprendre Vue.js 3                   │  ✏️  🗑️   │
+│  │    Suivre la formation complète          │            │
+│  │    🔴 URGENT                             │            │
+│  └─────────────────────────────────────────┘            │
+│                                                          │
+│  ┌─────────────────────────────────────────┐            │
+│  │ ⬜ Créer TaskFlow                       │  ✏️  🗑️   │
+│  │    Application de gestion de tâches      │            │
+│  │    🟠 HAUTE                              │            │
+│  └─────────────────────────────────────────┘            │
+│                                                          │
+│  ┌─────────────────────────────────────────┐            │
+│  │ ✅ Setup du projet                      │  ✏️  🗑️   │
+│  │                                          │            │
+│  │    🟡 MOYENNE                            │            │
+│  └─────────────────────────────────────────┘            │
+│                                                          │
+│  + Ajouter une tâche                                    │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ---
