@@ -33,6 +33,26 @@ themeConfig:
   </span>
 </div>
 
+
+<div class="absolute flex gap-x-2 bottom-0 left-0 p-4 z-50">
+      <SlideCurrentNo
+        class="dark:!text-white !text-[8px] p-1 w-5 h-5 items-center justify-center flex rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 opacity-80"
+      />
+      <span class="text-gray-400">/</span>
+  <SlideTotal
+        class="dark:!text-white !text-[8px] p-1 w-5 h-5 items-center justify-center flex rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 opacity-80"
+      />
+</div>
+
+
+<div class="absolute bottom-0 right-0 z-50 flex flex-col gap-y-2 p-2">
+<div class="hover:bg-white hover:bg-opacity-10 neon-border border-2 rounded-xl w-[200px] p-2 flex flex-col gap-y-2">
+  <img src="./ascent.png" alt="Ascent" class="w-6 h-6 mx-auto rounded-full"></img>
+  <span class="text-gray-400 text-xs">Programme : <b>4-047</b></span>
+  <span class="text-gray-400 text-xs">Lot: <b>4</b></span>
+</div>
+</div>
+
 ---
 layout: presenter
 eventLogo: 'https://img2.storyblok.com/352x0/f/84560/2388x414/23d8eb4b8d/vue-amsterdam-with-name.png'
