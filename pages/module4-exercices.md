@@ -959,6 +959,8 @@ export default {
 - ✅ **5.4 Guards** : beforeEach, onBeforeRouteLeave
 - ✅ **5.5 Meta fields** : requiresAuth, title
 
+---
+
 ### 🚀 Prochaine étape : Module 6
 
 On va **tester** TaskFlow avec **Vitest** !

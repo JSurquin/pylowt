@@ -688,12 +688,13 @@ export default {
 </template>
 ```
 
+</small>
+
+---
 
 ### ✅ Correction
 
 👉 `taskflow-app/src/views/TaskListView.vue`
-
-</small>
 
 ---
 
@@ -780,12 +781,14 @@ export default {
 </template>
 ```
 
+</small>
+
+---
 
 ### ✅ Correction
 
 👉 `taskflow-app/src/views/TaskDetailView.vue`
 
-</small>
 
 ---
 
@@ -960,16 +963,15 @@ code {
 </style>
 ```
 
-
-#### 💡 Route à ajouter
-
-N'oubliez pas d'ajouter la route catch-all dans `router/index.js` :
-
 </small>
 
 ---
 
 <small>
+
+#### 💡 Route à ajouter
+
+N'oubliez pas d'ajouter la route catch-all dans `router/index.js` :
 
 ```js
 {

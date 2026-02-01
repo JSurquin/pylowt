@@ -219,28 +219,24 @@ export const useCounterStore = defineStore('counter', {
 #### Schéma : Architecture d'un Store Pinia
 
 ```mermaid
-graph TB
-    subgraph Store["Store Pinia - useCounterStore"]
-        S[State<br/>count: 0]
-        G[Getters<br/>doubleCount: count fois 2]
-        A[Actions<br/>increment<br/>decrement]
-    end
+flowchart LR
+    C1["📦 Composant 1"]
+    C2["📦 Composant 2"]
+    C3["📦 Composant 3"]
     
-    subgraph Composants["Composants Vue"]
-        C1[Composant 1]
-        C2[Composant 2]
-        C3[Composant 3]
-    end
+    S["🗄️ State<br/>count: 0"]
+    G["🔍 Getters<br/>doubleCount:<br/>count × 2"]
+    A["⚡ Actions<br/>increment()<br/>decrement()"]
     
-    S --> G
-    A --> S
+    C1 -.->|"Lit"| S
+    C1 -.->|"Lit"| G
+    C1 -.->|"Appelle"| A
     
-    C1 -.->|Lit| S
-    C1 -.->|Lit| G
-    C1 -.->|Appelle| A
+    C2 -.->|"Lit"| S
+    C3 -.->|"Appelle"| A
     
-    C2 -.->|Lit| S
-    C3 -.->|Appelle| A
+    A -->|"Modifie"| S
+    S -->|"Calcule"| G
     
     style S fill:#42b883,stroke:#35495e,stroke-width:3px,color:#fff
     style G fill:#3498db,stroke:#2980b9,stroke-width:3px,color:#fff
