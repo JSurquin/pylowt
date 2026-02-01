@@ -139,7 +139,7 @@ layout: two-cols
 routeAlias: 'programme-jour2'
 ---
 
-### JOUR 2 - VUE.JS AVANCÉ ET STATE MANAGEMENT 📅
+### JOUR 2 - VUE.JS AVANCÉ ET ROUTAGE 📅
 
 <small>
 
@@ -156,7 +156,27 @@ routeAlias: 'programme-jour2'
 
 <small>
 
-**Module 4 - State Management avec Pinia**
+**Module 4 - Navigation et routage avec Vue Router**
+- Introduction à Vue Router
+- Installation et configuration
+- Routes et navigation
+- Routes dynamiques et paramètres
+- Navigation programmatique
+- Guards de navigation
+- Routes imbriquées
+
+</small>
+
+---
+layout: two-cols
+routeAlias: 'programme-jour3'
+---
+
+### JOUR 3 - STATE MANAGEMENT ET TESTS 📅
+
+<small>
+
+**Module 5 - State Management avec Pinia**
 - Pattern State Management
 - Store global unique
 - Création d'un store Pinia
@@ -166,12 +186,7 @@ routeAlias: 'programme-jour2'
 
 </small>
 
----
-layout: two-cols
-routeAlias: 'programme-jour3'
----
-
-### JOUR 3 - TESTS ET PROJET FINAL 📅
+::right::
 
 <small>
 
@@ -184,17 +199,8 @@ routeAlias: 'programme-jour3'
 - Mocks et stubs
 - Coverage de code
 
-</small>
-
-::right::
-
-<small>
-
-**Projet Final - TaskFlow**
-- Mise en pratique complète
+**Projet Final & QCM**
 - Application de tous les concepts
-- Architecture complète de l'application
-- Bonnes pratiques 2026
 - QCM de validation finale
 
 **Modules Bonus (optionnels)**
