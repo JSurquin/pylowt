@@ -134,6 +134,8 @@ export default {
 
 # Exercice 2 : Directive v-click-outside
 
+<small>
+
 ### Objectif
 Détecter les clics en dehors d'un élément
 
@@ -151,6 +153,8 @@ Détecter les clics en dehors d'un élément
 - Fermer une modal
 - Fermer un menu contextuel
 - Fermer un date picker
+
+</small>
 
 ---
 
@@ -247,6 +251,8 @@ export default {
 
 # Exercice 3 : Directive v-tooltip
 
+<div class="text-[9px]">
+
 ### Objectif
 Afficher un tooltip au survol d'un élément
 
@@ -266,6 +272,8 @@ Afficher un tooltip au survol d'un élément
 - Masquer au mouseleave
 - Créer/détruire le DOM du tooltip
 - Cleanup au démontage
+
+</div>
 
 ---
 
@@ -469,12 +477,14 @@ export default {
 
 ---
 
-# Exercice 4 : Plugin de Directives
+#### Exercice 4 : Plugin de Directives
 
-### Objectif
+<div class="text-[11px]">
+
+#### Objectif
 Créer un plugin pour enregistrer toutes les directives TaskFlow
 
-### Spécifications
+#### Spécifications
 
 **Fichier** : `plugins/taskflowDirectives.js`
 
@@ -491,6 +501,8 @@ app.use(TaskFlowDirectives);
 **Bonus** :
 - Options de configuration globales
 - Version du plugin
+
+</div>
 
 ---
 

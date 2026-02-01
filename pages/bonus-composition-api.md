@@ -10,8 +10,6 @@ routeAlias: 'bonus-composition-api'
 
 ---
 
-# 🎁 Bienvenue dans le module BONUS !
-
 ### 📊 Contexte
 
 Vous avez appris Vue.js avec l'**Options API** (la manière "classique")

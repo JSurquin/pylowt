@@ -306,8 +306,6 @@ const routes = [
 ```
 
 ---
-
----
 layout: new-section
 routeAlias: "router-advanced"
 ---
@@ -606,7 +604,6 @@ router.beforeEach((to, from, next) => {
 export default router;
 ```
 
-</small>
 
 ### 💡 N'oubliez pas
 
@@ -615,6 +612,8 @@ Créer `useAuthStore()` dans Module 4 avec `isAuthenticated` et `canCreateCatego
 ### ✅ Correction
 
 👉 `taskflow-app/src/router/index.js`
+
+</small>
 
 ---
 

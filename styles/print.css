@@ -9,8 +9,8 @@
   [data-slidev-no] .slidev-layout .slidev-code-wrapper pre,
   [data-slidev-no] .slidev-layout pre {
     font-size: 0.6em !important;
-    line-height: 1.1 !important;
-    padding: 0.3em !important;
+    line-height: 0.9 !important;
+    padding: 0.2em !important;
     margin: 0 !important;
     max-width: 100% !important;
     white-space: pre-wrap !important;

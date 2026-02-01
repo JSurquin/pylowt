@@ -32,10 +32,12 @@ Nous allons créer 3 composants TaskFlow modulaires et réutilisables avec les s
 
 # Exercice 1 : TaskCard avec Slots
 
-### Objectif
+<small>
+
+#### Objectif
 Créer un composant `TaskCard.vue` ultra-flexible avec slots
 
-### Spécifications
+#### Spécifications
 
 **Slots nommés** :
 - `header` : En-tête personnalisable
@@ -49,6 +51,8 @@ Créer un composant `TaskCard.vue` ultra-flexible avec slots
 
 **Fallback** :
 - Contenu par défaut pour chaque slot
+
+</small>
 
 ---
 
@@ -118,7 +122,7 @@ export default {
 
 # Exercice 1 - Solution TaskCard.vue (3/3)
 
-**Styles :**
+#### Styles :
 
 ```vue
 <style scoped>
@@ -213,6 +217,8 @@ export default {
 
 # Exercice 2 : TaskModal avec Slots
 
+<div class="text-[9px] -mt-4">
+
 #### Objectif
 Créer une modal ultra-flexible pour TaskFlow
 
@@ -233,6 +239,8 @@ Créer une modal ultra-flexible pour TaskFlow
 - `@update:modelValue` : Pour v-model
 - `@close` : Quand on ferme la modal
 - `@confirm` : Quand on confirme
+
+</div>
 
 ---
 
@@ -524,6 +532,8 @@ export default {
 
 ### Exercice 3 : BoardColumn (Scoped Slots)
 
+<div class="text-[9px]">
+
 #### Objectif
 Créer une colonne de board Kanban avec scoped slots
 
@@ -544,6 +554,8 @@ Créer une colonne de board Kanban avec scoped slots
 
 **Events** :
 - `@drop` : Drag & drop de tâches
+
+</div>
 
 ---
 
@@ -675,6 +687,8 @@ export default {
 
 # Exercice 3 - Solution BoardColumn Styles (1/2)
 
+<div class="-mt-6">
+
 **Styles colonne et header :**
 
 ```vue
@@ -724,6 +738,8 @@ export default {
 }
 </style>
 ```
+
+</div>
 
 ---
 
@@ -885,15 +901,7 @@ export default {
 - ✅ **2.1 Introduction** : Slots simples, nommés, fallback
 - ✅ **2.2 Implémentation** : Scoped slots, $slots, v-slot, Teleport
 
-#### Détails techniques
-
-- **Slots nommés** : header, footer, actions, title
-- **Scoped slots** : Expose task, index, isFirst, isLast
-- **Détection de slots** : v-if="$slots.header"
-- **Fallback content** : Contenu par défaut
-- **Teleport** : Modal dans body
-- **v-model custom** : modelValue + update:modelValue
-- **Drag & Drop API** : dragstart, dragover, drop
+<br/>
 
 #### 🚀 Prochaine étape : Module 3
 
@@ -952,13 +960,5 @@ Vous maîtrisez maintenant :
 - TaskCard : 4 slots nommés
 - TaskModal : Teleport + slots
 - BoardColumn : Scoped slots + drag&drop
-
-</small>
-
-### 🚀 Prochaine étape : Module 3
-
-<small>
-
-Rendez-vous au Module 3 pour ajouter des directives personnalisées à TaskFlow !
 
 </small>

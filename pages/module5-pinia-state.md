@@ -975,7 +975,9 @@ Créez le store pour gérer les catégories
 
 ---
 
-# 🎯 Exercice 3 : useAuthStore()
+#### 🎯 Exercice 3 : useAuthStore()
+
+<div class="text-[11px]">
 
 Créez le store d'authentification
 
@@ -1002,6 +1004,8 @@ Ce store sera utilisé dans les navigation guards !
 ### 💡 Correction
 
 👉 **Module 4 - Exercices** OU `taskflow-app/src/stores/auth.js`
+
+</div>
 
 ---
 

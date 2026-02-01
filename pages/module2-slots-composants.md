@@ -1115,9 +1115,9 @@ Drag & drop : `@dragstart`, `@drop`, `@dragover`, classe `.drag-over`
 
 ---
 
-<div class="text-9px">
-
 # 🎯 Exercice 3 : TaskModal.vue
+
+<div class="text-[11px]">
 
 Créez une modale avec Teleport et slots
 

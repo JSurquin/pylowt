@@ -59,21 +59,21 @@ Vous codez → Tests échouent → Vous corrigez → Tests passent ✅ → 😎 
 #### Schéma : Avec vs Sans tests
 
 ```mermaid
-graph LR
-    subgraph SansTests["Sans Tests - Dangereux"]
-        C1[Codez] --> D1[Deployez]
-        D1 --> B1[Bug en prod]
-        B1 --> P1[Panique]
-    end
+flowchart LR
+    Start1[" "] --> C1["🔴 Codez"]
+    C1 --> D1["Deployez"]
+    D1 --> B1["Bug en prod"]
+    B1 --> P1["💥 Panique"]
     
-    subgraph AvecTests["Avec Tests - Serein"]
-        C2[Codez] --> T2[Tests]
-        T2 --> E{Tests passent?}
-        E -->|Non| F2[Corrigez]
-        F2 --> T2
-        E -->|Oui| D2[Deployez en confiance]
-    end
+    Start2[" "] --> C2["✅ Codez"]
+    C2 --> T2["Tests"]
+    T2 --> E{"Tests<br/>passent?"}
+    E -->|Non| F2["Corrigez"]
+    F2 --> T2
+    E -->|Oui| D2["😎 Deployez<br/>en confiance"]
     
+    style Start1 fill:none,stroke:none
+    style Start2 fill:none,stroke:none
     style C1 fill:#95a5a6,stroke:#7f8c8d,stroke-width:2px,color:#fff
     style D1 fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
     style B1 fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff

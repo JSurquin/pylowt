@@ -187,12 +187,11 @@ code {
 [data-slidev-no] .slidev-layout pre {
   font-size: 0.6em !important;
   line-height: 1.1 !important;
-  padding: 0.3em !important;
   margin: 0 !important;
   max-width: 100% !important;
   white-space: pre-wrap !important;
   word-wrap: break-word !important;
-  overflow: hidden !important;
+  overflow-y: auto;
   background-color: #3e5066 !important;
   color: #f8f8f2 !important;
 }

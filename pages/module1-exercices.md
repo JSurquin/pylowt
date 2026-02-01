@@ -473,6 +473,10 @@ Créer un composant pour gérer une liste de tâches
 - `activeCount` : Nombre de tâches non terminées
 - `doneCount` : Nombre de tâches terminées
 
+</small>
+
+---
+
 **Methods** :
 - `toggleTask(id)` : Toggle le statut done
 - `deleteTask(id)` : Supprimer une tâche
@@ -482,7 +486,6 @@ Créer un composant pour gérer une liste de tâches
 - Afficher un message si aucune tâche
 - Compteur de tâches
 
-</small>
 
 ---
 
@@ -1172,6 +1175,8 @@ main {
 
 # Exercice 5 - Améliorations optionnelles
 
+<div class="text-[10px]">
+
 #### Fonctionnalités bonus à ajouter
 
 **1. Persistance localStorage** :
@@ -1204,6 +1209,8 @@ clearAll() {
 **3. Export/Import JSON** :
 - Bouton pour télécharger les tâches en JSON
 - Bouton pour importer un fichier JSON
+
+</div>
 
 ---
 
@@ -1282,6 +1289,12 @@ Testez toutes les fonctionnalités :
 - ✅ v-if / v-else / v-show
 - ✅ v-for avec :key
 - ✅ v-model (input, textarea, select, checkbox)
+
+</small>
+
+---
+
+<small>
 
 **Réactivité** :
 - ✅ Computed properties et mise en cache
