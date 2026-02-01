@@ -551,6 +551,7 @@ export default {
 
 ```vue
 <style scoped>
+<!-- scoped = les styles sont uniquement appliqués à ce composant -->
 button {
   padding: 10px 20px;
   font-size: 16px;
