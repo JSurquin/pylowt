@@ -170,13 +170,16 @@ export default {
 </script>
 ```
 
+</small>
+
+---
+
 **Pourquoi Options API ?**
 - ✅ Plus facile à apprendre pour les débutants
 - ✅ Structure claire (data, methods, computed bien séparés)
 - ✅ Meilleure compréhension des concepts Vue
 - ✅ La Composition API sera vue dans le Module Bonus !
 
-</small>
 
 ---
 
@@ -262,8 +265,6 @@ main {
 
 # Exercice 1 : TaskItem.vue
 
-<small>
-
 ### Objectif
 Créer le composant de base pour afficher une tâche
 
@@ -280,12 +281,12 @@ Créer le composant de base pour afficher une tâche
 - Badge de priorité (low, medium, high, urgent)
 - Barrer le texte si `done === true`
 
+---
+
 **Événements** :
 - `@toggle` : Émettre quand on coche/décoche
 - `@delete` : Émettre quand on clique sur supprimer
 - `@edit` : Émettre quand on clique sur éditer
-
-</small>
 
 ---
 
@@ -674,11 +675,14 @@ Créer un formulaire pour ajouter/éditer des tâches
 - Description optionnelle
 - Priorité par défaut : 'medium'
 
+</small>
+
+---
+
 **Événements** :
 - `@submit` : Émettre les données du formulaire
 - `@cancel` : Annuler l'édition
 
-</small>
 
 ---
 

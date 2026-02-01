@@ -1084,6 +1084,8 @@ Créez une carte flexible avec slots nommés
 
 # 🎯 Exercice 2 : BoardColumn.vue
 
+<div class="text-[9px]">
+
 Créez une colonne Kanban avec scoped slots
 
 #### Props
@@ -1109,7 +1111,11 @@ Drag & drop : `@dragstart`, `@drop`, `@dragover`, classe `.drag-over`
 
 👉 **Module 2 - Exercices** OU `taskflow-app/src/components/BoardColumn.vue`
 
+</div>
+
 ---
+
+<div class="text-9px">
 
 # 🎯 Exercice 3 : TaskModal.vue
 
@@ -1141,11 +1147,14 @@ Créez une modale avec Teleport et slots
 
 👉 **Module 2 - Exercices** OU `taskflow-app/src/components/TaskModal.vue`
 
+</div>
+
 ---
 
 # Travaux pratiques - Module 2
 
 ### Exercices à réaliser
+
 
 1. 🎴 **Card générique** : Créer une carte avec header/body/footer
 2. 📋 **Modal réutilisable** : Modal avec slots et props
