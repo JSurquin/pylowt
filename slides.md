@@ -74,7 +74,6 @@ Fondateur <a  href="https://www.andromed.fr/"><logos-storyblok-icon  mr-1/>Andro
 ---
 layout: text-image
 media: 'https://vuejs.org/images/logo.png'
-caption: 'Vue.js 3 - 2026'
 ---
 
 # DISCLAIMER 💚
