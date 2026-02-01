@@ -188,30 +188,27 @@ app.mount('#app');
 ```javascript
 // stores/counter.js
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
 
-export const useCounterStore = defineStore('counter', () => {
+export const useCounterStore = defineStore('counter', {
   // State
-  const count = ref(0);
+  state: () => ({
+    count: 0
+  }),
   
   // Getters
-  const doubleCount = computed(() => count.value * 2);
+  getters: {
+    doubleCount: (state) => state.count * 2
+  },
   
   // Actions
-  const increment = () => {
-    count.value++;
-  };
-  
-  const decrement = () => {
-    count.value--;
-  };
-  
-  return {
-    count,
-    doubleCount,
-    increment,
-    decrement
-  };
+  actions: {
+    increment() {
+      this.count++;
+    },
+    decrement() {
+      this.count--;
+    }
+  }
 });
 ```
 
@@ -386,33 +383,38 @@ const total = store.totalPrice; // Simple et réutilisable !
 
 # Getters vs Redux selectors
 
-### 🆚 En Redux : ce sont les selectors (mais plus verbeux)
+### 🆚 Options API : la syntaxe recommandée pour cette formation
 
 ```javascript
-export const useProductStore = defineStore('products', () => {
-  const products = ref([]);
-  const filters = reactive({ search: '', category: '' });
+export const useProductStore = defineStore('products', {
+  state: () => ({
+    products: [],
+    filters: {
+      search: '',
+      category: ''
+    }
+  }),
   
-  // Getter simple
-  const productCount = computed(() => products.value.length);
-  
-  // Getter filtré
-  const filteredProducts = computed(() => {
-    return products.value.filter(p => {
-      const matchSearch = p.nom.toLowerCase()
-        .includes(filters.search.toLowerCase());
-      const matchCategory = !filters.category || 
-                           p.category === filters.category;
-      return matchSearch && matchCategory;
-    });
-  });
-  
-  // Getter avec calcul
-  const totalValue = computed(() => {
-    return products.value.reduce((sum, p) => sum + p.prix, 0);
-  });
-  
-  return { products, filters, productCount, filteredProducts, totalValue };
+  getters: {
+    // Getter simple
+    productCount: (state) => state.products.length,
+    
+    // Getter filtré
+    filteredProducts: (state) => {
+      return state.products.filter(p => {
+        const matchSearch = p.nom.toLowerCase()
+          .includes(state.filters.search.toLowerCase());
+        const matchCategory = !state.filters.category || 
+                             p.category === state.filters.category;
+        return matchSearch && matchCategory;
+      });
+    },
+    
+    // Getter avec calcul
+    totalValue: (state) => {
+      return state.products.reduce((sum, p) => sum + p.prix, 0);
+    }
+  }
 });
 ```
 
@@ -421,21 +423,23 @@ export const useProductStore = defineStore('products', () => {
 # Getters avec paramètres
 
 ```javascript
-export const useProductStore = defineStore('products', () => {
-  const products = ref([]);
+export const useProductStore = defineStore('products', {
+  state: () => ({
+    products: []
+  }),
   
-  // Getter qui retourne une fonction
-  const getProductById = computed(() => {
-    return (id) => products.value.find(p => p.id === id);
-  });
-  
-  const getProductsByCategory = computed(() => {
-    return (category) => {
-      return products.value.filter(p => p.category === category);
-    };
-  });
-  
-  return { products, getProductById, getProductsByCategory };
+  getters: {
+    // Getter qui retourne une fonction
+    getProductById: (state) => {
+      return (id) => state.products.find(p => p.id === id);
+    },
+    
+    getProductsByCategory: (state) => {
+      return (category) => {
+        return state.products.filter(p => p.category === category);
+      };
+    }
+  }
 });
 ```
 
@@ -481,34 +485,36 @@ export default {
 Les actions modifient le state
 
 ```javascript
-export const useProductStore = defineStore('products', () => {
-  const products = ref([]);
-  const loading = ref(false);
-  const error = ref(null);
+export const useProductStore = defineStore('products', {
+  state: () => ({
+    products: [],
+    loading: false,
+    error: null
+  }),
   
-  const fetchProducts = async () => {
-    loading.value = true;
-    error.value = null;
+  actions: {
+    async fetchProducts() {
+      this.loading = true;
+      this.error = null;
+      
+      try {
+        const response = await fetch('/api/products');
+        const data = await response.json();
+        this.products = data;
+      } catch (e) {
+        this.error = e.message;
+      } finally {
+        this.loading = false;
+      }
+    },
     
-    try {
-      const response = await fetch('/api/products');
-      const data = await response.json();
-      products.value = data;
-    } catch (e) {
-      error.value = e.message;
-    } finally {
-      loading.value = false;
+    addProduct(product) {
+      this.products.push({
+        ...product,
+        id: Date.now()
+      });
     }
-  };
-  
-  const addProduct = (product) => {
-    products.value.push({
-      ...product,
-      id: Date.now()
-    });
-  };
-  
-  return { products, loading, error, fetchProducts, addProduct };
+  }
 });
 ```
 
@@ -519,35 +525,37 @@ export const useProductStore = defineStore('products', () => {
 Pinia permet la mutation directe du state
 
 ```javascript
-export const useCartStore = defineStore('cart', () => {
-  const items = ref([]);
+export const useCartStore = defineStore('cart', {
+  state: () => ({
+    items: []
+  }),
   
-  const addToCart = (product) => {
-    const existingItem = items.value.find(i => i.id === product.id);
+  actions: {
+    addToCart(product) {
+      const existingItem = this.items.find(i => i.id === product.id);
+      
+      if (existingItem) {
+        // Mutation directe
+        existingItem.quantity++;
+      } else {
+        this.items.push({
+          ...product,
+          quantity: 1
+        });
+      }
+    },
     
-    if (existingItem) {
-      // Mutation directe
-      existingItem.quantity++;
-    } else {
-      items.value.push({
-        ...product,
-        quantity: 1
-      });
+    removeFromCart(productId) {
+      const index = this.items.findIndex(i => i.id === productId);
+      if (index > -1) {
+        this.items.splice(index, 1);
+      }
+    },
+    
+    clearCart() {
+      this.items = [];
     }
-  };
-  
-  const removeFromCart = (productId) => {
-    const index = items.value.findIndex(i => i.id === productId);
-    if (index > -1) {
-      items.value.splice(index, 1);
-    }
-  };
-  
-  const clearCart = () => {
-    items.value = [];
-  };
-  
-  return { items, addToCart, removeFromCart, clearCart };
+  }
 });
 ```
 
@@ -558,46 +566,47 @@ export const useCartStore = defineStore('cart', () => {
 ```javascript
 // stores/users.js
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
 
-export const useUsersStore = defineStore('users', () => {
-  const users = ref([]);
-  const loading = ref(false);
-  const error = ref(null);
+export const useUsersStore = defineStore('users', {
+  state: () => ({
+    users: [],
+    loading: false,
+    error: null
+  }),
   
-  const fetchUsers = async () => {
-    loading.value = true;
-    try {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users');
-      users.value = await res.json();
-    } catch (e) {
-      error.value = e.message;
-    } finally {
-      loading.value = false;
+  actions: {
+    async fetchUsers() {
+      this.loading = true;
+      try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users');
+        this.users = await res.json();
+      } catch (e) {
+        this.error = e.message;
+      } finally {
+        this.loading = false;
+      }
+    },
+    
+    getUserById(id) {
+      return this.users.find(u => u.id === id);
+    },
+    
+    async createUser(userData) {
+      try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userData)
+        });
+        const newUser = await res.json();
+        this.users.push(newUser);
+        return newUser;
+      } catch (e) {
+        this.error = e.message;
+        throw e;
+      }
     }
-  };
-  
-  const getUserById = (id) => {
-    return users.value.find(u => u.id === id);
-  };
-  
-  const createUser = async (userData) => {
-    try {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData)
-      });
-      const newUser = await res.json();
-      users.value.push(newUser);
-      return newUser;
-    } catch (e) {
-      error.value = e.message;
-      throw e;
-    }
-  };
-  
-  return { users, loading, error, fetchUsers, getUserById, createUser };
+  }
 });
 ```
 
@@ -704,25 +713,25 @@ routeAlias: "pinia-advanced"
 
 ```javascript
 // stores/auth.js
-export const useAuthStore = defineStore('auth', () => {
-  const token = ref('');
-  const user = ref(null);
-  
-  return { token, user };
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    token: '',
+    user: null
+  })
 });
 
 // stores/cart.js
-export const useCartStore = defineStore('cart', () => {
-  const items = ref([]);
-  
-  return { items };
+export const useCartStore = defineStore('cart', {
+  state: () => ({
+    items: []
+  })
 });
 
 // stores/products.js
-export const useProductsStore = defineStore('products', () => {
-  const products = ref([]);
-  
-  return { products };
+export const useProductsStore = defineStore('products', {
+  state: () => ({
+    products: []
+  })
 });
 ```
 
@@ -770,24 +779,26 @@ export default {
 import { useAuthStore } from './auth';
 import { useProductsStore } from './products';
 
-export const useCartStore = defineStore('cart', () => {
-  const items = ref([]);
+export const useCartStore = defineStore('cart', {
+  state: () => ({
+    items: []
+  }),
   
-  const addToCart = (productId) => {
-    const authStore = useAuthStore();
-    const productsStore = useProductsStore();
-    
-    if (!authStore.isLoggedIn) {
-      throw new Error('Non connecté');
+  actions: {
+    addToCart(productId) {
+      const authStore = useAuthStore();
+      const productsStore = useProductsStore();
+      
+      if (!authStore.isLoggedIn) {
+        throw new Error('Non connecté');
+      }
+      
+      const product = productsStore.getProductById(productId);
+      if (product) {
+        this.items.push(product);
+      }
     }
-    
-    const product = productsStore.getProductById(productId);
-    if (product) {
-      items.value.push(product);
-    }
-  };
-  
-  return { items, addToCart };
+  }
 });
 ```
 
@@ -820,98 +831,6 @@ export const useCartStore = defineStore('cart', () => {
   
   return { items, addToCart, clearCart };
 });
-```
-
----
-
-# Plugin Pinia pour persistence
-
-```javascript
-// plugins/piniaPlugins.js
-export function piniaPersistedState() {
-  return ({ store }) => {
-    // Charger depuis localStorage au démarrage
-    const saved = localStorage.getItem(store.$id);
-    if (saved) {
-      store.$patch(JSON.parse(saved));
-    }
-    
-    // Sauvegarder à chaque changement
-    store.$subscribe((mutation, state) => {
-      localStorage.setItem(store.$id, JSON.stringify(state));
-    });
-  };
-}
-
-// main.js
-import { createPinia } from 'pinia';
-import { piniaPersistedState } from './plugins/piniaPlugins';
-
-const pinia = createPinia();
-pinia.use(piniaPersistedState());
-```
-
----
-
-# Reset du store
-
-```javascript
-export const useUserStore = defineStore('user', () => {
-  const nom = ref('');
-  const email = ref('');
-  const isLoggedIn = ref(false);
-  
-  const initialState = {
-    nom: '',
-    email: '',
-    isLoggedIn: false
-  };
-  
-  const $reset = () => {
-    nom.value = initialState.nom;
-    email.value = initialState.email;
-    isLoggedIn.value = initialState.isLoggedIn;
-  };
-  
-  return { nom, email, isLoggedIn, $reset };
-});
-```
-
----
-
-# $patch - Mise à jour groupée
-
-```vue
-<script>
-import { useUserStore } from '@/stores/user';
-
-export default {
-  methods: {
-    updateUser() {
-      const userStore = useUserStore();
-      
-      // Mise à jour individuelle (multiple réactivités)
-      userStore.nom = 'Alice';
-      userStore.email = 'alice@example.com';
-      userStore.age = 25;
-      
-      // ✅ Mise à jour groupée (une seule réactivité)
-      userStore.$patch({
-        nom: 'Alice',
-        email: 'alice@example.com',
-        age: 25
-      });
-      
-      // Ou avec fonction
-      userStore.$patch((state) => {
-        state.nom = 'Alice';
-        state.email = 'alice@example.com';
-        state.age = 25;
-      });
-    }
-  }
-}
-</script>
 ```
 
 ---

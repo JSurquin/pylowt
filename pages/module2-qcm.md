@@ -217,21 +217,7 @@ D. Seulement dans Options API
 
 ---
 
-# Question 16 - Renderless component
-
-Qu'est-ce qu'un renderless component ?
-
-A. Un composant invisible
-
-B. Un composant qui fournit de la logique sans UI
-
-C. Un composant sans template
-
-D. Un composant désactivé
-
----
-
-# Question 17 - Slot par défaut
+# Question 16 - Slot par défaut
 
 Si on a un slot nommé ET un slot par défaut, où va le contenu sans template ?
 
@@ -245,7 +231,7 @@ D. Il est ignoré
 
 ---
 
-# Question 18 - Scoped slot - données multiples
+# Question 17 - Scoped slot - données multiples
 
 Comment passer plusieurs données dans un scoped slot ?
 
@@ -259,7 +245,7 @@ D. `<slot :values="[val1, val2]">`
 
 ---
 
-# Question 19 - Use case Modal
+# Question 18 - Use case Modal
 
 Pour un composant Modal, que devrait-on utiliser ?
 
@@ -273,7 +259,7 @@ D. Ni props ni slots
 
 ---
 
-# Question 20 - Bonnes pratiques
+# Question 19 - Bonnes pratiques
 
 Combien de slots nommés maximum recommande-t-on ?
 
@@ -327,15 +313,13 @@ D. Pas de limite
 
 **Question 15:** B - Oui, ils sont complémentaires
 
-**Question 16:** B - Un composant qui fournit de la logique sans UI
+**Question 16:** B - Dans le slot par défaut
 
-**Question 17:** B - Dans le slot par défaut
+**Question 17:** A - `<slot :data1="val1" :data2="val2">`
 
-**Question 18:** A - `<slot :data1="val1" :data2="val2">`
+**Question 18:** C - Props pour config + slots pour contenu
 
-**Question 19:** C - Props pour config + slots pour contenu
-
-**Question 20:** B - 5
+**Question 19:** B - 5
 
 </div>
 

@@ -357,34 +357,28 @@ const routes = [
 
 ---
 
-# Named Views
+# Named Views (avancé)
 
-Plusieurs RouterView dans la même route
+Pour des layouts complexes avec plusieurs RouterView nommées
 
 ```javascript
-const routes = [
-  {
-    path: '/',
-    components: {
-      default: Home,
-      sidebar: Sidebar,
-      footer: Footer
-    }
+// Configuration
+const routes = [{
+  path: '/',
+  components: {
+    default: Home,
+    sidebar: Sidebar,
+    footer: Footer
   }
-];
+}];
 ```
 
----
-
-# Utilisation des Named Views
-
 ```vue
+<!-- Utilisation -->
 <template>
-  <div>
-    <RouterView name="sidebar" />
-    <RouterView />
-    <RouterView name="footer" />
-  </div>
+  <RouterView name="sidebar" />
+  <RouterView /> <!-- default -->
+  <RouterView name="footer" />
 </template>
 ```
 
@@ -1044,52 +1038,6 @@ const router = createRouter({
 const router = createRouter({
   history: createWebHashHistory(),
   routes
-});
-```
-
----
-
-# Transitions entre routes
-
-```vue
-<template>
-  <RouterView v-slot="{ Component }">
-    <Transition name="fade" mode="out-in">
-      <component :is="Component" />
-    </Transition>
-  </RouterView>
-</template>
-
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
-```
-
----
-
-# Scroll Behavior
-
-```javascript
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    }
-    if (to.hash) {
-      return { el: to.hash };
-    }
-    return { top: 0 };
-  }
 });
 ```
 

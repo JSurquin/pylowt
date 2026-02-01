@@ -992,8 +992,6 @@ On va **tester** TaskFlow avec **Vitest** !
 ### Concepts avancés
 
 - 🔧 Nested Routes (routes imbriquées)
-- ⚡ Scroll Behavior
-- 🎭 Transitions de routes
 - 🔗 Named Views
 
 ### Exemples

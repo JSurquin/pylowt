@@ -228,39 +228,6 @@ Alternative au scoped CSS
 
 ---
 
-# Multiple styles dans un SFC
-
-```vue
-<template>
-  <div class="container">
-    <h1 class="global-title">Titre</h1>
-  </div>
-</template>
-
-<!-- Styles scopés -->
-<style scoped>
-.container {
-  padding: 20px;
-}
-</style>
-
-<!-- Styles globaux -->
-<style>
-.global-title {
-  font-family: 'Arial', sans-serif;
-}
-</style>
-
-<!-- CSS Module -->
-<style module="classes">
-.special {
-  color: red;
-}
-</style>
-```
-
----
-
 # Variables CSS réactives
 
 Lier des variables JavaScript aux variables CSS
@@ -294,9 +261,15 @@ export default {
 
 ---
 
-# Preprocesseurs CSS
+# Support des preprocesseurs CSS
 
-Support natif pour Sass, Less, Stylus
+Vue.js supporte nativement les preprocesseurs CSS comme Sass, Less et Stylus.
+
+Il suffit d'installer le preprocesseur souhaité et d'utiliser l'attribut `lang` :
+
+```bash
+npm install -D sass
+```
 
 ```vue
 <style lang="scss" scoped>
@@ -307,14 +280,7 @@ $primary-color: #42b883;
   
   .title {
     font-size: 24px;
-    
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    padding: 10px;
+    &:hover { opacity: 0.8; }
   }
 }
 </style>
@@ -414,117 +380,30 @@ Les directives sont des attributs spéciaux qui modifient le comportement des é
 
 ---
 
-# Directives natives - v-html
+# Directives natives avancées
 
-Rend du HTML brut (⚠️ attention XSS)
+Vue.js propose plusieurs directives natives pour des cas spécifiques
+
+| Directive | Utilisation |
+|-----------|-------------|
+| **v-html** | Rendre du HTML brut (⚠️ attention XSS) |
+| **v-once** | Rendre une seule fois (pas de réactivité) |
+| **v-pre** | Sauter la compilation Vue |
+| **v-cloak** | Cacher l'élément jusqu'au chargement de Vue |
+| **v-memo** | Mémoiser un sous-arbre (Vue 3.2+) |
 
 ```vue
-<script>
-export default {
-  data() {
-    return {
-      htmlContent: '<strong>Texte en gras</strong>'
-    }
-  }
-}
-</script>
-
 <template>
+  <!-- v-html -->
   <div v-html="htmlContent"></div>
-</template>
-```
-
----
-
-# Directives natives - v-once
-
-Rend l'élément une seule fois (pas de réactivité)
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      message: 'Initial'
-    }
-  }
-}
-</script>
-
-<template>
+  
+  <!-- v-once : restera "Initial" même si message change -->
   <p v-once>{{ message }}</p>
-  <!-- Restera "Initial" même si message change -->
   
-  <p>{{ message }}</p>
-  <!-- Se met à jour -->
+  <!-- v-pre : {{ ceci ne sera pas interprété }} -->
+  <div v-pre>{{ texte brut }}</div>
   
-  <button @click="message = 'Modifié'">Changer</button>
-</template>
-```
-
----
-
-# Directives natives - v-pre
-
-Saute la compilation Vue
-
-```vue
-<template>
-  <div v-pre>
-    {{ ceci ne sera pas interprété }}
-    <span v-if="true">Pas compilé non plus</span>
-  </div>
-</template>
-```
-
----
-
-# Directives natives - v-cloak
-
-Cache l'élément jusqu'à ce que Vue soit prêt
-
-```vue
-<template>
-  <div v-cloak>
-    {{ message }}
-  </div>
-</template>
-
-<style>
-[v-cloak] {
-  display: none;
-}
-</style>
-```
-
----
-
-# v-cloak : À quoi ça sert ?
-
-Utile pour éviter le flash de contenu non compilé (FOUC - Flash Of Uncompiled Content)
-
-Quand Vue n'est pas encore chargé, l'utilisateur pourrait voir `{{ message }}` avant que Vue ne le compile.
-
----
-
-# Directives natives - v-memo
-
-Mémorise un sous-arbre du template (Vue 3.2+)
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      count: 0,
-      text: 'Hello'
-    }
-  }
-}
-</script>
-
-<template>
-  <!-- Ne se met à jour que si count change -->
+  <!-- v-memo : mise à jour uniquement si count change -->
   <div v-memo="[count]">
     <p>{{ count }}</p>
     <p>{{ text }}</p>
@@ -789,199 +668,6 @@ export default {
 
 ---
 
-# Directive avec arguments
-
-```javascript
-// directives/color.js
-export const vColor = {
-  mounted(el, binding) {
-    // Utiliser l'argument comme propriété CSS
-    if (binding.arg) {
-      el.style[binding.arg] = binding.value;
-    } else {
-      el.style.color = binding.value;
-    }
-  },
-  
-  updated(el, binding) {
-    if (binding.arg) {
-      el.style[binding.arg] = binding.value;
-    } else {
-      el.style.color = binding.value;
-    }
-  }
-};
-```
-
----
-
-# Utilisation avec arguments
-
-```vue
-<script>
-import { vColor } from './directives/color';
-
-export default {
-  directives: {
-    color: vColor
-  },
-  data() {
-    return {
-      color: '#42b883',
-      bgColor: '#f0f0f0'
-    }
-  }
-}
-</script>
-
-<template>
-  <!-- Sans argument: applique à color -->
-  <p v-color="color">Texte coloré</p>
-  
-  <!-- Avec argument: applique à backgroundColor -->
-  <p v-color:background-color="bgColor">
-    Fond coloré
-  </p>
-</template>
-```
-
----
-
-# Directive avec modificateurs
-
-```javascript
-// directives/scroll.js
-export const vScroll = {
-  mounted(el, binding) {
-    const handler = () => {
-      binding.value();
-    };
-    
-    if (binding.modifiers.throttle) {
-      let lastCall = 0;
-      el._scrollHandler = () => {
-        const now = Date.now();
-        if (now - lastCall >= 100) {
-          lastCall = now;
-          handler();
-        }
-      };
-    } else {
-      el._scrollHandler = handler;
-    }
-    
-    window.addEventListener('scroll', el._scrollHandler);
-  },
-  
-  unmounted(el) {
-    window.removeEventListener('scroll', el._scrollHandler);
-  }
-};
-```
-
----
-
-# Utilisation avec modificateurs
-
-```vue
-<script>
-import { vScroll } from './directives/scroll';
-
-export default {
-  directives: {
-    scroll: vScroll
-  },
-  methods: {
-    handleScroll() {
-      console.log('Scroll event');
-    }
-  }
-}
-</script>
-
-<template>
-  <!-- Sans throttle -->
-  <div v-scroll="handleScroll">
-    Content
-  </div>
-  
-  <!-- Avec throttle -->
-  <div v-scroll.throttle="handleScroll">
-    Content
-  </div>
-</template>
-```
-
----
-
-# Directive : v-lazy-load
-
-Chargement différé des images
-
-```javascript
-// directives/lazyLoad.js
-export const vLazyLoad = {
-  mounted(el, binding) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          el.src = binding.value;
-          observer.unobserve(el);
-        }
-      });
-    });
-    
-    observer.observe(el);
-    el._observer = observer;
-  },
-  
-  unmounted(el) {
-    if (el._observer) {
-      el._observer.disconnect();
-    }
-  }
-};
-```
-
----
-
-# Utilisation de v-lazy-load
-
-```vue
-<script>
-import { vLazyLoad } from './directives/lazyLoad';
-
-export default {
-  directives: {
-    lazyLoad: vLazyLoad
-  },
-  data() {
-    return {
-      images: [
-        'https://example.com/image1.jpg',
-        'https://example.com/image2.jpg',
-        'https://example.com/image3.jpg'
-      ]
-    }
-  }
-}
-</script>
-
-<template>
-  <div>
-    <img 
-      v-for="(src, index) in images"
-      :key="index"
-      v-lazy-load="src"
-      alt="Image"
-      src="placeholder.jpg"
-    />
-  </div>
-</template>
-```
-
----
-
 # Directive globale
 
 Enregistrer une directive globalement
@@ -1045,61 +731,6 @@ app.mount('#app');
 
 ---
 
-# Directive : v-permission
-
-Contrôle d'accès basé sur les permissions
-
-```javascript
-// directives/permission.js
-export const vPermission = {
-  mounted(el, binding) {
-    const requiredPermissions = binding.value;
-    const userPermissions = ['read', 'write']; // À récupérer du store
-    
-    const hasPermission = requiredPermissions.every(
-      perm => userPermissions.includes(perm)
-    );
-    
-    if (!hasPermission) {
-      el.style.display = 'none';
-      // ou el.remove();
-    }
-  }
-};
-```
-
----
-
-# Utilisation de v-permission
-
-```vue
-<script>
-import { vPermission } from './directives/permission';
-
-export default {
-  directives: {
-    permission: vPermission
-  }
-}
-</script>
-
-<template>
-  <div>
-    <!-- Visible seulement avec permission 'read' -->
-    <button v-permission="['read']">
-      Lire
-    </button>
-    
-    <!-- Visible seulement avec 'write' ET 'delete' -->
-    <button v-permission="['write', 'delete']">
-      Supprimer
-    </button>
-  </div>
-</template>
-```
-
----
-
 # Bonnes pratiques - Directives
 
 ### ✅ Faire
@@ -1121,8 +752,6 @@ export default {
 
 # Résumé du Module 3
 
-✅ **Composants fonctionnels** : Composants optimisés sans état
-
 ✅ **Single File Components** : Structure, scoped CSS, CSS modules
 
 ✅ **Variables CSS réactives** : v-bind dans le CSS
@@ -1133,7 +762,7 @@ export default {
 
 ✅ **Directives personnalisées** : Création, lifecycle, arguments
 
-✅ **Exemples pratiques** : click-outside, tooltip, lazy-load, permission
+✅ **Exemples pratiques** : v-focus, v-click-outside, v-tooltip
 
 ---
 
@@ -1144,10 +773,6 @@ export default {
 | **v-focus** | Auto-focus sur un input |
 | **v-click-outside** | Fermer dropdown/modal |
 | **v-tooltip** | Afficher des infobulles |
-| **v-lazy-load** | Chargement différé images |
-| **v-permission** | Contrôle d'accès |
-| **v-scroll** | Événements de scroll |
-| **v-resize** | Détection de redimensionnement |
 
 ---
 
@@ -1155,91 +780,13 @@ export default {
 
 ### Exercices à réaliser
 
-1. 🎯 **Composant fonctionnel** : Badge de statut
-2. 📝 **SFC avancé** : Composant avec TypeScript
-3. 🎨 **CSS dynamique** : Thème avec variables réactives
-4. 🔧 **Directive v-click-outside** : Implémenter
-5. 💬 **Directive v-tooltip** : Créer des tooltips
-6. 🖼️ **Directive v-lazy-load** : Lazy loading images
-7. 🔐 **Directive v-permission** : Système de permissions
+1. 📝 **SFC avancé** : Composant avec TypeScript
+2. 🎨 **CSS dynamique** : Thème avec variables réactives
+3. 🔧 **Directive v-click-outside** : Implémenter
+4. 💬 **Directive v-tooltip** : Créer des tooltips
 
 ### Projet fil rouge
 
 Refactoriser l'application avec des directives personnalisées
 
----
-
-# Composants fonctionnels
-
-Les composants fonctionnels sont des composants **sans état** optimisés pour les performances
-
-### Caractéristiques
-
-- Pas d'instance de composant
-- Pas d'état réactif
-- Pas de lifecycle hooks
-- Plus légers et plus rapides
-- Utiles pour les composants de présentation purs
-
----
-
-# Composant fonctionnel - Syntaxe
-
-```vue
-<script>
-export default {
-  props: {
-    nom: String,
-    email: String
-  }
-}
-</script>
-
-<template>
-  <div class="user-info">
-    <p><strong>{{ nom }}</strong></p>
-    <p>{{ email }}</p>
-  </div>
-</template>
-```
-
----
-
-# Composant fonctionnel avec render function
-
-```vue
-<script>
-export default {
-  functional: true,
-  props: {
-    level: {
-      type: Number,
-      required: true
-    }
-  },
-  render(h, { props, children }) {
-    return h(`h${props.level}`, children);
-  }
-};
-</script>
-```
-
----
-
-# Quand utiliser un composant fonctionnel ?
-
-### ✅ Utiliser pour :
-
-- Composants de présentation simples
-- Composants très réutilisés (performance)
-- Wrappers de composants
-- Rendu conditionnel simple
-
-### ❌ Éviter pour :
-
-- Composants avec état complexe
-- Composants nécessitant des lifecycle hooks
-- Composants avec logique métier
-
----
 
