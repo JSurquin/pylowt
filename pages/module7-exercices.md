@@ -14,8 +14,6 @@ Mettons en pratique !
 
 # Exercice 1 : Pipeline basique 🚀
 
----
-
 ## Objectif
 
 Créer une pipeline CI/CD simple pour TaskFlow avec installation, lint et tests.
@@ -113,8 +111,6 @@ test:unit:
 
 # Exercice 2 : Build et artifacts 📦
 
----
-
 ## Objectif
 
 Ajouter un stage de build et gérer les artifacts correctement.
@@ -155,8 +151,6 @@ build:app:
 ---
 
 # Exercice 3 : Variables d'environnement 🔐
-
----
 
 ## Objectif
 
@@ -211,8 +205,6 @@ deploy:staging:
 ---
 
 # Exercice 4 : Déploiement multi-environnements 🌐
-
----
 
 ## Objectif
 
@@ -292,8 +284,6 @@ deploy:production:
 
 # Exercice 5 : Tests avec couverture 🧪
 
----
-
 ## Objectif
 
 Configurer les tests unitaires avec rapport de couverture.
@@ -334,8 +324,6 @@ test:unit:
 ---
 
 # Exercice 6 : Optimisation du cache 💨
-
----
 
 ## Objectif
 
@@ -388,8 +376,6 @@ build:app:
 ---
 
 # Exercice 7 : Review Apps 🔍
-
----
 
 ## Objectif
 
@@ -447,8 +433,6 @@ stop_review:
 
 # Exercice 8 : Tests E2E 🎭
 
----
-
 ## Objectif
 
 Ajouter des tests end-to-end avec Cypress.
@@ -490,9 +474,7 @@ test:e2e:
 ---
 
 # Exercice 9 : Sécurité 🔒
-
----
-
+  
 ## Objectif
 
 Ajouter des scans de sécurité à la pipeline.
@@ -549,8 +531,6 @@ secret_detection:
 ---
 
 # Exercice 10 : Notifications 📢
-
----
 
 ## Objectif
 
@@ -623,8 +603,6 @@ notify:failure:
 ---
 
 # Exercice 11 : Docker Build 🐳
-
----
 
 ## Objectif
 
@@ -708,8 +686,6 @@ build:docker:
 ---
 
 # Exercice 12 : Pipeline complète TaskFlow 🎯
-
----
 
 ## Objectif
 

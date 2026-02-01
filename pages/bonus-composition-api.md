@@ -891,21 +891,21 @@ export function useLocalStorage(key, defaultValue) {
 
 ### Ce que vous avez appris
 
-✅ Options API vs Composition API
-✅ `ref()` et `reactive()`
-✅ `computed()` et watchers
-✅ Lifecycle hooks en Composition API
-✅ Composables et réutilisabilité
-✅ Props, events, provide/inject
+- ✅ Options API vs Composition API
+- ✅ `ref()` et `reactive()`
+- ✅ `computed()` et watchers
+- ✅ Lifecycle hooks en Composition API
+- ✅ Composables et réutilisabilité
+- ✅ Props, events, provide/inject
 
-### 🎯 Quand utiliser la Composition API ?
+#### 🎯 Quand utiliser la Composition API ?
 
 - Projets moyens à grands
 - Logique complexe à réutiliser
 - Avec TypeScript
 - Code organisé par fonctionnalité
 
-### 💭 Réflexion finale
+#### 💭 Réflexion finale
 
 La Composition API n'est PAS obligatoire. Options API reste valide et maintenue.
 **Choisissez l'outil qui convient le mieux à votre projet et votre équipe !**

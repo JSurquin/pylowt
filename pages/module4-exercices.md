@@ -959,18 +959,6 @@ export default {
 - ✅ **5.4 Guards** : beforeEach, onBeforeRouteLeave
 - ✅ **5.5 Meta fields** : requiresAuth, title
 
-### Détails techniques
-
-- **createRouter** : createWebHistory() pour URL propres
-- **Lazy loading** : import() pour chaque route
-- **beforeEach** : Guard global pour auth + title
-- **onBeforeRouteLeave** : Confirmation avant quitter
-- **useRouter** : router.push(), router.back()
-- **useRoute** : route.params, route.query
-- **Meta fields** : requiresAuth, requiresAdmin
-- **Query params** : redirect après login
-- **Breadcrumb** : Navigation contextuelle
-
 ### 🚀 Prochaine étape : Module 6
 
 On va **tester** TaskFlow avec **Vitest** !
@@ -998,40 +986,3 @@ On va **tester** TaskFlow avec **Vitest** !
 
 - 💡 [Vue Router Examples](https://github.com/vuejs/vue-router/tree/main/examples)
 - 🎨 [Advanced Routing Patterns](https://router.vuejs.org/guide/advanced/)
-
----
-
-# Félicitations ! 🎉
-
-### Vous avez terminé le Module 5 !
-
-<small>
-
-Vous maîtrisez maintenant :
-- ✅ Configuration complète de Vue Router
-- ✅ Routes dynamiques avec paramètres
-- ✅ Lazy loading des composants
-- ✅ Navigation guards (global + composant)
-- ✅ Navigation programmatique
-- ✅ Meta fields pour la configuration
-- ✅ Query params et redirections
-- ✅ Gestion des erreurs 404
-
-</small>
-
-### Votre application TaskFlow
-
-<small>
-
-**Navigation complète** :
-- 7 routes configurées
-- Guards d'authentification
-- Vues détaillées
-- Page 404 personnalisée
-- Login avec redirect
-
-</small>
-
-### 🚀 Prochaine étape : Module 6
-
-Rendez-vous au Module 6 pour tester TaskFlow avec Vitest !

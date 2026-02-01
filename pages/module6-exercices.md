@@ -653,28 +653,6 @@ All      |   91.23 |    85.19 |   95.45 |   90.89 |
 - ✅ **6.4 Mocks** : vi.fn, vi.mock, global.fetch
 - ✅ **6.5 Coverage** : v8 provider, rapports HTML
 
-### Détails techniques
-
-- **Vitest** : describe, it, expect, beforeEach
-- **@vue/test-utils** : mount, wrapper.find(), wrapper.text()
-- **Pinia testing** : setActivePinia, createPinia
-- **Mocks** : vi.fn(), vi.mock(), mockResolvedValue
-- **Assertions** : toBe, toEqual, toContain, toBeDefined
-- **Events** : wrapper.emitted(), trigger()
-- **Coverage** : --coverage, seuils, exclusions
-
-### 🎉 FIN DU FIL ROUGE TASKFLOW !
-
-**Vous avez construit une application complète** :
-- ✅ 20+ composants Vue
-- ✅ 3 stores Pinia (tasks, categories, auth)
-- ✅ 7 routes avec Vue Router
-- ✅ 3 directives personnalisées
-- ✅ 50+ tests avec Vitest
-- ✅ > 90% code coverage
-
-**Félicitations ! 🚀**
-
 ---
 
 # Ressources complémentaires
@@ -699,24 +677,12 @@ All      |   91.23 |    85.19 |   95.45 |   90.89 |
 
 ---
 
-# Félicitations ! 🎉🎉🎉
+### 🎉 FIN DU FIL ROUGE TASKFLOW !
 
-### Vous avez terminé le Module 6 !
-
-Vous maîtrisez maintenant :
-- ✅ Configuration complète de Vitest
-- ✅ Tests unitaires des stores Pinia
-- ✅ Tests de composants Vue
-- ✅ Mocks et spies avec vi
-- ✅ Tests asynchrones
-- ✅ Coverage et analyse de qualité
-- ✅ Best practices de testing
-
-### 🎓 Prochaines étapes
-
-- Déployez TaskFlow en production
-- Ajoutez de nouvelles fonctionnalités
-- Contribuez à des projets open source
-- Partagez vos connaissances
-
-**Bravo pour ce parcours exceptionnel ! 🌟**
+**Vous avez construit une application complète** :
+- ✅ 20+ composants Vue
+- ✅ 3 stores Pinia (tasks, categories, auth)
+- ✅ 7 routes avec Vue Router
+- ✅ 3 directives personnalisées
+- ✅ 50+ tests avec Vitest
+- ✅ > 90% code coverage

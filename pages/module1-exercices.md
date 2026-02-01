@@ -145,7 +145,7 @@ VITE v5.x.x  ready in XXX ms
 
 Préparer App.vue pour recevoir nos composants TaskFlow.
 
-### ⚠️ IMPORTANT : Options API vs Composition API
+#### ⚠️ IMPORTANT : Options API vs Composition API
 
 **Attention !** Le template Vite génère par défaut du code avec **Composition API** :
 
@@ -268,7 +268,7 @@ main {
 Créer le composant de base pour afficher une tâche
 
 
-### Spécifications
+#### Spécifications
 
 **Props** :
 - `task` (Object) : `{ id, title, description, done, priority }`
@@ -461,7 +461,7 @@ export default {
 ### Objectif
 Créer un composant pour gérer une liste de tâches
 
-### Spécifications
+#### Spécifications
 
 **Data** :
 - `tasks` (Array) : Liste des tâches
@@ -661,7 +661,7 @@ export default {
 ### Objectif
 Créer un formulaire pour ajouter/éditer des tâches
 
-### Spécifications
+#### Spécifications
 
 **Data** :
 - `formData` : `{ title, description, priority }`
@@ -812,7 +812,7 @@ Le `watch` avec `immediate: true` :
 ### Objectif
 Ajouter une recherche en temps réel avec debounce
 
-### Spécifications
+#### Spécifications
 
 **Data** :
 - `searchQuery` : Terme de recherche
@@ -926,7 +926,7 @@ export default {
 
 Assembler tous les composants créés dans les exercices précédents pour créer l'application TaskFlow complète et fonctionnelle.
 
-### Spécifications
+#### Spécifications
 
 **Data dans App.vue** :
 - `tasks` : Array de tâches (avec id, title, description, priority, done)

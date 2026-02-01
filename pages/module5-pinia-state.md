@@ -150,8 +150,6 @@ graph LR
 </small>
 
 ---
-
----
 layout: new-section
 routeAlias: "pinia-basics"
 ---
@@ -711,8 +709,6 @@ export default {
   </div>
 </template>
 ```
-
----
 
 ---
 layout: new-section

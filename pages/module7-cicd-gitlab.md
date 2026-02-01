@@ -103,8 +103,6 @@ Intégration Continue et Déploiement Continu
 
 # Concepts clés 📚
 
----
-
 ## Pipeline
 
 Une **pipeline** est une séquence de stages qui s'exécutent automatiquement
@@ -220,8 +218,6 @@ artifacts:
 ---
 
 # Pipeline pour Vue.js 🎯
-
----
 
 ## Configuration complète - Partie 1
 
@@ -398,8 +394,6 @@ deploy:production:
 
 # Variables d'environnement 🔐
 
----
-
 ## Types de variables
 
 GitLab CI/CD supporte plusieurs types de variables :
@@ -453,8 +447,6 @@ deploy:production:
 ---
 
 # Stratégies de déploiement 🎯
-
----
 
 ## 1. Déploiement manuel
 
@@ -568,8 +560,6 @@ deploy:prod:
 
 # Docker et GitLab CI/CD 🐳
 
----
-
 ## Utiliser une image Docker personnalisée
 
 ```yaml
@@ -640,8 +630,6 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # Tests automatisés 🧪
 
----
-
 ## Configuration Vitest pour CI
 
 ```yaml
@@ -696,8 +684,6 @@ test:e2e:
 ---
 
 # Optimisations des pipelines ⚡
-
----
 
 ## 1. Utiliser le cache efficacement
 
@@ -812,8 +798,6 @@ test:integration:
 
 # Déploiement sur différentes plateformes 🌐
 
----
-
 ## Déploiement sur Netlify
 
 ```yaml
@@ -894,8 +878,6 @@ deploy:aws:
 
 # Monitoring et notifications 📊
 
----
-
 ## Notifications Slack
 
 ```yaml
@@ -949,8 +931,6 @@ Accessible via : **CI/CD** → **Pipelines** → **Charts**
 ---
 
 # Sécurité dans les pipelines 🔒
-
----
 
 ## 1. Scan de dépendances
 
@@ -1017,8 +997,6 @@ secrets:check:
 ---
 
 # Bonnes pratiques CI/CD 💎
-
----
 
 ## 1. Organisation des stages
 
@@ -1157,8 +1135,6 @@ test:flaky:
 ---
 
 # Exemple complet : Pipeline TaskFlow 🎯
-
----
 
 ## Configuration complète - Partie 1
 
@@ -1532,8 +1508,6 @@ notify:failure:
 
 # Workflows avancés 🔀
 
----
-
 ## Workflow 1 : Feature Branch
 
 ```yaml
@@ -1635,8 +1609,6 @@ deploy:production:
 
 # Review Apps 🔍
 
----
-
 ## Qu'est-ce qu'une Review App ?
 
 Une **Review App** est un environnement éphémère créé automatiquement pour chaque merge request
@@ -1688,8 +1660,6 @@ stop_review:
 ---
 
 # Déploiement progressif 📈
-
----
 
 ## Blue-Green Deployment
 
@@ -1755,8 +1725,6 @@ deploy:full:
 
 # Rollback et gestion d'incidents 🔙
 
----
-
 ## Rollback automatique
 
 ```yaml
@@ -1812,7 +1780,6 @@ hotfix:emergency:
 
 # Exercice pratique : Pipeline Vue.js 🎯
 
----
 
 ## Objectif
 
@@ -2033,47 +2000,34 @@ Disponibles sur : https://gitlab.com/gitlab-org/gitlab/-/tree/master/lib/gitlab/
 
 ## CI/CD avec GitLab
 
-✅ **Configuration via .gitlab-ci.yml**
-
-✅ **Stages pour organiser la pipeline**
-
-✅ **Jobs pour les tâches unitaires**
-
-✅ **Cache pour optimiser les builds**
-
-✅ **Artifacts pour partager entre jobs**
+- ✅ **Configuration via .gitlab-ci.yml**
+- ✅ **Stages pour organiser la pipeline**
+- ✅ **Jobs pour les tâches unitaires**
+- ✅ **Cache pour optimiser les builds**
+- ✅ **Artifacts pour partager entre jobs**
 
 ---
 
 ## Bonnes pratiques
 
-✅ **Tests automatiques à chaque commit**
-
-✅ **Déploiements progressifs**
-
-✅ **Variables sécurisées pour les secrets**
-
-✅ **Review Apps pour les merge requests**
-
-✅ **Monitoring et notifications**
+- ✅ **Tests automatiques à chaque commit**
+- ✅ **Déploiements progressifs**
+- ✅ **Variables sécurisées pour les secrets**
+- ✅ **Review Apps pour les merge requests**
+- ✅ **Monitoring et notifications**
 
 ---
 
 ## Sécurité
 
-✅ **Scan de dépendances**
-
-✅ **Détection de secrets**
-
-✅ **Analyse de code statique**
-
-✅ **Variables masked et protected**
+- ✅ **Scan de dépendances**
+- ✅ **Détection de secrets**
+- ✅ **Analyse de code statique**
+- ✅ **Variables masked et protected**
 
 ---
 
 # Conclusion 🎉
-
----
 
 ## Ce que vous avez appris
 

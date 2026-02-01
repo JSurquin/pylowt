@@ -146,8 +146,6 @@ graph TB
 ```
 
 ---
-
----
 layout: new-section
 routeAlias: "vitest-setup"
 ---

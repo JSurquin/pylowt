@@ -541,6 +541,8 @@ export const TaskFlowDirectives = {
 
 ### Ce que vous avez construit
 
+<small>
+
 ✅ **v-auto-focus** : Focus automatique des inputs  
 ✅ **v-click-outside** : Détection clics externes  
 ✅ **v-tooltip** : Tooltips personnalisables  
@@ -553,22 +555,15 @@ export const TaskFlowDirectives = {
 - ✅ **3.3 Manipulation DOM** : createElement, appendChild, event listeners
 - ✅ **3.4 Plugins** : Structure plugin.install, config globale
 
-### Détails techniques
-
-- **Lifecycle des directives** : mounted, updated, unmounted
-- **Binding values** : String simple ou Object avec options
-- **Event listeners** : addEventListener, removeEventListener
-- **Cleanup** : Suppression listeners et éléments DOM
-- **Positionnement** : getBoundingClientRect, fixed/absolute
-- **Plugin pattern** : app.directive(), globalProperties
-
-### 🚀 Prochaine étape : Module 4
+#### 🚀 Prochaine étape : Module 4
 
 On va gérer l'**état global** de TaskFlow avec **Pinia** !
 
 - Store de tâches centralisé
 - Actions asynchrones
 - Persistance localStorage
+
+</small>
 
 ---
 
@@ -590,28 +585,3 @@ On va gérer l'**état global** de TaskFlow avec **Pinia** !
 
 - 💡 [Directive Examples](https://vuejs.org/examples/#custom-directive)
 - 🎯 [Plugin Patterns](https://vuejs.org/guide/reusability/plugins.html#writing-a-plugin)
-
----
-
-# Félicitations ! 🎉
-
-### Vous avez terminé le Module 3 !
-
-Vous maîtrisez maintenant :
-- ✅ Directives personnalisées avec lifecycle complet
-- ✅ Manipulation DOM directe et sécurisée
-- ✅ Event listeners et cleanup
-- ✅ Création de plugins Vue réutilisables
-- ✅ Patterns avancés pour l'UX
-
-### Vos directives TaskFlow
-
-**4 directives professionnelles** :
-- v-auto-focus : UX améliorée
-- v-click-outside : Fermeture dropdowns
-- v-tooltip : Aide contextuelle
-- Plugin complet : Package réutilisable
-
-### 🚀 Prochaine étape : Module 4
-
-Rendez-vous au Module 4 pour centraliser l'état de TaskFlow avec Pinia !

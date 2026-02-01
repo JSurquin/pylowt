@@ -876,8 +876,13 @@ export default {
 </template>
 ```
 
+</small>
 
-### 💡 Astuce
+---
+
+# 💡 Astuce
+
+<small>
 
 Le `query.redirect` est défini par le guard `beforeEach` dans le router !
 
@@ -899,7 +904,7 @@ Une page d'erreur élégante avec redirection vers l'accueil
 
 ---
 
-# 🎯 NotFoundView - Spécifications
+#### 🎯 NotFoundView - Spécifications
 
 <small>
 
@@ -957,7 +962,7 @@ code {
 ```
 
 
-### 💡 Route à ajouter
+#### 💡 Route à ajouter
 
 N'oubliez pas d'ajouter la route catch-all dans `router/index.js` :
 

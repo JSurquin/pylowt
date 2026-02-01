@@ -50,7 +50,7 @@ Les **SFC** sont des fichiers `.vue` contenant template, script et style
 
 ---
 
-# Schéma : Architecture SFC
+#### Schéma : Architecture SFC
 
 ```mermaid
 graph TB

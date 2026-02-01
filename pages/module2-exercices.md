@@ -213,10 +213,10 @@ export default {
 
 # Exercice 2 : TaskModal avec Slots
 
-### Objectif
+#### Objectif
 Créer une modal ultra-flexible pour TaskFlow
 
-### Spécifications
+#### Spécifications
 
 **Slots nommés** :
 - `trigger` : Bouton qui ouvre la modal
@@ -438,7 +438,7 @@ export default {
 
 ---
 
-# Exercice 2 - Utilisation TaskModal (1/2)
+### Exercice 2 - Utilisation TaskModal (1/2)
 
 **Script et Modal de suppression :**
 
@@ -522,19 +522,19 @@ export default {
 
 ---
 
-# Exercice 3 : BoardColumn (Scoped Slots)
+### Exercice 3 : BoardColumn (Scoped Slots)
 
-### Objectif
+#### Objectif
 Créer une colonne de board Kanban avec scoped slots
 
-### Spécifications
+#### Spécifications
 
 **Props** :
 - `title` : Titre de la colonne
 - `tasks` : Array de tâches
 - `color` : Couleur de la colonne
 
-**Scoped Slots** :
+#### Scoped Slots** :
 - `task` : Template personnalisable pour chaque tâche
   - Expose : `{ task, index, isFirst, isLast }`
 
@@ -870,7 +870,7 @@ export default {
 
 ---
 
-# 🎯 Récap Module 2 - TaskFlow
+### 🎯 Récap Module 2 - TaskFlow
 
 #### Ce que vous avez construit
 

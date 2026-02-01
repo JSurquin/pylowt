@@ -1086,22 +1086,22 @@ Créez une carte flexible avec slots nommés
 
 Créez une colonne Kanban avec scoped slots
 
-### Props
+#### Props
 
 - `title` (String, required)
 - `tasks` (Array)
 - `color` (String, default: '#3b82f6')
 
-### Scoped slot `task`
+#### Scoped slot `task`
 
 Exposer : `task`, `index`, `isFirst`, `isLast`
 
-### Slots nommés
+#### Slots nommés
 
 - `header` (scoped: title, count)
 - `empty` : Message si aucune tâche
 
-### Bonus
+#### Bonus
 
 Drag & drop : `@dragstart`, `@drop`, `@dragover`, classe `.drag-over`
 
@@ -1115,13 +1115,13 @@ Drag & drop : `@dragstart`, `@drop`, `@dragover`, classe `.drag-over`
 
 Créez une modale avec Teleport et slots
 
-### Props
+#### Props
 
 - `modelValue` (Boolean) : Pour v-model
 - `size` : 'small' | 'medium' | 'large'
 - `closable` (Boolean)
 
-### Structure
+#### Structure
 
 ```vue
 <Teleport to="body">
@@ -1133,11 +1133,11 @@ Créez une modale avec Teleport et slots
 </Teleport>
 ```
 
-### Event
+#### Event
 
 - `update:modelValue` : Pour fermer la modale
 
-### 💡 Correction
+#### 💡 Correction
 
 👉 **Module 2 - Exercices** OU `taskflow-app/src/components/TaskModal.vue`
 
