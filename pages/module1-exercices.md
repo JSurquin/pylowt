@@ -253,22 +253,6 @@ main {
 - ✅ App.vue nettoyé et prêt
 - ✅ Hot reload fonctionne
 
-### Commandes utiles
-
-```bash
-# Démarrer le serveur
-npm run dev
-
-# Construire pour la production (plus tard)
-npm run build
-
-# Prévisualiser le build de production
-npm run preview
-```
-
-### 🎉 Félicitations !
-
-Votre environnement TaskFlow est prêt ! Passons maintenant à la création des composants.
 
 ---
 
@@ -1223,22 +1207,25 @@ Testez toutes les fonctionnalités :
 - ✅ Éditer une tâche existante
 - ✅ Annuler l'ajout/édition
 
-### 🎉 Félicitations !
-
-Vous avez créé une application Vue.js complète avec tous les concepts du Module 1 !
 
 ---
 
 # 🎯 Récap Module 1 - TaskFlow
 
-### Ce que vous avez construit
+#### Ce que vous avez construit
+
+<small>
 
 ✅ **TaskItem.vue** : Composant de tâche avec props/events  
 ✅ **TaskList.vue** : Gestion de liste avec filtres et recherche  
 ✅ **TaskForm.vue** : Formulaire avec v-model et validation  
 ✅ **App.vue** : Intégration complète de tous les composants  
 
-### Concepts du Module 1 utilisés
+</small>
+
+#### Concepts du Module 1 utilisés
+
+<small> 
 
 - ✅ **1.1 JavaScript ES6+** : Arrow functions, destructuring, spread operator
 - ✅ **1.2 Architecture** : MVVM, organisation composants
@@ -1249,13 +1236,7 @@ Vous avez créé une application Vue.js complète avec tous les concepts du Modu
 - ✅ **1.7 Réactivité** : Computed properties, Watch (debounce)
 - ✅ **1.8 Lifecycle** : mounted pour initialisation
 
-### 🚀 Prochaine étape : Module 2
-
-On va rendre nos composants **ultra-réutilisables** avec les **slots** !
-
-- TaskCard avec slots (header, content, actions)
-- Modal réutilisable
-- BoardColumn flexible
+</small>
 
 ---
 layout: new-section
@@ -1478,8 +1459,6 @@ mounted() {
 - 📰 [Vue.js News](https://news.vuejs.org/) - Newsletter hebdomadaire
 
 ---
-
-# Félicitations ! 🎉
 
 ### Vous avez terminé le Module 1 !
 
