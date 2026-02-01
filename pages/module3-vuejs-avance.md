@@ -400,6 +400,8 @@ Vue.js propose plusieurs directives natives pour des cas spécifiques
 | **v-cloak** | Cacher l'élément jusqu'au chargement de Vue |
 | **v-memo** | Mémoiser un sous-arbre (Vue 3.2+) |
 
+---
+
 ```vue
 <template>
   <!-- v-html -->
@@ -808,10 +810,12 @@ app.mount('#app');
 
 ### Exercices à réaliser
 
-1. 📝 **SFC avancé** : Composant avec TypeScript
+1. 📝 **SFC avancé** : Composant 
 2. 🎨 **CSS dynamique** : Thème avec variables réactives
 3. 🔧 **Directive v-click-outside** : Implémenter
 4. 💬 **Directive v-tooltip** : Créer des tooltips
+
+<br/>
 
 ### Projet fil rouge
 

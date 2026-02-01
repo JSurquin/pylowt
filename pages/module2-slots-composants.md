@@ -36,7 +36,7 @@ routeAlias: "slots-introduction"
 
 Les **slots** permettent de passer du contenu HTML (ou des composants) à un composant enfant
 
-### 🎰 Analogie : Les slots sont comme une machine à sous
+#### 🎰 Analogie : Les slots sont comme une machine à sous
 
 Imaginez un **cadre photo** :
 - Le cadre est votre composant (toujours le même design)
@@ -355,7 +355,7 @@ Syntaxes disponibles pour les slots
 
 Les **scoped slots** permettent au composant enfant de passer des données au parent
 
-### 🎁 Analogie : C'est comme une boîte cadeau avec mode d'emploi
+#### 🎁 Analogie : C'est comme une boîte cadeau avec mode d'emploi
 
 Le composant enfant dit au parent :
 > "Tiens, voici les données (le cadeau 🎁), maintenant fais-en ce que tu veux !"

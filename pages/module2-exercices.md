@@ -872,18 +872,20 @@ export default {
 
 # 🎯 Récap Module 2 - TaskFlow
 
-### Ce que vous avez construit
+#### Ce que vous avez construit
+
+<small>
 
 ✅ **TaskCard** : Composant flexible avec 4 slots nommés  
 ✅ **TaskModal** : Modal réutilisable avec Teleport  
 ✅ **BoardColumn** : Colonne Kanban avec scoped slots et drag&drop  
 
-### Concepts du Module 2 utilisés
+#### Concepts du Module 2 utilisés
 
 - ✅ **2.1 Introduction** : Slots simples, nommés, fallback
 - ✅ **2.2 Implémentation** : Scoped slots, $slots, v-slot, Teleport
 
-### Détails techniques
+#### Détails techniques
 
 - **Slots nommés** : header, footer, actions, title
 - **Scoped slots** : Expose task, index, isFirst, isLast
@@ -893,13 +895,15 @@ export default {
 - **v-model custom** : modelValue + update:modelValue
 - **Drag & Drop API** : dragstart, dragover, drop
 
-### 🚀 Prochaine étape : Module 3
+#### 🚀 Prochaine étape : Module 3
 
 On va ajouter des **directives personnalisées** à TaskFlow !
 
 - v-auto-focus pour inputs
 - v-click-outside pour fermer modals
 - v-tooltip pour afficher des infos
+
+</small>
 
 ---
 
@@ -926,6 +930,8 @@ On va ajouter des **directives personnalisées** à TaskFlow !
 
 # Félicitations ! 🎉
 
+<small>
+
 ### Vous avez terminé le Module 2 !
 
 Vous maîtrisez maintenant :
@@ -936,13 +942,23 @@ Vous maîtrisez maintenant :
 - ✅ Teleport pour les modals
 - ✅ Composants ultra-flexibles et réutilisables
 
+</small>
+
 ### Vos composants TaskFlow
+
+<small>
 
 **3 composants modulaires** :
 - TaskCard : 4 slots nommés
 - TaskModal : Teleport + slots
 - BoardColumn : Scoped slots + drag&drop
 
+</small>
+
 ### 🚀 Prochaine étape : Module 3
 
+<small>
+
 Rendez-vous au Module 3 pour ajouter des directives personnalisées à TaskFlow !
+
+</small>

@@ -5,7 +5,7 @@ routeAlias: 'module5-router'
 
 <a name="module5-router" id="module5-router"></a>
 
-# Module 5
+# Module 4
 ## Navigation et routage avec Vue Router
 
 ---
@@ -121,8 +121,6 @@ Une seule page HTML, mais l'illusion de plusieurs pages !
 - 🎯 **Routes dynamiques** : /user/:id pour tous les utilisateurs
 
 </small>
-
----
 
 ---
 layout: new-section
@@ -630,7 +628,7 @@ Une vue complète qui utilise le **store Pinia** et le **router**
 
 ---
 
-# 🎯 TaskListView - Spécifications
+#### 🎯 TaskListView - Spécifications
 
 <small>
 
@@ -691,11 +689,12 @@ export default {
 </template>
 ```
 
-</small>
 
 ### ✅ Correction
 
 👉 `taskflow-app/src/views/TaskListView.vue`
+
+</small>
 
 ---
 
@@ -709,7 +708,7 @@ Afficher et éditer une tâche spécifique via son ID dans l'URL
 
 ---
 
-# 🎯 TaskDetailView - Spécifications
+#### 🎯 TaskDetailView - Spécifications
 
 <small>
 
@@ -782,11 +781,12 @@ export default {
 </template>
 ```
 
-</small>
 
 ### ✅ Correction
 
 👉 `taskflow-app/src/views/TaskDetailView.vue`
+
+</small>
 
 ---
 
@@ -800,7 +800,7 @@ Formulaire de connexion qui redirige vers la page d'origine après login
 
 ---
 
-# 🎯 LoginView - Spécifications
+#### 🎯 LoginView - Spécifications
 
 <small>
 
@@ -876,7 +876,6 @@ export default {
 </template>
 ```
 
-</small>
 
 ### 💡 Astuce
 
@@ -885,6 +884,8 @@ Le `query.redirect` est défini par le guard `beforeEach` dans le router !
 ### ✅ Correction
 
 👉 `taskflow-app/src/views/LoginView.vue`
+
+</small>
 
 ---
 
@@ -955,11 +956,14 @@ code {
 </style>
 ```
 
-</small>
 
 ### 💡 Route à ajouter
 
 N'oubliez pas d'ajouter la route catch-all dans `router/index.js` :
+
+</small>
+
+---
 
 <small>
 
@@ -1091,23 +1095,15 @@ const router = createRouter({
 
 # Résumé Module 5
 
-✅ Installation et configuration Vue Router
-
-✅ Routes basiques et dynamiques
-
-✅ Navigation programmatique
-
-✅ Lazy loading
-
-✅ Routes imbriquées
-
-✅ Guards de navigation
-
-✅ Redirections et 404
-
-✅ Meta fields
-
-✅ Modes history et hash
+- ✅ Installation et configuration Vue Router
+- ✅ Routes basiques et dynamiques
+- ✅ Navigation programmatique
+- ✅ Lazy loading
+- ✅ Routes imbriquées
+- ✅ Guards de navigation
+- ✅ Redirections et 404
+- ✅ Meta fields
+- ✅ Modes history et hash
 
 ---
 

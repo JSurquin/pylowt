@@ -141,6 +141,8 @@ VITE v5.x.x  ready in XXX ms
 
 ### Objectif
 
+<small>
+
 Préparer App.vue pour recevoir nos composants TaskFlow.
 
 ### ⚠️ IMPORTANT : Options API vs Composition API
@@ -173,6 +175,8 @@ export default {
 - ✅ Structure claire (data, methods, computed bien séparés)
 - ✅ Meilleure compréhension des concepts Vue
 - ✅ La Composition API sera vue dans le Module Bonus !
+
+</small>
 
 ---
 
@@ -258,8 +262,11 @@ main {
 
 # Exercice 1 : TaskItem.vue
 
+<small>
+
 ### Objectif
 Créer le composant de base pour afficher une tâche
+
 
 ### Spécifications
 
@@ -277,6 +284,8 @@ Créer le composant de base pour afficher une tâche
 - `@toggle` : Émettre quand on coche/décoche
 - `@delete` : Émettre quand on clique sur supprimer
 - `@edit` : Émettre quand on clique sur éditer
+
+</small>
 
 ---
 
@@ -447,6 +456,8 @@ export default {
 
 # Exercice 2 : TaskList.vue
 
+<small>
+
 ### Objectif
 Créer un composant pour gérer une liste de tâches
 
@@ -469,6 +480,8 @@ Créer un composant pour gérer une liste de tâches
 **Bonus** :
 - Afficher un message si aucune tâche
 - Compteur de tâches
+
+</small>
 
 ---
 
@@ -643,6 +656,8 @@ export default {
 
 # Exercice 3 : TaskForm.vue
 
+<small>
+
 ### Objectif
 Créer un formulaire pour ajouter/éditer des tâches
 
@@ -662,6 +677,8 @@ Créer un formulaire pour ajouter/éditer des tâches
 **Événements** :
 - `@submit` : Émettre les données du formulaire
 - `@cancel` : Annuler l'édition
+
+</small>
 
 ---
 
@@ -808,10 +825,6 @@ Ajouter une recherche en temps réel avec debounce
 **Computed** :
 - `searchResults` : Tâches filtrées par recherche
 
-### Bonus
-- Surligner les résultats
-- Afficher "Aucun résultat"
-
 ---
 
 # Exercice 4 - Solution Recherche (1/2)
@@ -909,6 +922,8 @@ export default {
 
 ### Objectif
 
+<small>
+
 Assembler tous les composants créés dans les exercices précédents pour créer l'application TaskFlow complète et fonctionnelle.
 
 ### Spécifications
@@ -925,9 +940,7 @@ Assembler tous les composants créés dans les exercices précédents pour crée
 - `editTask(task)` : Préparer l'édition d'une tâche
 - `updateTask(taskData)` : Mettre à jour une tâche existante
 
-### Concepts couverts
-
-✅ **Intégration complète** : Tous les concepts du Module 1 réunis
+</small>
 
 ---
 
@@ -1155,7 +1168,7 @@ main {
 
 # Exercice 5 - Améliorations optionnelles
 
-### Fonctionnalités bonus à ajouter
+#### Fonctionnalités bonus à ajouter
 
 **1. Persistance localStorage** :
 ```javascript
@@ -1284,15 +1297,11 @@ Testez toutes les fonctionnalités :
 
 ### Documentation officielle
 
+<small>
+
 - 📚 [Vue.js 3 Documentation](https://vuejs.org/) - Doc complète et tutoriels
 - 🔧 [Vite Guide](https://vitejs.dev/) - Build tool rapide
 - 📦 [npm Documentation](https://docs.npmjs.com/) - Gestionnaire de paquets
-
-### Tutoriels vidéo
-
-- 🎥 [Vue Mastery](https://www.vuemastery.com/) - Cours premium Vue.js
-- 🎓 [Vue School](https://vueschool.io/) - Formations certifiantes
-- 📺 Chaînes YouTube Vue.js (Net Ninja, Traversy Media)
 
 ### Outils de développement
 
@@ -1303,8 +1312,8 @@ Testez toutes les fonctionnalités :
 ### Communauté
 
 - 💬 [Discord Vue Land](https://chat.vuejs.org/) - Communauté active
-- 🐦 [@vuejs](https://twitter.com/vuejs) - Actualités officielles
-- 📰 [Vue.js News](https://news.vuejs.org/) - Newsletter hebdomadaire
+
+</small>
 
 ---
 
