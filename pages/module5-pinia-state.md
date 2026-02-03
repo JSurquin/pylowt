@@ -818,31 +818,100 @@ export const useCartStore = defineStore('cart', {
 
 # Persistence avec localStorage
 
+### 💾 Sauvegarder les données entre les sessions
+
+Avec l'**Options API**, on peut facilement persister le state dans localStorage !
+
+**Stratégie** :
+1. Charger depuis localStorage au démarrage
+2. Sauvegarder après chaque modification avec une action `_persist()`
+
 ```javascript
 // stores/cart.js
 import { defineStore } from 'pinia';
-import { ref, watch } from 'vue';
 
-export const useCartStore = defineStore('cart', () => {
-  // Charger depuis localStorage
-  const savedCart = localStorage.getItem('cart');
-  const items = ref(savedCart ? JSON.parse(savedCart) : []);
+export const useCartStore = defineStore('cart', {
+  state: () => ({
+    items: []
+  }),
   
-  // Sauvegarder à chaque changement
-  watch(items, (newItems) => {
-    localStorage.setItem('cart', JSON.stringify(newItems));
-  }, { deep: true });
-  
-  const addToCart = (product) => {
-    items.value.push(product);
-  };
-  
-  const clearCart = () => {
-    items.value = [];
-  };
-  
-  return { items, addToCart, clearCart };
+  actions: {
+    // Charger depuis localStorage au démarrage
+    loadFromStorage() {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        this.items = JSON.parse(savedCart);
+      }
+    },
+    
+    // Sauvegarder dans localStorage
+    _persist() {
+      localStorage.setItem('cart', JSON.stringify(this.items));
+    },
+    
+    addToCart(product) {
+      const existingItem = this.items.find(i => i.id === product.id);
+      
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        this.items.push({ ...product, quantity: 1 });
+      }
+      
+      this._persist(); // Sauvegarder après modification
+    },
+    
+    removeFromCart(productId) {
+      const index = this.items.findIndex(i => i.id === productId);
+      if (index > -1) {
+        this.items.splice(index, 1);
+        this._persist(); // Sauvegarder après modification
+      }
+    },
+    
+    clearCart() {
+      this.items = [];
+      this._persist(); // Sauvegarder après modification
+    }
+  }
 });
+```
+
+---
+
+# Utilisation du store avec persistence
+
+```vue
+<script>
+import { useCartStore } from '@/stores/cart';
+
+export default {
+  computed: {
+    cartStore() {
+      return useCartStore();
+    }
+  },
+  methods: {
+    addProduct(product) {
+      this.cartStore.addToCart(product);
+    },
+    clearAll() {
+      this.cartStore.clearCart();
+    }
+  },
+  mounted() {
+    // Charger les données au démarrage du composant
+    this.cartStore.loadFromStorage();
+  }
+}
+</script>
+
+<template>
+  <div>
+    <p>Panier: {{ cartStore.items.length }} articles</p>
+    <button @click="clearAll">Vider le panier</button>
+  </div>
+</template>
 ```
 
 ---
