@@ -1446,28 +1446,19 @@ export default {
 
 ---
 
-# Événements personnalisés (emit) - 1/2
+# Événements personnalisés (emit)
 
 Les enfants peuvent communiquer avec les parents via des événements - **Options API**
 
-**Script du composant enfant :**
+### 🎯 Concept : Communication enfant → parent
 
-```vue
-<!-- CompteurEnfant.vue -->
-<script>
-export default {
-  emits: ['incrementer', 'decrementer'],
-  methods: {
-    handleIncrement() {
-      this.$emit('incrementer', 1);
-    },
-    handleDecrement() {
-      this.$emit('decrementer', 1);
-    }
-  }
-}
-</script>
-```
+- **Props** : Parent → Enfant (données descendantes ⬇️)
+- **Events (emit)** : Enfant → Parent (événements remontants ⬆️)
+
+### 📞 Analogie : Appel téléphonique
+
+- Le **parent** attend un appel (écoute l'événement)
+- L'**enfant** appelle quand il a besoin de quelque chose (émet l'événement)
 
 ---
 
@@ -1500,24 +1491,11 @@ graph LR
 
 ---
 
-# Événements personnalisés (emit) - 2/2
+# Étape 1 : Le composant Parent (1/2)
 
-**Template :**
+**Le parent qui écoute les événements**
 
-```vue
-<template>
-  <div>
-    <button @click="handleIncrement">+</button>
-    <button @click="handleDecrement">-</button>
-  </div>
-</template>
-```
-
----
-
-# Écouter les événements personnalisés (1/2)
-
-**Script du composant parent :**
+**Script :**
 
 ```vue
 <script>
@@ -1546,14 +1524,16 @@ export default {
 
 ---
 
-# Écouter les événements personnalisés (2/2)
+# Étape 1 : Le composant Parent (2/2)
 
-**Template :**
+**Template - le parent écoute avec @**
 
 ```vue
 <template>
   <div>
-    <p>Compteur: {{ compteur }}</p>
+    <h1>Compteur Parent: {{ compteur }}</h1>
+    
+    <!-- Le parent ÉCOUTE les événements de l'enfant -->
     <CompteurEnfant 
       @incrementer="onIncrementer"
       @decrementer="onDecrementer"
@@ -1561,6 +1541,54 @@ export default {
   </div>
 </template>
 ```
+
+Le parent **attend** que l'enfant émette les événements `incrementer` et `decrementer`.
+
+---
+
+# Étape 2 : Le composant Enfant (1/2)
+
+**L'enfant qui émet les événements**
+
+**Script :**
+
+```vue
+<!-- CompteurEnfant.vue -->
+<script>
+export default {
+  // Déclaration des événements que ce composant peut émettre
+  emits: ['incrementer', 'decrementer'],
+  
+  methods: {
+    handleIncrement() {
+      // Émet l'événement 'incrementer' avec la valeur 1
+      this.$emit('incrementer', 1);
+    },
+    handleDecrement() {
+      // Émet l'événement 'decrementer' avec la valeur 1
+      this.$emit('decrementer', 1);
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Étape 2 : Le composant Enfant (2/2)
+
+**Template :**
+
+```vue
+<template>
+  <div>
+    <button @click="handleIncrement">+</button>
+    <button @click="handleDecrement">-</button>
+  </div>
+</template>
+```
+
+Quand on clique sur les boutons, l'enfant **émet** les événements vers le parent.
 
 ---
 
