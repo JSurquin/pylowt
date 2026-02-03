@@ -241,55 +241,65 @@ describe('sum function', () => {
 
 ---
 
-# Tester un composable
+# Tester des fonctions utilitaires
+
+Les fonctions utilitaires pures sont les plus faciles à tester !
 
 ```javascript
-// composables/useCounter.js
-import { ref } from 'vue';
+// utils/validators.js
+export function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
 
-export function useCounter(initial = 0) {
-  const count = ref(initial);
-  
-  const increment = () => count.value++;
-  const decrement = () => count.value--;
-  const reset = () => count.value = initial;
-  
-  return { count, increment, decrement, reset };
+export function formatPrice(price) {
+  return `${price.toFixed(2)}€`;
+}
+
+export function calculateDiscount(price, percentage) {
+  if (percentage < 0 || percentage > 100) {
+    throw new Error('Le pourcentage doit être entre 0 et 100');
+  }
+  return price - (price * percentage / 100);
 }
 ```
 
 ---
 
-# Test du composable
+# Test des fonctions utilitaires
 
 ```javascript
-// composables/useCounter.test.js
+// utils/validators.test.js
 import { describe, it, expect } from 'vitest';
-import { useCounter } from './useCounter';
+import { validateEmail, formatPrice, calculateDiscount } from './validators';
 
-describe('useCounter', () => {
-  it('should initialize with default value', () => {
-    const { count } = useCounter();
-    expect(count.value).toBe(0);
+describe('validateEmail', () => {
+  it('should validate correct email', () => {
+    expect(validateEmail('user@example.com')).toBe(true);
   });
   
-  it('should initialize with custom value', () => {
-    const { count } = useCounter(10);
-    expect(count.value).toBe(10);
+  it('should reject invalid email', () => {
+    expect(validateEmail('invalid-email')).toBe(false);
+    expect(validateEmail('test@')).toBe(false);
+  });
+});
+
+describe('formatPrice', () => {
+  it('should format price correctly', () => {
+    expect(formatPrice(19.99)).toBe('19.99€');
+    expect(formatPrice(10)).toBe('10.00€');
+  });
+});
+
+describe('calculateDiscount', () => {
+  it('should calculate discount correctly', () => {
+    expect(calculateDiscount(100, 20)).toBe(80);
+    expect(calculateDiscount(50, 10)).toBe(45);
   });
   
-  it('should increment', () => {
-    const { count, increment } = useCounter();
-    increment();
-    expect(count.value).toBe(1);
-  });
-  
-  it('should reset to initial value', () => {
-    const { count, increment, reset } = useCounter(5);
-    increment();
-    increment();
-    reset();
-    expect(count.value).toBe(5);
+  it('should throw error for invalid percentage', () => {
+    expect(() => calculateDiscount(100, -10)).toThrow();
+    expect(() => calculateDiscount(100, 150)).toThrow();
   });
 });
 ```

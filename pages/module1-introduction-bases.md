@@ -2075,6 +2075,257 @@ export default {
 
 ---
 
+# Watch - Cas d'usage : Validation de formulaire
+
+**Valider un champ en temps réel**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      emailError: '',
+      password: '',
+      passwordStrength: ''
+    }
+  },
+  watch: {
+    // Valider l'email à chaque changement
+    email(newEmail) {
+      if (!newEmail) {
+        this.emailError = '';
+        return;
+      }
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(newEmail)) {
+        this.emailError = 'Email invalide';
+      } else {
+        this.emailError = '';
+      }
+    },
+    
+    // Calculer la force du mot de passe
+    password(newPassword) {
+      if (newPassword.length < 6) {
+        this.passwordStrength = 'Faible';
+      } else if (newPassword.length < 10) {
+        this.passwordStrength = 'Moyen';
+      } else {
+        this.passwordStrength = 'Fort';
+      }
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Watch - Cas d'usage : Synchronisation localStorage
+
+**Sauvegarder automatiquement dans le localStorage**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      preferences: {
+        theme: 'light',
+        language: 'fr',
+        notifications: true
+      }
+    }
+  },
+  watch: {
+    // Sauvegarder les préférences à chaque modification
+    preferences: {
+      handler(newPreferences) {
+        localStorage.setItem('userPreferences', JSON.stringify(newPreferences));
+        console.log('Préférences sauvegardées !');
+      },
+      deep: true, // Important pour surveiller les propriétés imbriquées
+      immediate: false // Pas besoin de sauvegarder au montage
+    }
+  },
+  mounted() {
+    // Charger les préférences au démarrage
+    const saved = localStorage.getItem('userPreferences');
+    if (saved) {
+      this.preferences = JSON.parse(saved);
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Watch - Cas d'usage : Calculateur en temps réel
+
+**Calculer automatiquement un résultat quand les inputs changent**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      longueur: 0,
+      largeur: 0,
+      surface: 0,
+      perimetre: 0,
+      prixM2: 1500,
+      coutTotal: 0
+    }
+  },
+  watch: {
+    // Recalculer quand la longueur change
+    longueur() {
+      this.calculer();
+    },
+    // Recalculer quand la largeur change
+    largeur() {
+      this.calculer();
+    },
+    // Recalculer le coût si le prix au m² change
+    prixM2() {
+      this.calculer();
+    }
+  },
+  methods: {
+    calculer() {
+      // Calculs de surface
+      this.surface = this.longueur * this.largeur;
+      this.perimetre = 2 * (this.longueur + this.largeur);
+      this.coutTotal = this.surface * this.prixM2;
+      
+      // Log pour le débogage
+      console.log(`Surface: ${this.surface}m² - Coût: ${this.coutTotal}€`);
+    }
+  }
+}
+</script>
+
+<template>
+  <div>
+    <input v-model.number="longueur" placeholder="Longueur (m)" />
+    <input v-model.number="largeur" placeholder="Largeur (m)" />
+    <input v-model.number="prixM2" placeholder="Prix au m²" />
+    
+    <p>Surface: {{ surface }}m²</p>
+    <p>Périmètre: {{ perimetre }}m</p>
+    <p>Coût total: {{ coutTotal }}€</p>
+  </div>
+</template>
+```
+
+---
+
+# Watch - Cas d'usage : Comparaison ancienne/nouvelle valeur
+
+**Détecter des changements spécifiques**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      stockQuantity: 100,
+      alertThreshold: 10
+    }
+  },
+  watch: {
+    stockQuantity(newQuantity, oldQuantity) {
+      // Alerte quand le stock passe sous le seuil
+      if (newQuantity <= this.alertThreshold && oldQuantity > this.alertThreshold) {
+        this.sendLowStockAlert();
+        console.log(`⚠️ ALERTE : Stock faible (${newQuantity} unités)`);
+      }
+      
+      // Message quand le stock est reconstitué
+      if (newQuantity > this.alertThreshold && oldQuantity <= this.alertThreshold) {
+        console.log(`✅ Stock reconstitué (${newQuantity} unités)`);
+      }
+      
+      // Alerte critique si stock à 0
+      if (newQuantity === 0 && oldQuantity > 0) {
+        console.log('🔴 STOCK ÉPUISÉ !');
+      }
+    }
+  },
+  methods: {
+    sendLowStockAlert() {
+      // Envoyer une notification, email, etc.
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Watch - Cas d'usage : Charger des données liées
+
+**Charger des données dépendantes automatiquement**
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      selectedCountry: 'FR',
+      cities: [],
+      loading: false
+    }
+  },
+  watch: {
+    // Charger les villes quand le pays change
+    async selectedCountry(newCountry) {
+      if (!newCountry) {
+        this.cities = [];
+        return;
+      }
+      
+      this.loading = true;
+      try {
+        const response = await fetch(`/api/cities?country=${newCountry}`);
+        this.cities = await response.json();
+      } catch (error) {
+        console.error('Erreur chargement villes:', error);
+        this.cities = [];
+      } finally {
+        this.loading = false;
+      }
+    }
+  }
+}
+</script>
+```
+
+---
+
+# Watch - Récapitulatif des cas d'usage
+
+| Cas d'usage | Quand l'utiliser |
+|-------------|------------------|
+| **Validation** | Valider un formulaire en temps réel |
+| **localStorage** | Sauvegarder automatiquement des données |
+| **Filtres** | Filtrer une liste selon plusieurs critères |
+| **Alertes** | Détecter des seuils ou conditions spécifiques |
+| **Chargement cascade** | Charger des données liées (pays → villes) |
+| **Debounce** | Limiter les appels API (recherche) |
+| **Analytics** | Tracker les changements utilisateur |
+
+### 💡 Règle générale
+
+**Watch = Effets secondaires** (API, localStorage, logs, notifications...)
+
+**Computed = Calculs** (valeurs dérivées, formatage, filtrage simple)
+
+---
+
 # Requêtes HTTP avec fetch (1/2)
 
 **Données :**
