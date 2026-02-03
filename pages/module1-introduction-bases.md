@@ -2165,7 +2165,13 @@ export default {
 
 # Watch - Cas d'usage : Calculateur en temps réel
 
+<div class="text-[10px] -mt-4">
+
 **Calculer automatiquement un résultat quand les inputs changent**
+
+</div>
+
+<div class="-mt-4">
 
 ```vue
 <script>
@@ -2220,6 +2226,8 @@ export default {
   </div>
 </template>
 ```
+
+</div>
 
 ---
 
