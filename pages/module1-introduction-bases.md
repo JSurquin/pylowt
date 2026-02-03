@@ -1926,10 +1926,12 @@ export default {
   },
   methods: {
     // Method - recalculé à chaque fois
-const sommeMethod = () => {
-  console.log('Calcul method'); // Affiché 2 fois !
-  return nombres.value.reduce((a, b) => a + b, 0);
-};
+    sommeMethod() {
+      console.log('Calcul method'); // Affiché 2 fois !
+      return this.nombres.reduce((a, b) => a + b, 0);
+    }
+  }
+}
 </script>
 ```
 
