@@ -48,7 +48,7 @@ themeConfig:
 <div class="absolute bottom-0 right-0 z-50 flex flex-col gap-y-2 p-2">
 <div class="hover:bg-white hover:bg-opacity-10 neon-border border-2 rounded-xl w-[200px] p-2 flex flex-col gap-y-2">
   <img src="/ascent.png" alt="Ascent" class="w-6 h-6 mx-auto rounded-full"></img>
-  <span class="text-gray-400 text-xs">Programme : <b>4-047</b></span>
+  <span class="text-gray-400 text-xs">Programme : <b>2-007 = Administration Postfix sous Linux </b></span>
   <span class="text-gray-400 text-xs">Lot: <b>4</b></span>
 </div>
 </div>
@@ -106,7 +106,7 @@ routeAlias: 'sommaire'
 <Link to="module4-pinia">🍍 5. State Management avec Pinia</Link>
 <Link to="module6-tests">🧪 6. Tests sous Vue.js avec Vitest</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
-<a target="_blank" href="https://github.com/jsurquin/taskflow-app">🔗 Lien du projet Github</a>
+<a target="_blank" href="https://github.com/JSurquin/taskflow-vue-app">🔗 Lien du projet Github</a>
 <br/>
 <strong style="color: #42b883;">🎁 MODULES BONUS</strong>
 <Link to="bonus-composition-api">✨ Composition API</Link>
