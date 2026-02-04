@@ -110,6 +110,7 @@ routeAlias: 'sommaire'
 <br/>
 <strong style="color: #42b883;">🎁 MODULES BONUS</strong>
 <Link to="bonus-composition-api">✨ Composition API</Link>
+<Link to="bonus-typescript">🔷 TypeScript avec Vue.js 3</Link>
 <Link to="bonus-cicd">🚀 CI/CD avec GitLab</Link>
 <Link to="bonus-cheatsheet"> 🛟 CheatSheet d'aide </Link>
 </div>
@@ -293,6 +294,10 @@ src: './pages/projet-final.md'
 
 ---
 src: './pages/bonus-composition-api.md'
+---
+
+---
+src: './pages/bonus-typescript-vuejs.md'
 ---
 
 ---
