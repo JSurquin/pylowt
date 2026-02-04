@@ -43,6 +43,8 @@ En 2026, TypeScript est **natif** dans l'écosystème Vue :
 | **Maintenance** | Difficile (gros projets) | Excellente |
 | **Performance** | Identique | Identique |
 
+---
+
 ### 🎯 Quand utiliser TypeScript ?
 
 **✅ TypeScript recommandé pour :**
