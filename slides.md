@@ -109,6 +109,7 @@ routeAlias: 'sommaire'
 <a target="_blank" href="https://github.com/JSurquin/taskflow-vue-app">🔗 Lien du projet Github</a>
 <br/>
 <strong style="color: #42b883;">🎁 MODULES BONUS</strong>
+<Link to="bonus-mixins">🔀 Mixins (Options API)</Link>
 <Link to="bonus-composition-api">✨ Composition API</Link>
 <Link to="bonus-typescript">🔷 TypeScript avec Vue.js 3</Link>
 <Link to="bonus-cicd">🚀 CI/CD avec GitLab</Link>
@@ -290,6 +291,10 @@ src: './pages/qcm-final.md'
 
 ---
 src: './pages/projet-final.md'
+---
+
+---
+src: './pages/bonus-mixins.md'
 ---
 
 ---

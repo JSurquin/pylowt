@@ -352,6 +352,291 @@ const fetchData = async () => {
 
 ---
 
+# Tableau de correspondance complète
+
+## Options API ↔️ Composition API
+
+| Concept | Options API | Composition API | Import nécessaire |
+|---------|-------------|-----------------|-------------------|
+| **État réactif** | `data() { return { count: 0 } }` | `const count = ref(0)` | `import { ref } from 'vue'` |
+| **Objet réactif** | `data() { return { user: {...} } }` | `const user = reactive({...})` | `import { reactive } from 'vue'` |
+| **Méthodes** | `methods: { doSomething() {...} }` | `const doSomething = () => {...}` | Aucun |
+| **Computed** | `computed: { double() {...} }` | `const double = computed(() => {...})` | `import { computed } from 'vue'` |
+
+---
+
+## Lifecycle Hooks - Correspondance
+
+| Options API | Composition API | Import |
+|-------------|-----------------|--------|
+| `beforeCreate` | Code direct dans `<script setup>` | Aucun |
+| `created` | Code direct dans `<script setup>` | Aucun |
+| `beforeMount` | `onBeforeMount(() => {...})` | `import { onBeforeMount } from 'vue'` |
+| `mounted` | `onMounted(() => {...})` | `import { onMounted } from 'vue'` |
+| `beforeUpdate` | `onBeforeUpdate(() => {...})` | `import { onBeforeUpdate } from 'vue'` |
+| `updated` | `onUpdated(() => {...})` | `import { onUpdated } from 'vue'` |
+| `beforeUnmount` | `onBeforeUnmount(() => {...})` | `import { onBeforeUnmount } from 'vue'` |
+| `unmounted` | `onUnmounted(() => {...})` | `import { onUnmounted } from 'vue'` |
+| `errorCaptured` | `onErrorCaptured(() => {...})` | `import { onErrorCaptured } from 'vue'` |
+| `activated` | `onActivated(() => {...})` | `import { onActivated } from 'vue'` |
+| `deactivated` | `onDeactivated(() => {...})` | `import { onDeactivated } from 'vue'` |
+
+---
+
+## Watchers - Correspondance
+
+| Options API | Composition API |
+|-------------|-----------------|
+| `watch: { count(newVal, oldVal) {...} }` | `watch(count, (newVal, oldVal) => {...})` |
+| `watch: { count: { immediate: true, ... } }` | `watch(count, callback, { immediate: true })` |
+| `watch: { 'user.name'(val) {...} }` | `watch(() => user.name, (val) => {...})` |
+| Aucun équivalent direct | `watchEffect(() => { /* auto-track */ })` |
+
+### Import nécessaire
+
+```javascript
+import { watch, watchEffect } from 'vue';
+```
+
+---
+
+## Props et Events - Correspondance
+
+| Options API | Composition API |
+|-------------|-----------------|
+| `props: ['title', 'count']` | `const props = defineProps(['title', 'count'])` |
+| `props: { title: String }` | `defineProps({ title: String })` |
+| `this.$emit('update', value)` | `const emit = defineEmits(['update'])`<br/>`emit('update', value)` |
+| `this.title` (accès prop) | `props.title` |
+
+### Note
+
+`defineProps` et `defineEmits` sont des **macros de compilation** - pas besoin d'import !
+
+---
+
+## Provide / Inject - Correspondance
+
+| Options API | Composition API |
+|-------------|-----------------|
+| `provide: { theme: 'dark' }` | `provide('theme', 'dark')` |
+| `provide() { return { theme: this.theme } }` | `provide('theme', theme)` |
+| `inject: ['theme']` | `const theme = inject('theme')` |
+| `inject: { theme: { default: 'light' } }` | `const theme = inject('theme', 'light')` |
+
+### Import nécessaire
+
+```javascript
+import { provide, inject } from 'vue';
+```
+
+---
+
+## Réutilisation de logique - Correspondance
+
+| Options API | Composition API |
+|-------------|-----------------|
+| **Mixins** | **Composables** |
+| `mixins: [myMixin]` | `const { data, method } = useComposable()` |
+| Conflits possibles | Pas de conflits |
+| Origine floue | Origine claire |
+| Pas de paramètres | Accepte des paramètres |
+
+### Exemple
+
+```javascript
+// Options API - Mixin
+export const counterMixin = {
+  data() { return { count: 0 } },
+  methods: { increment() { this.count++ } }
+}
+
+// Composition API - Composable
+export function useCounter(initial = 0) {
+  const count = ref(initial);
+  const increment = () => count.value++;
+  return { count, increment };
+}
+```
+
+---
+
+## Refs et Template refs - Correspondance
+
+| Options API | Composition API |
+|-------------|-----------------|
+| `this.$refs.input` | `const input = ref(null)`<br/>`<input ref="input">` |
+| `this.$refs.input.focus()` | `input.value.focus()` |
+
+### Exemple complet
+
+```vue
+<!-- Options API -->
+<script>
+export default {
+  mounted() {
+    this.$refs.input.focus();
+  }
+}
+</script>
+
+<!-- Composition API -->
+<script setup>
+import { ref, onMounted } from 'vue';
+const input = ref(null);
+onMounted(() => {
+  input.value.focus();
+});
+</script>
+
+<template>
+  <input ref="input" />
+</template>
+```
+
+---
+
+## Accès aux instances - Correspondance
+
+| Options API | Composition API |
+|-------------|-----------------|
+| `this.$el` | Utiliser un template ref |
+| `this.$data` | Pas d'équivalent (accès direct) |
+| `this.$props` | `const props = defineProps(...)` |
+| `this.$attrs` | `const attrs = useAttrs()` |
+| `this.$slots` | `const slots = useSlots()` |
+| `this.$parent` | ❌ Non recommandé |
+| `this.$root` | ❌ Non recommandé |
+| `this.$emit` | `const emit = defineEmits(...)` |
+
+### Import nécessaire
+
+```javascript
+import { useAttrs, useSlots } from 'vue';
+```
+
+---
+
+## Router et Store - Correspondance
+
+| Options API | Composition API |
+|-------------|-----------------|
+| `this.$router.push(...)` | `const router = useRouter()`<br/>`router.push(...)` |
+| `this.$route.params.id` | `const route = useRoute()`<br/>`route.params.id` |
+| `this.$store.state.count` | `const store = useStore()`<br/>`store.state.count` |
+| `this.$store.dispatch('action')` | `store.dispatch('action')` |
+
+### Import nécessaire
+
+```javascript
+// Vue Router
+import { useRouter, useRoute } from 'vue-router';
+
+// Vuex
+import { useStore } from 'vuex';
+
+// Pinia
+import { useMyStore } from '@/stores/myStore';
+```
+
+---
+
+## Exemple complet de migration
+
+### Options API (avant)
+
+```vue
+<script>
+export default {
+  props: ['userId'],
+  data() {
+    return {
+      user: null,
+      loading: false
+    }
+  },
+  computed: {
+    userDisplay() {
+      return this.user ? `${this.user.nom} (${this.user.email})` : 'N/A';
+    }
+  },
+```
+
+---
+
+```vue
+  watch: {
+    userId: {
+      immediate: true,
+      handler(newId) {
+        this.fetchUser(newId);
+      }
+    }
+  },
+  methods: {
+    async fetchUser(id) {
+      this.loading = true;
+      const res = await fetch(`/api/users/${id}`);
+      this.user = await res.json();
+      this.loading = false;
+    }
+  }
+}
+</script>
+```
+
+---
+
+### Composition API (après)
+
+```vue
+<script setup>
+import { ref, computed, watch } from 'vue';
+
+const props = defineProps(['userId']);
+
+const user = ref(null);
+const loading = ref(false);
+
+const userDisplay = computed(() => 
+  user.value ? `${user.value.nom} (${user.value.email})` : 'N/A'
+);
+
+const fetchUser = async (id) => {
+  loading.value = true;
+  const res = await fetch(`/api/users/${id}`);
+  user.value = await res.json();
+  loading.value = false;
+};
+
+watch(() => props.userId, (newId) => {
+  fetchUser(newId);
+}, { immediate: true });
+</script>
+```
+
+---
+
+## Avantages du tableau de correspondance
+
+### 🎯 Utilité
+
+Ce tableau vous permet de :
+
+✅ **Migrer progressivement** - Convertir composant par composant
+
+✅ **Trouver rapidement** - L'équivalent de ce que vous connaissez
+
+✅ **Comprendre les imports** - Savoir quoi importer de Vue
+
+✅ **Éviter les erreurs** - Connaître les différences importantes
+
+### 💡 Conseil
+
+Gardez ce tableau à portée de main pendant votre transition vers la Composition API !
+
+---
+
 # Composables - La puissance de la Composition API
 
 Les **composables** sont des fonctions réutilisables qui encapsulent de la logique
