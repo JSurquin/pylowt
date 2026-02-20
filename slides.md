@@ -3,29 +3,15 @@ theme: ./
 colorSchema: "auto"
 layout: intro
 highlighter: shiki
-# https://sli.dev/custom/highlighters.html
-title: Formation Vue.js 3 - Initiation 2026
-# download: true
-#transition: slide-left
-# remoteAssets: false
-# export:
-#   zoom: 1
-#   format: pdf
-#   timeout: 300000000
-#   pdfOptions:
-#     format: A4
-download: "https://vue.andromed.fr/slides.pdf"
+title: Pylowt - Présentation produit & entretien
+download: true
 themeConfig:
   logoHeader: "/avatar.png"
-  eventLogo: "https://img2.storyblok.com/352x414/f/84560/2388x414/23d8eb4b8d/vue-amsterdam-with-name.png"
-  eventUrl: "https://vuejs.amsterdam/"
-#addons:
-  #- "@slidev/addon-sharp-long-code"
 ---
 
-# Vue.js 3 - 2026
+# Pylowt
 
-💚 Une formation présentée par Ascent et Andromed.
+Orchestration du plan de formation — cockpit décisionnel RH
 
 <div class="pt-12">
   <span @click="next" class="px-2 p-3 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 neon-border">
@@ -33,294 +19,124 @@ themeConfig:
   </span>
 </div>
 
-
 <div class="absolute flex gap-x-2 bottom-0 left-0 p-4 z-50">
-      <SlideCurrentNo
-        class="dark:!text-white !text-[8px] p-1 w-5 h-5 items-center justify-center flex rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 opacity-80"
-      />
-      <span class="text-gray-400">/</span>
+  <SlideCurrentNo
+    class="dark:!text-white !text-[8px] p-1 w-5 h-5 items-center justify-center flex rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 opacity-80"
+  />
+  <span class="text-gray-400">/</span>
   <SlideTotal
-        class="dark:!text-white !text-[8px] p-1 w-5 h-5 items-center justify-center flex rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 opacity-80"
-      />
-</div>
-
-
-<div class="absolute bottom-0 right-0 z-50 flex flex-col gap-y-2 p-2">
-<div class="hover:bg-white hover:bg-opacity-10 neon-border border-2 rounded-xl w-[200px] p-2 flex flex-col gap-y-2">
-  <img src="/ascent.png" alt="Ascent" class="w-6 h-6 mx-auto rounded-full"></img>
-  <span class="text-gray-400 text-xs">Programme : <b>2-007 = Administration Postfix sous Linux </b></span>
-  <span class="text-gray-400 text-xs">Lot: <b>4</b></span>
-</div>
+    class="dark:!text-white !text-[8px] p-1 w-5 h-5 items-center justify-center flex rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 opacity-80"
+  />
 </div>
 
 ---
-layout: presenter
-eventLogo: 'https://img2.storyblok.com/352x0/f/84560/2388x414/23d8eb4b8d/vue-amsterdam-with-name.png'
-eventUrl: 'https://vuejs.amsterdam/'
-twitter: '@jimmylansrq'
-
-twitterUrl: 'https://twitter.com/jimmylansrq'
-presenterImage: 'https://legacy.andromed.fr/images/fondator.jpg'
+layout: default
+routeAlias: 'comprehension-produit'
 ---
 
-# Jimmylan Surquin
+# Slide 1 — Compréhension produit
 
-Fondateur <a  href="https://www.andromed.fr/"><logos-storyblok-icon  mr-1/>Andromed</a>
+**Pylowt = orchestration complète du plan de formation**
 
-- Lille, France 🇫🇷
-- Création de contenu sur <a href="https://www.youtube.com/channel/jimmylansrq"> <logos-youtube-icon mr-1 /> jimmylansrq </a>
-- Blog & Portfolio <a href="https://jimmylan.fr"> jimmylan.fr </a>
+- Centralisation des besoins (multi-sources)
+- Arbitrage budgétaire assisté par IA
+- Exécution (OF, convocations, documents, factures)
+- Reporting KPI consolidé
+- Intégration SIRH / LMS existants
 
----
-layout: text-image
-media: 'https://vuejs.org/images/logo.png'
----
+**Positionnement :**
 
-# DISCLAIMER 💚
-
-### Dans cette formation nous allons voir Vue.js 3 en profondeur, la dernière version du framework progressif JavaScript.
-
----
-layout: two-cols
-routeAlias: 'sommaire'
----
-
-<a name="sommaire" id="sommaire"></a>
-
-# SOMMAIRE VUE.JS 3 - FORMATION 📜
-
-<br>
-
-<div class="flex flex-col gap-2">
-<Link to="fil-rouge">🎯 Fil Rouge : TaskFlow (notre Trello-like)</Link>
-<br/>
-<Link to="module1-introduction">💚 1. Introduction à Vue.js et bases fondamentales</Link>
-<Link to="module2-slots">🎰 2. Slots et composants génériques</Link>
-<Link to="module3-avance">🚀 3. Vue.js - Fonctionnement avancé</Link>
-</div>
-
-::right::
-
-<div class="flex flex-col gap-2">
-<Link to="module5-router">🛤️ 4. Navigation et routage avec Vue Router</Link>
-<Link to="module4-pinia">🍍 5. State Management avec Pinia</Link>
-<Link to="module6-tests">🧪 6. Tests sous Vue.js avec Vitest</Link>
-<Link to="qcm-final">✅ QCM de validation finale</Link>
-<a target="_blank" href="https://github.com/JSurquin/taskflow-vue-app">🔗 Lien du projet Github</a>
-<br/>
-<strong style="color: #42b883;">🎁 MODULES BONUS</strong>
-<Link to="bonus-mixins">🔀 Mixins (Options API)</Link>
-<Link to="bonus-composition-api">✨ Composition API</Link>
-<Link to="bonus-typescript">🔷 TypeScript avec Vue.js 3</Link>
-<Link to="bonus-cicd">🚀 CI/CD avec GitLab</Link>
-<Link to="bonus-cheatsheet"> 🛟 CheatSheet d'aide </Link>
-</div>
-
-**Note :** Chaque module contient :
-- 📖 Cours théorique
-- 🎯 **Fil rouge TaskFlow** (notre Trello-like progressif)
+👉 pas un LMS  
+👉 pas un simple outil administratif  
+👉 **cockpit décisionnel RH + exécution**
 
 ---
-layout: two-cols
-routeAlias: 'programme-jour1'
+layout: default
+routeAlias: 'probleme-marche'
 ---
 
-### JOUR 1 - FONDAMENTAUX ET BASES 📅
+# Slide 2 — Problème marché
 
-<small>
+**Problèmes actuels RH formation :**
 
-**Module 1 - Introduction à Vue.js et bases fondamentales**
-- Rappels JavaScript ES6+
-- Architecture Vue.js (MVVM)
-- Outils et environnement (Node.js, Vite)
-- Votre premier composant Vue (data, methods)
-- Directives et data binding (v-bind, v-if, v-for, v-on, v-model)
-- Communication entre composants (props, emits)
-- Réactivité avancée (computed, watchers, lifecycle, mixins)
+- Excel + mails + fichiers partagés
+- Décisions budgétaires peu traçables
+- Arbitrage manuel long
+- Reporting CODIR chronophage
+- Données éclatées (SIRH / LMS / OF)
 
-</small>
+**Conséquence :**
 
-::right::
-
-<small>
-
-**Module 2 - Slots et composants génériques**
-- Définition et intérêts des slots
-- Slots simples et nommés
-- Directive v-slot
-- Scoped slots (slots à portée)
-- Slots dynamiques
-- Combinaison props & slots
-- Composants génériques réutilisables
-
-</small>
+→ perte de temps  
+→ manque de visibilité stratégique  
+→ difficulté à démontrer le ROI formation
 
 ---
-layout: two-cols
-routeAlias: 'programme-jour2'
+layout: default
+routeAlias: 'proposition-valeur'
 ---
 
-### JOUR 2 - VUE.JS AVANCÉ ET ROUTAGE 📅
+# Slide 3 — Proposition de valeur claire
 
-<small>
+**Ce que Pylowt apporte concrètement :**
 
-**Module 3 - Vue.js - Fonctionnement avancé**
-- Single File Components approfondis (SFC)
-- Scoped CSS et CSS Modules
-- Variables CSS réactives
-- Directives personnalisées
-- Composants fonctionnels (cas avancés)
+1. Structuration automatique des besoins
+2. Proposition de plans optimisés selon :
+   - budget
+   - priorités métiers
+   - contraintes logistiques
+3. Historique décisionnel traçable
+4. Dashboard temps réel
 
-</small>
+**ROI mesurable :**
 
-::right::
-
-<small>
-
-**Module 4 - Navigation et routage avec Vue Router**
-- Introduction à Vue Router
-- Installation et configuration
-- Routes et navigation (RouterLink, RouterView)
-- Routes dynamiques et paramètres
-- Navigation programmatique
-- Guards de navigation (beforeEach, meta fields)
-- Routes imbriquées
-- Lazy loading
-
-</small>
+- Temps administratif réduit
+- Meilleure allocation budgétaire
+- Pilotage stratégique facilité
 
 ---
-layout: two-cols
-routeAlias: 'programme-jour3'
+layout: default
+routeAlias: 'vision-produit'
 ---
 
-### JOUR 3 - STATE MANAGEMENT ET TESTS 📅
+# Slide 4 — Vision produit
 
-<small>
+*Ce que tu peux challenger en entretien*
 
-**Module 5 - State Management avec Pinia**
-- Pattern State Management
-- Introduction à Pinia
-- Installation et configuration
-- Création d'un store Pinia
-- State, Getters, Actions
-- Options API avec Pinia
-- Communication entre stores
-- Persistence localStorage
-- Intégration dans une application
+**Axes d’évolution forts :**
 
-</small>
+- IA plus prédictive (anticipation des besoins)
+- Recommandations personnalisées par collaborateur
+- Scoring ROI formation
+- Benchmarks inter-entreprises anonymisés
+- API ouverte pour écosystème EdTech
 
-::right::
-
-<small>
-
-**Module 6 - Tests sous Vue.js avec Vitest**
-- Intérêt des tests automatisés
-- Pourquoi tester ? (pyramide des tests)
-- Installation de Vitest
-- Configuration (vite.config.js, jsdom)
-- Tests unitaires (fonctions, composables)
-- Tests de composants Vue
-- Tests avec Pinia
-- Tests avec Router
-- Mocks et stubs
-- Coverage de code
-
-**Projet Final & QCM**
-- Application de tous les concepts
-- QCM de validation finale
-
-**Modules Bonus (optionnels)**
-- Composition API
-- CI/CD avec GitLab
-
-</small>
+Tu montres que tu penses roadmap.
 
 ---
-src: './pages/module1-introduction-bases.md'
+layout: default
+routeAlias: 'questions-strategiques'
 ---
 
----
-src: './pages/module1-exercices.md'
----
+# Slide 5 — Questions stratégiques à poser
+
+1. Quelle est votre cible principale aujourd’hui ? (PME / ETI / grands comptes)
+2. Quel est votre cycle de vente moyen ?
+3. Où est le plus gros frein actuellement ? (adoption / intégration / data quality)
+4. L’IA est rule-based ou ML entraîné sur data interne ?
+5. Quelle stack technique actuelle ?
+
+*Ça te positionne senior direct.*
 
 ---
-src: './pages/module2-slots-composants.md'
+layout: default
+routeAlias: 'positionnement-perso'
 ---
 
----
-src: './pages/module2-exercices.md'
----
+# Slide 6 — Positionnement perso
 
----
-src: './pages/module3-vuejs-avance.md'
----
+**Ce qui m’intéresse dans Pylowt**, c’est la couche décisionnelle augmentée par IA.
 
----
-src: './pages/module3-exercices.md'
----
+Beaucoup d’outils **exécutent**, peu **orchestrent** réellement le pilotage budgétaire formation.
 
----
-src: './pages/module4-vue-router.md'
----
-
----
-src: './pages/module4-exercices.md'
----
-
----
-src: './pages/module5-pinia-state.md'
----
-
----
-src: './pages/module5-exercices.md'
----
-
----
-src: './pages/module6-tests-vitest.md'
----
-
----
-src: './pages/module6-exercices.md'
----
-
----
-src: './pages/qcm-final.md'
----
-
----
-src: './pages/projet-final.md'
----
-
----
-src: './pages/bonus-mixins.md'
----
-
----
-src: './pages/bonus-composition-api.md'
----
-
----
-src: './pages/bonus-typescript-vuejs.md'
----
-
----
-src: './pages/module7-cicd-gitlab.md'
----
-
----
-src: './pages/bonus-cicd-qcm.md'
----
-
----
-src: './pages/bonus-cicd-exercices.md'
----
-
----
-src: './pages/bonus-cheatsheet-vuejs.md'
----
-
----
-src: './pages/00-fil-rouge-taskflow.md'
----
+Le vrai levier est dans la **donnée consolidée** + **explicabilité des recommandations**.

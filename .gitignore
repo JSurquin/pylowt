@@ -9,3 +9,4 @@ components.d.ts
 example-export
 slides-export/
 taskflow-app/
+.vercel
