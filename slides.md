@@ -140,3 +140,117 @@ routeAlias: 'positionnement-perso'
 Beaucoup d’outils **exécutent**, peu **orchestrent** réellement le pilotage budgétaire formation.
 
 Le vrai levier est dans la **donnée consolidée** + **explicabilité des recommandations**.
+
+---
+layout: default
+routeAlias: 'architecture-technique'
+---
+
+# Slide 7 — Architecture technique actuelle
+
+**Stack identifiée**
+
+- Supabase (PostgreSQL, Auth, Storage)
+- Vercel (hébergement serverless)
+- Gemini (moteur IA)
+- Cursor (développement assisté IA)
+
+**Lecture stratégique**
+
+- Stack moderne, orientée vélocité
+- Infrastructure majoritairement managée
+- Dépendance forte aux services tiers
+- Time-to-market optimisé
+
+---
+layout: default
+routeAlias: 'points-attention-techniques'
+---
+
+# Slide 8 — Points d’attention techniques
+
+**Données & Multi-tenant**
+
+- Implémentation du multi-tenant (logique vs schéma dédié)
+- Maîtrise du Row Level Security (RLS)
+- Isolation stricte des données RH
+
+*Enjeu : sécurité et conformité RGPD irréprochable.*
+
+**Hébergement & Scalabilité**
+
+- Gestion des environnements (staging / prod)
+- Observabilité (logs, monitoring, alerting)
+- Cold starts serverless
+- Limites éventuelles Vercel sur traitements lourds
+
+*Enjeu : stabilité à mesure que le volume client augmente.*
+
+---
+layout: default
+routeAlias: 'ia-architecture-gouvernance'
+---
+
+# Slide 9 — IA : Architecture et gouvernance
+
+**Intégration Gemini**
+
+- Appels via backend (jamais direct client)
+- Versioning des prompts
+- Logging des décisions générées
+- Traçabilité des recommandations
+
+**Questions critiques**
+
+- Les recommandations sont-elles explicables ?
+- Les décisions IA sont-elles auditables ?
+- Existe-t-il un fallback en cas d’indisponibilité modèle ?
+
+*Enjeu : fiabilité + maîtrise des coûts + auditabilité.*
+
+---
+layout: default
+routeAlias: 'risques-techniques'
+---
+
+# Slide 10 — Risques techniques potentiels
+
+1. Explosion des coûts IA sans contrôle token
+2. Qualité des données insuffisante → recommandations biaisées
+3. Complexité RLS mal maîtrisée
+4. Dépendance forte à Gemini (pricing / évolution API)
+5. Absence de monitoring spécifique IA
+
+---
+layout: default
+routeAlias: 'axes-amelioration'
+---
+
+# Slide 11 — Axes d’amélioration structurants
+
+- Encapsulation de la couche IA dans un service dédié
+- Feature flags pour tester variantes modèles
+- Monitoring des coûts par client
+- Cache intelligent des recommandations
+- Tests automatisés sur prompts critiques
+
+*Objectif : rendre l’IA industrialisable et scalable.*
+
+---
+layout: default
+routeAlias: 'positionnement-technique'
+---
+
+# Slide 12 — Positionnement technique
+
+Le différenciateur long terme ne sera pas uniquement le modèle IA utilisé.
+
+**Il sera dans :**
+
+- La structuration des workflows
+- La qualité et la normalisation des données
+- L’architecture sécurisée multi-tenant
+- L’auditabilité des décisions générées
+- La maîtrise des coûts et de la scalabilité
+
+*Vision : transformer l’IA en moteur décisionnel fiable, traçable et industrialisé.*
