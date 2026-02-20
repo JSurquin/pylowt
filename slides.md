@@ -4,7 +4,7 @@ colorSchema: "auto"
 layout: intro
 highlighter: shiki
 title: Pylowt - Présentation produit & entretien
-download: true
+#download: true
 themeConfig:
   logoHeader: "/avatar.png"
 ---
