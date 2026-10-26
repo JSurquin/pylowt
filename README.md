@@ -229,7 +229,7 @@ pnpm run export --dark
 
 ## 📄 Licence
 
-MIT - Formation présentée par **Ascent** et **Andromed**
+MIT - Formation présentée par **Andromed**
 
 ---
 
